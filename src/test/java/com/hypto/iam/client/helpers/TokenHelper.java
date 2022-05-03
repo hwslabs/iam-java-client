@@ -1,12 +1,22 @@
 package com.hypto.iam.client.helpers;
 
+import com.hypto.iam.client.SigningKeyResolver;
 import io.jsonwebtoken.CompressionCodecs;
+import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.powermock.reflect.Whitebox;
 
+import java.security.Key;
 import java.security.KeyPair;
 import java.util.Date;
+import java.util.HashMap;
+
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 
 public class TokenHelper {
     private static final String ISSUER = "https://iam.hypto.com";
@@ -19,9 +29,17 @@ public class TokenHelper {
     public static String generateJwtToken(String userHrn, String organizationId, String entitlements, Date issuedAt, Date expiresAt) {
         KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.ES256);
 
+        String testKeyId = "testKeyId";
+        HashMap<String, Key> keysMap = mock(HashMap.class);
+        when(keysMap.containsKey(eq(testKeyId))).thenReturn(true);
+        when(keysMap.get(eq(testKeyId))).thenReturn(keyPair.getPublic());
+
+        Whitebox.setInternalState(SigningKeyResolver.class, "keysMap", keysMap);
+
         return
                 Jwts.builder()
                         .setIssuer(ISSUER)
+                        .setHeaderParam(JwsHeader.KEY_ID, testKeyId)
                         .setIssuedAt(issuedAt)
                         .setExpiration(expiresAt)
                         .claim(VERSION_CLAIM, VERSION_NUM)
@@ -37,4 +55,5 @@ public class TokenHelper {
         return generateJwtToken(userHrn, organizationId, entitlements, new Date(),
                 new Date(System.currentTimeMillis() + (1000 * 60 * 60 * 24)));
     }
+
 }
