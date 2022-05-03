@@ -1,23 +1,34 @@
 package com.hypto.iam.client;
+
 import com.hypto.iam.client.api.KeyManagementApi;
+import com.hypto.iam.client.api.UserAuthorizationApi;
 import com.hypto.iam.client.helpers.TokenHelper;
+import com.hypto.iam.client.model.ResourceActionEffect;
+import com.hypto.iam.client.model.ValidationRequest;
+import com.hypto.iam.client.model.ValidationResponse;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
-import io.swagger.annotations.Api;
-import org.jetbrains.annotations.TestOnly;
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.Date;
 
+// PowerMockIgnore is used to ignore the classes as it messes up with some classes
+// https://stackoverflow.com/questions/14654639/when-a-trustmanagerfactory-is-not-a-trustmanagerfactory-java
+@PowerMockIgnore({"jdk.internal.reflect.*", "javax.net.ssl.*"})
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({KeyManagementApi.class, UserAuthorizationApi.class})
 public class ValidatorTest {
 
     @Test(expected = MalformedJwtException.class)
     public void failIfWrongToken() {
         Validator validator = new Validator("wrongToken");
     }
+
 
     @Test
     public void testGetUserHrn() {
@@ -49,7 +60,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testPermissions(){
+    public void testPermissions() {
         final String organizationId = "wkqmk8N7EM";
         final String userHrn = String.format("hrn:%s::iam-user/name1",organizationId);
         final String sampleEntitlements = String.format(
@@ -62,6 +73,24 @@ public class ValidatorTest {
         Validator validator = new Validator(tokenStr);
         assert !validator.validate("hrn:wkqmk8N7EM::invoice/1", "hrn:wkqmk8N7EM::invoice$view");
         assert validator.validate("hrn:wkqmk8N7EM::invoice/2", "hrn:wkqmk8N7EM::invoice$view");
+    }
+
+    @Test
+    public void testRemote() {
+        final String organizationId = "wkqmk8N7EM";
+        final String userHrn = String.format("hrn:%s::iam-user/name1",organizationId);
+        final String sampleEntitlements = String.format(
+                "p, hrn:%1$s::iam-policy/policy_view_invoice2, hrn:%1$s::invoice/1, hrn:%1$s::invoice$view, allow\n" +
+                "g, %2$s, hrn:%1$s::iam-policy/policy_view_invoice2", organizationId, userHrn);
+
+        final String tokenStr = TokenHelper.generateJwtToken(userHrn, organizationId, sampleEntitlements);
+
+        Validator validator = new Validator(tokenStr);
+
+        PowerMockito.stub(PowerMockito.method(UserAuthorizationApi.class, "validate", ValidationRequest.class))
+                .toReturn(new ValidationResponse().addResultsItem(new ResourceActionEffect().effect(ResourceActionEffect.EffectEnum.ALLOW)));
+
+        assert validator.validate("hrn:wkqmk8N7EM::invoice/1", "hrn:wkqmk8N7EM::invoice$view", false);
     }
 
 }

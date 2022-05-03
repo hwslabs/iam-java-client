@@ -1,21 +1,18 @@
 package com.hypto.iam.client.helpers;
 
-import com.hypto.iam.client.SigningKeyResolver;
+import com.hypto.iam.client.api.KeyManagementApi;
+import com.hypto.iam.client.model.KeyResponse;
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.powermock.reflect.Whitebox;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.powermock.api.mockito.PowerMockito;
 
-import java.security.Key;
 import java.security.KeyPair;
+import java.util.Base64;
 import java.util.Date;
-import java.util.HashMap;
-
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 
 public class TokenHelper {
@@ -29,12 +26,17 @@ public class TokenHelper {
     public static String generateJwtToken(String userHrn, String organizationId, String entitlements, Date issuedAt, Date expiresAt) {
         KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.ES256);
 
-        String testKeyId = "testKeyId";
-        HashMap<String, Key> keysMap = mock(HashMap.class);
-        when(keysMap.containsKey(eq(testKeyId))).thenReturn(true);
-        when(keysMap.get(eq(testKeyId))).thenReturn(keyPair.getPublic());
+        String testKeyId = RandomStringUtils.random(10);
+        String publicKey = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());
 
-        Whitebox.setInternalState(SigningKeyResolver.class, "keysMap", keysMap);
+        KeyResponse response = new KeyResponse().key(publicKey)
+                .format(KeyResponse.FormatEnum.DER)
+                .status("SIGNING")
+                .kid(testKeyId);
+
+        PowerMockito.stub(
+                PowerMockito.method(KeyManagementApi.class, "getKey", String.class, String.class, String.class))
+                .toReturn(response);
 
         return
                 Jwts.builder()
