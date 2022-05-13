@@ -31,7 +31,7 @@ import java.util.List;
  * Payload to validate if a user has access to a resource-action
  */
 @ApiModel(description = "Payload to validate if a user has access to a resource-action")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
 public class ValidationRequest {
   public static final String SERIALIZED_NAME_VALIDATIONS = "validations";
   @SerializedName(SERIALIZED_NAME_VALIDATIONS)

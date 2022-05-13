@@ -25,11 +25,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Administrator user details for the organization
+ * Root user details for the organization
  */
-@ApiModel(description = "Administrator user details for the organization")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
-public class AdminUser {
+@ApiModel(description = "Root user details for the organization")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
+public class RootUser {
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
@@ -46,10 +46,14 @@ public class AdminUser {
   @SerializedName(SERIALIZED_NAME_PHONE)
   private String phone;
 
-  public AdminUser() { 
+  public static final String SERIALIZED_NAME_VERIFIED = "verified";
+  @SerializedName(SERIALIZED_NAME_VERIFIED)
+  private Boolean verified;
+
+  public RootUser() { 
   }
 
-  public AdminUser username(String username) {
+  public RootUser username(String username) {
     
     this.username = username;
     return this;
@@ -72,7 +76,7 @@ public class AdminUser {
   }
 
 
-  public AdminUser passwordHash(String passwordHash) {
+  public RootUser passwordHash(String passwordHash) {
     
     this.passwordHash = passwordHash;
     return this;
@@ -95,7 +99,7 @@ public class AdminUser {
   }
 
 
-  public AdminUser email(String email) {
+  public RootUser email(String email) {
     
     this.email = email;
     return this;
@@ -118,7 +122,7 @@ public class AdminUser {
   }
 
 
-  public AdminUser phone(String phone) {
+  public RootUser phone(String phone) {
     
     this.phone = phone;
     return this;
@@ -141,6 +145,29 @@ public class AdminUser {
   }
 
 
+  public RootUser verified(Boolean verified) {
+    
+    this.verified = verified;
+    return this;
+  }
+
+   /**
+   * Get verified
+   * @return verified
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getVerified() {
+    return verified;
+  }
+
+
+  public void setVerified(Boolean verified) {
+    this.verified = verified;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -149,26 +176,28 @@ public class AdminUser {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AdminUser adminUser = (AdminUser) o;
-    return Objects.equals(this.username, adminUser.username) &&
-        Objects.equals(this.passwordHash, adminUser.passwordHash) &&
-        Objects.equals(this.email, adminUser.email) &&
-        Objects.equals(this.phone, adminUser.phone);
+    RootUser rootUser = (RootUser) o;
+    return Objects.equals(this.username, rootUser.username) &&
+        Objects.equals(this.passwordHash, rootUser.passwordHash) &&
+        Objects.equals(this.email, rootUser.email) &&
+        Objects.equals(this.phone, rootUser.phone) &&
+        Objects.equals(this.verified, rootUser.verified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, passwordHash, email, phone);
+    return Objects.hash(username, passwordHash, email, phone, verified);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AdminUser {\n");
+    sb.append("class RootUser {\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("}");
     return sb.toString();
   }

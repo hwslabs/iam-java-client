@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.AdminUser;
+import com.hypto.iam.client.model.RootUser;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import java.io.IOException;
  * Payload to create organization
  */
 @ApiModel(description = "Payload to create organization")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
 public class CreateOrganizationRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -39,9 +39,9 @@ public class CreateOrganizationRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_ADMIN_USER = "adminUser";
-  @SerializedName(SERIALIZED_NAME_ADMIN_USER)
-  private AdminUser adminUser;
+  public static final String SERIALIZED_NAME_ROOT_USER = "rootUser";
+  @SerializedName(SERIALIZED_NAME_ROOT_USER)
+  private RootUser rootUser;
 
   public CreateOrganizationRequest() { 
   }
@@ -92,26 +92,26 @@ public class CreateOrganizationRequest {
   }
 
 
-  public CreateOrganizationRequest adminUser(AdminUser adminUser) {
+  public CreateOrganizationRequest rootUser(RootUser rootUser) {
     
-    this.adminUser = adminUser;
+    this.rootUser = rootUser;
     return this;
   }
 
    /**
-   * Get adminUser
-   * @return adminUser
+   * Get rootUser
+   * @return rootUser
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public AdminUser getAdminUser() {
-    return adminUser;
+  public RootUser getRootUser() {
+    return rootUser;
   }
 
 
-  public void setAdminUser(AdminUser adminUser) {
-    this.adminUser = adminUser;
+  public void setRootUser(RootUser rootUser) {
+    this.rootUser = rootUser;
   }
 
 
@@ -126,12 +126,12 @@ public class CreateOrganizationRequest {
     CreateOrganizationRequest createOrganizationRequest = (CreateOrganizationRequest) o;
     return Objects.equals(this.name, createOrganizationRequest.name) &&
         Objects.equals(this.description, createOrganizationRequest.description) &&
-        Objects.equals(this.adminUser, createOrganizationRequest.adminUser);
+        Objects.equals(this.rootUser, createOrganizationRequest.rootUser);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, adminUser);
+    return Objects.hash(name, description, rootUser);
   }
 
   @Override
@@ -140,7 +140,7 @@ public class CreateOrganizationRequest {
     sb.append("class CreateOrganizationRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    adminUser: ").append(toIndentedString(adminUser)).append("\n");
+    sb.append("    rootUser: ").append(toIndentedString(rootUser)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -31,7 +31,7 @@ import java.util.List;
  * Payload to update action
  */
 @ApiModel(description = "Payload to update action")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
 public class UpdatePolicyRequest {
   public static final String SERIALIZED_NAME_STATEMENTS = "statements";
   @SerializedName(SERIALIZED_NAME_STATEMENTS)

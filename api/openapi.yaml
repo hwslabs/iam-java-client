@@ -5642,10 +5642,10 @@ components:
       value:
         name: ACME Enterprise
         description: Brief description about ACME
-        adminUser:
+        rootUser:
           username: username
           password: <password>
-          email: admin@example.com
+          email: root@example.com
           phone: 1234567890
     UpdateOrganizationRequest:
       summary: A sample UpdateOrganizationRequest
@@ -5660,13 +5660,15 @@ components:
         password_hash: nii2du35bdtuethntv3q7416
         email: bob@acme.com
         phone: 1234071628
-        status: active
+        status: enabled
+        verified: true
     UpdateUserRequest:
       summary: sample update user request
       value:
         email: bob@acme.com
         phone: 1234071634
-        status: active
+        status: enabled
+        verified: true
     CreateCredentialRequest:
       summary: sample create credential request
       value:
@@ -5746,7 +5748,7 @@ components:
           id: XlK5h64gND
           name: ACME Enterprise
           description: Brief description about ACME
-        adminUserCredential:
+        rootUserCredential:
           id: 1f44ada7-7196-4f2d-8380-4c76f8bddec2
           valid_until: 2023-01-01T00:00:00
           status: active
@@ -5839,7 +5841,7 @@ components:
         id: XlK5h64gND
         name: ACME Enterprise
         description: Brief description about ACME
-        adminUserHrn: hrn:XlK5h64gND::iam-user/admin-user-name
+        rootUserHrn: hrn:XlK5h64gND::iam-user/root-user-name
     User:
       summary: A sample user
       value:
@@ -6588,9 +6590,10 @@ components:
       additionalProperties: false
       description: Payload to create organization
       example:
-        adminUser:
+        rootUser:
           phone: phone
           password_hash: password_hash
+          verified: true
           email: email
           username: username
         name: name
@@ -6603,11 +6606,11 @@ components:
         description:
           maxLength: 500
           type: string
-        adminUser:
-          $ref: '#/components/schemas/AdminUser'
+        rootUser:
+          $ref: '#/components/schemas/RootUser'
       required:
-      - adminUser
       - name
+      - rootUser
       type: object
     UpdateOrganizationRequest:
       additionalProperties: false
@@ -6624,12 +6627,13 @@ components:
           maxLength: 500
           type: string
       type: object
-    AdminUser:
+    RootUser:
       additionalProperties: false
-      description: Administrator user details for the organization
+      description: Root user details for the organization
       example:
         phone: phone
         password_hash: password_hash
+        verified: true
         email: email
         username: username
       properties:
@@ -6647,11 +6651,14 @@ components:
         phone:
           maxLength: 30
           type: string
+        verified:
+          type: boolean
       required:
       - email
       - password_hash
       - phone
       - username
+      - verified
       type: object
     CreateUserRequest:
       additionalProperties: false
@@ -6659,9 +6666,10 @@ components:
       example:
         phone: phone
         password_hash: password_hash
+        verified: true
         email: email
         username: username
-        status: active
+        status: enabled
       properties:
         username:
           maxLength: 50
@@ -6679,9 +6687,11 @@ components:
           type: string
         status:
           enum:
-          - active
-          - inactive
+          - enabled
+          - disabled
           type: string
+        verified:
+          type: boolean
       required:
       - email
       - password_hash
@@ -6693,6 +6703,7 @@ components:
       description: Payload to create ledger account
       example:
         phone: phone
+        verified: true
         email: email
         status: enabled
       properties:
@@ -6707,6 +6718,8 @@ components:
           - enabled
           - disabled
           type: string
+        verified:
+          type: boolean
       type: object
     CreateCredentialRequest:
       additionalProperties: false
@@ -6971,11 +6984,11 @@ components:
       additionalProperties: false
       example:
         organization:
+          rootUserHrn: rootUserHrn
           name: name
           description: description
-          adminUserHrn: adminUserHrn
           id: id
-        adminUserCredential:
+        rootUserCredential:
           valid_until: valid_until
           id: id
           secret: secret
@@ -6983,7 +6996,7 @@ components:
       properties:
         organization:
           $ref: '#/components/schemas/Organization'
-        adminUserCredential:
+        rootUserCredential:
           $ref: '#/components/schemas/Credential'
       type: object
     UserPaginatedResponse:
@@ -6994,6 +7007,7 @@ components:
           phone: phone
           organization_id: organization_id
           login_access: true
+          verified: true
           created_by: created_by
           email: email
           username: username
@@ -7002,6 +7016,7 @@ components:
           phone: phone
           organization_id: organization_id
           login_access: true
+          verified: true
           created_by: created_by
           email: email
           username: username
@@ -7162,9 +7177,9 @@ components:
     Organization:
       additionalProperties: false
       example:
+        rootUserHrn: rootUserHrn
         name: name
         description: description
-        adminUserHrn: adminUserHrn
         id: id
       properties:
         id:
@@ -7176,12 +7191,12 @@ components:
         description:
           maxLength: 500
           type: string
-        adminUserHrn:
+        rootUserHrn:
           type: string
       required:
-      - adminUser
       - id
       - name
+      - rootUser
       type: object
     User:
       additionalProperties: false
@@ -7190,6 +7205,7 @@ components:
         phone: phone
         organization_id: organization_id
         login_access: true
+        verified: true
         created_by: created_by
         email: email
         username: username
@@ -7206,26 +7222,28 @@ components:
         email:
           maxLength: 50
           type: string
-        phone:
-          maxLength: 20
-          type: string
-        login_access:
-          type: boolean
         status:
           enum:
           - enabled
           - disabled
           type: string
+        phone:
+          maxLength: 20
+          type: string
+        login_access:
+          type: boolean
         created_by:
           maxLength: 50
           type: string
+        verified:
+          type: boolean
       required:
       - email
       - hrn
       - organization_id
-      - phone
       - status
       - username
+      - verified
       type: object
     Credential:
       additionalProperties: false

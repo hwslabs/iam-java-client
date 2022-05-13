@@ -28,7 +28,7 @@ import java.io.IOException;
  * Payload to create ledger account
  */
 @ApiModel(description = "Payload to create ledger account")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
 public class CreateUserRequest {
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
@@ -51,9 +51,9 @@ public class CreateUserRequest {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    ACTIVE("active"),
+    ENABLED("enabled"),
     
-    INACTIVE("inactive");
+    DISABLED("disabled");
 
     private String value;
 
@@ -96,6 +96,10 @@ public class CreateUserRequest {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
+
+  public static final String SERIALIZED_NAME_VERIFIED = "verified";
+  @SerializedName(SERIALIZED_NAME_VERIFIED)
+  private Boolean verified;
 
   public CreateUserRequest() { 
   }
@@ -215,6 +219,29 @@ public class CreateUserRequest {
   }
 
 
+  public CreateUserRequest verified(Boolean verified) {
+    
+    this.verified = verified;
+    return this;
+  }
+
+   /**
+   * Get verified
+   * @return verified
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getVerified() {
+    return verified;
+  }
+
+
+  public void setVerified(Boolean verified) {
+    this.verified = verified;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -228,12 +255,13 @@ public class CreateUserRequest {
         Objects.equals(this.passwordHash, createUserRequest.passwordHash) &&
         Objects.equals(this.email, createUserRequest.email) &&
         Objects.equals(this.phone, createUserRequest.phone) &&
-        Objects.equals(this.status, createUserRequest.status);
+        Objects.equals(this.status, createUserRequest.status) &&
+        Objects.equals(this.verified, createUserRequest.verified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, passwordHash, email, phone, status);
+    return Objects.hash(username, passwordHash, email, phone, status, verified);
   }
 
   @Override
@@ -245,6 +273,7 @@ public class CreateUserRequest {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("}");
     return sb.toString();
   }

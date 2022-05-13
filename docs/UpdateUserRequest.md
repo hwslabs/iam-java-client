@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **email** | **String** |  |  [optional]
 **phone** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
+**verified** | **Boolean** |  |  [optional]
 
 
 

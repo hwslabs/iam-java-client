@@ -2,7 +2,7 @@
 
 Hypto IAM
 - API version: 1.0.0
-  - Build date: 2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]
+  - Build date: 2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]
 
 APIs for Hypto IAM Service.
 
@@ -157,7 +157,6 @@ Class | Method | HTTP request | Description
 
  - [Action](docs/Action.md)
  - [ActionPaginatedResponse](docs/ActionPaginatedResponse.md)
- - [AdminUser](docs/AdminUser.md)
  - [BaseSuccessResponse](docs/BaseSuccessResponse.md)
  - [CreateActionRequest](docs/CreateActionRequest.md)
  - [CreateCredentialRequest](docs/CreateCredentialRequest.md)
@@ -181,6 +180,7 @@ Class | Method | HTTP request | Description
  - [ResourceAction](docs/ResourceAction.md)
  - [ResourceActionEffect](docs/ResourceActionEffect.md)
  - [ResourcePaginatedResponse](docs/ResourcePaginatedResponse.md)
+ - [RootUser](docs/RootUser.md)
  - [TokenResponse](docs/TokenResponse.md)
  - [UpdateActionRequest](docs/UpdateActionRequest.md)
  - [UpdateCredentialRequest](docs/UpdateCredentialRequest.md)

@@ -11,10 +11,11 @@ Name | Type | Description | Notes
 **username** | **String** |  | 
 **organizationId** | **String** |  | 
 **email** | **String** |  | 
-**phone** | **String** |  | 
-**loginAccess** | **Boolean** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  | 
+**phone** | **String** |  |  [optional]
+**loginAccess** | **Boolean** |  |  [optional]
 **createdBy** | **String** |  |  [optional]
+**verified** | **Boolean** |  | 
 
 
 

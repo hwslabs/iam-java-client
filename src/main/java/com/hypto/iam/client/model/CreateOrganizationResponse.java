@@ -29,15 +29,15 @@ import java.io.IOException;
 /**
  * CreateOrganizationResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
 public class CreateOrganizationResponse {
   public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION)
   private Organization organization;
 
-  public static final String SERIALIZED_NAME_ADMIN_USER_CREDENTIAL = "adminUserCredential";
-  @SerializedName(SERIALIZED_NAME_ADMIN_USER_CREDENTIAL)
-  private Credential adminUserCredential;
+  public static final String SERIALIZED_NAME_ROOT_USER_CREDENTIAL = "rootUserCredential";
+  @SerializedName(SERIALIZED_NAME_ROOT_USER_CREDENTIAL)
+  private Credential rootUserCredential;
 
   public CreateOrganizationResponse() { 
   }
@@ -65,26 +65,26 @@ public class CreateOrganizationResponse {
   }
 
 
-  public CreateOrganizationResponse adminUserCredential(Credential adminUserCredential) {
+  public CreateOrganizationResponse rootUserCredential(Credential rootUserCredential) {
     
-    this.adminUserCredential = adminUserCredential;
+    this.rootUserCredential = rootUserCredential;
     return this;
   }
 
    /**
-   * Get adminUserCredential
-   * @return adminUserCredential
+   * Get rootUserCredential
+   * @return rootUserCredential
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Credential getAdminUserCredential() {
-    return adminUserCredential;
+  public Credential getRootUserCredential() {
+    return rootUserCredential;
   }
 
 
-  public void setAdminUserCredential(Credential adminUserCredential) {
-    this.adminUserCredential = adminUserCredential;
+  public void setRootUserCredential(Credential rootUserCredential) {
+    this.rootUserCredential = rootUserCredential;
   }
 
 
@@ -98,12 +98,12 @@ public class CreateOrganizationResponse {
     }
     CreateOrganizationResponse createOrganizationResponse = (CreateOrganizationResponse) o;
     return Objects.equals(this.organization, createOrganizationResponse.organization) &&
-        Objects.equals(this.adminUserCredential, createOrganizationResponse.adminUserCredential);
+        Objects.equals(this.rootUserCredential, createOrganizationResponse.rootUserCredential);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(organization, adminUserCredential);
+    return Objects.hash(organization, rootUserCredential);
   }
 
   @Override
@@ -111,7 +111,7 @@ public class CreateOrganizationResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrganizationResponse {\n");
     sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
-    sb.append("    adminUserCredential: ").append(toIndentedString(adminUserCredential)).append("\n");
+    sb.append("    rootUserCredential: ").append(toIndentedString(rootUserCredential)).append("\n");
     sb.append("}");
     return sb.toString();
   }

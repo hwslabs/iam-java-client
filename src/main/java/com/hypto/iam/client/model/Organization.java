@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Organization
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
 public class Organization {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -41,9 +41,9 @@ public class Organization {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_ADMIN_USER_HRN = "adminUserHrn";
-  @SerializedName(SERIALIZED_NAME_ADMIN_USER_HRN)
-  private String adminUserHrn;
+  public static final String SERIALIZED_NAME_ROOT_USER_HRN = "rootUserHrn";
+  @SerializedName(SERIALIZED_NAME_ROOT_USER_HRN)
+  private String rootUserHrn;
 
   public Organization() { 
   }
@@ -117,26 +117,26 @@ public class Organization {
   }
 
 
-  public Organization adminUserHrn(String adminUserHrn) {
+  public Organization rootUserHrn(String rootUserHrn) {
     
-    this.adminUserHrn = adminUserHrn;
+    this.rootUserHrn = rootUserHrn;
     return this;
   }
 
    /**
-   * Get adminUserHrn
-   * @return adminUserHrn
+   * Get rootUserHrn
+   * @return rootUserHrn
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getAdminUserHrn() {
-    return adminUserHrn;
+  public String getRootUserHrn() {
+    return rootUserHrn;
   }
 
 
-  public void setAdminUserHrn(String adminUserHrn) {
-    this.adminUserHrn = adminUserHrn;
+  public void setRootUserHrn(String rootUserHrn) {
+    this.rootUserHrn = rootUserHrn;
   }
 
 
@@ -152,12 +152,12 @@ public class Organization {
     return Objects.equals(this.id, organization.id) &&
         Objects.equals(this.name, organization.name) &&
         Objects.equals(this.description, organization.description) &&
-        Objects.equals(this.adminUserHrn, organization.adminUserHrn);
+        Objects.equals(this.rootUserHrn, organization.rootUserHrn);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, adminUserHrn);
+    return Objects.hash(id, name, description, rootUserHrn);
   }
 
   @Override
@@ -167,7 +167,7 @@ public class Organization {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    adminUserHrn: ").append(toIndentedString(adminUserHrn)).append("\n");
+    sb.append("    rootUserHrn: ").append(toIndentedString(rootUserHrn)).append("\n");
     sb.append("}");
     return sb.toString();
   }

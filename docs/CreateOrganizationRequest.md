@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
 **description** | **String** |  |  [optional]
-**adminUser** | [**AdminUser**](AdminUser.md) |  | 
+**rootUser** | [**RootUser**](RootUser.md) |  | 
 
 
 

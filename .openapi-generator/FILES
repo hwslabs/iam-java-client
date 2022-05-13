@@ -6,7 +6,6 @@ build.gradle
 build.sbt
 docs/Action.md
 docs/ActionPaginatedResponse.md
-docs/AdminUser.md
 docs/BaseSuccessResponse.md
 docs/CreateActionRequest.md
 docs/CreateCredentialRequest.md
@@ -35,6 +34,7 @@ docs/ResourceActionEffect.md
 docs/ResourceActionManagementApi.md
 docs/ResourceManagementApi.md
 docs/ResourcePaginatedResponse.md
+docs/RootUser.md
 docs/TokenResponse.md
 docs/UpdateActionRequest.md
 docs/UpdateCredentialRequest.md
@@ -88,7 +88,6 @@ src/main/java/com/hypto/iam/client/auth/HttpBasicAuth.java
 src/main/java/com/hypto/iam/client/auth/HttpBearerAuth.java
 src/main/java/com/hypto/iam/client/model/Action.java
 src/main/java/com/hypto/iam/client/model/ActionPaginatedResponse.java
-src/main/java/com/hypto/iam/client/model/AdminUser.java
 src/main/java/com/hypto/iam/client/model/BaseSuccessResponse.java
 src/main/java/com/hypto/iam/client/model/CreateActionRequest.java
 src/main/java/com/hypto/iam/client/model/CreateCredentialRequest.java
@@ -112,6 +111,7 @@ src/main/java/com/hypto/iam/client/model/Resource.java
 src/main/java/com/hypto/iam/client/model/ResourceAction.java
 src/main/java/com/hypto/iam/client/model/ResourceActionEffect.java
 src/main/java/com/hypto/iam/client/model/ResourcePaginatedResponse.java
+src/main/java/com/hypto/iam/client/model/RootUser.java
 src/main/java/com/hypto/iam/client/model/TokenResponse.java
 src/main/java/com/hypto/iam/client/model/UpdateActionRequest.java
 src/main/java/com/hypto/iam/client/model/UpdateCredentialRequest.java

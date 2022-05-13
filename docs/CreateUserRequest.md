@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **email** | **String** |  | 
 **phone** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  | 
+**verified** | **Boolean** |  |  [optional]
 
 
 
@@ -20,8 +21,8 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-ACTIVE | &quot;active&quot;
-INACTIVE | &quot;inactive&quot;
+ENABLED | &quot;enabled&quot;
+DISABLED | &quot;disabled&quot;
 
 
 

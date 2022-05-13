@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
 public class User {
   public static final String SERIALIZED_NAME_HRN = "hrn";
   @SerializedName(SERIALIZED_NAME_HRN)
@@ -44,14 +44,6 @@ public class User {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
-
-  public static final String SERIALIZED_NAME_PHONE = "phone";
-  @SerializedName(SERIALIZED_NAME_PHONE)
-  private String phone;
-
-  public static final String SERIALIZED_NAME_LOGIN_ACCESS = "login_access";
-  @SerializedName(SERIALIZED_NAME_LOGIN_ACCESS)
-  private Boolean loginAccess;
 
   /**
    * Gets or Sets status
@@ -104,9 +96,21 @@ public class User {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  public static final String SERIALIZED_NAME_PHONE = "phone";
+  @SerializedName(SERIALIZED_NAME_PHONE)
+  private String phone;
+
+  public static final String SERIALIZED_NAME_LOGIN_ACCESS = "login_access";
+  @SerializedName(SERIALIZED_NAME_LOGIN_ACCESS)
+  private Boolean loginAccess;
+
   public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   private String createdBy;
+
+  public static final String SERIALIZED_NAME_VERIFIED = "verified";
+  @SerializedName(SERIALIZED_NAME_VERIFIED)
+  private Boolean verified;
 
   public User() { 
   }
@@ -203,6 +207,29 @@ public class User {
   }
 
 
+  public User status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
   public User phone(String phone) {
     
     this.phone = phone;
@@ -213,8 +240,8 @@ public class User {
    * Get phone
    * @return phone
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getPhone() {
     return phone;
@@ -249,29 +276,6 @@ public class User {
   }
 
 
-  public User status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
   public User createdBy(String createdBy) {
     
     this.createdBy = createdBy;
@@ -295,6 +299,29 @@ public class User {
   }
 
 
+  public User verified(Boolean verified) {
+    
+    this.verified = verified;
+    return this;
+  }
+
+   /**
+   * Get verified
+   * @return verified
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getVerified() {
+    return verified;
+  }
+
+
+  public void setVerified(Boolean verified) {
+    this.verified = verified;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -308,15 +335,16 @@ public class User {
         Objects.equals(this.username, user.username) &&
         Objects.equals(this.organizationId, user.organizationId) &&
         Objects.equals(this.email, user.email) &&
+        Objects.equals(this.status, user.status) &&
         Objects.equals(this.phone, user.phone) &&
         Objects.equals(this.loginAccess, user.loginAccess) &&
-        Objects.equals(this.status, user.status) &&
-        Objects.equals(this.createdBy, user.createdBy);
+        Objects.equals(this.createdBy, user.createdBy) &&
+        Objects.equals(this.verified, user.verified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hrn, username, organizationId, email, phone, loginAccess, status, createdBy);
+    return Objects.hash(hrn, username, organizationId, email, status, phone, loginAccess, createdBy, verified);
   }
 
   @Override
@@ -327,10 +355,11 @@ public class User {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    loginAccess: ").append(toIndentedString(loginAccess)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("}");
     return sb.toString();
   }

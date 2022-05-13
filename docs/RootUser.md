@@ -1,8 +1,8 @@
 
 
-# AdminUser
+# RootUser
 
-Administrator user details for the organization
+Root user details for the organization
 
 ## Properties
 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **passwordHash** | **String** |  | 
 **email** | **String** |  | 
 **phone** | **String** |  | 
+**verified** | **Boolean** |  | 
 
 
 

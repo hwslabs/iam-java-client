@@ -28,7 +28,7 @@ import java.io.IOException;
  * Payload to create ledger account
  */
 @ApiModel(description = "Payload to create ledger account")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-03T08:17:49.886218+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
 public class UpdateUserRequest {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
@@ -88,6 +88,10 @@ public class UpdateUserRequest {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
+
+  public static final String SERIALIZED_NAME_VERIFIED = "verified";
+  @SerializedName(SERIALIZED_NAME_VERIFIED)
+  private Boolean verified;
 
   public UpdateUserRequest() { 
   }
@@ -161,6 +165,29 @@ public class UpdateUserRequest {
   }
 
 
+  public UpdateUserRequest verified(Boolean verified) {
+    
+    this.verified = verified;
+    return this;
+  }
+
+   /**
+   * Get verified
+   * @return verified
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getVerified() {
+    return verified;
+  }
+
+
+  public void setVerified(Boolean verified) {
+    this.verified = verified;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -172,12 +199,13 @@ public class UpdateUserRequest {
     UpdateUserRequest updateUserRequest = (UpdateUserRequest) o;
     return Objects.equals(this.email, updateUserRequest.email) &&
         Objects.equals(this.phone, updateUserRequest.phone) &&
-        Objects.equals(this.status, updateUserRequest.status);
+        Objects.equals(this.status, updateUserRequest.status) &&
+        Objects.equals(this.verified, updateUserRequest.verified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, phone, status);
+    return Objects.hash(email, phone, status, verified);
   }
 
   @Override
@@ -187,6 +215,7 @@ public class UpdateUserRequest {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("}");
     return sb.toString();
   }
