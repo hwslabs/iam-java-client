@@ -29,47 +29,14 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Objects;
 
-class SigningKeyResolver extends SigningKeyResolverAdapter {
-    static final int cacheRefreshInterval = 60 * 10; // 10 minutes
-    static Instant lastRefreshTime = Instant.now();
-    static HashMap<String, Key> keysMap = new HashMap<>();
-
-    @Override
-    public Key resolveSigningKey(JwsHeader jwsHeader, Claims claims ) {
-        String keyId = jwsHeader.getKeyId();
-
-        if (lastRefreshTime.plusSeconds(cacheRefreshInterval).isBefore(Instant.now())) {
-            keysMap.clear();
-            lastRefreshTime = Instant.now();
-        }
-
-        if (keysMap.containsKey(keyId))
-            return keysMap.get(keyId);
-
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        KeyManagementApi apiInstance = new KeyManagementApi(defaultClient);
-        try {
-            KeyResponse result = apiInstance.getKey(keyId, "der", "public");
-            byte[] encodedPublicKey = Base64.getDecoder().decode(result.getKey());
-            KeyFactory keyFactory = KeyFactory.getInstance("EC");
-            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(encodedPublicKey);
-            Key publicKey = keyFactory.generatePublic(keySpec);
-            keysMap.put(keyId, publicKey);
-            return publicKey;
-        } catch (ApiException | NoSuchAlgorithmException | InvalidKeySpecException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-}
-
 
 public class Validator {
     static final String USER_CLAIM = "usr";
     static final String ENTITLEMENTS_CLAIM = "entitlements";
     static final String ISSUER = "https://iam.hypto.com";
+    static final String VERSION_NUM = "1.0";
+    static final String VERSION_CLAIM = "ver";
+
     static final String modelPath = Objects.requireNonNull(Validator.class.getClassLoader()
             .getResource("casbin_model.conf")).getFile();
     static final SigningKeyResolver signingKeyResolver = new SigningKeyResolver();
@@ -85,6 +52,7 @@ public class Validator {
         String entitlements = jws.getBody().get(ENTITLEMENTS_CLAIM, String.class);
 
         assert jws.getBody().getIssuer().equals(ISSUER);
+        assert jws.getBody().get(VERSION_CLAIM, String.class).equals(VERSION_NUM);
 
         this.enforcer = new Enforcer(modelPath, new FileAdapter(
                 new ByteArrayInputStream(entitlements.getBytes(StandardCharsets.UTF_8))));

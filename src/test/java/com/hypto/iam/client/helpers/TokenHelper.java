@@ -1,12 +1,19 @@
 package com.hypto.iam.client.helpers;
 
+import com.hypto.iam.client.api.KeyManagementApi;
+import com.hypto.iam.client.model.KeyResponse;
 import io.jsonwebtoken.CompressionCodecs;
+import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.powermock.api.mockito.PowerMockito;
 
 import java.security.KeyPair;
+import java.util.Base64;
 import java.util.Date;
+
 
 public class TokenHelper {
     private static final String ISSUER = "https://iam.hypto.com";
@@ -19,9 +26,22 @@ public class TokenHelper {
     public static String generateJwtToken(String userHrn, String organizationId, String entitlements, Date issuedAt, Date expiresAt) {
         KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.ES256);
 
+        String testKeyId = RandomStringUtils.random(10);
+        String publicKey = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());
+
+        KeyResponse response = new KeyResponse().key(publicKey)
+                .format(KeyResponse.FormatEnum.DER)
+                .status("SIGNING")
+                .kid(testKeyId);
+
+        PowerMockito.stub(
+                PowerMockito.method(KeyManagementApi.class, "getKey", String.class, String.class, String.class))
+                .toReturn(response);
+
         return
                 Jwts.builder()
                         .setIssuer(ISSUER)
+                        .setHeaderParam(JwsHeader.KEY_ID, testKeyId)
                         .setIssuedAt(issuedAt)
                         .setExpiration(expiresAt)
                         .claim(VERSION_CLAIM, VERSION_NUM)
@@ -37,4 +57,5 @@ public class TokenHelper {
         return generateJwtToken(userHrn, organizationId, entitlements, new Date(),
                 new Date(System.currentTimeMillis() + (1000 * 60 * 60 * 24)));
     }
+
 }
