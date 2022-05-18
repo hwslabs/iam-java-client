@@ -16,7 +16,7 @@ package com.hypto.iam.client;
 import java.util.Collection;
 import java.util.Iterator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-18T20:32:12.909641+05:30[Asia/Kolkata]")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

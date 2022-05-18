@@ -9,9 +9,9 @@
     <url></url>
     <description>IAM Java Client</description>
     <scm>
-        <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
-        <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
-        <url>https://github.com/openapitools/openapi-generator</url>
+        <connection>scm:git:git@github.com:hwslabs/iam-java-client.git</connection>
+        <developerConnection>scm:git:git@github.com:hwslabs/iam-java-client.git</developerConnection>
+        <url>https://github.com/hwslabs/iam-java-client.git</url>
     </scm>
 
     <licenses>

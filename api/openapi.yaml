@@ -79,6 +79,11 @@ tags:
     description: docs
     url: http://hypto.com/docs/iam/SignInApi
   name: User Sign-In
+- description: APIs for verifying emails
+  externalDocs:
+    description: docs
+    url: https://github.com/hwslabs/iam/blob/main/docs/api_reference/Apis/PasscodeManagement.md
+  name: User Verification
 paths:
   /organizations:
     post:
@@ -204,6 +209,7 @@ paths:
       security:
       - apiKeyAuth:
         - hypto-internal-secret-key
+        - passcode
       summary: Creates an organization.
       tags:
       - Organization Management
@@ -5635,6 +5641,109 @@ paths:
       tags:
       - Key Management
       x-accepts: application/json
+  /verifyEmail:
+    post:
+      description: Verify email during account opening and resetting password
+      operationId: verifyEmail
+      requestBody:
+        $ref: '#/components/requestBodies/VerifyEmailRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+          description: OK
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      security: []
+      summary: Verify email
+      tags:
+      - User Verification
+      x-contentType: application/json
+      x-accepts: application/json
 components:
   examples:
     CreateOrganizationRequest:
@@ -5740,19 +5849,16 @@ components:
         salterPassword: wnr1782qbt52igbiuwbcgeuyiy==egryg123iuoh1109877t2i313489rge
     VerifyEmailRequest:
       value:
-        username: Bob
-        captchaToken: asdfg
+        email: abcd@abcd.in
+        organization_id: XlK5h64gND
+        purpose: reset
     CreateOrganizationResponse:
       value:
         organization:
           id: XlK5h64gND
           name: ACME Enterprise
           description: Brief description about ACME
-        rootUserCredential:
-          id: 1f44ada7-7196-4f2d-8380-4c76f8bddec2
-          valid_until: 2023-01-01T00:00:00
-          status: active
-          secret: Z2QGNPmgWUBfRXhCrAmArrrszMajaEbYgaQJMciL
+        rootUserToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
     GetUserPoliciesResponse:
       value:
         policies:
@@ -6223,6 +6329,16 @@ components:
           schema:
             $ref: '#/components/schemas/ValidationRequest'
       description: Payload to validate if a user has access to a resource-action
+      required: true
+    VerifyEmailRequest:
+      content:
+        application/json:
+          examples:
+            VerifyEmailRequest:
+              $ref: '#/components/examples/VerifyEmailRequest'
+          schema:
+            $ref: '#/components/schemas/VerifyEmailRequest'
+      description: Payload to send verification link to email
       required: true
   responses:
     BaseSuccessResponse:
@@ -6910,6 +7026,27 @@ components:
       required:
       - validations
       type: object
+    VerifyEmailRequest:
+      additionalProperties: false
+      description: Payload to send verification link to email
+      example:
+        purpose: reset
+        organization_id: organization_id
+        email: email
+      properties:
+        email:
+          type: string
+        organization_id:
+          type: string
+        purpose:
+          enum:
+          - reset
+          - signup
+          type: string
+      required:
+      - email
+      - purpose
+      type: object
     BaseSuccessResponse:
       additionalProperties: false
       example:
@@ -6988,16 +7125,13 @@ components:
           name: name
           description: description
           id: id
-        rootUserCredential:
-          valid_until: valid_until
-          id: id
-          secret: secret
-          status: active
+        rootUserToken: rootUserToken
       properties:
         organization:
           $ref: '#/components/schemas/Organization'
-        rootUserCredential:
-          $ref: '#/components/schemas/Credential'
+        rootUserToken:
+          description: JWT token of the root user
+          type: string
       type: object
     UserPaginatedResponse:
       additionalProperties: false

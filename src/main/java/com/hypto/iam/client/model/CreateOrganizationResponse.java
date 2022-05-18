@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.Credential;
 import com.hypto.iam.client.model.Organization;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -29,15 +28,15 @@ import java.io.IOException;
 /**
  * CreateOrganizationResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-18T20:32:12.909641+05:30[Asia/Kolkata]")
 public class CreateOrganizationResponse {
   public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION)
   private Organization organization;
 
-  public static final String SERIALIZED_NAME_ROOT_USER_CREDENTIAL = "rootUserCredential";
-  @SerializedName(SERIALIZED_NAME_ROOT_USER_CREDENTIAL)
-  private Credential rootUserCredential;
+  public static final String SERIALIZED_NAME_ROOT_USER_TOKEN = "rootUserToken";
+  @SerializedName(SERIALIZED_NAME_ROOT_USER_TOKEN)
+  private String rootUserToken;
 
   public CreateOrganizationResponse() { 
   }
@@ -65,26 +64,26 @@ public class CreateOrganizationResponse {
   }
 
 
-  public CreateOrganizationResponse rootUserCredential(Credential rootUserCredential) {
+  public CreateOrganizationResponse rootUserToken(String rootUserToken) {
     
-    this.rootUserCredential = rootUserCredential;
+    this.rootUserToken = rootUserToken;
     return this;
   }
 
    /**
-   * Get rootUserCredential
-   * @return rootUserCredential
+   * JWT token of the root user
+   * @return rootUserToken
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "JWT token of the root user")
 
-  public Credential getRootUserCredential() {
-    return rootUserCredential;
+  public String getRootUserToken() {
+    return rootUserToken;
   }
 
 
-  public void setRootUserCredential(Credential rootUserCredential) {
-    this.rootUserCredential = rootUserCredential;
+  public void setRootUserToken(String rootUserToken) {
+    this.rootUserToken = rootUserToken;
   }
 
 
@@ -98,12 +97,12 @@ public class CreateOrganizationResponse {
     }
     CreateOrganizationResponse createOrganizationResponse = (CreateOrganizationResponse) o;
     return Objects.equals(this.organization, createOrganizationResponse.organization) &&
-        Objects.equals(this.rootUserCredential, createOrganizationResponse.rootUserCredential);
+        Objects.equals(this.rootUserToken, createOrganizationResponse.rootUserToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(organization, rootUserCredential);
+    return Objects.hash(organization, rootUserToken);
   }
 
   @Override
@@ -111,7 +110,7 @@ public class CreateOrganizationResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrganizationResponse {\n");
     sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
-    sb.append("    rootUserCredential: ").append(toIndentedString(rootUserCredential)).append("\n");
+    sb.append("    rootUserToken: ").append(toIndentedString(rootUserToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }

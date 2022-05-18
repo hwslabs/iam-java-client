@@ -2,7 +2,7 @@
 
 Hypto IAM
 - API version: 1.0.0
-  - Build date: 2022-05-13T22:44:18.023873+05:30[Asia/Kolkata]
+  - Build date: 2022-05-18T20:32:12.909641+05:30[Asia/Kolkata]
 
 APIs for Hypto IAM Service.
 
@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
 *UserPolicyManagementApi* | [**attachPolicies**](docs/UserPolicyManagementApi.md#attachPolicies) | **PATCH** /organizations/{organization_id}/users/{user_name}/attach_policies | Attach policies to user
 *UserPolicyManagementApi* | [**detachPolicies**](docs/UserPolicyManagementApi.md#detachPolicies) | **PATCH** /organizations/{organization_id}/users/{user_name}/detach_policies | Detach policies from user
 *UserPolicyManagementApi* | [**getUserPolicies**](docs/UserPolicyManagementApi.md#getUserPolicies) | **GET** /organizations/{organization_id}/users/{user_name}/policies | List all policies associated with user
+*UserVerificationApi* | [**verifyEmail**](docs/UserVerificationApi.md#verifyEmail) | **POST** /verifyEmail | Verify email
 
 
 ## Documentation for Models
@@ -193,6 +194,7 @@ Class | Method | HTTP request | Description
  - [UserPolicy](docs/UserPolicy.md)
  - [ValidationRequest](docs/ValidationRequest.md)
  - [ValidationResponse](docs/ValidationResponse.md)
+ - [VerifyEmailRequest](docs/VerifyEmailRequest.md)
 
 
 ## Documentation for Authorization

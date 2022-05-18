@@ -1,0 +1,12 @@
+{
+  "apiPackage" : "com.hypto.iam.client.api",
+  "artifactDescription" : "IAM Java Client",
+  "artifactId" : "iam-java-client",
+  "artifactUrl":"",
+  "groupId" : "com.hypto",
+  "invokerPackage" : "com.hypto.iam.client",
+  "modelPackage" : "com.hypto.iam.client.model",
+  "scmConnection": "scm:git:git@github.com:hwslabs/iam-java-client.git",
+  "scmDeveloperConnection": "scm:git:git@github.com:hwslabs/iam-java-client.git",
+  "scmUrl": "https://github.com/hwslabs/iam-java-client.git"
+}

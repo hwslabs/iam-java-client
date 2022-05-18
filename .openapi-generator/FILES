@@ -1,8 +1,6 @@
-.gitignore
 .travis.yml
 README.md
 api/openapi.yaml
-build.gradle
 build.sbt
 docs/Action.md
 docs/ActionPaginatedResponse.md
@@ -49,8 +47,10 @@ docs/UserManagementApi.md
 docs/UserPaginatedResponse.md
 docs/UserPolicy.md
 docs/UserPolicyManagementApi.md
+docs/UserVerificationApi.md
 docs/ValidationRequest.md
 docs/ValidationResponse.md
+docs/VerifyEmailRequest.md
 git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
@@ -82,6 +82,7 @@ src/main/java/com/hypto/iam/client/api/UserAuthorizationApi.java
 src/main/java/com/hypto/iam/client/api/UserCredentialManagementApi.java
 src/main/java/com/hypto/iam/client/api/UserManagementApi.java
 src/main/java/com/hypto/iam/client/api/UserPolicyManagementApi.java
+src/main/java/com/hypto/iam/client/api/UserVerificationApi.java
 src/main/java/com/hypto/iam/client/auth/ApiKeyAuth.java
 src/main/java/com/hypto/iam/client/auth/Authentication.java
 src/main/java/com/hypto/iam/client/auth/HttpBasicAuth.java
@@ -124,3 +125,4 @@ src/main/java/com/hypto/iam/client/model/UserPaginatedResponse.java
 src/main/java/com/hypto/iam/client/model/UserPolicy.java
 src/main/java/com/hypto/iam/client/model/ValidationRequest.java
 src/main/java/com/hypto/iam/client/model/ValidationResponse.java
+src/main/java/com/hypto/iam/client/model/VerifyEmailRequest.java
