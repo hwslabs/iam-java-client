@@ -33,6 +33,7 @@ import java.util.Objects;
 public class Validator {
     static final String USER_CLAIM = "usr";
     static final String ENTITLEMENTS_CLAIM = "entitlements";
+    static final String ORGANIZATION_CLAIM = "org";
     static final String ISSUER = "https://iam.hypto.com";
     static final String VERSION_NUM = "1.0";
     static final String VERSION_CLAIM = "ver";
@@ -44,11 +45,13 @@ public class Validator {
     public Jws<Claims> jws;
     public Enforcer enforcer;
     public String principal;
+    public String organizationId;
 
     public Validator(String token){
         this.jws = Jwts.parserBuilder().setSigningKeyResolver(signingKeyResolver).build().parseClaimsJws(token);
 
         this.principal = jws.getBody().get(USER_CLAIM, String.class);
+        this.organizationId = jws.getBody().get(ORGANIZATION_CLAIM, String.class);
         String entitlements = jws.getBody().get(ENTITLEMENTS_CLAIM, String.class);
 
         assert jws.getBody().getIssuer().equals(ISSUER);
