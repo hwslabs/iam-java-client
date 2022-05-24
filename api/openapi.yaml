@@ -1460,6 +1460,162 @@ paths:
       - User Management
       x-contentType: application/json
       x-accepts: application/json
+  /organizations/{organization_id}/users/resetPassword:
+    post:
+      description: Reset Password
+      operationId: resetPassword
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: ^[A-Z]{10}$
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/ResetPasswordRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+          description: OK
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      security:
+      - apiKeyAuth:
+        - passcode
+      summary: Reset Password
+      tags:
+      - User Management
+      x-contentType: application/json
+      x-accepts: application/json
   /organizations/{organization_id}/users/{user_name}/policies:
     get:
       description: List all policies associated with user
@@ -5778,6 +5934,11 @@ components:
         phone: 1234071634
         status: enabled
         verified: true
+    ResetPasswordRequest:
+      summary: sample reset password request
+      value:
+        email: bob@acme.com
+        password: <new password>
     CreateCredentialRequest:
       summary: sample create credential request
       value:
@@ -5840,10 +6001,6 @@ components:
         - resource: hrn:XlK5h64gND::invoice/2
           action: hrn:XlK5h64gND::invoice$view
     LoginRequest:
-      value:
-        username: Bob
-        salterPassword: wnr1782qbt52igbiuwbcgeuyiy==egryg123iuoh1109877t2i313489rge
-    ResetPasswordRequest:
       value:
         username: Bob
         salterPassword: wnr1782qbt52igbiuwbcgeuyiy==egryg123iuoh1109877t2i313489rge
@@ -6229,6 +6386,16 @@ components:
           schema:
             $ref: '#/components/schemas/UpdateUserRequest'
       description: Payload to update user
+      required: true
+    ResetPasswordRequest:
+      content:
+        application/json:
+          examples:
+            ResetPasswordRequest:
+              $ref: '#/components/examples/ResetPasswordRequest'
+          schema:
+            $ref: '#/components/schemas/ResetPasswordRequest'
+      description: Payload to reset password
       required: true
     CreateCredentialRequest:
       content:
@@ -6836,6 +7003,23 @@ components:
           type: string
         verified:
           type: boolean
+      type: object
+    ResetPasswordRequest:
+      additionalProperties: false
+      description: Payload to reset password
+      example:
+        password: password
+        email: email
+      properties:
+        email:
+          maxLength: 50
+          type: string
+        password:
+          maxLength: 50
+          type: string
+      required:
+      - email
+      - password
       type: object
     CreateCredentialRequest:
       additionalProperties: false

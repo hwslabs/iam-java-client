@@ -2,7 +2,6 @@
 
 Hypto IAM
 - API version: 1.0.0
-  - Build date: 2022-05-18T20:32:12.909641+05:30[Asia/Kolkata]
 
 APIs for Hypto IAM Service.
 
@@ -147,6 +146,7 @@ Class | Method | HTTP request | Description
 *UserManagementApi* | [**deleteUser**](docs/UserManagementApi.md#deleteUser) | **DELETE** /organizations/{organization_id}/users/{user_name} | Delete a User
 *UserManagementApi* | [**getUser**](docs/UserManagementApi.md#getUser) | **GET** /organizations/{organization_id}/users/{user_name} | Gets a user entity associated with the organization
 *UserManagementApi* | [**listUsers**](docs/UserManagementApi.md#listUsers) | **GET** /organizations/{organization_id}/users | List users
+*UserManagementApi* | [**resetPassword**](docs/UserManagementApi.md#resetPassword) | **POST** /organizations/{organization_id}/users/resetPassword | Reset Password
 *UserManagementApi* | [**updateUser**](docs/UserManagementApi.md#updateUser) | **PATCH** /organizations/{organization_id}/users/{user_name} | Update a User
 *UserPolicyManagementApi* | [**attachPolicies**](docs/UserPolicyManagementApi.md#attachPolicies) | **PATCH** /organizations/{organization_id}/users/{user_name}/attach_policies | Attach policies to user
 *UserPolicyManagementApi* | [**detachPolicies**](docs/UserPolicyManagementApi.md#detachPolicies) | **PATCH** /organizations/{organization_id}/users/{user_name}/detach_policies | Detach policies from user
@@ -177,6 +177,7 @@ Class | Method | HTTP request | Description
  - [PolicyAssociationRequest](docs/PolicyAssociationRequest.md)
  - [PolicyPaginatedResponse](docs/PolicyPaginatedResponse.md)
  - [PolicyStatement](docs/PolicyStatement.md)
+ - [ResetPasswordRequest](docs/ResetPasswordRequest.md)
  - [Resource](docs/Resource.md)
  - [ResourceAction](docs/ResourceAction.md)
  - [ResourceActionEffect](docs/ResourceActionEffect.md)

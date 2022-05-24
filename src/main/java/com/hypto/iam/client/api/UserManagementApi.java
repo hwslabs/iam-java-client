@@ -30,6 +30,7 @@ import java.io.IOException;
 import com.hypto.iam.client.model.BaseSuccessResponse;
 import com.hypto.iam.client.model.CreateUserRequest;
 import com.hypto.iam.client.model.ErrorResponse;
+import com.hypto.iam.client.model.ResetPasswordRequest;
 import com.hypto.iam.client.model.UpdateUserRequest;
 import com.hypto.iam.client.model.User;
 import com.hypto.iam.client.model.UserPaginatedResponse;
@@ -719,6 +720,167 @@ public class UserManagementApi {
 
         okhttp3.Call localVarCall = listUsersValidateBeforeCall(organizationId, nextToken, pageSize, _callback);
         Type localVarReturnType = new TypeToken<UserPaginatedResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for resetPassword
+     * @param organizationId  (required)
+     * @param resetPasswordRequest Payload to reset password (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 400 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 401 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 403 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 404 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 429 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call resetPasswordCall(String organizationId, ResetPasswordRequest resetPasswordRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = resetPasswordRequest;
+
+        // create path and map variables
+        String localVarPath = "/organizations/{organization_id}/users/resetPassword"
+            .replaceAll("\\{" + "organization_id" + "\\}", localVarApiClient.escapeString(organizationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call resetPasswordValidateBeforeCall(String organizationId, ResetPasswordRequest resetPasswordRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'organizationId' is set
+        if (organizationId == null) {
+            throw new ApiException("Missing the required parameter 'organizationId' when calling resetPassword(Async)");
+        }
+        
+        // verify the required parameter 'resetPasswordRequest' is set
+        if (resetPasswordRequest == null) {
+            throw new ApiException("Missing the required parameter 'resetPasswordRequest' when calling resetPassword(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = resetPasswordCall(organizationId, resetPasswordRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Reset Password
+     * Reset Password
+     * @param organizationId  (required)
+     * @param resetPasswordRequest Payload to reset password (required)
+     * @return BaseSuccessResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 400 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 401 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 403 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 404 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 429 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+     </table>
+     */
+    public BaseSuccessResponse resetPassword(String organizationId, ResetPasswordRequest resetPasswordRequest) throws ApiException {
+        ApiResponse<BaseSuccessResponse> localVarResp = resetPasswordWithHttpInfo(organizationId, resetPasswordRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reset Password
+     * Reset Password
+     * @param organizationId  (required)
+     * @param resetPasswordRequest Payload to reset password (required)
+     * @return ApiResponse&lt;BaseSuccessResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 400 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 401 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 403 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 404 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 429 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+     </table>
+     */
+    public ApiResponse<BaseSuccessResponse> resetPasswordWithHttpInfo(String organizationId, ResetPasswordRequest resetPasswordRequest) throws ApiException {
+        okhttp3.Call localVarCall = resetPasswordValidateBeforeCall(organizationId, resetPasswordRequest, null);
+        Type localVarReturnType = new TypeToken<BaseSuccessResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reset Password (asynchronously)
+     * Reset Password
+     * @param organizationId  (required)
+     * @param resetPasswordRequest Payload to reset password (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 400 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 401 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 403 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 404 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 429 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call resetPasswordAsync(String organizationId, ResetPasswordRequest resetPasswordRequest, final ApiCallback<BaseSuccessResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = resetPasswordValidateBeforeCall(organizationId, resetPasswordRequest, _callback);
+        Type localVarReturnType = new TypeToken<BaseSuccessResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

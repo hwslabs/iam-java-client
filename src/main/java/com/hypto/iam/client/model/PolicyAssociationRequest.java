@@ -30,7 +30,7 @@ import java.util.List;
  * Payload to attach / detach a policy to a user / resource
  */
 @ApiModel(description = "Payload to attach / detach a policy to a user / resource")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-18T20:32:12.909641+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PolicyAssociationRequest {
   public static final String SERIALIZED_NAME_POLICIES = "policies";
   @SerializedName(SERIALIZED_NAME_POLICIES)

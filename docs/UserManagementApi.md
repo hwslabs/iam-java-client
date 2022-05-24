@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deleteUser**](UserManagementApi.md#deleteUser) | **DELETE** /organizations/{organization_id}/users/{user_name} | Delete a User
 [**getUser**](UserManagementApi.md#getUser) | **GET** /organizations/{organization_id}/users/{user_name} | Gets a user entity associated with the organization
 [**listUsers**](UserManagementApi.md#listUsers) | **GET** /organizations/{organization_id}/users | List users
+[**resetPassword**](UserManagementApi.md#resetPassword) | **POST** /organizations/{organization_id}/users/resetPassword | Reset Password
 [**updateUser**](UserManagementApi.md#updateUser) | **PATCH** /organizations/{organization_id}/users/{user_name} | Update a User
 
 
@@ -308,6 +309,83 @@ Name | Type | Description  | Notes
 **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+
+<a name="resetPassword"></a>
+# **resetPassword**
+> BaseSuccessResponse resetPassword(organizationId, resetPasswordRequest)
+
+Reset Password
+
+Reset Password
+
+### Example
+```java
+// Import classes:
+import com.hypto.iam.client.ApiClient;
+import com.hypto.iam.client.ApiException;
+import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
+import com.hypto.iam.client.models.*;
+import com.hypto.iam.client.api.UserManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+    
+    // Configure API key authorization: apiKeyAuth
+    ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("apiKeyAuth");
+    apiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //apiKeyAuth.setApiKeyPrefix("Token");
+
+    UserManagementApi apiInstance = new UserManagementApi(defaultClient);
+    String organizationId = "organizationId_example"; // String | 
+    ResetPasswordRequest resetPasswordRequest = new ResetPasswordRequest(); // ResetPasswordRequest | Payload to reset password
+    try {
+      BaseSuccessResponse result = apiInstance.resetPassword(organizationId, resetPasswordRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserManagementApi#resetPassword");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organizationId** | **String**|  |
+ **resetPasswordRequest** | [**ResetPasswordRequest**](ResetPasswordRequest.md)| Payload to reset password |
+
+### Return type
+
+[**BaseSuccessResponse**](BaseSuccessResponse.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
