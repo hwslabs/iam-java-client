@@ -43,6 +43,7 @@ public class ValidatorTest {
 
         Validator validator = new Validator(tokenStr);
         assert validator.principal.equals(userHrn);
+        assert validator.organizationId.equals(organizationId);
     }
 
     @Test(expected = ExpiredJwtException.class)

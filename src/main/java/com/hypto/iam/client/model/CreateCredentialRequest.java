@@ -28,7 +28,7 @@ import java.io.IOException;
  * Payload to create credential
  */
 @ApiModel(description = "Payload to create credential")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-18T20:32:12.909641+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCredentialRequest {
   public static final String SERIALIZED_NAME_VALID_UNTIL = "valid_until";
   @SerializedName(SERIALIZED_NAME_VALID_UNTIL)

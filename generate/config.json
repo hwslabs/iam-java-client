@@ -8,5 +8,6 @@
   "modelPackage" : "com.hypto.iam.client.model",
   "scmConnection": "scm:git:git@github.com:hwslabs/iam-java-client.git",
   "scmDeveloperConnection": "scm:git:git@github.com:hwslabs/iam-java-client.git",
-  "scmUrl": "https://github.com/hwslabs/iam-java-client.git"
+  "scmUrl": "https://github.com/hwslabs/iam-java-client.git",
+  "hideGenerationTimestamp": true
 }

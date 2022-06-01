@@ -26,6 +26,7 @@ docs/PolicyAssociationRequest.md
 docs/PolicyManagementApi.md
 docs/PolicyPaginatedResponse.md
 docs/PolicyStatement.md
+docs/ResetPasswordRequest.md
 docs/Resource.md
 docs/ResourceAction.md
 docs/ResourceActionEffect.md
@@ -108,6 +109,7 @@ src/main/java/com/hypto/iam/client/model/Policy.java
 src/main/java/com/hypto/iam/client/model/PolicyAssociationRequest.java
 src/main/java/com/hypto/iam/client/model/PolicyPaginatedResponse.java
 src/main/java/com/hypto/iam/client/model/PolicyStatement.java
+src/main/java/com/hypto/iam/client/model/ResetPasswordRequest.java
 src/main/java/com/hypto/iam/client/model/Resource.java
 src/main/java/com/hypto/iam/client/model/ResourceAction.java
 src/main/java/com/hypto/iam/client/model/ResourceActionEffect.java

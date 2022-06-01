@@ -20,51 +20,70 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.ResourceActionEffect;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Payload to validate if a user has access to a resource-action
+ * Payload to reset password
  */
-@ApiModel(description = "Payload to validate if a user has access to a resource-action")
+@ApiModel(description = "Payload to reset password")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValidationResponse {
-  public static final String SERIALIZED_NAME_RESULTS = "results";
-  @SerializedName(SERIALIZED_NAME_RESULTS)
-  private List<ResourceActionEffect> results = new ArrayList<ResourceActionEffect>();
+public class ResetPasswordRequest {
+  public static final String SERIALIZED_NAME_EMAIL = "email";
+  @SerializedName(SERIALIZED_NAME_EMAIL)
+  private String email;
 
-  public ValidationResponse() { 
+  public static final String SERIALIZED_NAME_PASSWORD = "password";
+  @SerializedName(SERIALIZED_NAME_PASSWORD)
+  private String password;
+
+  public ResetPasswordRequest() { 
   }
 
-  public ValidationResponse results(List<ResourceActionEffect> results) {
+  public ResetPasswordRequest email(String email) {
     
-    this.results = results;
-    return this;
-  }
-
-  public ValidationResponse addResultsItem(ResourceActionEffect resultsItem) {
-    this.results.add(resultsItem);
+    this.email = email;
     return this;
   }
 
    /**
-   * Get results
-   * @return results
+   * Get email
+   * @return email
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public List<ResourceActionEffect> getResults() {
-    return results;
+  public String getEmail() {
+    return email;
   }
 
 
-  public void setResults(List<ResourceActionEffect> results) {
-    this.results = results;
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+
+  public ResetPasswordRequest password(String password) {
+    
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Get password
+   * @return password
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getPassword() {
+    return password;
+  }
+
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 
 
@@ -76,20 +95,22 @@ public class ValidationResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValidationResponse validationResponse = (ValidationResponse) o;
-    return Objects.equals(this.results, validationResponse.results);
+    ResetPasswordRequest resetPasswordRequest = (ResetPasswordRequest) o;
+    return Objects.equals(this.email, resetPasswordRequest.email) &&
+        Objects.equals(this.password, resetPasswordRequest.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(results);
+    return Objects.hash(email, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValidationResponse {\n");
-    sb.append("    results: ").append(toIndentedString(results)).append("\n");
+    sb.append("class ResetPasswordRequest {\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }
