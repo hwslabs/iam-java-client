@@ -33,7 +33,7 @@ public class Credential {
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-  public static final String SERIALIZED_NAME_VALID_UNTIL = "valid_until";
+  public static final String SERIALIZED_NAME_VALID_UNTIL = "validUntil";
   @SerializedName(SERIALIZED_NAME_VALID_UNTIL)
   private String validUntil;
 

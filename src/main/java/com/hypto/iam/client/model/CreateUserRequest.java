@@ -34,7 +34,7 @@ public class CreateUserRequest {
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
 
-  public static final String SERIALIZED_NAME_PASSWORD_HASH = "password_hash";
+  public static final String SERIALIZED_NAME_PASSWORD_HASH = "passwordHash";
   @SerializedName(SERIALIZED_NAME_PASSWORD_HASH)
   private String passwordHash;
 

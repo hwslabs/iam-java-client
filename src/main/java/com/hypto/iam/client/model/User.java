@@ -37,7 +37,7 @@ public class User {
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
 
-  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organization_id";
+  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
   private String organizationId;
 
@@ -100,11 +100,11 @@ public class User {
   @SerializedName(SERIALIZED_NAME_PHONE)
   private String phone;
 
-  public static final String SERIALIZED_NAME_LOGIN_ACCESS = "login_access";
+  public static final String SERIALIZED_NAME_LOGIN_ACCESS = "loginAccess";
   @SerializedName(SERIALIZED_NAME_LOGIN_ACCESS)
   private Boolean loginAccess;
 
-  public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
+  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   private String createdBy;
 
