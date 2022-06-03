@@ -30,7 +30,7 @@ import java.io.IOException;
 @ApiModel(description = "Payload to update credential")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateCredentialRequest {
-  public static final String SERIALIZED_NAME_VALID_UNTIL = "valid_until";
+  public static final String SERIALIZED_NAME_VALID_UNTIL = "validUntil";
   @SerializedName(SERIALIZED_NAME_VALID_UNTIL)
   private String validUntil;
 

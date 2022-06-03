@@ -29,11 +29,11 @@ import java.io.IOException;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Action {
-  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organization_id";
+  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
   private String organizationId;
 
-  public static final String SERIALIZED_NAME_RESOURCE_NAME = "resource_name";
+  public static final String SERIALIZED_NAME_RESOURCE_NAME = "resourceName";
   @SerializedName(SERIALIZED_NAME_RESOURCE_NAME)
   private String resourceName;
 

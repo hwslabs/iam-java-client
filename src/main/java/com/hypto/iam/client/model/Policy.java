@@ -36,7 +36,7 @@ public class Policy {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organization_id";
+  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
   private String organizationId;
 

@@ -5909,7 +5909,7 @@ components:
         description: Brief description about ACME
         rootUser:
           username: username
-          password: <password>
+          passwordHash: <password>
           email: root@example.com
           phone: 1234567890
     UpdateOrganizationRequest:
@@ -5922,7 +5922,7 @@ components:
       summary: A sample create user request
       value:
         username: Bob
-        password_hash: nii2du35bdtuethntv3q7416
+        passwordHash: nii2du35bdtuethntv3q7416
         email: bob@acme.com
         phone: 1234071628
         status: enabled
@@ -5942,11 +5942,11 @@ components:
     CreateCredentialRequest:
       summary: sample create credential request
       value:
-        valid_until: 2023-01-01T00:00:00
+        validUntil: 2023-01-01T00:00:00
     UpdateCredentialRequest:
       summary: sample update credential request
       value:
-        valid_until: 2023-01-03T00:00:00
+        validUntil: 2023-01-03T00:00:00
         status: active
     CreateResourceRequest:
       summary: sample create resource request
@@ -6007,7 +6007,7 @@ components:
     VerifyEmailRequest:
       value:
         email: abcd@abcd.in
-        organization_id: XlK5h64gND
+        organizationId: XlK5h64gND
         purpose: reset
     CreateOrganizationResponse:
       value:
@@ -6020,9 +6020,9 @@ components:
       value:
         policies:
         - name: policy_viewer
-          organization_id: XlK5h64gND
+          organizationId: XlK5h64gND
         - name: policy_editor
-          organization_id: XlK5h64gND
+          organizationId: XlK5h64gND
     TokenResponse:
       value:
         token: XlK5h64gNDBfMXAPKKGRmWjaxmXJJzDKIJNWqSWj
@@ -6040,13 +6040,13 @@ components:
         data:
         - hrn: hrn:XlK5h64gND::iam-user/Bob
           username: Bob
-          password_hash: nii2du35bdtuethntv3q7416
+          passwordHash: nii2du35bdtuethntv3q7416
           email: bob@acme.com
           phone: 1234071628
-          login_access: true
+          loginAccess: true
           status: active
-          created_at: 2020-01-01T00:00:00
-          updated_at: 2020-03-21T16:30:06
+          createdAt: 2020-01-01T00:00:00
+          updatedAt: 2020-03-21T16:30:06
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
           pageSize: 10
@@ -6055,7 +6055,7 @@ components:
       value:
         data:
         - name: policy_viewer
-          organization_id: XlK5h64gND
+          organizationId: XlK5h64gND
           version: 1
           statements:
           - resource: hrn:XlK5h64gND::invoice/1
@@ -6069,7 +6069,7 @@ components:
       value:
         data:
         - name: invoice
-          organization_id: XlK5h64gND
+          organizationId: XlK5h64gND
           hrn: hrn:XlK5h64gND::invoice
           description: customer invoice
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
@@ -6079,8 +6079,8 @@ components:
     ActionPaginatedResponse:
       value:
         data:
-        - organization_id: XlK5h64gND
-          resource_name: invoice
+        - organizationId: XlK5h64gND
+          resourceName: invoice
           name: view
           hrn: hrn:XlK5h64gND::invoice$view
           description: View invoice action
@@ -6110,13 +6110,13 @@ components:
       value:
         hrn: hrn:XlK5h64gND::iam-user/Bob
         username: Bob
-        password_hash: nii2du35bdtuethntv3q7416
+        passwordHash: nii2du35bdtuethntv3q7416
         email: bob@acme.com
         phone: +1234071628
-        login_access: true
+        loginAccess: true
         status: active
-        created_at: 2020-01-01T00:00:00
-        updated_at: 2020-03-21T16:30:06
+        createdAt: 2020-01-01T00:00:00
+        updatedAt: 2020-03-21T16:30:06
     UserConfiguration:
       value:
         passwordPolicy: null
@@ -6155,39 +6155,39 @@ components:
       summary: A sample credential
       value:
         id: 1f44ada7-7196-4f2d-8380-4c76f8bddec2
-        valid_until: 2023-01-01T00:00:00
+        validUntil: 2023-01-01T00:00:00
         status: active
         secret: Z2QGNPmgWUBfRXhCrAmArrrszMajaEbYgaQJMciL
     CredentialWithoutSecret:
       summary: A sample credential
       value:
         id: 1f44ada7-7196-4f2d-8380-4c76f8bddec2
-        valid_until: 2023-01-01T00:00:00
+        validUntil: 2023-01-01T00:00:00
         status: active
     Resource:
       summary: A sample resource
       value:
         name: invoice
-        organization_id: XlK5h64gND
+        organizationId: XlK5h64gND
         hrn: hrn:XlK5h64gND::invoice
         description: customer invoice
     Action:
       summary: A sample action
       value:
-        organization_id: XlK5h64gND
-        resource_name: invoice
+        organizationId: XlK5h64gND
+        resourceName: invoice
         name: view
         hrn: hrn:XlK5h64gND::invoice$view
         description: View invoice action
     UserPolicy:
       value:
         name: policy_viewer
-        organization_id: XlK5h64gND
+        organizationId: XlK5h64gND
     Policy:
       summary: A sample policy
       value:
         name: policy_viewer
-        organization_id: XlK5h64gND
+        organizationId: XlK5h64gND
         version: 1
         statements:
         - resource: hrn:XlK5h64gND::invoice/1
@@ -6875,8 +6875,8 @@ components:
       example:
         rootUser:
           phone: phone
-          password_hash: password_hash
           verified: true
+          passwordHash: passwordHash
           email: email
           username: username
         name: name
@@ -6915,8 +6915,8 @@ components:
       description: Root user details for the organization
       example:
         phone: phone
-        password_hash: password_hash
         verified: true
+        passwordHash: passwordHash
         email: email
         username: username
       properties:
@@ -6924,7 +6924,7 @@ components:
           maxLength: 50
           pattern: ^[A-Za-z0-9]{3,50}$
           type: string
-        password_hash:
+        passwordHash:
           maxLength: 100
           type: string
         email:
@@ -6938,7 +6938,7 @@ components:
           type: boolean
       required:
       - email
-      - password_hash
+      - passwordHash
       - phone
       - username
       - verified
@@ -6948,8 +6948,8 @@ components:
       description: Payload to create ledger account
       example:
         phone: phone
-        password_hash: password_hash
         verified: true
+        passwordHash: passwordHash
         email: email
         username: username
         status: enabled
@@ -6958,7 +6958,7 @@ components:
           maxLength: 50
           pattern: ^[A-Za-z0-9]{3,50}$
           type: string
-        password_hash:
+        passwordHash:
           maxLength: 100
           type: string
         email:
@@ -6977,7 +6977,7 @@ components:
           type: boolean
       required:
       - email
-      - password_hash
+      - passwordHash
       - status
       - username
       type: object
@@ -7025,9 +7025,9 @@ components:
       additionalProperties: false
       description: Payload to create credential
       example:
-        valid_until: valid_until
+        validUntil: validUntil
       properties:
-        valid_until:
+        validUntil:
           format: timestamp
           maxLength: 20
           type: string
@@ -7036,10 +7036,10 @@ components:
       additionalProperties: false
       description: Payload to update credential
       example:
-        valid_until: valid_until
+        validUntil: validUntil
         status: active
       properties:
-        valid_until:
+        validUntil:
           format: timestamp
           maxLength: 20
           type: string
@@ -7214,13 +7214,13 @@ components:
       additionalProperties: false
       description: Payload to send verification link to email
       example:
+        organizationId: organizationId
         purpose: reset
-        organization_id: organization_id
         email: email
       properties:
         email:
           type: string
-        organization_id:
+        organizationId:
           type: string
         purpose:
           enum:
@@ -7321,21 +7321,21 @@ components:
       additionalProperties: false
       example:
         data:
-        - hrn: hrn
+        - organizationId: organizationId
+          hrn: hrn
           phone: phone
-          organization_id: organization_id
-          login_access: true
+          createdBy: createdBy
           verified: true
-          created_by: created_by
+          loginAccess: true
           email: email
           username: username
           status: enabled
-        - hrn: hrn
+        - organizationId: organizationId
+          hrn: hrn
           phone: phone
-          organization_id: organization_id
-          login_access: true
+          createdBy: createdBy
           verified: true
-          created_by: created_by
+          loginAccess: true
           email: email
           username: username
           status: enabled
@@ -7357,8 +7357,8 @@ components:
       additionalProperties: false
       example:
         data:
-        - hrn: hrn
-          organization_id: organization_id
+        - organizationId: organizationId
+          hrn: hrn
           name: name
           statements:
           - resource: resource
@@ -7377,8 +7377,8 @@ components:
             effect: allow
             action: action
           version: 0
-        - hrn: hrn
-          organization_id: organization_id
+        - organizationId: organizationId
+          hrn: hrn
           name: name
           statements:
           - resource: resource
@@ -7415,12 +7415,12 @@ components:
       additionalProperties: false
       example:
         data:
-        - hrn: hrn
-          organization_id: organization_id
+        - organizationId: organizationId
+          hrn: hrn
           name: name
           description: description
-        - hrn: hrn
-          organization_id: organization_id
+        - organizationId: organizationId
+          hrn: hrn
           name: name
           description: description
         nextToken: nextToken
@@ -7441,16 +7441,16 @@ components:
       additionalProperties: false
       example:
         data:
-        - hrn: hrn
-          organization_id: organization_id
+        - organizationId: organizationId
+          hrn: hrn
           name: name
           description: description
-          resource_name: resource_name
-        - hrn: hrn
-          organization_id: organization_id
+          resourceName: resourceName
+        - organizationId: organizationId
+          hrn: hrn
           name: name
           description: description
-          resource_name: resource_name
+          resourceName: resourceName
         nextToken: nextToken
         context:
           sortOrder: asc
@@ -7519,12 +7519,12 @@ components:
     User:
       additionalProperties: false
       example:
+        organizationId: organizationId
         hrn: hrn
         phone: phone
-        organization_id: organization_id
-        login_access: true
+        createdBy: createdBy
         verified: true
-        created_by: created_by
+        loginAccess: true
         email: email
         username: username
         status: enabled
@@ -7534,7 +7534,7 @@ components:
         username:
           maxLength: 50
           type: string
-        organization_id:
+        organizationId:
           maxLength: 50
           type: string
         email:
@@ -7548,9 +7548,9 @@ components:
         phone:
           maxLength: 20
           type: string
-        login_access:
+        loginAccess:
           type: boolean
-        created_by:
+        createdBy:
           maxLength: 50
           type: string
         verified:
@@ -7558,7 +7558,7 @@ components:
       required:
       - email
       - hrn
-      - organization_id
+      - organizationId
       - status
       - username
       - verified
@@ -7566,7 +7566,7 @@ components:
     Credential:
       additionalProperties: false
       example:
-        valid_until: valid_until
+        validUntil: validUntil
         id: id
         secret: secret
         status: active
@@ -7574,7 +7574,7 @@ components:
         id:
           maxLength: 50
           type: string
-        valid_until:
+        validUntil:
           format: timestamp
           maxLength: 20
           type: string
@@ -7594,14 +7594,14 @@ components:
     CredentialWithoutSecret:
       additionalProperties: false
       example:
-        valid_until: valid_until
+        validUntil: validUntil
         id: id
         status: active
       properties:
         id:
           maxLength: 50
           type: string
-        valid_until:
+        validUntil:
           format: timestamp
           maxLength: 20
           type: string
@@ -7617,15 +7617,15 @@ components:
     Resource:
       additionalProperties: false
       example:
+        organizationId: organizationId
         hrn: hrn
-        organization_id: organization_id
         name: name
         description: description
       properties:
         name:
           maxLength: 50
           type: string
-        organization_id:
+        organizationId:
           maxLength: 50
           type: string
         hrn:
@@ -7636,21 +7636,21 @@ components:
       required:
       - hrn
       - name
-      - organization_id
+      - organizationId
       type: object
     Action:
       additionalProperties: false
       example:
+        organizationId: organizationId
         hrn: hrn
-        organization_id: organization_id
         name: name
         description: description
-        resource_name: resource_name
+        resourceName: resourceName
       properties:
-        organization_id:
+        organizationId:
           maxLength: 50
           type: string
-        resource_name:
+        resourceName:
           maxLength: 50
           type: string
         name:
@@ -7664,8 +7664,8 @@ components:
       required:
       - hrn
       - name
-      - organization_id
-      - resource_name
+      - organizationId
+      - resourceName
       type: object
     UserPolicy:
       additionalProperties: false
@@ -7673,18 +7673,18 @@ components:
         name:
           maxLength: 50
           type: string
-        organization_id:
+        organizationId:
           maxLength: 50
           type: string
       required:
       - name
-      - organization_id
+      - organizationId
       type: object
     Policy:
       additionalProperties: false
       example:
+        organizationId: organizationId
         hrn: hrn
-        organization_id: organization_id
         name: name
         statements:
         - resource: resource
@@ -7707,7 +7707,7 @@ components:
         name:
           maxLength: 50
           type: string
-        organization_id:
+        organizationId:
           maxLength: 50
           type: string
         hrn:
@@ -7723,7 +7723,7 @@ components:
       required:
       - hrn
       - name
-      - organization_id
+      - organizationId
       - statements
       - version
       type: object
