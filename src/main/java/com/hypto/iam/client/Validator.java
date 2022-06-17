@@ -39,10 +39,8 @@ public class Validator {
 
     public Validator(String token, boolean skipValidation) {
         if (skipValidation) {
-            String[] splitToken = token.split("\\.");
-            String unsignedToken = splitToken[0] + "." + splitToken[1] + ".";
-            Jwt<Header, Claims> jwt=Jwts.parserBuilder().build().parseClaimsJwt(unsignedToken);
-            this.claims = jwt.getBody();
+            String unsignedToken = token.substring(0, token.lastIndexOf(".")+1);
+            this.claims = Jwts.parserBuilder().build().parseClaimsJwt(unsignedToken).getBody();
         } else {
             Jws<Claims> jws = Jwts.parserBuilder().setSigningKeyResolver(signingKeyResolver).build().parseClaimsJws(token);
             this.claims = jws.getBody();
