@@ -1,32 +1,22 @@
 package com.hypto.iam.client;
 
-import com.hypto.iam.client.api.KeyManagementApi;
 import com.hypto.iam.client.api.UserAuthorizationApi;
-import com.hypto.iam.client.model.KeyResponse;
 import com.hypto.iam.client.model.ResourceAction;
 import com.hypto.iam.client.model.ResourceActionEffect;
-import com.hypto.iam.client.model.TokenResponse;
 
+import com.hypto.iam.client.model.TokenResponse;
 import com.hypto.iam.client.model.ValidationRequest;
 import com.hypto.iam.client.model.ValidationResponse;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.JwsHeader;
+import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SigningKeyResolverAdapter;
 import org.casbin.jcasbin.main.Enforcer;
 import org.casbin.jcasbin.persist.file_adapter.FileAdapter;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.X509EncodedKeySpec;
-import java.time.Instant;
-import java.util.Base64;
-import java.util.HashMap;
 import java.util.Objects;
 
 
@@ -42,23 +32,33 @@ public class Validator {
             .getResource("casbin_model.conf")).getFile();
     static final SigningKeyResolver signingKeyResolver = new SigningKeyResolver();
 
-    public Jws<Claims> jws;
+    public Claims claims;
     public Enforcer enforcer;
     public String principal;
     public String organizationId;
 
-    public Validator(String token){
-        this.jws = Jwts.parserBuilder().setSigningKeyResolver(signingKeyResolver).build().parseClaimsJws(token);
+    public Validator(String token, boolean skipValidation) {
+        if (skipValidation) {
+            String unsignedToken = token.substring(0, token.lastIndexOf(".")+1);
+            this.claims = Jwts.parserBuilder().build().parseClaimsJwt(unsignedToken).getBody();
+        } else {
+            Jws<Claims> jws = Jwts.parserBuilder().setSigningKeyResolver(signingKeyResolver).build().parseClaimsJws(token);
+            this.claims = jws.getBody();
+        }
 
-        this.principal = jws.getBody().get(USER_CLAIM, String.class);
-        this.organizationId = jws.getBody().get(ORGANIZATION_CLAIM, String.class);
-        String entitlements = jws.getBody().get(ENTITLEMENTS_CLAIM, String.class);
+        this.principal = this.claims.get(USER_CLAIM, String.class);
+        this.organizationId = this.claims.get(ORGANIZATION_CLAIM, String.class);
+        String entitlements = this.claims.get(ENTITLEMENTS_CLAIM, String.class);
 
-        assert jws.getBody().getIssuer().equals(ISSUER);
-        assert jws.getBody().get(VERSION_CLAIM, String.class).equals(VERSION_NUM);
+        assert this.claims.getIssuer().equals(ISSUER);
+        assert this.claims.get(VERSION_CLAIM, String.class).equals(VERSION_NUM);
 
         this.enforcer = new Enforcer(modelPath, new FileAdapter(
                 new ByteArrayInputStream(entitlements.getBytes(StandardCharsets.UTF_8))));
+    }
+
+    public Validator(String token) {
+        this(token, false);
     }
 
     public Validator(TokenResponse tokenResponse) {

@@ -94,4 +94,20 @@ public class ValidatorTest {
         assert validator.validate("hrn:wkqmk8N7EM::invoice/1", "hrn:wkqmk8N7EM::invoice$view", false);
     }
 
+    @Test
+    public void testSkipValidation() {
+        final String organizationId = "wkqmk8N7EM";
+        final String userHrn = String.format("hrn:%s::iam-user/name1",organizationId);
+        final String sampleEntitlements = String.format(
+                "p, hrn:%1$s::iam-policy/ROOT_USER_POLICY, hrn:%1$s, hrn:%1$s:*, allow\n" +
+                        "p, hrn:%1$s::iam-policy/ROOT_USER_POLICY, hrn:%1$s::*, hrn:%1$s::*, allow\n\n" +
+                        "g, %2$s, hrn:%1$s::iam-policy/ROOT_USER_POLICY\n", organizationId, userHrn);
+
+        final String tokenStr = TokenHelper.generateJwtToken(userHrn, organizationId, sampleEntitlements);
+
+        Validator validator = new Validator(tokenStr, true);
+        assert validator.organizationId.equals(organizationId);
+        assert validator.principal.equals(userHrn);
+    }
+
 }
