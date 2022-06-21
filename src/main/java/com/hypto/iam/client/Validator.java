@@ -8,14 +8,17 @@ import com.hypto.iam.client.model.TokenResponse;
 import com.hypto.iam.client.model.ValidationRequest;
 import com.hypto.iam.client.model.ValidationResponse;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
+import org.apache.commons.io.IOUtils;
+import org.casbin.jcasbin.main.CoreEnforcer;
 import org.casbin.jcasbin.main.Enforcer;
+import org.casbin.jcasbin.model.Model;
 import org.casbin.jcasbin.persist.file_adapter.FileAdapter;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
@@ -27,15 +30,24 @@ public class Validator {
     static final String ISSUER = "https://iam.hypto.com";
     static final String VERSION_NUM = "1.0";
     static final String VERSION_CLAIM = "ver";
-
-    static final String modelPath = Objects.requireNonNull(Validator.class.getClassLoader()
-            .getResource("casbin_model.conf")).getFile();
     static final SigningKeyResolver signingKeyResolver = new SigningKeyResolver();
+    static final Model model;
 
     public Claims claims;
     public Enforcer enforcer;
     public String principal;
     public String organizationId;
+
+    static {
+        InputStream in = Objects.requireNonNull(Validator.class.getResourceAsStream("/casbin_model.conf"));
+        String casbinModel;
+        try {
+            casbinModel = IOUtils.toString(in, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        model = CoreEnforcer.newModel(casbinModel);
+    }
 
     public Validator(String token, boolean skipValidation) {
         if (skipValidation) {
@@ -53,7 +65,7 @@ public class Validator {
         assert this.claims.getIssuer().equals(ISSUER);
         assert this.claims.get(VERSION_CLAIM, String.class).equals(VERSION_NUM);
 
-        this.enforcer = new Enforcer(modelPath, new FileAdapter(
+        this.enforcer = new Enforcer(model, new FileAdapter(
                 new ByteArrayInputStream(entitlements.getBytes(StandardCharsets.UTF_8))));
     }
 
