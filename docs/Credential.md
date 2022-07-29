@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **validUntil** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  | 
 **secret** | **String** |  | 
+**createdAt** | **OffsetDateTime** |  | 
+**updatedAt** | **OffsetDateTime** |  | 
 
 
 

@@ -8,6 +8,7 @@ Payload to create ledger account
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**name** | **String** |  |  [optional]
 **email** | **String** |  |  [optional]
 **phone** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]

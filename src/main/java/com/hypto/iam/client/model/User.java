@@ -37,6 +37,10 @@ public class User {
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
   private String organizationId;
@@ -158,6 +162,29 @@ public class User {
 
   public void setUsername(String username) {
     this.username = username;
+  }
+
+
+  public User name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -333,6 +360,7 @@ public class User {
     User user = (User) o;
     return Objects.equals(this.hrn, user.hrn) &&
         Objects.equals(this.username, user.username) &&
+        Objects.equals(this.name, user.name) &&
         Objects.equals(this.organizationId, user.organizationId) &&
         Objects.equals(this.email, user.email) &&
         Objects.equals(this.status, user.status) &&
@@ -344,7 +372,7 @@ public class User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hrn, username, organizationId, email, status, phone, loginAccess, createdBy, verified);
+    return Objects.hash(hrn, username, name, organizationId, email, status, phone, loginAccess, createdBy, verified);
   }
 
   @Override
@@ -353,6 +381,7 @@ public class User {
     sb.append("class User {\n");
     sb.append("    hrn: ").append(toIndentedString(hrn)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

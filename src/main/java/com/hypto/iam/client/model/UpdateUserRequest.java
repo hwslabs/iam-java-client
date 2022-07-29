@@ -30,6 +30,10 @@ import java.io.IOException;
 @ApiModel(description = "Payload to create ledger account")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateUserRequest {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
@@ -95,6 +99,29 @@ public class UpdateUserRequest {
 
   public UpdateUserRequest() { 
   }
+
+  public UpdateUserRequest name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   public UpdateUserRequest email(String email) {
     
@@ -197,7 +224,8 @@ public class UpdateUserRequest {
       return false;
     }
     UpdateUserRequest updateUserRequest = (UpdateUserRequest) o;
-    return Objects.equals(this.email, updateUserRequest.email) &&
+    return Objects.equals(this.name, updateUserRequest.name) &&
+        Objects.equals(this.email, updateUserRequest.email) &&
         Objects.equals(this.phone, updateUserRequest.phone) &&
         Objects.equals(this.status, updateUserRequest.status) &&
         Objects.equals(this.verified, updateUserRequest.verified);
@@ -205,13 +233,14 @@ public class UpdateUserRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, phone, status, verified);
+    return Objects.hash(name, email, phone, status, verified);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateUserRequest {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

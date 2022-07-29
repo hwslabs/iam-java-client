@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * CredentialWithoutSecret
@@ -87,6 +88,14 @@ public class CredentialWithoutSecret {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
 
   public CredentialWithoutSecret() { 
   }
@@ -160,6 +169,52 @@ public class CredentialWithoutSecret {
   }
 
 
+  public CredentialWithoutSecret createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public CredentialWithoutSecret updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -171,12 +226,14 @@ public class CredentialWithoutSecret {
     CredentialWithoutSecret credentialWithoutSecret = (CredentialWithoutSecret) o;
     return Objects.equals(this.id, credentialWithoutSecret.id) &&
         Objects.equals(this.validUntil, credentialWithoutSecret.validUntil) &&
-        Objects.equals(this.status, credentialWithoutSecret.status);
+        Objects.equals(this.status, credentialWithoutSecret.status) &&
+        Objects.equals(this.createdAt, credentialWithoutSecret.createdAt) &&
+        Objects.equals(this.updatedAt, credentialWithoutSecret.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, validUntil, status);
+    return Objects.hash(id, validUntil, status, createdAt, updatedAt);
   }
 
   @Override
@@ -186,6 +243,8 @@ public class CredentialWithoutSecret {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    validUntil: ").append(toIndentedString(validUntil)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -20,9 +20,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.hypto.iam.client.model.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * Organization
@@ -41,9 +43,17 @@ public class Organization {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_ROOT_USER_HRN = "rootUserHrn";
-  @SerializedName(SERIALIZED_NAME_ROOT_USER_HRN)
-  private String rootUserHrn;
+  public static final String SERIALIZED_NAME_ROOT_USER = "rootUser";
+  @SerializedName(SERIALIZED_NAME_ROOT_USER)
+  private User rootUser;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
 
   public Organization() { 
   }
@@ -117,26 +127,72 @@ public class Organization {
   }
 
 
-  public Organization rootUserHrn(String rootUserHrn) {
+  public Organization rootUser(User rootUser) {
     
-    this.rootUserHrn = rootUserHrn;
+    this.rootUser = rootUser;
     return this;
   }
 
    /**
-   * Get rootUserHrn
-   * @return rootUserHrn
+   * Get rootUser
+   * @return rootUser
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
-  public String getRootUserHrn() {
-    return rootUserHrn;
+  public User getRootUser() {
+    return rootUser;
   }
 
 
-  public void setRootUserHrn(String rootUserHrn) {
-    this.rootUserHrn = rootUserHrn;
+  public void setRootUser(User rootUser) {
+    this.rootUser = rootUser;
+  }
+
+
+  public Organization createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public Organization updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 
@@ -152,12 +208,14 @@ public class Organization {
     return Objects.equals(this.id, organization.id) &&
         Objects.equals(this.name, organization.name) &&
         Objects.equals(this.description, organization.description) &&
-        Objects.equals(this.rootUserHrn, organization.rootUserHrn);
+        Objects.equals(this.rootUser, organization.rootUser) &&
+        Objects.equals(this.createdAt, organization.createdAt) &&
+        Objects.equals(this.updatedAt, organization.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, rootUserHrn);
+    return Objects.hash(id, name, description, rootUser, createdAt, updatedAt);
   }
 
   @Override
@@ -167,7 +225,9 @@ public class Organization {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    rootUserHrn: ").append(toIndentedString(rootUserHrn)).append("\n");
+    sb.append("    rootUser: ").append(toIndentedString(rootUser)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

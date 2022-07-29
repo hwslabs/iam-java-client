@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createCredential**](UserCredentialManagementApi.md#createCredential) | **POST** /organizations/{organization_id}/users/{user_name}/credentials | Create a new credential for a user
 [**deleteCredential**](UserCredentialManagementApi.md#deleteCredential) | **DELETE** /organizations/{organization_id}/users/{user_name}/credentials/{credential_id} | Delete a credential
 [**getCredential**](UserCredentialManagementApi.md#getCredential) | **GET** /organizations/{organization_id}/users/{user_name}/credentials/{credential_id} | Gets credential for the user
+[**listCredentials**](UserCredentialManagementApi.md#listCredentials) | **GET** /organizations/{organization_id}/users/{user_name}/credentials | List all credentials for a user
 [**updateCredential**](UserCredentialManagementApi.md#updateCredential) | **PATCH** /organizations/{organization_id}/users/{user_name}/credentials/{credential_id} | Update the status of credential
 
 
@@ -234,6 +235,81 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Response for GetCredentialRequest |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+
+<a name="listCredentials"></a>
+# **listCredentials**
+> ListCredentialResponse listCredentials(userName, organizationId)
+
+List all credentials for a user
+
+List all credentials for a user
+
+### Example
+```java
+// Import classes:
+import com.hypto.iam.client.ApiClient;
+import com.hypto.iam.client.ApiException;
+import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
+import com.hypto.iam.client.models.*;
+import com.hypto.iam.client.api.UserCredentialManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    UserCredentialManagementApi apiInstance = new UserCredentialManagementApi(defaultClient);
+    String userName = "userName_example"; // String | 
+    String organizationId = "organizationId_example"; // String | 
+    try {
+      ListCredentialResponse result = apiInstance.listCredentials(userName, organizationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserCredentialManagementApi#listCredentials");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userName** | **String**|  |
+ **organizationId** | **String**|  |
+
+### Return type
+
+[**ListCredentialResponse**](ListCredentialResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Response for list credential request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |

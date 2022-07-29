@@ -1460,6 +1460,171 @@ paths:
       - User Management
       x-contentType: application/json
       x-accepts: application/json
+  /organizations/{organization_id}/users/{user_name}/change_password:
+    post:
+      description: Change password for a user
+      operationId: changePassword
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: Bob
+              maxLength: 50
+              pattern: ^[A-Za-z0-9_]{3,50}$
+              type: string
+        explode: false
+        in: path
+        name: user_name
+        required: true
+        style: simple
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: ^[A-Z]{10}$
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/ChangeUserPasswordRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+          description: OK
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: Change password for a user
+      tags:
+      - User Management
+      x-contentType: application/json
+      x-accepts: application/json
   /organizations/{organization_id}/users/resetPassword:
     post:
       description: Reset Password
@@ -2140,6 +2305,170 @@ paths:
       x-contentType: application/json
       x-accepts: application/json
   /organizations/{organization_id}/users/{user_name}/credentials:
+    get:
+      description: List all credentials for a user
+      operationId: listCredentials
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: Bob
+              maxLength: 50
+              pattern: ^[A-Za-z0-9_]{3,50}$
+              type: string
+        explode: false
+        in: path
+        name: user_name
+        required: true
+        style: simple
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: ^[A-Z]{10}$
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                ListCredentialResponse:
+                  $ref: '#/components/examples/ListCredentialResponse'
+              schema:
+                $ref: '#/components/schemas/ListCredentialResponse'
+          description: Response for list credential request
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: List all credentials for a user
+      tags:
+      - User Credential Management
+      x-accepts: application/json
     post:
       description: Create a new credential for a user. This API returns the credential's
         secret key, which will be available only in the response of this API.
@@ -5909,9 +6238,11 @@ components:
         description: Brief description about ACME
         rootUser:
           username: username
+          name: Lorem Ipsum
           passwordHash: <password>
           email: root@example.com
-          phone: 1234567890
+          phone: +1234567890
+          verified: true
     UpdateOrganizationRequest:
       summary: A sample UpdateOrganizationRequest
       value:
@@ -5922,18 +6253,25 @@ components:
       summary: A sample create user request
       value:
         username: Bob
+        name: Lorem Ipsum
         passwordHash: nii2du35bdtuethntv3q7416
         email: bob@acme.com
-        phone: 1234071628
+        phone: +1234071628
         status: enabled
         verified: true
     UpdateUserRequest:
       summary: sample update user request
       value:
+        name: Lorem Ipsum
         email: bob@acme.com
-        phone: 1234071634
+        phone: +1234071634
         status: enabled
         verified: true
+    ChangeUserPasswordRequest:
+      summary: sample change user password request
+      value:
+        oldPassword: Old@Password123
+        newPassword: New@Password123
     ResetPasswordRequest:
       summary: sample reset password request
       value:
@@ -6015,6 +6353,19 @@ components:
           id: XlK5h64gND
           name: ACME Enterprise
           description: Brief description about ACME
+          rootUser:
+            hrn: hrn:XlK5h64gND::iam-user/Bob
+            username: Bob
+            name: Lorem Ipsum
+            organizationId: XlK5h64gND
+            email: bob@acme.com
+            status: enabled
+            verified: true
+            phone: +1234071628
+            loginAccess: true
+            createdBy: ""
+          updatedAt: 2020-01-01T00:00:00.000Z
+          createdAt: 2020-01-01T00:00:00.000Z
         rootUserToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
     GetUserPoliciesResponse:
       value:
@@ -6035,18 +6386,27 @@ components:
         - resource: hrn:XlK5h64gND::invoice/2
           action: hrn:XlK5h64gND::invoice$view
           effect: deny
+    ListCredentialResponse:
+      value:
+        credentials:
+        - id: 1f44ada7-7196-4f2d-8380-4c76f8bddec2
+          validUntil: 2023-01-01T00:00:00
+          status: active
+          createdAt: 2020-01-01T00:00:00
+          updatedAt: 2020-01-01T00:00:00
     UserPaginatedResponse:
       value:
         data:
         - hrn: hrn:XlK5h64gND::iam-user/Bob
           username: Bob
-          passwordHash: nii2du35bdtuethntv3q7416
+          name: Lorem Ipsum
+          organizationId: XlK5h64gND
           email: bob@acme.com
-          phone: 1234071628
+          status: enabled
+          verified: true
+          phone: +1234071628
           loginAccess: true
-          status: active
-          createdAt: 2020-01-01T00:00:00
-          updatedAt: 2020-03-21T16:30:06
+          createdBy: hrn:Xghfdksd::iam-user/johnny314
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
           pageSize: 10
@@ -6104,19 +6464,33 @@ components:
         id: XlK5h64gND
         name: ACME Enterprise
         description: Brief description about ACME
+        rootUser:
+          hrn: hrn:XlK5h64gND::iam-user/Bob
+          username: Bob
+          name: Lorem Ipsum
+          organizationId: XlK5h64gND
+          email: bob@acme.com
+          status: enabled
+          verified: true
+          phone: +1234071628
+          loginAccess: true
+          createdBy: ""
         rootUserHrn: hrn:XlK5h64gND::iam-user/root-user-name
+        createdAt: 2020-01-01T00:00:00.000Z
+        updatedAt: 2020-01-01T00:00:00.000Z
     User:
       summary: A sample user
       value:
         hrn: hrn:XlK5h64gND::iam-user/Bob
         username: Bob
-        passwordHash: nii2du35bdtuethntv3q7416
+        name: Lorem Ipsum
+        organizationId: XlK5h64gND
         email: bob@acme.com
+        status: enabled
+        verified: true
         phone: +1234071628
         loginAccess: true
-        status: active
-        createdAt: 2020-01-01T00:00:00
-        updatedAt: 2020-03-21T16:30:06
+        createdBy: hrn:Xghfdksd::iam-user/johnny314
     UserConfiguration:
       value:
         passwordPolicy: null
@@ -6158,12 +6532,16 @@ components:
         validUntil: 2023-01-01T00:00:00
         status: active
         secret: Z2QGNPmgWUBfRXhCrAmArrrszMajaEbYgaQJMciL
+        createdAt: 2020-01-01T00:00:00
+        updatedAt: 2020-01-01T00:00:00
     CredentialWithoutSecret:
-      summary: A sample credential
+      summary: A sample credential without secret
       value:
         id: 1f44ada7-7196-4f2d-8380-4c76f8bddec2
         validUntil: 2023-01-01T00:00:00
         status: active
+        createdAt: 2020-01-01T00:00:00
+        updatedAt: 2020-01-01T00:00:00
     Resource:
       summary: A sample resource
       value:
@@ -6386,6 +6764,16 @@ components:
           schema:
             $ref: '#/components/schemas/UpdateUserRequest'
       description: Payload to update user
+      required: true
+    ChangeUserPasswordRequest:
+      content:
+        application/json:
+          examples:
+            ChangeUserPasswordRequest:
+              $ref: '#/components/examples/ChangeUserPasswordRequest'
+          schema:
+            $ref: '#/components/schemas/ChangeUserPasswordRequest'
+      description: Payload to change user password
       required: true
     ResetPasswordRequest:
       content:
@@ -6660,6 +7048,23 @@ components:
           schema:
             type: string
           style: simple
+    ListCredentialResponse:
+      content:
+        application/json:
+          examples:
+            ListCredentialResponse:
+              $ref: '#/components/examples/ListCredentialResponse'
+          schema:
+            $ref: '#/components/schemas/ListCredentialResponse'
+      description: Response for list credential request
+      headers:
+        X-Iam-User-Organization:
+          description: Organization Id of the authenticated user
+          example: XlK5h64gND
+          explode: false
+          schema:
+            type: string
+          style: simple
     UpdateCredentialResponse:
       content:
         application/json:
@@ -6875,6 +7280,7 @@ components:
       example:
         rootUser:
           phone: phone
+          name: name
           verified: true
           passwordHash: passwordHash
           email: email
@@ -6884,7 +7290,7 @@ components:
       properties:
         name:
           maxLength: 50
-          pattern: ^[A-Za-z0-9]{3,50}$
+          pattern: ^[_a-zA-Z0-9-\s]{3,50}$
           type: string
         description:
           maxLength: 500
@@ -6904,7 +7310,7 @@ components:
       properties:
         name:
           maxLength: 50
-          pattern: ^[A-Za-z0-9]{3,50}$
+          pattern: ^[_a-zA-Z0-9-\s]{3,50}$
           type: string
         description:
           maxLength: 500
@@ -6915,6 +7321,7 @@ components:
       description: Root user details for the organization
       example:
         phone: phone
+        name: name
         verified: true
         passwordHash: passwordHash
         email: email
@@ -6924,12 +7331,15 @@ components:
           maxLength: 50
           pattern: ^[A-Za-z0-9]{3,50}$
           type: string
+        name:
+          maxLength: 50
+          type: string
         passwordHash:
           maxLength: 100
           type: string
         email:
           maxLength: 100
-          pattern: ^[A-Za-z0-9_+]{8,100}$
+          pattern: ^\S+@\S+\.\S+$
           type: string
         phone:
           maxLength: 30
@@ -6938,8 +7348,8 @@ components:
           type: boolean
       required:
       - email
+      - name
       - passwordHash
-      - phone
       - username
       - verified
       type: object
@@ -6948,6 +7358,7 @@ components:
       description: Payload to create ledger account
       example:
         phone: phone
+        name: name
         verified: true
         passwordHash: passwordHash
         email: email
@@ -6958,12 +7369,15 @@ components:
           maxLength: 50
           pattern: ^[A-Za-z0-9]{3,50}$
           type: string
+        name:
+          maxLength: 50
+          type: string
         passwordHash:
           maxLength: 100
           type: string
         email:
           maxLength: 100
-          pattern: ^[A-Za-z0-9_+]{8,100}$
+          pattern: ^\S+@\S+\.\S+$
           type: string
         phone:
           maxLength: 30
@@ -6977,6 +7391,7 @@ components:
           type: boolean
       required:
       - email
+      - name
       - passwordHash
       - status
       - username
@@ -6986,10 +7401,14 @@ components:
       description: Payload to create ledger account
       example:
         phone: phone
+        name: name
         verified: true
         email: email
         status: enabled
       properties:
+        name:
+          maxLength: 50
+          type: string
         email:
           maxLength: 50
           type: string
@@ -7003,6 +7422,23 @@ components:
           type: string
         verified:
           type: boolean
+      type: object
+    ChangeUserPasswordRequest:
+      additionalProperties: false
+      description: Payload to change user password
+      example:
+        oldPassword: oldPassword
+        newPassword: newPassword
+      properties:
+        oldPassword:
+          maxLength: 100
+          type: string
+        newPassword:
+          maxLength: 100
+          type: string
+      required:
+      - newPassword
+      - oldPassword
       type: object
     ResetPasswordRequest:
       additionalProperties: false
@@ -7305,10 +7741,22 @@ components:
       additionalProperties: false
       example:
         organization:
-          rootUserHrn: rootUserHrn
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          rootUser:
+            organizationId: organizationId
+            hrn: hrn
+            phone: phone
+            createdBy: createdBy
+            name: name
+            verified: true
+            loginAccess: true
+            email: email
+            username: username
+            status: enabled
           name: name
           description: description
           id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         rootUserToken: rootUserToken
       properties:
         organization:
@@ -7316,6 +7764,44 @@ components:
         rootUserToken:
           description: JWT token of the root user
           type: string
+      type: object
+    ListCredentialResponse:
+      additionalProperties: false
+      example:
+        credentials:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          validUntil: validUntil
+          id: id
+          status: active
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          validUntil: validUntil
+          id: id
+          status: active
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          validUntil: validUntil
+          id: id
+          status: active
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          validUntil: validUntil
+          id: id
+          status: active
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          validUntil: validUntil
+          id: id
+          status: active
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        credentials:
+          items:
+            $ref: '#/components/schemas/CredentialWithoutSecret'
+          maxItems: 50
+          type: array
+      required:
+      - credentials
       type: object
     UserPaginatedResponse:
       additionalProperties: false
@@ -7325,6 +7811,7 @@ components:
           hrn: hrn
           phone: phone
           createdBy: createdBy
+          name: name
           verified: true
           loginAccess: true
           email: email
@@ -7334,6 +7821,7 @@ components:
           hrn: hrn
           phone: phone
           createdBy: createdBy
+          name: name
           verified: true
           loginAccess: true
           email: email
@@ -7495,10 +7983,22 @@ components:
     Organization:
       additionalProperties: false
       example:
-        rootUserHrn: rootUserHrn
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        rootUser:
+          organizationId: organizationId
+          hrn: hrn
+          phone: phone
+          createdBy: createdBy
+          name: name
+          verified: true
+          loginAccess: true
+          email: email
+          username: username
+          status: enabled
         name: name
         description: description
         id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           maxLength: 50
@@ -7509,12 +8009,20 @@ components:
         description:
           maxLength: 500
           type: string
-        rootUserHrn:
+        rootUser:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
           type: string
       required:
+      - createdAt
       - id
       - name
       - rootUser
+      - updatedAt
       type: object
     User:
       additionalProperties: false
@@ -7523,6 +8031,7 @@ components:
         hrn: hrn
         phone: phone
         createdBy: createdBy
+        name: name
         verified: true
         loginAccess: true
         email: email
@@ -7532,6 +8041,9 @@ components:
         hrn:
           type: string
         username:
+          maxLength: 50
+          type: string
+        name:
           maxLength: 50
           type: string
         organizationId:
@@ -7558,6 +8070,7 @@ components:
       required:
       - email
       - hrn
+      - name
       - organizationId
       - status
       - username
@@ -7566,10 +8079,12 @@ components:
     Credential:
       additionalProperties: false
       example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
         validUntil: validUntil
         id: id
         secret: secret
         status: active
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           maxLength: 50
@@ -7586,17 +8101,27 @@ components:
         secret:
           maxLength: 50
           type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
       required:
+      - createdAt
       - id
       - secret
       - status
+      - updatedAt
       type: object
     CredentialWithoutSecret:
       additionalProperties: false
       example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
         validUntil: validUntil
         id: id
         status: active
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           maxLength: 50
@@ -7610,9 +8135,17 @@ components:
           - active
           - inactive
           type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
       required:
+      - createdAt
       - id
       - status
+      - updatedAt
       type: object
     Resource:
       additionalProperties: false

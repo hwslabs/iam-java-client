@@ -9,9 +9,10 @@ Root user details for the organization
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **String** |  | 
+**name** | **String** |  | 
 **passwordHash** | **String** |  | 
 **email** | **String** |  | 
-**phone** | **String** |  | 
+**phone** | **String** |  |  [optional]
 **verified** | **Boolean** |  | 
 
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hrn** | **String** |  | 
 **username** | **String** |  | 
+**name** | **String** |  | 
 **organizationId** | **String** |  | 
 **email** | **String** |  | 
 **status** | [**StatusEnum**](#StatusEnum) |  | 

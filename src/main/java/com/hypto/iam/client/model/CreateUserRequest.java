@@ -34,6 +34,10 @@ public class CreateUserRequest {
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_PASSWORD_HASH = "passwordHash";
   @SerializedName(SERIALIZED_NAME_PASSWORD_HASH)
   private String passwordHash;
@@ -124,6 +128,29 @@ public class CreateUserRequest {
 
   public void setUsername(String username) {
     this.username = username;
+  }
+
+
+  public CreateUserRequest name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -252,6 +279,7 @@ public class CreateUserRequest {
     }
     CreateUserRequest createUserRequest = (CreateUserRequest) o;
     return Objects.equals(this.username, createUserRequest.username) &&
+        Objects.equals(this.name, createUserRequest.name) &&
         Objects.equals(this.passwordHash, createUserRequest.passwordHash) &&
         Objects.equals(this.email, createUserRequest.email) &&
         Objects.equals(this.phone, createUserRequest.phone) &&
@@ -261,7 +289,7 @@ public class CreateUserRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, passwordHash, email, phone, status, verified);
+    return Objects.hash(username, name, passwordHash, email, phone, status, verified);
   }
 
   @Override
@@ -269,6 +297,7 @@ public class CreateUserRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateUserRequest {\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");

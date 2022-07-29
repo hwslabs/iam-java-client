@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **validUntil** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  | 
+**createdAt** | **OffsetDateTime** |  | 
+**updatedAt** | **OffsetDateTime** |  | 
 
 
 

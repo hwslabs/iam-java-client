@@ -10,7 +10,9 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **name** | **String** |  | 
 **description** | **String** |  |  [optional]
-**rootUserHrn** | **String** |  |  [optional]
+**rootUser** | [**User**](User.md) |  | 
+**createdAt** | **OffsetDateTime** |  | 
+**updatedAt** | **OffsetDateTime** |  | 
 
 
 
