@@ -5,6 +5,7 @@ build.sbt
 docs/Action.md
 docs/ActionPaginatedResponse.md
 docs/BaseSuccessResponse.md
+docs/ChangeUserPasswordRequest.md
 docs/CreateActionRequest.md
 docs/CreateCredentialRequest.md
 docs/CreateOrganizationRequest.md
@@ -18,6 +19,7 @@ docs/ErrorResponse.md
 docs/GetUserPoliciesResponse.md
 docs/KeyManagementApi.md
 docs/KeyResponse.md
+docs/ListCredentialResponse.md
 docs/Organization.md
 docs/OrganizationManagementApi.md
 docs/PaginationOptions.md
@@ -90,6 +92,7 @@ src/main/java/com/hypto/iam/client/auth/HttpBearerAuth.java
 src/main/java/com/hypto/iam/client/model/Action.java
 src/main/java/com/hypto/iam/client/model/ActionPaginatedResponse.java
 src/main/java/com/hypto/iam/client/model/BaseSuccessResponse.java
+src/main/java/com/hypto/iam/client/model/ChangeUserPasswordRequest.java
 src/main/java/com/hypto/iam/client/model/CreateActionRequest.java
 src/main/java/com/hypto/iam/client/model/CreateCredentialRequest.java
 src/main/java/com/hypto/iam/client/model/CreateOrganizationRequest.java
@@ -102,6 +105,7 @@ src/main/java/com/hypto/iam/client/model/CredentialWithoutSecret.java
 src/main/java/com/hypto/iam/client/model/ErrorResponse.java
 src/main/java/com/hypto/iam/client/model/GetUserPoliciesResponse.java
 src/main/java/com/hypto/iam/client/model/KeyResponse.java
+src/main/java/com/hypto/iam/client/model/ListCredentialResponse.java
 src/main/java/com/hypto/iam/client/model/Organization.java
 src/main/java/com/hypto/iam/client/model/PaginationOptions.java
 src/main/java/com/hypto/iam/client/model/Policy.java

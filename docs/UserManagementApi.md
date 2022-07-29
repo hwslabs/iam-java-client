@@ -4,6 +4,7 @@ All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**changePassword**](UserManagementApi.md#changePassword) | **POST** /organizations/{organization_id}/users/{user_name}/change_password | Change password for a user
 [**createUser**](UserManagementApi.md#createUser) | **POST** /organizations/{organization_id}/users | Create a user
 [**deleteUser**](UserManagementApi.md#deleteUser) | **DELETE** /organizations/{organization_id}/users/{user_name} | Delete a User
 [**getUser**](UserManagementApi.md#getUser) | **GET** /organizations/{organization_id}/users/{user_name} | Gets a user entity associated with the organization
@@ -11,6 +12,83 @@ Method | HTTP request | Description
 [**resetPassword**](UserManagementApi.md#resetPassword) | **POST** /organizations/{organization_id}/users/resetPassword | Reset Password
 [**updateUser**](UserManagementApi.md#updateUser) | **PATCH** /organizations/{organization_id}/users/{user_name} | Update a User
 
+
+<a name="changePassword"></a>
+# **changePassword**
+> BaseSuccessResponse changePassword(userName, organizationId, changeUserPasswordRequest)
+
+Change password for a user
+
+Change password for a user
+
+### Example
+```java
+// Import classes:
+import com.hypto.iam.client.ApiClient;
+import com.hypto.iam.client.ApiException;
+import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
+import com.hypto.iam.client.models.*;
+import com.hypto.iam.client.api.UserManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    UserManagementApi apiInstance = new UserManagementApi(defaultClient);
+    String userName = "userName_example"; // String | 
+    String organizationId = "organizationId_example"; // String | 
+    ChangeUserPasswordRequest changeUserPasswordRequest = new ChangeUserPasswordRequest(); // ChangeUserPasswordRequest | Payload to change user password
+    try {
+      BaseSuccessResponse result = apiInstance.changePassword(userName, organizationId, changeUserPasswordRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserManagementApi#changePassword");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userName** | **String**|  |
+ **organizationId** | **String**|  |
+ **changeUserPasswordRequest** | [**ChangeUserPasswordRequest**](ChangeUserPasswordRequest.md)| Payload to change user password |
+
+### Return type
+
+[**BaseSuccessResponse**](BaseSuccessResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="createUser"></a>
 # **createUser**

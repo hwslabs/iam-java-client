@@ -5,6 +5,7 @@ import com.hypto.iam.client.model.KeyResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.SigningKeyResolverAdapter;
+import io.swagger.annotations.Api;
 
 import java.security.Key;
 import java.security.KeyFactory;
@@ -20,6 +21,16 @@ public class SigningKeyResolver extends SigningKeyResolverAdapter {
     static Instant lastRefreshTime = Instant.now();
     static HashMap<String, Key> keysMap = new HashMap<>();
 
+    private final ApiClient apiClient;
+
+    SigningKeyResolver(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
+
+    SigningKeyResolver() {
+        this.apiClient = Configuration.getDefaultApiClient();
+    }
+
     @Override
     public Key resolveSigningKey(JwsHeader jwsHeader, Claims claims) {
         String keyId = jwsHeader.getKeyId();
@@ -32,9 +43,7 @@ public class SigningKeyResolver extends SigningKeyResolverAdapter {
         if (keysMap.containsKey(keyId))
             return keysMap.get(keyId);
 
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        KeyManagementApi apiInstance = new KeyManagementApi(defaultClient);
+        KeyManagementApi apiInstance = new KeyManagementApi(this.apiClient);
         try {
             KeyResponse result = apiInstance.getKey(keyId, "der", "public");
             byte[] encodedPublicKey = Base64.getDecoder().decode(result.getKey());
