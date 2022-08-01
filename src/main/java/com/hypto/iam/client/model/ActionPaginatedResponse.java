@@ -56,7 +56,7 @@ public class ActionPaginatedResponse {
 
   public ActionPaginatedResponse addDataItem(Action dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<Action>();
+      this.data = new ArrayList<>();
     }
     this.data.add(dataItem);
     return this;

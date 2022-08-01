@@ -34,7 +34,7 @@ import java.util.List;
 public class GetUserPoliciesResponse {
   public static final String SERIALIZED_NAME_POLICIES = "policies";
   @SerializedName(SERIALIZED_NAME_POLICIES)
-  private List<UserPolicy> policies = new ArrayList<UserPolicy>();
+  private List<UserPolicy> policies = new ArrayList<>();
 
   public GetUserPoliciesResponse() { 
   }

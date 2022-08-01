@@ -35,7 +35,7 @@ import java.util.List;
 public class UpdatePolicyRequest {
   public static final String SERIALIZED_NAME_STATEMENTS = "statements";
   @SerializedName(SERIALIZED_NAME_STATEMENTS)
-  private List<PolicyStatement> statements = new ArrayList<PolicyStatement>();
+  private List<PolicyStatement> statements = new ArrayList<>();
 
   public UpdatePolicyRequest() { 
   }

@@ -56,7 +56,7 @@ public class ResourcePaginatedResponse {
 
   public ResourcePaginatedResponse addDataItem(Resource dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<Resource>();
+      this.data = new ArrayList<>();
     }
     this.data.add(dataItem);
     return this;

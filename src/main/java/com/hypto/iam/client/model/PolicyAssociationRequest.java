@@ -34,7 +34,7 @@ import java.util.List;
 public class PolicyAssociationRequest {
   public static final String SERIALIZED_NAME_POLICIES = "policies";
   @SerializedName(SERIALIZED_NAME_POLICIES)
-  private List<String> policies = new ArrayList<String>();
+  private List<String> policies = new ArrayList<>();
 
   public PolicyAssociationRequest() { 
   }

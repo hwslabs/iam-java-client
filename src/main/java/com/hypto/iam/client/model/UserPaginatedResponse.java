@@ -56,7 +56,7 @@ public class UserPaginatedResponse {
 
   public UserPaginatedResponse addDataItem(User dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<User>();
+      this.data = new ArrayList<>();
     }
     this.data.add(dataItem);
     return this;
