@@ -141,7 +141,9 @@ Class | Method | HTTP request | Description
 *UserCredentialManagementApi* | [**createCredential**](docs/UserCredentialManagementApi.md#createCredential) | **POST** /organizations/{organization_id}/users/{user_name}/credentials | Create a new credential for a user
 *UserCredentialManagementApi* | [**deleteCredential**](docs/UserCredentialManagementApi.md#deleteCredential) | **DELETE** /organizations/{organization_id}/users/{user_name}/credentials/{credential_id} | Delete a credential
 *UserCredentialManagementApi* | [**getCredential**](docs/UserCredentialManagementApi.md#getCredential) | **GET** /organizations/{organization_id}/users/{user_name}/credentials/{credential_id} | Gets credential for the user
+*UserCredentialManagementApi* | [**listCredentials**](docs/UserCredentialManagementApi.md#listCredentials) | **GET** /organizations/{organization_id}/users/{user_name}/credentials | List all credentials for a user
 *UserCredentialManagementApi* | [**updateCredential**](docs/UserCredentialManagementApi.md#updateCredential) | **PATCH** /organizations/{organization_id}/users/{user_name}/credentials/{credential_id} | Update the status of credential
+*UserManagementApi* | [**changePassword**](docs/UserManagementApi.md#changePassword) | **POST** /organizations/{organization_id}/users/{user_name}/change_password | Change password for a user
 *UserManagementApi* | [**createUser**](docs/UserManagementApi.md#createUser) | **POST** /organizations/{organization_id}/users | Create a user
 *UserManagementApi* | [**deleteUser**](docs/UserManagementApi.md#deleteUser) | **DELETE** /organizations/{organization_id}/users/{user_name} | Delete a User
 *UserManagementApi* | [**getUser**](docs/UserManagementApi.md#getUser) | **GET** /organizations/{organization_id}/users/{user_name} | Gets a user entity associated with the organization
@@ -159,6 +161,7 @@ Class | Method | HTTP request | Description
  - [Action](docs/Action.md)
  - [ActionPaginatedResponse](docs/ActionPaginatedResponse.md)
  - [BaseSuccessResponse](docs/BaseSuccessResponse.md)
+ - [ChangeUserPasswordRequest](docs/ChangeUserPasswordRequest.md)
  - [CreateActionRequest](docs/CreateActionRequest.md)
  - [CreateCredentialRequest](docs/CreateCredentialRequest.md)
  - [CreateOrganizationRequest](docs/CreateOrganizationRequest.md)
@@ -171,6 +174,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponse](docs/ErrorResponse.md)
  - [GetUserPoliciesResponse](docs/GetUserPoliciesResponse.md)
  - [KeyResponse](docs/KeyResponse.md)
+ - [ListCredentialResponse](docs/ListCredentialResponse.md)
  - [Organization](docs/Organization.md)
  - [PaginationOptions](docs/PaginationOptions.md)
  - [Policy](docs/Policy.md)

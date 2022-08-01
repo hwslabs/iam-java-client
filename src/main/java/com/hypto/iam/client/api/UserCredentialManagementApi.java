@@ -32,6 +32,7 @@ import com.hypto.iam.client.model.CreateCredentialRequest;
 import com.hypto.iam.client.model.Credential;
 import com.hypto.iam.client.model.CredentialWithoutSecret;
 import com.hypto.iam.client.model.ErrorResponse;
+import com.hypto.iam.client.model.ListCredentialResponse;
 import com.hypto.iam.client.model.UpdateCredentialRequest;
 
 import java.lang.reflect.Type;
@@ -589,6 +590,168 @@ public class UserCredentialManagementApi {
 
         okhttp3.Call localVarCall = getCredentialValidateBeforeCall(organizationId, userName, credentialId, _callback);
         Type localVarReturnType = new TypeToken<CredentialWithoutSecret>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listCredentials
+     * @param userName  (required)
+     * @param organizationId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Response for list credential request </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 400 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 401 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 403 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 404 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 429 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCredentialsCall(String userName, String organizationId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/organizations/{organization_id}/users/{user_name}/credentials"
+            .replaceAll("\\{" + "user_name" + "\\}", localVarApiClient.escapeString(userName.toString()))
+            .replaceAll("\\{" + "organization_id" + "\\}", localVarApiClient.escapeString(organizationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCredentialsValidateBeforeCall(String userName, String organizationId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'userName' is set
+        if (userName == null) {
+            throw new ApiException("Missing the required parameter 'userName' when calling listCredentials(Async)");
+        }
+        
+        // verify the required parameter 'organizationId' is set
+        if (organizationId == null) {
+            throw new ApiException("Missing the required parameter 'organizationId' when calling listCredentials(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listCredentialsCall(userName, organizationId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List all credentials for a user
+     * List all credentials for a user
+     * @param userName  (required)
+     * @param organizationId  (required)
+     * @return ListCredentialResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Response for list credential request </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 400 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 401 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 403 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 404 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 429 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+     </table>
+     */
+    public ListCredentialResponse listCredentials(String userName, String organizationId) throws ApiException {
+        ApiResponse<ListCredentialResponse> localVarResp = listCredentialsWithHttpInfo(userName, organizationId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List all credentials for a user
+     * List all credentials for a user
+     * @param userName  (required)
+     * @param organizationId  (required)
+     * @return ApiResponse&lt;ListCredentialResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Response for list credential request </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 400 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 401 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 403 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 404 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 429 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListCredentialResponse> listCredentialsWithHttpInfo(String userName, String organizationId) throws ApiException {
+        okhttp3.Call localVarCall = listCredentialsValidateBeforeCall(userName, organizationId, null);
+        Type localVarReturnType = new TypeToken<ListCredentialResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List all credentials for a user (asynchronously)
+     * List all credentials for a user
+     * @param userName  (required)
+     * @param organizationId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Response for list credential request </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 400 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 401 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 403 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 404 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 429 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCredentialsAsync(String userName, String organizationId, final ApiCallback<ListCredentialResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCredentialsValidateBeforeCall(userName, organizationId, _callback);
+        Type localVarReturnType = new TypeToken<ListCredentialResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
