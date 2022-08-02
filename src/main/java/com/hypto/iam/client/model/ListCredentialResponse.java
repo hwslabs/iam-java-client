@@ -34,7 +34,7 @@ import java.util.List;
 public class ListCredentialResponse {
   public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
   @SerializedName(SERIALIZED_NAME_CREDENTIALS)
-  private List<CredentialWithoutSecret> credentials = new ArrayList<CredentialWithoutSecret>();
+  private List<CredentialWithoutSecret> credentials = new ArrayList<>();
 
   public ListCredentialResponse() { 
   }

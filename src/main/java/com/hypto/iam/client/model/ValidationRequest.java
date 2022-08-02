@@ -35,7 +35,7 @@ import java.util.List;
 public class ValidationRequest {
   public static final String SERIALIZED_NAME_VALIDATIONS = "validations";
   @SerializedName(SERIALIZED_NAME_VALIDATIONS)
-  private List<ResourceAction> validations = new ArrayList<ResourceAction>();
+  private List<ResourceAction> validations = new ArrayList<>();
 
   public ValidationRequest() { 
   }

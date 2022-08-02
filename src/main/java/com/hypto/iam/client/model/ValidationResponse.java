@@ -35,7 +35,7 @@ import java.util.List;
 public class ValidationResponse {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
-  private List<ResourceActionEffect> results = new ArrayList<ResourceActionEffect>();
+  private List<ResourceActionEffect> results = new ArrayList<>();
 
   public ValidationResponse() { 
   }

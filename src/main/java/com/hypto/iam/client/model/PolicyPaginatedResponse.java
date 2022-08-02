@@ -56,7 +56,7 @@ public class PolicyPaginatedResponse {
 
   public PolicyPaginatedResponse addDataItem(Policy dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<Policy>();
+      this.data = new ArrayList<>();
     }
     this.data.add(dataItem);
     return this;
