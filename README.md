@@ -211,6 +211,10 @@ Authentication schemes defined for the API:
 - **API key parameter name**: X-API-Key
 - **Location**: HTTP header
 
+### basicAuth
+
+- **Type**: HTTP basic authentication
+
 ### bearerAuth
 
 - **Type**: HTTP basic authentication

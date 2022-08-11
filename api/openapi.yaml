@@ -5791,6 +5791,9 @@ paths:
               schema:
                 type: string
               style: simple
+      security:
+      - basicAuth: []
+      - bearerAuth: []
       summary: Generate a organization_id scoped token
       tags:
       - User Authorization
@@ -5917,6 +5920,9 @@ paths:
               schema:
                 type: string
               style: simple
+      security:
+      - basicAuth: []
+      - bearerAuth: []
       summary: Generate a token
       tags:
       - User Authorization
@@ -8339,4 +8345,7 @@ components:
       in: header
       name: X-API-Key
       type: apiKey
+    basicAuth:
+      scheme: basic
+      type: http
 
