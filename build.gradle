@@ -183,7 +183,7 @@ task deleteFiles {
 
 task generateClient(dependsOn: [deleteFiles], type: GenerateTask) {
     generatorName = "java"
-    inputSpec = "$rootDir/open-api-spec.yml".toString()
+    inputSpec = "$rootDir/iam_openapi_spec.yml".toString()
     outputDir = "$rootDir".toString()
     groupId = "com.hypto"
     id = "iam-java-client"
