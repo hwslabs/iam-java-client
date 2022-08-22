@@ -30,9 +30,9 @@ public class Validator {
     static final String ISSUER = "https://iam.hypto.com";
     static final String VERSION_NUM = "1.0";
     static final String VERSION_CLAIM = "ver";
-    static final SigningKeyResolver signingKeyResolver = new SigningKeyResolver();
     static final Model model;
 
+    public ApiClient apiClient = Configuration.getDefaultApiClient();
     public Claims claims;
     public Enforcer enforcer;
     public String principal;
@@ -49,11 +49,17 @@ public class Validator {
         model = CoreEnforcer.newModel(casbinModel);
     }
 
+    public Validator setApiClient(ApiClient apiClient) {
+        this.apiClient = apiClient;
+        return this;
+    }
+
     public Validator(String token, boolean skipValidation) {
         if (skipValidation) {
             String unsignedToken = token.substring(0, token.lastIndexOf(".")+1);
             this.claims = Jwts.parserBuilder().build().parseClaimsJwt(unsignedToken).getBody();
         } else {
+            SigningKeyResolver signingKeyResolver = new SigningKeyResolver(apiClient);
             Jws<Claims> jws = Jwts.parserBuilder().setSigningKeyResolver(signingKeyResolver).build().parseClaimsJws(token);
             this.claims = jws.getBody();
         }
@@ -90,9 +96,7 @@ public class Validator {
     }
 
     boolean validateRemote(String resourceHrn, String actionHrn) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        UserAuthorizationApi apiInstance = new UserAuthorizationApi(defaultClient);
+        UserAuthorizationApi apiInstance = new UserAuthorizationApi(apiClient);
         ValidationRequest request = new ValidationRequest().addValidationsItem(
                 new ResourceAction().resource(resourceHrn).action(actionHrn));
 
