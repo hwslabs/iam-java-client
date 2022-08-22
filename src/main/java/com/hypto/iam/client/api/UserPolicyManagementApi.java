@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class UserPolicyManagementApi {
     private ApiClient localVarApiClient;
@@ -97,7 +98,6 @@ public class UserPolicyManagementApi {
      */
     public okhttp3.Call attachPoliciesCall(String userName, String organizationId, PolicyAssociationRequest policyAssociationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -268,7 +268,6 @@ public class UserPolicyManagementApi {
      */
     public okhttp3.Call detachPoliciesCall(String userName, String organizationId, PolicyAssociationRequest policyAssociationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -441,7 +440,6 @@ public class UserPolicyManagementApi {
      */
     public okhttp3.Call getUserPoliciesCall(String userName, String organizationId, String nextToken, String pageSize, String sortOrder, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

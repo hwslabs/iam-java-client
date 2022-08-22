@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class UserAuthorizationApi {
     private ApiClient localVarApiClient;
@@ -93,7 +94,6 @@ public class UserAuthorizationApi {
      */
     public okhttp3.Call getTokenCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -232,7 +232,6 @@ public class UserAuthorizationApi {
      */
     public okhttp3.Call getTokenForOrgCall(String organizationId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -379,7 +378,6 @@ public class UserAuthorizationApi {
      */
     public okhttp3.Call validateCall(ValidationRequest validationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

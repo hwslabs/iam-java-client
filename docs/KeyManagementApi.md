@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getKey**](KeyManagementApi.md#getKey) | **GET** /keys/{kid} | Get keys
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getKey**](KeyManagementApi.md#getKey) | **GET** /keys/{kid} | Get keys |
 
 
 <a name="getKey"></a>
@@ -49,11 +49,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **kid** | **String**|  |
- **format** | **String**|  | [optional] [default to pem] [enum: der, pem]
- **type** | **String**|  | [optional] [default to public] [enum: public]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **kid** | **String**|  | |
+| **format** | **String**|  | [optional] [default to pem] [enum: der, pem] |
+| **type** | **String**|  | [optional] [default to public] [enum: public] |
 
 ### Return type
 
@@ -71,7 +71,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for key request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for key request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 

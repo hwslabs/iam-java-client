@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createResource**](ResourceManagementApi.md#createResource) | **POST** /organizations/{organization_id}/resources | Create a resource name in an organization.
-[**deleteResource**](ResourceManagementApi.md#deleteResource) | **DELETE** /organizations/{organization_id}/resources/{resource_name} | Delete a resource
-[**getResource**](ResourceManagementApi.md#getResource) | **GET** /organizations/{organization_id}/resources/{resource_name} | Get the resource details
-[**listResources**](ResourceManagementApi.md#listResources) | **GET** /organizations/{organization_id}/resources | List Resources
-[**updateResource**](ResourceManagementApi.md#updateResource) | **PATCH** /organizations/{organization_id}/resources/{resource_name} | Update a resource
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createResource**](ResourceManagementApi.md#createResource) | **POST** /organizations/{organization_id}/resources | Create a resource name in an organization. |
+| [**deleteResource**](ResourceManagementApi.md#deleteResource) | **DELETE** /organizations/{organization_id}/resources/{resource_name} | Delete a resource |
+| [**getResource**](ResourceManagementApi.md#getResource) | **GET** /organizations/{organization_id}/resources/{resource_name} | Get the resource details |
+| [**listResources**](ResourceManagementApi.md#listResources) | **GET** /organizations/{organization_id}/resources | List Resources |
+| [**updateResource**](ResourceManagementApi.md#updateResource) | **PATCH** /organizations/{organization_id}/resources/{resource_name} | Update a resource |
 
 
 <a name="createResource"></a>
@@ -57,10 +57,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **createResourceRequest** | [**CreateResourceRequest**](CreateResourceRequest.md)| Payload to create resource |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **createResourceRequest** | [**CreateResourceRequest**](CreateResourceRequest.md)| Payload to create resource | |
 
 ### Return type
 
@@ -78,13 +78,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Response for resource requests returning a resource entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for resource requests returning a resource entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="deleteResource"></a>
 # **deleteResource**
@@ -132,10 +132,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resourceName** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resourceName** | **String**|  | |
 
 ### Return type
 
@@ -153,13 +153,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="getResource"></a>
 # **getResource**
@@ -207,10 +207,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resourceName** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resourceName** | **String**|  | |
 
 ### Return type
 
@@ -228,13 +228,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for resource requests returning a resource entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for resource requests returning a resource entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="listResources"></a>
 # **listResources**
@@ -284,12 +284,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **nextToken** | **String**|  | [optional]
- **pageSize** | **String**|  | [optional]
- **sortOrder** | **String**|  | [optional] [enum: asc, desc]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **nextToken** | **String**|  | [optional] |
+| **pageSize** | **String**|  | [optional] |
+| **sortOrder** | **String**|  | [optional] [enum: asc, desc] |
 
 ### Return type
 
@@ -307,12 +307,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Response for list resources request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for list resources request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="updateResource"></a>
 # **updateResource**
@@ -361,11 +361,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resourceName** | **String**|  |
- **updateResourceRequest** | [**UpdateResourceRequest**](UpdateResourceRequest.md)| Payload to update resource |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resourceName** | **String**|  | |
+| **updateResourceRequest** | [**UpdateResourceRequest**](UpdateResourceRequest.md)| Payload to update resource | |
 
 ### Return type
 
@@ -383,11 +383,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for resource requests returning a resource entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for resource requests returning a resource entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 

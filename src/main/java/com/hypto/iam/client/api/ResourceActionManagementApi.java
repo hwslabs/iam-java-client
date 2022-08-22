@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class ResourceActionManagementApi {
     private ApiClient localVarApiClient;
@@ -99,7 +100,6 @@ public class ResourceActionManagementApi {
      */
     public okhttp3.Call createActionCall(String organizationId, String resourceName, CreateActionRequest createActionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -270,7 +270,6 @@ public class ResourceActionManagementApi {
      */
     public okhttp3.Call deleteActionCall(String organizationId, String resourceName, String actionName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -442,7 +441,6 @@ public class ResourceActionManagementApi {
      */
     public okhttp3.Call getActionCall(String organizationId, String resourceName, String actionName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -615,7 +613,6 @@ public class ResourceActionManagementApi {
      */
     public okhttp3.Call listActionsCall(String organizationId, String resourceName, String nextToken, String pageSize, String sortOrder, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -797,7 +794,6 @@ public class ResourceActionManagementApi {
      */
     public okhttp3.Call updateActionCall(String organizationId, String resourceName, String actionName, UpdateActionRequest updateActionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

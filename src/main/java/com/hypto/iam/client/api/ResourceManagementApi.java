@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class ResourceManagementApi {
     private ApiClient localVarApiClient;
@@ -98,7 +99,6 @@ public class ResourceManagementApi {
      */
     public okhttp3.Call createResourceCall(String organizationId, CreateResourceRequest createResourceRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -259,7 +259,6 @@ public class ResourceManagementApi {
      */
     public okhttp3.Call deleteResourceCall(String organizationId, String resourceName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -421,7 +420,6 @@ public class ResourceManagementApi {
      */
     public okhttp3.Call getResourceCall(String organizationId, String resourceName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -584,7 +582,6 @@ public class ResourceManagementApi {
      */
     public okhttp3.Call listResourcesCall(String organizationId, String nextToken, String pageSize, String sortOrder, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -756,7 +753,6 @@ public class ResourceManagementApi {
      */
     public okhttp3.Call updateResourceCall(String organizationId, String resourceName, UpdateResourceRequest updateResourceRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

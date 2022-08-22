@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createPolicy**](PolicyManagementApi.md#createPolicy) | **POST** /organizations/{organization_id}/policies | Create a policy
-[**deletePolicy**](PolicyManagementApi.md#deletePolicy) | **DELETE** /organizations/{organization_id}/policies/{policy_name} | Delete a policy
-[**getPolicy**](PolicyManagementApi.md#getPolicy) | **GET** /organizations/{organization_id}/policies/{policy_name} | Get a policy
-[**listPolicies**](PolicyManagementApi.md#listPolicies) | **GET** /organizations/{organization_id}/policies | List policies
-[**updatePolicy**](PolicyManagementApi.md#updatePolicy) | **PATCH** /organizations/{organization_id}/policies/{policy_name} | Update a policy
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createPolicy**](PolicyManagementApi.md#createPolicy) | **POST** /organizations/{organization_id}/policies | Create a policy |
+| [**deletePolicy**](PolicyManagementApi.md#deletePolicy) | **DELETE** /organizations/{organization_id}/policies/{policy_name} | Delete a policy |
+| [**getPolicy**](PolicyManagementApi.md#getPolicy) | **GET** /organizations/{organization_id}/policies/{policy_name} | Get a policy |
+| [**listPolicies**](PolicyManagementApi.md#listPolicies) | **GET** /organizations/{organization_id}/policies | List policies |
+| [**updatePolicy**](PolicyManagementApi.md#updatePolicy) | **PATCH** /organizations/{organization_id}/policies/{policy_name} | Update a policy |
 
 
 <a name="createPolicy"></a>
@@ -57,10 +57,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **createPolicyRequest** | [**CreatePolicyRequest**](CreatePolicyRequest.md)| Payload to create policy |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **createPolicyRequest** | [**CreatePolicyRequest**](CreatePolicyRequest.md)| Payload to create policy | |
 
 ### Return type
 
@@ -78,13 +78,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Response for policy requests returning an policy entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for policy requests returning an policy entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="deletePolicy"></a>
 # **deletePolicy**
@@ -132,10 +132,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **policyName** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **policyName** | **String**|  | |
 
 ### Return type
 
@@ -153,13 +153,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="getPolicy"></a>
 # **getPolicy**
@@ -207,10 +207,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **policyName** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **policyName** | **String**|  | |
 
 ### Return type
 
@@ -228,13 +228,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for policy requests returning an policy entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for policy requests returning an policy entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="listPolicies"></a>
 # **listPolicies**
@@ -284,12 +284,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **nextToken** | **String**|  | [optional]
- **pageSize** | **String**|  | [optional]
- **sortOrder** | **String**|  | [optional] [enum: asc, desc]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **nextToken** | **String**|  | [optional] |
+| **pageSize** | **String**|  | [optional] |
+| **sortOrder** | **String**|  | [optional] [enum: asc, desc] |
 
 ### Return type
 
@@ -307,12 +307,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Response for list policies request and list policies for user request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for list policies request and list policies for user request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="updatePolicy"></a>
 # **updatePolicy**
@@ -361,11 +361,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **policyName** | **String**|  |
- **updatePolicyRequest** | [**UpdatePolicyRequest**](UpdatePolicyRequest.md)| Payload to update policy |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **policyName** | **String**|  | |
+| **updatePolicyRequest** | [**UpdatePolicyRequest**](UpdatePolicyRequest.md)| Payload to update policy | |
 
 ### Return type
 
@@ -383,11 +383,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for policy requests returning an policy entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for policy requests returning an policy entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 

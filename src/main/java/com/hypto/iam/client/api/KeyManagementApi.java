@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class KeyManagementApi {
     private ApiClient localVarApiClient;
@@ -91,7 +92,6 @@ public class KeyManagementApi {
      */
     public okhttp3.Call getKeyCall(String kid, String format, String type, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

@@ -25,3 +25,4 @@
 build.gradle
 .gitignore
 pom.xml
+.github/workflows/maven.yml

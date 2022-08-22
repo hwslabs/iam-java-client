@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class OrganizationManagementApi {
     private ApiClient localVarApiClient;
@@ -96,7 +97,6 @@ public class OrganizationManagementApi {
      */
     public okhttp3.Call createOrganizationCall(CreateOrganizationRequest createOrganizationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -244,7 +244,6 @@ public class OrganizationManagementApi {
      */
     public okhttp3.Call deleteOrganizationCall(String organizationId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -396,7 +395,6 @@ public class OrganizationManagementApi {
      */
     public okhttp3.Call getOrganizationCall(String organizationId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -549,7 +547,6 @@ public class OrganizationManagementApi {
      */
     public okhttp3.Call updateOrganizationCall(String organizationId, UpdateOrganizationRequest updateOrganizationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

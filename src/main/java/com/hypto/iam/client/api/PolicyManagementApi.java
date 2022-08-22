@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class PolicyManagementApi {
     private ApiClient localVarApiClient;
@@ -98,7 +99,6 @@ public class PolicyManagementApi {
      */
     public okhttp3.Call createPolicyCall(String organizationId, CreatePolicyRequest createPolicyRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -259,7 +259,6 @@ public class PolicyManagementApi {
      */
     public okhttp3.Call deletePolicyCall(String organizationId, String policyName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -421,7 +420,6 @@ public class PolicyManagementApi {
      */
     public okhttp3.Call getPolicyCall(String organizationId, String policyName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -584,7 +582,6 @@ public class PolicyManagementApi {
      */
     public okhttp3.Call listPoliciesCall(String organizationId, String nextToken, String pageSize, String sortOrder, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -756,7 +753,6 @@ public class PolicyManagementApi {
      */
     public okhttp3.Call updatePolicyCall(String organizationId, String policyName, UpdatePolicyRequest updatePolicyRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

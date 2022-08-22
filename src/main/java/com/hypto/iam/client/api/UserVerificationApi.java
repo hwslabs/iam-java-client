@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class UserVerificationApi {
     private ApiClient localVarApiClient;
@@ -92,7 +93,6 @@ public class UserVerificationApi {
      */
     public okhttp3.Call verifyEmailCall(VerifyEmailRequest verifyEmailRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

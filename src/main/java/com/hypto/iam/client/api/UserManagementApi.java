@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class UserManagementApi {
     private ApiClient localVarApiClient;
@@ -101,7 +102,6 @@ public class UserManagementApi {
      */
     public okhttp3.Call changePasswordCall(String userName, String organizationId, ChangeUserPasswordRequest changeUserPasswordRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -270,7 +270,6 @@ public class UserManagementApi {
      */
     public okhttp3.Call createUserCall(String organizationId, CreateUserRequest createUserRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -428,7 +427,6 @@ public class UserManagementApi {
      */
     public okhttp3.Call deleteUserCall(String userName, String organizationId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -590,7 +588,6 @@ public class UserManagementApi {
      */
     public okhttp3.Call getUserCall(String userName, String organizationId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -752,7 +749,6 @@ public class UserManagementApi {
      */
     public okhttp3.Call listUsersCall(String organizationId, String nextToken, String pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -916,7 +912,6 @@ public class UserManagementApi {
      */
     public okhttp3.Call resetPasswordCall(String organizationId, ResetPasswordRequest resetPasswordRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1078,7 +1073,6 @@ public class UserManagementApi {
      */
     public okhttp3.Call updateUserCall(String userName, String organizationId, UpdateUserRequest updateUserRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

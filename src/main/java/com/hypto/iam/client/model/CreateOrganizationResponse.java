@@ -25,6 +25,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.hypto.iam.client.JSON;
+
 /**
  * CreateOrganizationResponse
  */
@@ -87,6 +107,7 @@ public class CreateOrganizationResponse {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -126,5 +147,98 @@ public class CreateOrganizationResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("organization");
+    openapiFields.add("rootUserToken");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateOrganizationResponse
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (CreateOrganizationResponse.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateOrganizationResponse is not found in the empty JSON string", CreateOrganizationResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CreateOrganizationResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateOrganizationResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `organization`
+      if (jsonObj.getAsJsonObject("organization") != null) {
+        Organization.validateJsonObject(jsonObj.getAsJsonObject("organization"));
+      }
+      if (jsonObj.get("rootUserToken") != null && !jsonObj.get("rootUserToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `rootUserToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rootUserToken").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateOrganizationResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateOrganizationResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateOrganizationResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateOrganizationResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateOrganizationResponse>() {
+           @Override
+           public void write(JsonWriter out, CreateOrganizationResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateOrganizationResponse read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateOrganizationResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateOrganizationResponse
+  * @throws IOException if the JSON string is invalid with respect to CreateOrganizationResponse
+  */
+  public static CreateOrganizationResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateOrganizationResponse.class);
+  }
+
+ /**
+  * Convert an instance of CreateOrganizationResponse to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 
