@@ -2,15 +2,15 @@
 
 All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**changePassword**](UserManagementApi.md#changePassword) | **POST** /organizations/{organization_id}/users/{user_name}/change_password | Change password for a user
-[**createUser**](UserManagementApi.md#createUser) | **POST** /organizations/{organization_id}/users | Create a user
-[**deleteUser**](UserManagementApi.md#deleteUser) | **DELETE** /organizations/{organization_id}/users/{user_name} | Delete a User
-[**getUser**](UserManagementApi.md#getUser) | **GET** /organizations/{organization_id}/users/{user_name} | Gets a user entity associated with the organization
-[**listUsers**](UserManagementApi.md#listUsers) | **GET** /organizations/{organization_id}/users | List users
-[**resetPassword**](UserManagementApi.md#resetPassword) | **POST** /organizations/{organization_id}/users/resetPassword | Reset Password
-[**updateUser**](UserManagementApi.md#updateUser) | **PATCH** /organizations/{organization_id}/users/{user_name} | Update a User
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**changePassword**](UserManagementApi.md#changePassword) | **POST** /organizations/{organization_id}/users/{user_name}/change_password | Change password for a user |
+| [**createUser**](UserManagementApi.md#createUser) | **POST** /organizations/{organization_id}/users | Create a user |
+| [**deleteUser**](UserManagementApi.md#deleteUser) | **DELETE** /organizations/{organization_id}/users/{user_name} | Delete a User |
+| [**getUser**](UserManagementApi.md#getUser) | **GET** /organizations/{organization_id}/users/{user_name} | Gets a user entity associated with the organization |
+| [**listUsers**](UserManagementApi.md#listUsers) | **GET** /organizations/{organization_id}/users | List users |
+| [**resetPassword**](UserManagementApi.md#resetPassword) | **POST** /organizations/{organization_id}/users/resetPassword | Reset Password |
+| [**updateUser**](UserManagementApi.md#updateUser) | **PATCH** /organizations/{organization_id}/users/{user_name} | Update a User |
 
 
 <a name="changePassword"></a>
@@ -60,11 +60,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userName** | **String**|  |
- **organizationId** | **String**|  |
- **changeUserPasswordRequest** | [**ChangeUserPasswordRequest**](ChangeUserPasswordRequest.md)| Payload to change user password |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userName** | **String**|  | |
+| **organizationId** | **String**|  | |
+| **changeUserPasswordRequest** | [**ChangeUserPasswordRequest**](ChangeUserPasswordRequest.md)| Payload to change user password | |
 
 ### Return type
 
@@ -82,13 +82,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="createUser"></a>
 # **createUser**
@@ -136,10 +136,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **createUserRequest** | [**CreateUserRequest**](CreateUserRequest.md)| Payload to create user |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **createUserRequest** | [**CreateUserRequest**](CreateUserRequest.md)| Payload to create user | |
 
 ### Return type
 
@@ -157,12 +157,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Response for CreateUserRequest |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for CreateUserRequest |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="deleteUser"></a>
 # **deleteUser**
@@ -210,10 +210,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userName** | **String**|  |
- **organizationId** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userName** | **String**|  | |
+| **organizationId** | **String**|  | |
 
 ### Return type
 
@@ -231,13 +231,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="getUser"></a>
 # **getUser**
@@ -285,10 +285,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userName** | **String**|  |
- **organizationId** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userName** | **String**|  | |
+| **organizationId** | **String**|  | |
 
 ### Return type
 
@@ -306,13 +306,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for GetUserRequest |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for GetUserRequest |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="listUsers"></a>
 # **listUsers**
@@ -361,11 +361,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **nextToken** | **String**|  | [optional]
- **pageSize** | **String**|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **nextToken** | **String**|  | [optional] |
+| **pageSize** | **String**|  | [optional] |
 
 ### Return type
 
@@ -383,12 +383,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Response for list users request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for list users request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="resetPassword"></a>
 # **resetPassword**
@@ -438,10 +438,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resetPasswordRequest** | [**ResetPasswordRequest**](ResetPasswordRequest.md)| Payload to reset password |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resetPasswordRequest** | [**ResetPasswordRequest**](ResetPasswordRequest.md)| Payload to reset password | |
 
 ### Return type
 
@@ -459,13 +459,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="updateUser"></a>
 # **updateUser**
@@ -514,11 +514,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userName** | **String**|  |
- **organizationId** | **String**|  |
- **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md)| Payload to update user |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userName** | **String**|  | |
+| **organizationId** | **String**|  | |
+| **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md)| Payload to update user | |
 
 ### Return type
 
@@ -536,11 +536,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for UpdateUserRequest |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for UpdateUserRequest |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 

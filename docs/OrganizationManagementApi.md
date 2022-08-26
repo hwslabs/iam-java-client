@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createOrganization**](OrganizationManagementApi.md#createOrganization) | **POST** /organizations | Creates an organization.
-[**deleteOrganization**](OrganizationManagementApi.md#deleteOrganization) | **DELETE** /organizations/{organization_id} | Delete an organization
-[**getOrganization**](OrganizationManagementApi.md#getOrganization) | **GET** /organizations/{organization_id} | Get an organization
-[**updateOrganization**](OrganizationManagementApi.md#updateOrganization) | **PATCH** /organizations/{organization_id} | Update an organization
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createOrganization**](OrganizationManagementApi.md#createOrganization) | **POST** /organizations | Creates an organization. |
+| [**deleteOrganization**](OrganizationManagementApi.md#deleteOrganization) | **DELETE** /organizations/{organization_id} | Delete an organization |
+| [**getOrganization**](OrganizationManagementApi.md#getOrganization) | **GET** /organizations/{organization_id} | Get an organization |
+| [**updateOrganization**](OrganizationManagementApi.md#updateOrganization) | **PATCH** /organizations/{organization_id} | Update an organization |
 
 
 <a name="createOrganization"></a>
@@ -57,9 +57,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createOrganizationRequest** | [**CreateOrganizationRequest**](CreateOrganizationRequest.md)| Payload to create organization |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createOrganizationRequest** | [**CreateOrganizationRequest**](CreateOrganizationRequest.md)| Payload to create organization | |
 
 ### Return type
 
@@ -77,12 +77,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Response for Create Organization request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for Create Organization request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="deleteOrganization"></a>
 # **deleteOrganization**
@@ -131,9 +131,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
 
 ### Return type
 
@@ -151,13 +151,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="getOrganization"></a>
 # **getOrganization**
@@ -204,9 +204,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
 
 ### Return type
 
@@ -224,13 +224,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for Get and Update Organization requests |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for Get and Update Organization requests |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="updateOrganization"></a>
 # **updateOrganization**
@@ -278,10 +278,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **updateOrganizationRequest** | [**UpdateOrganizationRequest**](UpdateOrganizationRequest.md)| Payload to update organization |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **updateOrganizationRequest** | [**UpdateOrganizationRequest**](UpdateOrganizationRequest.md)| Payload to update organization | |
 
 ### Return type
 
@@ -299,11 +299,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for Get and Update Organization requests |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for Get and Update Organization requests |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 

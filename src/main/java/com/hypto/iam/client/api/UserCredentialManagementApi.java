@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class UserCredentialManagementApi {
     private ApiClient localVarApiClient;
@@ -100,7 +101,6 @@ public class UserCredentialManagementApi {
      */
     public okhttp3.Call createCredentialCall(String userName, String organizationId, CreateCredentialRequest createCredentialRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -271,7 +271,6 @@ public class UserCredentialManagementApi {
      */
     public okhttp3.Call deleteCredentialCall(String organizationId, String userName, String credentialId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -443,7 +442,6 @@ public class UserCredentialManagementApi {
      */
     public okhttp3.Call getCredentialCall(String organizationId, String userName, String credentialId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -614,7 +612,6 @@ public class UserCredentialManagementApi {
      */
     public okhttp3.Call listCredentialsCall(String userName, String organizationId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -778,7 +775,6 @@ public class UserCredentialManagementApi {
      */
     public okhttp3.Call updateCredentialCall(String organizationId, String userName, String credentialId, UpdateCredentialRequest updateCredentialRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

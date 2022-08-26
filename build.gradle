@@ -1,19 +1,23 @@
+import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
+
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
+apply plugin: 'org.openapi.generator'
 
 group = 'com.hypto'
-version = '1.0.0'
 
 buildscript {
     repositories {
         mavenCentral()
+        maven { url "https://repo1.maven.org/maven2" }
     }
     dependencies {
+        classpath "org.openapitools:openapi-generator-gradle-plugin:6.0.1"
         classpath 'com.android.tools.build:gradle:2.3.+'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-        classpath 'com.diffplug.spotless:spotless-plugin-gradle:5.17.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.diffplug.spotless:spotless-plugin-gradle:6.3.0'
     }
 }
 
@@ -89,15 +93,15 @@ if(hasProperty('target') && target == 'android') {
     publishing {
         publications {
             maven(MavenPublication) {
-               artifactId = 'iam-java-client'
-               from components.java
+                artifactId = 'iam-java-client'
+                from components.java
             }
         }
     }
 
     task execute(type:JavaExec) {
-       main = System.getProperty('mainClass')
-       classpath = sourceSets.main.runtimeClasspath
+        main = System.getProperty('mainClass')
+        classpath = sourceSets.main.runtimeClasspath
     }
 }
 
@@ -107,23 +111,24 @@ ext {
 }
 
 dependencies {
-    implementation 'io.swagger:swagger-annotations:1.5.24'
+    implementation 'io.swagger:swagger-annotations:1.6.5'
     implementation "com.google.code.findbugs:jsr305:3.0.2"
-    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
-    implementation 'com.google.code.gson:gson:2.8.9'
-    implementation 'io.gsonfire:gson-fire:1.8.4'
-    implementation 'org.openapitools:jackson-databind-nullable:0.2.1'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
-    implementation 'org.threeten:threetenbp:1.4.3'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'io.gsonfire:gson-fire:1.8.5'
+    implementation 'javax.ws.rs:jsr311-api:1.1.1'
+    implementation 'javax.ws.rs:javax.ws.rs-api:2.1.1'
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.3'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
     implementation "jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version"
 
     // JWT
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
     // Uncomment the next line if you want to use RSASSA-PSS (PS256, PS384, PS512) algorithms:
     //    runtimeOnly 'org.bouncycastle:bcprov-jdk15on:1.60'
-    runtimeOnly 'io.jsonwebtoken:jjwt-gson:0.11.2' // or 'io.jsonwebtoken:jjwt-jackson:0.11.2' for gson
+    runtimeOnly 'io.jsonwebtoken:jjwt-gson:0.11.5' // or 'io.jsonwebtoken:jjwt-jackson:0.11.2' for gson
 
     // Casbin
     implementation("org.casbin:jcasbin:$casbin_version") // Policy management
@@ -165,3 +170,38 @@ spotless {
         importOrder()
     }
 }
+
+task deleteFiles {
+    new File('.openapi-generator/FILES').eachLine {
+        def file = new File("$rootDir/$it")
+        if (file.exists()) {
+            file.delete()
+        }
+    }
+}
+
+
+task generateClient(dependsOn: [deleteFiles], type: GenerateTask) {
+    generatorName = "java"
+    inputSpec = "$rootDir/iam_openapi_spec.yml".toString()
+    outputDir = "$rootDir".toString()
+    groupId = "com.hypto"
+    id = "iam-java-client"
+    invokerPackage = "com.hypto.iam.client"
+    modelPackage = "com.hypto.iam.client.model"
+    apiPackage = "com.hypto.iam.client.api"
+    generateModelTests = false
+    generateApiTests = false
+    configOptions = [
+            hideGenerationTimestamp : "true",
+            dateLibrary: "java8",
+
+            artifactDescription: "IAM Java Client",
+            artifactUrl: "https://github.com/hwslabs/iam-java-client",
+            scmConnection: "scm:git:git@github.com:hwslabs/iam-java-client.git",
+            scmDeveloperConnection: "scm:git:git@github.com:hwslabs/iam-java-client.git",
+            scmUrl: "https://github.com/hwslabs/iam-java-client.git"
+    ]
+}
+
+compileJava.dependsOn deleteFiles, generateClient

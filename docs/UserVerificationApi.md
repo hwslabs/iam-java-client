@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**verifyEmail**](UserVerificationApi.md#verifyEmail) | **POST** /verifyEmail | Verify email
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**verifyEmail**](UserVerificationApi.md#verifyEmail) | **POST** /verifyEmail | Verify email |
 
 
 <a name="verifyEmail"></a>
@@ -47,9 +47,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verifyEmailRequest** | [**VerifyEmailRequest**](VerifyEmailRequest.md)| Payload to send verification link to email |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **verifyEmailRequest** | [**VerifyEmailRequest**](VerifyEmailRequest.md)| Payload to send verification link to email | |
 
 ### Return type
 
@@ -67,9 +67,9 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 

@@ -5,12 +5,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **String** |  | 
-**organizationId** | **String** |  | 
-**hrn** | **String** |  | 
-**description** | **String** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**name** | **String** |  |  |
+|**organizationId** | **String** |  |  |
+|**hrn** | **String** |  |  |
+|**description** | **String** |  |  [optional] |
 
 
 

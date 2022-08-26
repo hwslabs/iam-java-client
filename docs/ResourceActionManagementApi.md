@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createAction**](ResourceActionManagementApi.md#createAction) | **POST** /organizations/{organization_id}/resources/{resource_name}/actions | Create an action
-[**deleteAction**](ResourceActionManagementApi.md#deleteAction) | **DELETE** /organizations/{organization_id}/resources/{resource_name}/actions/{action_name} | Delete an action
-[**getAction**](ResourceActionManagementApi.md#getAction) | **GET** /organizations/{organization_id}/resources/{resource_name}/actions/{action_name} | Get an action
-[**listActions**](ResourceActionManagementApi.md#listActions) | **GET** /organizations/{organization_id}/resources/{resource_name}/actions | List actions
-[**updateAction**](ResourceActionManagementApi.md#updateAction) | **PATCH** /organizations/{organization_id}/resources/{resource_name}/actions/{action_name} | Update an action
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createAction**](ResourceActionManagementApi.md#createAction) | **POST** /organizations/{organization_id}/resources/{resource_name}/actions | Create an action |
+| [**deleteAction**](ResourceActionManagementApi.md#deleteAction) | **DELETE** /organizations/{organization_id}/resources/{resource_name}/actions/{action_name} | Delete an action |
+| [**getAction**](ResourceActionManagementApi.md#getAction) | **GET** /organizations/{organization_id}/resources/{resource_name}/actions/{action_name} | Get an action |
+| [**listActions**](ResourceActionManagementApi.md#listActions) | **GET** /organizations/{organization_id}/resources/{resource_name}/actions | List actions |
+| [**updateAction**](ResourceActionManagementApi.md#updateAction) | **PATCH** /organizations/{organization_id}/resources/{resource_name}/actions/{action_name} | Update an action |
 
 
 <a name="createAction"></a>
@@ -58,11 +58,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resourceName** | **String**|  |
- **createActionRequest** | [**CreateActionRequest**](CreateActionRequest.md)| Payload to create action |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resourceName** | **String**|  | |
+| **createActionRequest** | [**CreateActionRequest**](CreateActionRequest.md)| Payload to create action | |
 
 ### Return type
 
@@ -80,13 +80,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Response for action requests returning an action entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for action requests returning an action entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="deleteAction"></a>
 # **deleteAction**
@@ -135,11 +135,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resourceName** | **String**|  |
- **actionName** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resourceName** | **String**|  | |
+| **actionName** | **String**|  | |
 
 ### Return type
 
@@ -157,13 +157,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="getAction"></a>
 # **getAction**
@@ -212,11 +212,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resourceName** | **String**|  |
- **actionName** | **String**|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resourceName** | **String**|  | |
+| **actionName** | **String**|  | |
 
 ### Return type
 
@@ -234,13 +234,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for action requests returning an action entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for action requests returning an action entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="listActions"></a>
 # **listActions**
@@ -291,13 +291,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resourceName** | **String**|  |
- **nextToken** | **String**|  | [optional]
- **pageSize** | **String**|  | [optional]
- **sortOrder** | **String**|  | [optional] [enum: asc, desc]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resourceName** | **String**|  | |
+| **nextToken** | **String**|  | [optional] |
+| **pageSize** | **String**|  | [optional] |
+| **sortOrder** | **String**|  | [optional] [enum: asc, desc] |
 
 ### Return type
 
@@ -315,12 +315,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for list actions request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for list actions request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 <a name="updateAction"></a>
 # **updateAction**
@@ -370,12 +370,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organizationId** | **String**|  |
- **resourceName** | **String**|  |
- **actionName** | **String**|  |
- **updateActionRequest** | [**UpdateActionRequest**](UpdateActionRequest.md)| Payload to update action |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resourceName** | **String**|  | |
+| **actionName** | **String**|  | |
+| **updateActionRequest** | [**UpdateActionRequest**](UpdateActionRequest.md)| Payload to update action | |
 
 ### Return type
 
@@ -393,11 +393,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response for action requests returning an action entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-**0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for action requests returning an action entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
