@@ -110,8 +110,8 @@ public class RootUser {
    * Get name
    * @return name
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -280,7 +280,6 @@ public class RootUser {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("username");
-    openapiRequiredFields.add("name");
     openapiRequiredFields.add("passwordHash");
     openapiRequiredFields.add("email");
     openapiRequiredFields.add("verified");

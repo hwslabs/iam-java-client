@@ -7349,7 +7349,6 @@ components:
           type: boolean
       required:
       - email
-      - name
       - passwordHash
       - username
       - verified

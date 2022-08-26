@@ -9,7 +9,7 @@ Root user details for the organization
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**username** | **String** |  |  |
-|**name** | **String** |  |  |
+|**name** | **String** |  |  [optional] |
 |**passwordHash** | **String** |  |  |
 |**email** | **String** |  |  |
 |**phone** | **String** |  |  [optional] |
