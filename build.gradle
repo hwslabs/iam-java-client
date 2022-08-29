@@ -172,10 +172,13 @@ spotless {
 }
 
 task deleteFiles {
-    new File('.openapi-generator/FILES').eachLine {
-        def file = new File("$rootDir/$it")
-        if (file.exists()) {
-            file.delete()
+    // Adding doLast to the task as it should only run until called explicitly
+    doLast {
+        new File('.openapi-generator/FILES').eachLine {
+            def file = new File("$rootDir/$it")
+            if (file.exists()) {
+                file.delete()
+            }
         }
     }
 }
@@ -203,5 +206,3 @@ task generateClient(dependsOn: [deleteFiles], type: GenerateTask) {
             scmUrl: "https://github.com/hwslabs/iam-java-client.git"
     ]
 }
-
-compileJava.dependsOn deleteFiles, generateClient
