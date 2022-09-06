@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**hrn** | **String** |  |  |
 |**username** | **String** |  |  |
+|**preferredUsername** | **String** |  |  [optional] |
 |**name** | **String** |  |  |
 |**organizationId** | **String** |  |  |
 |**email** | **String** |  |  |

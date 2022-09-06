@@ -71,8 +71,8 @@ public class CreateOrganizationResponse {
    * Get organization
    * @return organization
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
   public Organization getOrganization() {
     return organization;
@@ -94,8 +94,8 @@ public class CreateOrganizationResponse {
    * JWT token of the root user
    * @return rootUserToken
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "JWT token of the root user")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "JWT token of the root user")
 
   public String getRootUserToken() {
     return rootUserToken;
@@ -159,6 +159,8 @@ public class CreateOrganizationResponse {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("organization");
+    openapiRequiredFields.add("rootUserToken");
   }
 
  /**
@@ -181,6 +183,13 @@ public class CreateOrganizationResponse {
       for (Entry<String, JsonElement> entry : entries) {
         if (!CreateOrganizationResponse.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateOrganizationResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateOrganizationResponse.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // validate the optional field `organization`

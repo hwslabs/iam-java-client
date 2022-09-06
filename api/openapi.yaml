@@ -6244,7 +6244,7 @@ components:
         name: ACME Enterprise
         description: Brief description about ACME
         rootUser:
-          username: username
+          preferredUsername: username
           name: Lorem Ipsum
           passwordHash: <password>
           email: root@example.com
@@ -6259,7 +6259,6 @@ components:
     CreateUserRequest:
       summary: A sample create user request
       value:
-        username: Bob
         name: Lorem Ipsum
         passwordHash: nii2du35bdtuethntv3q7416
         email: bob@acme.com
@@ -6362,7 +6361,7 @@ components:
           description: Brief description about ACME
           rootUser:
             hrn: hrn:XlK5h64gND::iam-user/Bob
-            username: Bob
+            username: 3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
             name: Lorem Ipsum
             organizationId: XlK5h64gND
             email: bob@acme.com
@@ -6404,8 +6403,8 @@ components:
     UserPaginatedResponse:
       value:
         data:
-        - hrn: hrn:XlK5h64gND::iam-user/Bob
-          username: Bob
+        - hrn: hrn:XlK5h64gND::iam-user/3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
+          username: 3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
           name: Lorem Ipsum
           organizationId: XlK5h64gND
           email: bob@acme.com
@@ -6472,8 +6471,8 @@ components:
         name: ACME Enterprise
         description: Brief description about ACME
         rootUser:
-          hrn: hrn:XlK5h64gND::iam-user/Bob
-          username: Bob
+          hrn: hrn:XlK5h64gND::iam-user/3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
+          username: 3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
           name: Lorem Ipsum
           organizationId: XlK5h64gND
           email: bob@acme.com
@@ -6488,8 +6487,8 @@ components:
     User:
       summary: A sample user
       value:
-        hrn: hrn:XlK5h64gND::iam-user/Bob
-        username: Bob
+        hrn: hrn:XlK5h64gND::iam-user/3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
+        username: 3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
         name: Lorem Ipsum
         organizationId: XlK5h64gND
         email: bob@acme.com
@@ -7286,12 +7285,12 @@ components:
       description: Payload to create organization
       example:
         rootUser:
+          preferredUsername: preferredUsername
           phone: phone
           name: name
           verified: true
           passwordHash: passwordHash
           email: email
-          username: username
         name: name
         description: description
       properties:
@@ -7327,14 +7326,14 @@ components:
       additionalProperties: false
       description: Root user details for the organization
       example:
+        preferredUsername: preferredUsername
         phone: phone
         name: name
         verified: true
         passwordHash: passwordHash
         email: email
-        username: username
       properties:
-        username:
+        preferredUsername:
           maxLength: 50
           pattern: "^[A-Za-z0-9]{3,50}$"
           type: string
@@ -7363,15 +7362,15 @@ components:
       additionalProperties: false
       description: Payload to create ledger account
       example:
+        preferredUsername: preferredUsername
         phone: phone
         name: name
         verified: true
         passwordHash: passwordHash
         email: email
-        username: username
         status: enabled
       properties:
-        username:
+        preferredUsername:
           maxLength: 50
           pattern: "^[A-Za-z0-9]{3,50}$"
           type: string
@@ -7400,7 +7399,6 @@ components:
       - name
       - passwordHash
       - status
-      - username
       type: object
     UpdateUserRequest:
       additionalProperties: false
@@ -7751,6 +7749,7 @@ components:
           rootUser:
             organizationId: organizationId
             hrn: hrn
+            preferredUsername: preferredUsername
             phone: phone
             createdBy: createdBy
             name: name
@@ -7770,6 +7769,9 @@ components:
         rootUserToken:
           description: JWT token of the root user
           type: string
+      required:
+      - organization
+      - rootUserToken
       type: object
     ListCredentialResponse:
       additionalProperties: false
@@ -7815,6 +7817,7 @@ components:
         data:
         - organizationId: organizationId
           hrn: hrn
+          preferredUsername: preferredUsername
           phone: phone
           createdBy: createdBy
           name: name
@@ -7825,6 +7828,7 @@ components:
           status: enabled
         - organizationId: organizationId
           hrn: hrn
+          preferredUsername: preferredUsername
           phone: phone
           createdBy: createdBy
           name: name
@@ -7993,6 +7997,7 @@ components:
         rootUser:
           organizationId: organizationId
           hrn: hrn
+          preferredUsername: preferredUsername
           phone: phone
           createdBy: createdBy
           name: name
@@ -8035,6 +8040,7 @@ components:
       example:
         organizationId: organizationId
         hrn: hrn
+        preferredUsername: preferredUsername
         phone: phone
         createdBy: createdBy
         name: name
@@ -8047,6 +8053,9 @@ components:
         hrn:
           type: string
         username:
+          maxLength: 50
+          type: string
+        preferredUsername:
           maxLength: 50
           type: string
         name:

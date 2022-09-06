@@ -50,9 +50,9 @@ import com.hypto.iam.client.JSON;
 @ApiModel(description = "Root user details for the organization")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RootUser {
-  public static final String SERIALIZED_NAME_USERNAME = "username";
-  @SerializedName(SERIALIZED_NAME_USERNAME)
-  private String username;
+  public static final String SERIALIZED_NAME_PREFERRED_USERNAME = "preferredUsername";
+  @SerializedName(SERIALIZED_NAME_PREFERRED_USERNAME)
+  private String preferredUsername;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -77,26 +77,26 @@ public class RootUser {
   public RootUser() { 
   }
 
-  public RootUser username(String username) {
+  public RootUser preferredUsername(String preferredUsername) {
     
-    this.username = username;
+    this.preferredUsername = preferredUsername;
     return this;
   }
 
    /**
-   * Get username
-   * @return username
+   * Get preferredUsername
+   * @return preferredUsername
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getUsername() {
-    return username;
+  public String getPreferredUsername() {
+    return preferredUsername;
   }
 
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setPreferredUsername(String preferredUsername) {
+    this.preferredUsername = preferredUsername;
   }
 
 
@@ -225,7 +225,7 @@ public class RootUser {
       return false;
     }
     RootUser rootUser = (RootUser) o;
-    return Objects.equals(this.username, rootUser.username) &&
+    return Objects.equals(this.preferredUsername, rootUser.preferredUsername) &&
         Objects.equals(this.name, rootUser.name) &&
         Objects.equals(this.passwordHash, rootUser.passwordHash) &&
         Objects.equals(this.email, rootUser.email) &&
@@ -235,14 +235,14 @@ public class RootUser {
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, name, passwordHash, email, phone, verified);
+    return Objects.hash(preferredUsername, name, passwordHash, email, phone, verified);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RootUser {\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    preferredUsername: ").append(toIndentedString(preferredUsername)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
@@ -270,7 +270,7 @@ public class RootUser {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("username");
+    openapiFields.add("preferredUsername");
     openapiFields.add("name");
     openapiFields.add("passwordHash");
     openapiFields.add("email");
@@ -279,7 +279,6 @@ public class RootUser {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("username");
     openapiRequiredFields.add("passwordHash");
     openapiRequiredFields.add("email");
     openapiRequiredFields.add("verified");
@@ -314,8 +313,8 @@ public class RootUser {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("username") != null && !jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+      if (jsonObj.get("preferredUsername") != null && !jsonObj.get("preferredUsername").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `preferredUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("preferredUsername").toString()));
       }
       if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

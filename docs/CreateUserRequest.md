@@ -8,7 +8,7 @@ Payload to create ledger account
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**username** | **String** |  |  |
+|**preferredUsername** | **String** |  |  [optional] |
 |**name** | **String** |  |  |
 |**passwordHash** | **String** |  |  |
 |**email** | **String** |  |  |

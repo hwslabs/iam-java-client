@@ -57,6 +57,10 @@ public class User {
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
 
+  public static final String SERIALIZED_NAME_PREFERRED_USERNAME = "preferredUsername";
+  @SerializedName(SERIALIZED_NAME_PREFERRED_USERNAME)
+  private String preferredUsername;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -182,6 +186,29 @@ public class User {
 
   public void setUsername(String username) {
     this.username = username;
+  }
+
+
+  public User preferredUsername(String preferredUsername) {
+    
+    this.preferredUsername = preferredUsername;
+    return this;
+  }
+
+   /**
+   * Get preferredUsername
+   * @return preferredUsername
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPreferredUsername() {
+    return preferredUsername;
+  }
+
+
+  public void setPreferredUsername(String preferredUsername) {
+    this.preferredUsername = preferredUsername;
   }
 
 
@@ -381,6 +408,7 @@ public class User {
     User user = (User) o;
     return Objects.equals(this.hrn, user.hrn) &&
         Objects.equals(this.username, user.username) &&
+        Objects.equals(this.preferredUsername, user.preferredUsername) &&
         Objects.equals(this.name, user.name) &&
         Objects.equals(this.organizationId, user.organizationId) &&
         Objects.equals(this.email, user.email) &&
@@ -393,7 +421,7 @@ public class User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hrn, username, name, organizationId, email, status, phone, loginAccess, createdBy, verified);
+    return Objects.hash(hrn, username, preferredUsername, name, organizationId, email, status, phone, loginAccess, createdBy, verified);
   }
 
   @Override
@@ -402,6 +430,7 @@ public class User {
     sb.append("class User {\n");
     sb.append("    hrn: ").append(toIndentedString(hrn)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    preferredUsername: ").append(toIndentedString(preferredUsername)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
@@ -434,6 +463,7 @@ public class User {
     openapiFields = new HashSet<String>();
     openapiFields.add("hrn");
     openapiFields.add("username");
+    openapiFields.add("preferredUsername");
     openapiFields.add("name");
     openapiFields.add("organizationId");
     openapiFields.add("email");
@@ -488,6 +518,9 @@ public class User {
       }
       if (jsonObj.get("username") != null && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+      }
+      if (jsonObj.get("preferredUsername") != null && !jsonObj.get("preferredUsername").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `preferredUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("preferredUsername").toString()));
       }
       if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
