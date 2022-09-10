@@ -183,6 +183,35 @@ task deleteFiles {
     }
 }
 
+task generateClient2(dependsOn: [deleteFiles], type: GenerateTask) {
+    generatorName = "java"
+    inputSpec = "$rootDir/iam_openapi_spec.yml".toString()
+    outputDir = "$rootDir".toString()
+    templateDir = "$rootDir/templates"
+    groupId = "com.hypto"
+    id = "iam-java-client"
+    invokerPackage = "com.hypto.iam.client"
+    modelPackage = "com.hypto.iam.client.model"
+    apiPackage = "com.hypto.iam.client.api"
+    generateModelTests = false
+    generateApiTests = false
+    configOptions = [
+            hideGenerationTimestamp : "true",
+            dateLibrary: "java8",
+
+            artifactDescription: "IAM Java Client",
+            artifactUrl: "https://github.com/hwslabs/iam-java-client",
+            scmConnection: "scm:git:git@github.com:hwslabs/iam-java-client.git",
+            scmDeveloperConnection: "scm:git:git@github.com:hwslabs/iam-java-client.git",
+            scmUrl: "https://github.com/hwslabs/iam-java-client.git"
+    ]
+    additionalProperties = [
+            library: "retrofit2",
+            useCoroutines: "true"
+    ]
+}
+
+
 
 task generateClient(dependsOn: [deleteFiles], type: GenerateTask) {
     generatorName = "java"
