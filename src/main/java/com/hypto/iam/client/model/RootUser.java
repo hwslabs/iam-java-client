@@ -10,237 +10,222 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Root user details for the organization
- */
+/** Root user details for the organization */
 @ApiModel(description = "Root user details for the organization")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RootUser {
-  public static final String SERIALIZED_NAME_PREFERRED_USERNAME = "preferredUsername";
-  @SerializedName(SERIALIZED_NAME_PREFERRED_USERNAME)
-  private String preferredUsername;
+    public static final String SERIALIZED_NAME_PREFERRED_USERNAME = "preferredUsername";
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+    @SerializedName(SERIALIZED_NAME_PREFERRED_USERNAME)
+    private String preferredUsername;
 
-  public static final String SERIALIZED_NAME_PASSWORD_HASH = "passwordHash";
-  @SerializedName(SERIALIZED_NAME_PASSWORD_HASH)
-  private String passwordHash;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-  public static final String SERIALIZED_NAME_EMAIL = "email";
-  @SerializedName(SERIALIZED_NAME_EMAIL)
-  private String email;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-  public static final String SERIALIZED_NAME_PHONE = "phone";
-  @SerializedName(SERIALIZED_NAME_PHONE)
-  private String phone;
+    public static final String SERIALIZED_NAME_PASSWORD_HASH = "passwordHash";
 
-  public static final String SERIALIZED_NAME_VERIFIED = "verified";
-  @SerializedName(SERIALIZED_NAME_VERIFIED)
-  private Boolean verified;
+    @SerializedName(SERIALIZED_NAME_PASSWORD_HASH)
+    private String passwordHash;
 
-  public RootUser() { 
-  }
+    public static final String SERIALIZED_NAME_EMAIL = "email";
 
-  public RootUser preferredUsername(String preferredUsername) {
-    
-    this.preferredUsername = preferredUsername;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_EMAIL)
+    private String email;
 
-   /**
-   * Get preferredUsername
-   * @return preferredUsername
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+    public static final String SERIALIZED_NAME_PHONE = "phone";
 
-  public String getPreferredUsername() {
-    return preferredUsername;
-  }
+    @SerializedName(SERIALIZED_NAME_PHONE)
+    private String phone;
 
+    public static final String SERIALIZED_NAME_VERIFIED = "verified";
 
-  public void setPreferredUsername(String preferredUsername) {
-    this.preferredUsername = preferredUsername;
-  }
+    @SerializedName(SERIALIZED_NAME_VERIFIED)
+    private Boolean verified;
 
+    public RootUser() {}
 
-  public RootUser name(String name) {
-    
-    this.name = name;
-    return this;
-  }
+    public RootUser preferredUsername(String preferredUsername) {
 
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public RootUser passwordHash(String passwordHash) {
-    
-    this.passwordHash = passwordHash;
-    return this;
-  }
-
-   /**
-   * Get passwordHash
-   * @return passwordHash
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPasswordHash() {
-    return passwordHash;
-  }
-
-
-  public void setPasswordHash(String passwordHash) {
-    this.passwordHash = passwordHash;
-  }
-
-
-  public RootUser email(String email) {
-    
-    this.email = email;
-    return this;
-  }
-
-   /**
-   * Get email
-   * @return email
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getEmail() {
-    return email;
-  }
-
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-
-  public RootUser phone(String phone) {
-    
-    this.phone = phone;
-    return this;
-  }
-
-   /**
-   * Get phone
-   * @return phone
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getPhone() {
-    return phone;
-  }
-
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-
-  public RootUser verified(Boolean verified) {
-    
-    this.verified = verified;
-    return this;
-  }
-
-   /**
-   * Get verified
-   * @return verified
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getVerified() {
-    return verified;
-  }
-
-
-  public void setVerified(Boolean verified) {
-    this.verified = verified;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.preferredUsername = preferredUsername;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get preferredUsername
+     *
+     * @return preferredUsername
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getPreferredUsername() {
+        return preferredUsername;
     }
-    RootUser rootUser = (RootUser) o;
-    return Objects.equals(this.preferredUsername, rootUser.preferredUsername) &&
-        Objects.equals(this.name, rootUser.name) &&
-        Objects.equals(this.passwordHash, rootUser.passwordHash) &&
-        Objects.equals(this.email, rootUser.email) &&
-        Objects.equals(this.phone, rootUser.phone) &&
-        Objects.equals(this.verified, rootUser.verified);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(preferredUsername, name, passwordHash, email, phone, verified);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RootUser {\n");
-    sb.append("    preferredUsername: ").append(toIndentedString(preferredUsername)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
-    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setPreferredUsername(String preferredUsername) {
+        this.preferredUsername = preferredUsername;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public RootUser name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RootUser passwordHash(String passwordHash) {
+
+        this.passwordHash = passwordHash;
+        return this;
+    }
+
+    /**
+     * Get passwordHash
+     *
+     * @return passwordHash
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public RootUser email(String email) {
+
+        this.email = email;
+        return this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return email
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public RootUser phone(String phone) {
+
+        this.phone = phone;
+        return this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return phone
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public RootUser verified(Boolean verified) {
+
+        this.verified = verified;
+        return this;
+    }
+
+    /**
+     * Get verified
+     *
+     * @return verified
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RootUser rootUser = (RootUser) o;
+        return Objects.equals(this.preferredUsername, rootUser.preferredUsername)
+                && Objects.equals(this.name, rootUser.name)
+                && Objects.equals(this.passwordHash, rootUser.passwordHash)
+                && Objects.equals(this.email, rootUser.email)
+                && Objects.equals(this.phone, rootUser.phone)
+                && Objects.equals(this.verified, rootUser.verified);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(preferredUsername, name, passwordHash, email, phone, verified);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class RootUser {\n");
+        sb.append("    preferredUsername: ")
+                .append(toIndentedString(preferredUsername))
+                .append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
+        sb.append("    email: ").append(toIndentedString(email)).append("\n");
+        sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+        sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

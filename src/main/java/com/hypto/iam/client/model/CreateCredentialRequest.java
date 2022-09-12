@@ -10,92 +10,80 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Payload to create credential
- */
+/** Payload to create credential */
 @ApiModel(description = "Payload to create credential")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCredentialRequest {
-  public static final String SERIALIZED_NAME_VALID_UNTIL = "validUntil";
-  @SerializedName(SERIALIZED_NAME_VALID_UNTIL)
-  private String validUntil;
+    public static final String SERIALIZED_NAME_VALID_UNTIL = "validUntil";
 
-  public CreateCredentialRequest() { 
-  }
+    @SerializedName(SERIALIZED_NAME_VALID_UNTIL)
+    private String validUntil;
 
-  public CreateCredentialRequest validUntil(String validUntil) {
-    
-    this.validUntil = validUntil;
-    return this;
-  }
+    public CreateCredentialRequest() {}
 
-   /**
-   * Get validUntil
-   * @return validUntil
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+    public CreateCredentialRequest validUntil(String validUntil) {
 
-  public String getValidUntil() {
-    return validUntil;
-  }
-
-
-  public void setValidUntil(String validUntil) {
-    this.validUntil = validUntil;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.validUntil = validUntil;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get validUntil
+     *
+     * @return validUntil
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getValidUntil() {
+        return validUntil;
     }
-    CreateCredentialRequest createCredentialRequest = (CreateCredentialRequest) o;
-    return Objects.equals(this.validUntil, createCredentialRequest.validUntil);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(validUntil);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateCredentialRequest {\n");
-    sb.append("    validUntil: ").append(toIndentedString(validUntil)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setValidUntil(String validUntil) {
+        this.validUntil = validUntil;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateCredentialRequest createCredentialRequest = (CreateCredentialRequest) o;
+        return Objects.equals(this.validUntil, createCredentialRequest.validUntil);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(validUntil);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateCredentialRequest {\n");
+        sb.append("    validUntil: ").append(toIndentedString(validUntil)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

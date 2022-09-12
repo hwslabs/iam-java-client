@@ -10,100 +10,87 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.ResourceAction;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-/**
- * Payload to validate if a user has access to a resource-action
- */
+/** Payload to validate if a user has access to a resource-action */
 @ApiModel(description = "Payload to validate if a user has access to a resource-action")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValidationRequest {
-  public static final String SERIALIZED_NAME_VALIDATIONS = "validations";
-  @SerializedName(SERIALIZED_NAME_VALIDATIONS)
-  private List<ResourceAction> validations = new ArrayList<>();
+    public static final String SERIALIZED_NAME_VALIDATIONS = "validations";
 
-  public ValidationRequest() { 
-  }
+    @SerializedName(SERIALIZED_NAME_VALIDATIONS)
+    private List<ResourceAction> validations = new ArrayList<>();
 
-  public ValidationRequest validations(List<ResourceAction> validations) {
-    
-    this.validations = validations;
-    return this;
-  }
+    public ValidationRequest() {}
 
-  public ValidationRequest addValidationsItem(ResourceAction validationsItem) {
-    this.validations.add(validationsItem);
-    return this;
-  }
+    public ValidationRequest validations(List<ResourceAction> validations) {
 
-   /**
-   * Get validations
-   * @return validations
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<ResourceAction> getValidations() {
-    return validations;
-  }
-
-
-  public void setValidations(List<ResourceAction> validations) {
-    this.validations = validations;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.validations = validations;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public ValidationRequest addValidationsItem(ResourceAction validationsItem) {
+        this.validations.add(validationsItem);
+        return this;
     }
-    ValidationRequest validationRequest = (ValidationRequest) o;
-    return Objects.equals(this.validations, validationRequest.validations);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(validations);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ValidationRequest {\n");
-    sb.append("    validations: ").append(toIndentedString(validations)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get validations
+     *
+     * @return validations
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public List<ResourceAction> getValidations() {
+        return validations;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public void setValidations(List<ResourceAction> validations) {
+        this.validations = validations;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ValidationRequest validationRequest = (ValidationRequest) o;
+        return Objects.equals(this.validations, validationRequest.validations);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(validations);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ValidationRequest {\n");
+        sb.append("    validations: ").append(toIndentedString(validations)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

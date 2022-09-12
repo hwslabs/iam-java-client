@@ -10,100 +10,87 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.ResourceActionEffect;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-/**
- * Payload to validate if a user has access to a resource-action
- */
+/** Payload to validate if a user has access to a resource-action */
 @ApiModel(description = "Payload to validate if a user has access to a resource-action")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValidationResponse {
-  public static final String SERIALIZED_NAME_RESULTS = "results";
-  @SerializedName(SERIALIZED_NAME_RESULTS)
-  private List<ResourceActionEffect> results = new ArrayList<>();
+    public static final String SERIALIZED_NAME_RESULTS = "results";
 
-  public ValidationResponse() { 
-  }
+    @SerializedName(SERIALIZED_NAME_RESULTS)
+    private List<ResourceActionEffect> results = new ArrayList<>();
 
-  public ValidationResponse results(List<ResourceActionEffect> results) {
-    
-    this.results = results;
-    return this;
-  }
+    public ValidationResponse() {}
 
-  public ValidationResponse addResultsItem(ResourceActionEffect resultsItem) {
-    this.results.add(resultsItem);
-    return this;
-  }
+    public ValidationResponse results(List<ResourceActionEffect> results) {
 
-   /**
-   * Get results
-   * @return results
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<ResourceActionEffect> getResults() {
-    return results;
-  }
-
-
-  public void setResults(List<ResourceActionEffect> results) {
-    this.results = results;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.results = results;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public ValidationResponse addResultsItem(ResourceActionEffect resultsItem) {
+        this.results.add(resultsItem);
+        return this;
     }
-    ValidationResponse validationResponse = (ValidationResponse) o;
-    return Objects.equals(this.results, validationResponse.results);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(results);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ValidationResponse {\n");
-    sb.append("    results: ").append(toIndentedString(results)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get results
+     *
+     * @return results
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public List<ResourceActionEffect> getResults() {
+        return results;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public void setResults(List<ResourceActionEffect> results) {
+        this.results = results;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ValidationResponse validationResponse = (ValidationResponse) o;
+        return Objects.equals(this.results, validationResponse.results);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(results);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ValidationResponse {\n");
+        sb.append("    results: ").append(toIndentedString(results)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

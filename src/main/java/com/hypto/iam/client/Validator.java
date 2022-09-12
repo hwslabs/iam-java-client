@@ -1,29 +1,27 @@
 package com.hypto.iam.client;
 
+
 import com.hypto.iam.client.api.UserAuthorizationApi;
 import com.hypto.iam.client.exceptions.IamAuthenticationException;
 import com.hypto.iam.client.model.ResourceAction;
 import com.hypto.iam.client.model.ResourceActionEffect;
-
 import com.hypto.iam.client.model.TokenResponse;
 import com.hypto.iam.client.model.ValidationRequest;
 import com.hypto.iam.client.model.ValidationResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import org.apache.commons.io.IOUtils;
 import org.casbin.jcasbin.main.CoreEnforcer;
 import org.casbin.jcasbin.main.Enforcer;
 import org.casbin.jcasbin.model.Model;
 import org.casbin.jcasbin.persist.file_adapter.FileAdapter;
 import retrofit2.Response;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-
 
 public class Validator {
 
@@ -33,7 +31,10 @@ public class Validator {
 
         private final boolean skipSignatureValidation;
 
-        public ValidatorConfig(ApiClient apiClient, SigningKeyResolver signingKeyResolver, boolean skipSignatureValidation) {
+        public ValidatorConfig(
+                ApiClient apiClient,
+                SigningKeyResolver signingKeyResolver,
+                boolean skipSignatureValidation) {
             this.apiClient = apiClient;
             this.signingKeyResolver = signingKeyResolver;
             this.skipSignatureValidation = skipSignatureValidation;
@@ -55,6 +56,7 @@ public class Validator {
             this(new ApiClient());
         }
     }
+
     private static final String USER_CLAIM = "usr";
     private static final String ENTITLEMENTS_CLAIM = "entitlements";
     private static final String ORGANIZATION_CLAIM = "org";
@@ -71,7 +73,8 @@ public class Validator {
     public ValidatorConfig config;
 
     static {
-        InputStream in = Objects.requireNonNull(Validator.class.getResourceAsStream("/casbin_model.conf"));
+        InputStream in =
+                Objects.requireNonNull(Validator.class.getResourceAsStream("/casbin_model.conf"));
         String casbinModel;
         try {
             casbinModel = IOUtils.toString(in, StandardCharsets.UTF_8);
@@ -87,7 +90,11 @@ public class Validator {
             String unsignedToken = token.substring(0, token.lastIndexOf(".") + 1);
             this.claims = Jwts.parserBuilder().build().parseClaimsJwt(unsignedToken).getBody();
         } else {
-            Jws<Claims> jws = Jwts.parserBuilder().setSigningKeyResolver(config.signingKeyResolver).build().parseClaimsJws(token);
+            Jws<Claims> jws =
+                    Jwts.parserBuilder()
+                            .setSigningKeyResolver(config.signingKeyResolver)
+                            .build()
+                            .parseClaimsJws(token);
             this.claims = jws.getBody();
         }
 
@@ -103,8 +110,12 @@ public class Validator {
             throw new IamAuthenticationException("Invalid version");
         }
 
-        this.enforcer = new Enforcer(model, new FileAdapter(
-                new ByteArrayInputStream(entitlements.getBytes(StandardCharsets.UTF_8))));
+        this.enforcer =
+                new Enforcer(
+                        model,
+                        new FileAdapter(
+                                new ByteArrayInputStream(
+                                        entitlements.getBytes(StandardCharsets.UTF_8))));
     }
 
     public Validator(String token) throws IamAuthenticationException {
@@ -116,7 +127,9 @@ public class Validator {
     }
 
     public boolean validate(String resourceHrn, String actionHrn, boolean isLocal) {
-        return isLocal ? validateLocal(resourceHrn, actionHrn) : validateRemote(resourceHrn, actionHrn);
+        return isLocal
+                ? validateLocal(resourceHrn, actionHrn)
+                : validateRemote(resourceHrn, actionHrn);
     }
 
     public boolean validate(String resourceHrn, String actionHrn) {
@@ -132,15 +145,19 @@ public class Validator {
             throw new IllegalStateException("ApiClient is not initialized");
         }
 
-        UserAuthorizationApi apiInstance = config.apiClient.createService(UserAuthorizationApi.class);
+        UserAuthorizationApi apiInstance =
+                config.apiClient.createService(UserAuthorizationApi.class);
 
-        ValidationRequest request = new ValidationRequest().addValidationsItem(
-                new ResourceAction().resource(resourceHrn).action(actionHrn));
+        ValidationRequest request =
+                new ValidationRequest()
+                        .addValidationsItem(
+                                new ResourceAction().resource(resourceHrn).action(actionHrn));
 
         try {
             Response<ValidationResponse> response = apiInstance.validate(request).execute();
             if (response.isSuccessful() && response.body() != null) {
-                return response.body().getResults().get(0).getEffect() == ResourceActionEffect.EffectEnum.ALLOW;
+                return response.body().getResults().get(0).getEffect()
+                        == ResourceActionEffect.EffectEnum.ALLOW;
             }
             return false;
         } catch (IOException e) {

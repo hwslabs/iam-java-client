@@ -10,11 +10,9 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,242 +21,232 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Payload to create ledger account
- */
+/** Payload to create ledger account */
 @ApiModel(description = "Payload to create ledger account")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateUserRequest {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-  public static final String SERIALIZED_NAME_EMAIL = "email";
-  @SerializedName(SERIALIZED_NAME_EMAIL)
-  private String email;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-  public static final String SERIALIZED_NAME_PHONE = "phone";
-  @SerializedName(SERIALIZED_NAME_PHONE)
-  private String phone;
+    public static final String SERIALIZED_NAME_EMAIL = "email";
 
-  /**
-   * Gets or Sets status
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    ENABLED("enabled"),
-    
-    DISABLED("disabled");
+    @SerializedName(SERIALIZED_NAME_EMAIL)
+    private String email;
 
-    private String value;
+    public static final String SERIALIZED_NAME_PHONE = "phone";
 
-    StatusEnum(String value) {
-      this.value = value;
+    @SerializedName(SERIALIZED_NAME_PHONE)
+    private String phone;
+
+    /** Gets or Sets status */
+    @JsonAdapter(StatusEnum.Adapter.class)
+    public enum StatusEnum {
+        ENABLED("enabled"),
+
+        DISABLED("disabled");
+
+        private String value;
+
+        StatusEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static StatusEnum fromValue(String value) {
+            for (StatusEnum b : StatusEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<StatusEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StatusEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
+            }
+        }
     }
 
-    public String getValue() {
-      return value;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
+
+    public static final String SERIALIZED_NAME_VERIFIED = "verified";
+
+    @SerializedName(SERIALIZED_NAME_VERIFIED)
+    private Boolean verified;
+
+    public UpdateUserRequest() {}
+
+    public UpdateUserRequest name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UpdateUserRequest email(String email) {
+
+        this.email = email;
+        return this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return email
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public UpdateUserRequest phone(String phone) {
+
+        this.phone = phone;
+        return this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return phone
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public UpdateUserRequest status(StatusEnum status) {
+
+        this.status = status;
+        return this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return status
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
+    }
+
+    public UpdateUserRequest verified(Boolean verified) {
+
+        this.verified = verified;
+        return this;
+    }
+
+    /**
+     * Get verified
+     *
+     * @return verified
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        UpdateUserRequest updateUserRequest = (UpdateUserRequest) o;
+        return Objects.equals(this.name, updateUserRequest.name)
+                && Objects.equals(this.email, updateUserRequest.email)
+                && Objects.equals(this.phone, updateUserRequest.phone)
+                && Objects.equals(this.status, updateUserRequest.status)
+                && Objects.equals(this.verified, updateUserRequest.verified);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, email, phone, status, verified);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class UpdateUserRequest {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    email: ").append(toIndentedString(email)).append("\n");
+        sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return o.toString().replace("\n", "\n    ");
     }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
-
-  public static final String SERIALIZED_NAME_VERIFIED = "verified";
-  @SerializedName(SERIALIZED_NAME_VERIFIED)
-  private Boolean verified;
-
-  public UpdateUserRequest() { 
-  }
-
-  public UpdateUserRequest name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public UpdateUserRequest email(String email) {
-    
-    this.email = email;
-    return this;
-  }
-
-   /**
-   * Get email
-   * @return email
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getEmail() {
-    return email;
-  }
-
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-
-  public UpdateUserRequest phone(String phone) {
-    
-    this.phone = phone;
-    return this;
-  }
-
-   /**
-   * Get phone
-   * @return phone
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getPhone() {
-    return phone;
-  }
-
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-
-  public UpdateUserRequest status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public UpdateUserRequest verified(Boolean verified) {
-    
-    this.verified = verified;
-    return this;
-  }
-
-   /**
-   * Get verified
-   * @return verified
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getVerified() {
-    return verified;
-  }
-
-
-  public void setVerified(Boolean verified) {
-    this.verified = verified;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    UpdateUserRequest updateUserRequest = (UpdateUserRequest) o;
-    return Objects.equals(this.name, updateUserRequest.name) &&
-        Objects.equals(this.email, updateUserRequest.email) &&
-        Objects.equals(this.phone, updateUserRequest.phone) &&
-        Objects.equals(this.status, updateUserRequest.status) &&
-        Objects.equals(this.verified, updateUserRequest.verified);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, email, phone, status, verified);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateUserRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
 }
-

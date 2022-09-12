@@ -10,99 +10,85 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.UserPolicy;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-/**
- * GetUserPoliciesResponse
- */
+/** GetUserPoliciesResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GetUserPoliciesResponse {
-  public static final String SERIALIZED_NAME_POLICIES = "policies";
-  @SerializedName(SERIALIZED_NAME_POLICIES)
-  private List<UserPolicy> policies = new ArrayList<>();
+    public static final String SERIALIZED_NAME_POLICIES = "policies";
 
-  public GetUserPoliciesResponse() { 
-  }
+    @SerializedName(SERIALIZED_NAME_POLICIES)
+    private List<UserPolicy> policies = new ArrayList<>();
 
-  public GetUserPoliciesResponse policies(List<UserPolicy> policies) {
-    
-    this.policies = policies;
-    return this;
-  }
+    public GetUserPoliciesResponse() {}
 
-  public GetUserPoliciesResponse addPoliciesItem(UserPolicy policiesItem) {
-    this.policies.add(policiesItem);
-    return this;
-  }
+    public GetUserPoliciesResponse policies(List<UserPolicy> policies) {
 
-   /**
-   * Get policies
-   * @return policies
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<UserPolicy> getPolicies() {
-    return policies;
-  }
-
-
-  public void setPolicies(List<UserPolicy> policies) {
-    this.policies = policies;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.policies = policies;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public GetUserPoliciesResponse addPoliciesItem(UserPolicy policiesItem) {
+        this.policies.add(policiesItem);
+        return this;
     }
-    GetUserPoliciesResponse getUserPoliciesResponse = (GetUserPoliciesResponse) o;
-    return Objects.equals(this.policies, getUserPoliciesResponse.policies);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(policies);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetUserPoliciesResponse {\n");
-    sb.append("    policies: ").append(toIndentedString(policies)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get policies
+     *
+     * @return policies
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public List<UserPolicy> getPolicies() {
+        return policies;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public void setPolicies(List<UserPolicy> policies) {
+        this.policies = policies;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GetUserPoliciesResponse getUserPoliciesResponse = (GetUserPoliciesResponse) o;
+        return Objects.equals(this.policies, getUserPoliciesResponse.policies);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(policies);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GetUserPoliciesResponse {\n");
+        sb.append("    policies: ").append(toIndentedString(policies)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

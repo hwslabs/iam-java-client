@@ -1,14 +1,12 @@
 package com.hypto.iam.client;
 
+
 import com.hypto.iam.client.api.KeyManagementApi;
 import com.hypto.iam.client.exceptions.IamApiException;
 import com.hypto.iam.client.model.KeyResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.SigningKeyResolverAdapter;
-import io.swagger.annotations.Api;
-import retrofit2.Response;
-
 import java.io.IOException;
 import java.security.Key;
 import java.security.KeyFactory;
@@ -18,6 +16,7 @@ import java.security.spec.X509EncodedKeySpec;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
+import retrofit2.Response;
 
 public class SigningKeyResolver extends SigningKeyResolverAdapter {
     static final int cacheRefreshInterval = 60 * 10; // 10 minutes
@@ -47,13 +46,12 @@ public class SigningKeyResolver extends SigningKeyResolverAdapter {
             lastRefreshTime = Instant.now();
         }
 
-        if (keysMap.containsKey(keyId))
-            return keysMap.get(keyId);
+        if (keysMap.containsKey(keyId)) return keysMap.get(keyId);
 
         KeyManagementApi apiInstance = this.apiClient.createService(KeyManagementApi.class);
         try {
             Response<KeyResponse> response = apiInstance.getKey(keyId, "der", "public").execute();
-            if(!response.isSuccessful() || response.body() == null) {
+            if (!response.isSuccessful() || response.body() == null) {
                 throw new IamApiException(response.message());
             }
             KeyResponse result = response.body();
@@ -63,7 +61,10 @@ public class SigningKeyResolver extends SigningKeyResolverAdapter {
             Key publicKey = keyFactory.generatePublic(keySpec);
             keysMap.put(keyId, publicKey);
             return publicKey;
-        } catch (IamApiException | IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+        } catch (IamApiException
+                | IOException
+                | NoSuchAlgorithmException
+                | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
     }

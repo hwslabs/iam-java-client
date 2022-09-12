@@ -1,7 +1,7 @@
 package com.hypto.iam.client.auth;
 
-import java.io.IOException;
 
+import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -28,9 +28,13 @@ public class HttpBearerAuth implements Interceptor {
 
         // If the request already have an authorization (eg. Basic auth), do nothing
         if (request.header("Authorization") == null && bearerToken != null) {
-            request = request.newBuilder()
-                    .addHeader("Authorization", (scheme != null ? upperCaseBearer(scheme) + " " : "") + bearerToken)
-                    .build();
+            request =
+                    request.newBuilder()
+                            .addHeader(
+                                    "Authorization",
+                                    (scheme != null ? upperCaseBearer(scheme) + " " : "")
+                                            + bearerToken)
+                            .build();
         }
         return chain.proceed(request);
     }
@@ -38,5 +42,4 @@ public class HttpBearerAuth implements Interceptor {
     private static String upperCaseBearer(String scheme) {
         return ("bearer".equalsIgnoreCase(scheme)) ? "Bearer" : scheme;
     }
-
 }

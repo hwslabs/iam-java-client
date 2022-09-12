@@ -10,100 +10,87 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.PolicyStatement;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-/**
- * Payload to update action
- */
+/** Payload to update action */
 @ApiModel(description = "Payload to update action")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdatePolicyRequest {
-  public static final String SERIALIZED_NAME_STATEMENTS = "statements";
-  @SerializedName(SERIALIZED_NAME_STATEMENTS)
-  private List<PolicyStatement> statements = new ArrayList<>();
+    public static final String SERIALIZED_NAME_STATEMENTS = "statements";
 
-  public UpdatePolicyRequest() { 
-  }
+    @SerializedName(SERIALIZED_NAME_STATEMENTS)
+    private List<PolicyStatement> statements = new ArrayList<>();
 
-  public UpdatePolicyRequest statements(List<PolicyStatement> statements) {
-    
-    this.statements = statements;
-    return this;
-  }
+    public UpdatePolicyRequest() {}
 
-  public UpdatePolicyRequest addStatementsItem(PolicyStatement statementsItem) {
-    this.statements.add(statementsItem);
-    return this;
-  }
+    public UpdatePolicyRequest statements(List<PolicyStatement> statements) {
 
-   /**
-   * Get statements
-   * @return statements
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<PolicyStatement> getStatements() {
-    return statements;
-  }
-
-
-  public void setStatements(List<PolicyStatement> statements) {
-    this.statements = statements;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.statements = statements;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public UpdatePolicyRequest addStatementsItem(PolicyStatement statementsItem) {
+        this.statements.add(statementsItem);
+        return this;
     }
-    UpdatePolicyRequest updatePolicyRequest = (UpdatePolicyRequest) o;
-    return Objects.equals(this.statements, updatePolicyRequest.statements);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(statements);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class UpdatePolicyRequest {\n");
-    sb.append("    statements: ").append(toIndentedString(statements)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get statements
+     *
+     * @return statements
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public List<PolicyStatement> getStatements() {
+        return statements;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public void setStatements(List<PolicyStatement> statements) {
+        this.statements = statements;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        UpdatePolicyRequest updatePolicyRequest = (UpdatePolicyRequest) o;
+        return Objects.equals(this.statements, updatePolicyRequest.statements);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(statements);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class UpdatePolicyRequest {\n");
+        sb.append("    statements: ").append(toIndentedString(statements)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

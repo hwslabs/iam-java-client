@@ -10,11 +10,9 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,300 +21,290 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Payload to create ledger account
- */
+/** Payload to create ledger account */
 @ApiModel(description = "Payload to create ledger account")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateUserRequest {
-  public static final String SERIALIZED_NAME_PREFERRED_USERNAME = "preferredUsername";
-  @SerializedName(SERIALIZED_NAME_PREFERRED_USERNAME)
-  private String preferredUsername;
+    public static final String SERIALIZED_NAME_PREFERRED_USERNAME = "preferredUsername";
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+    @SerializedName(SERIALIZED_NAME_PREFERRED_USERNAME)
+    private String preferredUsername;
 
-  public static final String SERIALIZED_NAME_PASSWORD_HASH = "passwordHash";
-  @SerializedName(SERIALIZED_NAME_PASSWORD_HASH)
-  private String passwordHash;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-  public static final String SERIALIZED_NAME_EMAIL = "email";
-  @SerializedName(SERIALIZED_NAME_EMAIL)
-  private String email;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-  public static final String SERIALIZED_NAME_PHONE = "phone";
-  @SerializedName(SERIALIZED_NAME_PHONE)
-  private String phone;
+    public static final String SERIALIZED_NAME_PASSWORD_HASH = "passwordHash";
 
-  /**
-   * Gets or Sets status
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    ENABLED("enabled"),
-    
-    DISABLED("disabled");
+    @SerializedName(SERIALIZED_NAME_PASSWORD_HASH)
+    private String passwordHash;
 
-    private String value;
+    public static final String SERIALIZED_NAME_EMAIL = "email";
 
-    StatusEnum(String value) {
-      this.value = value;
+    @SerializedName(SERIALIZED_NAME_EMAIL)
+    private String email;
+
+    public static final String SERIALIZED_NAME_PHONE = "phone";
+
+    @SerializedName(SERIALIZED_NAME_PHONE)
+    private String phone;
+
+    /** Gets or Sets status */
+    @JsonAdapter(StatusEnum.Adapter.class)
+    public enum StatusEnum {
+        ENABLED("enabled"),
+
+        DISABLED("disabled");
+
+        private String value;
+
+        StatusEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static StatusEnum fromValue(String value) {
+            for (StatusEnum b : StatusEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<StatusEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StatusEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
+            }
+        }
     }
 
-    public String getValue() {
-      return value;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
+
+    public static final String SERIALIZED_NAME_VERIFIED = "verified";
+
+    @SerializedName(SERIALIZED_NAME_VERIFIED)
+    private Boolean verified;
+
+    public CreateUserRequest() {}
+
+    public CreateUserRequest preferredUsername(String preferredUsername) {
+
+        this.preferredUsername = preferredUsername;
+        return this;
+    }
+
+    /**
+     * Get preferredUsername
+     *
+     * @return preferredUsername
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getPreferredUsername() {
+        return preferredUsername;
+    }
+
+    public void setPreferredUsername(String preferredUsername) {
+        this.preferredUsername = preferredUsername;
+    }
+
+    public CreateUserRequest name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CreateUserRequest passwordHash(String passwordHash) {
+
+        this.passwordHash = passwordHash;
+        return this;
+    }
+
+    /**
+     * Get passwordHash
+     *
+     * @return passwordHash
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public CreateUserRequest email(String email) {
+
+        this.email = email;
+        return this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return email
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public CreateUserRequest phone(String phone) {
+
+        this.phone = phone;
+        return this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return phone
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public CreateUserRequest status(StatusEnum status) {
+
+        this.status = status;
+        return this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return status
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
+    }
+
+    public CreateUserRequest verified(Boolean verified) {
+
+        this.verified = verified;
+        return this;
+    }
+
+    /**
+     * Get verified
+     *
+     * @return verified
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateUserRequest createUserRequest = (CreateUserRequest) o;
+        return Objects.equals(this.preferredUsername, createUserRequest.preferredUsername)
+                && Objects.equals(this.name, createUserRequest.name)
+                && Objects.equals(this.passwordHash, createUserRequest.passwordHash)
+                && Objects.equals(this.email, createUserRequest.email)
+                && Objects.equals(this.phone, createUserRequest.phone)
+                && Objects.equals(this.status, createUserRequest.status)
+                && Objects.equals(this.verified, createUserRequest.verified);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(preferredUsername, name, passwordHash, email, phone, status, verified);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateUserRequest {\n");
+        sb.append("    preferredUsername: ")
+                .append(toIndentedString(preferredUsername))
+                .append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
+        sb.append("    email: ").append(toIndentedString(email)).append("\n");
+        sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return o.toString().replace("\n", "\n    ");
     }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
-
-  public static final String SERIALIZED_NAME_VERIFIED = "verified";
-  @SerializedName(SERIALIZED_NAME_VERIFIED)
-  private Boolean verified;
-
-  public CreateUserRequest() { 
-  }
-
-  public CreateUserRequest preferredUsername(String preferredUsername) {
-    
-    this.preferredUsername = preferredUsername;
-    return this;
-  }
-
-   /**
-   * Get preferredUsername
-   * @return preferredUsername
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getPreferredUsername() {
-    return preferredUsername;
-  }
-
-
-  public void setPreferredUsername(String preferredUsername) {
-    this.preferredUsername = preferredUsername;
-  }
-
-
-  public CreateUserRequest name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public CreateUserRequest passwordHash(String passwordHash) {
-    
-    this.passwordHash = passwordHash;
-    return this;
-  }
-
-   /**
-   * Get passwordHash
-   * @return passwordHash
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPasswordHash() {
-    return passwordHash;
-  }
-
-
-  public void setPasswordHash(String passwordHash) {
-    this.passwordHash = passwordHash;
-  }
-
-
-  public CreateUserRequest email(String email) {
-    
-    this.email = email;
-    return this;
-  }
-
-   /**
-   * Get email
-   * @return email
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getEmail() {
-    return email;
-  }
-
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-
-  public CreateUserRequest phone(String phone) {
-    
-    this.phone = phone;
-    return this;
-  }
-
-   /**
-   * Get phone
-   * @return phone
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getPhone() {
-    return phone;
-  }
-
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-
-  public CreateUserRequest status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public CreateUserRequest verified(Boolean verified) {
-    
-    this.verified = verified;
-    return this;
-  }
-
-   /**
-   * Get verified
-   * @return verified
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getVerified() {
-    return verified;
-  }
-
-
-  public void setVerified(Boolean verified) {
-    this.verified = verified;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CreateUserRequest createUserRequest = (CreateUserRequest) o;
-    return Objects.equals(this.preferredUsername, createUserRequest.preferredUsername) &&
-        Objects.equals(this.name, createUserRequest.name) &&
-        Objects.equals(this.passwordHash, createUserRequest.passwordHash) &&
-        Objects.equals(this.email, createUserRequest.email) &&
-        Objects.equals(this.phone, createUserRequest.phone) &&
-        Objects.equals(this.status, createUserRequest.status) &&
-        Objects.equals(this.verified, createUserRequest.verified);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(preferredUsername, name, passwordHash, email, phone, status, verified);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateUserRequest {\n");
-    sb.append("    preferredUsername: ").append(toIndentedString(preferredUsername)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
 }
-

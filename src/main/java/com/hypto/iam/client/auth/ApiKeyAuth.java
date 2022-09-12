@@ -1,9 +1,9 @@
 package com.hypto.iam.client.auth;
 
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -51,21 +51,25 @@ public class ApiKeyAuth implements Interceptor {
 
             URI newUri;
             try {
-                newUri = new URI(request.url().uri().getScheme(), request.url().uri().getAuthority(),
-                    request.url().uri().getPath(), newQuery, request.url().uri().getFragment());
+                newUri =
+                        new URI(
+                                request.url().uri().getScheme(),
+                                request.url().uri().getAuthority(),
+                                request.url().uri().getPath(),
+                                newQuery,
+                                request.url().uri().getFragment());
             } catch (URISyntaxException e) {
                 throw new IOException(e);
             }
 
             request = request.newBuilder().url(newUri.toURL()).build();
         } else if ("header".equals(location)) {
-            request = request.newBuilder()
-                    .addHeader(paramName, apiKey)
-                    .build();
+            request = request.newBuilder().addHeader(paramName, apiKey).build();
         } else if ("cookie".equals(location)) {
-            request = request.newBuilder()
-                    .addHeader("Cookie", String.format("%s=%s", paramName, apiKey))
-                    .build();
+            request =
+                    request.newBuilder()
+                            .addHeader("Cookie", String.format("%s=%s", paramName, apiKey))
+                            .build();
         }
         return chain.proceed(request);
     }

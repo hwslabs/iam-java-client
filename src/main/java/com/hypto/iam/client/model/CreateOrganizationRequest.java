@@ -10,151 +10,136 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.RootUser;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Payload to create organization
- */
+/** Payload to create organization */
 @ApiModel(description = "Payload to create organization")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateOrganizationRequest {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-  public static final String SERIALIZED_NAME_ROOT_USER = "rootUser";
-  @SerializedName(SERIALIZED_NAME_ROOT_USER)
-  private RootUser rootUser;
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
 
-  public CreateOrganizationRequest() { 
-  }
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
 
-  public CreateOrganizationRequest name(String name) {
-    
-    this.name = name;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_ROOT_USER = "rootUser";
 
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+    @SerializedName(SERIALIZED_NAME_ROOT_USER)
+    private RootUser rootUser;
 
-  public String getName() {
-    return name;
-  }
+    public CreateOrganizationRequest() {}
 
+    public CreateOrganizationRequest name(String name) {
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public CreateOrganizationRequest description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public CreateOrganizationRequest rootUser(RootUser rootUser) {
-    
-    this.rootUser = rootUser;
-    return this;
-  }
-
-   /**
-   * Get rootUser
-   * @return rootUser
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public RootUser getRootUser() {
-    return rootUser;
-  }
-
-
-  public void setRootUser(RootUser rootUser) {
-    this.rootUser = rootUser;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.name = name;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getName() {
+        return name;
     }
-    CreateOrganizationRequest createOrganizationRequest = (CreateOrganizationRequest) o;
-    return Objects.equals(this.name, createOrganizationRequest.name) &&
-        Objects.equals(this.description, createOrganizationRequest.description) &&
-        Objects.equals(this.rootUser, createOrganizationRequest.rootUser);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, description, rootUser);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateOrganizationRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    rootUser: ").append(toIndentedString(rootUser)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setName(String name) {
+        this.name = name;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public CreateOrganizationRequest description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public CreateOrganizationRequest rootUser(RootUser rootUser) {
+
+        this.rootUser = rootUser;
+        return this;
+    }
+
+    /**
+     * Get rootUser
+     *
+     * @return rootUser
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public RootUser getRootUser() {
+        return rootUser;
+    }
+
+    public void setRootUser(RootUser rootUser) {
+        this.rootUser = rootUser;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateOrganizationRequest createOrganizationRequest = (CreateOrganizationRequest) o;
+        return Objects.equals(this.name, createOrganizationRequest.name)
+                && Objects.equals(this.description, createOrganizationRequest.description)
+                && Objects.equals(this.rootUser, createOrganizationRequest.rootUser);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, rootUser);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateOrganizationRequest {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    rootUser: ").append(toIndentedString(rootUser)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

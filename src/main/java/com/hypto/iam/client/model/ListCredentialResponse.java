@@ -10,99 +10,85 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.CredentialWithoutSecret;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-/**
- * ListCredentialResponse
- */
+/** ListCredentialResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ListCredentialResponse {
-  public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
-  @SerializedName(SERIALIZED_NAME_CREDENTIALS)
-  private List<CredentialWithoutSecret> credentials = new ArrayList<>();
+    public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
 
-  public ListCredentialResponse() { 
-  }
+    @SerializedName(SERIALIZED_NAME_CREDENTIALS)
+    private List<CredentialWithoutSecret> credentials = new ArrayList<>();
 
-  public ListCredentialResponse credentials(List<CredentialWithoutSecret> credentials) {
-    
-    this.credentials = credentials;
-    return this;
-  }
+    public ListCredentialResponse() {}
 
-  public ListCredentialResponse addCredentialsItem(CredentialWithoutSecret credentialsItem) {
-    this.credentials.add(credentialsItem);
-    return this;
-  }
+    public ListCredentialResponse credentials(List<CredentialWithoutSecret> credentials) {
 
-   /**
-   * Get credentials
-   * @return credentials
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<CredentialWithoutSecret> getCredentials() {
-    return credentials;
-  }
-
-
-  public void setCredentials(List<CredentialWithoutSecret> credentials) {
-    this.credentials = credentials;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.credentials = credentials;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public ListCredentialResponse addCredentialsItem(CredentialWithoutSecret credentialsItem) {
+        this.credentials.add(credentialsItem);
+        return this;
     }
-    ListCredentialResponse listCredentialResponse = (ListCredentialResponse) o;
-    return Objects.equals(this.credentials, listCredentialResponse.credentials);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(credentials);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ListCredentialResponse {\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get credentials
+     *
+     * @return credentials
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public List<CredentialWithoutSecret> getCredentials() {
+        return credentials;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public void setCredentials(List<CredentialWithoutSecret> credentials) {
+        this.credentials = credentials;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ListCredentialResponse listCredentialResponse = (ListCredentialResponse) o;
+        return Objects.equals(this.credentials, listCredentialResponse.credentials);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(credentials);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ListCredentialResponse {\n");
+        sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

@@ -10,121 +10,108 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Payload to change user password
- */
+/** Payload to change user password */
 @ApiModel(description = "Payload to change user password")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChangeUserPasswordRequest {
-  public static final String SERIALIZED_NAME_OLD_PASSWORD = "oldPassword";
-  @SerializedName(SERIALIZED_NAME_OLD_PASSWORD)
-  private String oldPassword;
+    public static final String SERIALIZED_NAME_OLD_PASSWORD = "oldPassword";
 
-  public static final String SERIALIZED_NAME_NEW_PASSWORD = "newPassword";
-  @SerializedName(SERIALIZED_NAME_NEW_PASSWORD)
-  private String newPassword;
+    @SerializedName(SERIALIZED_NAME_OLD_PASSWORD)
+    private String oldPassword;
 
-  public ChangeUserPasswordRequest() { 
-  }
+    public static final String SERIALIZED_NAME_NEW_PASSWORD = "newPassword";
 
-  public ChangeUserPasswordRequest oldPassword(String oldPassword) {
-    
-    this.oldPassword = oldPassword;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_NEW_PASSWORD)
+    private String newPassword;
 
-   /**
-   * Get oldPassword
-   * @return oldPassword
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+    public ChangeUserPasswordRequest() {}
 
-  public String getOldPassword() {
-    return oldPassword;
-  }
+    public ChangeUserPasswordRequest oldPassword(String oldPassword) {
 
-
-  public void setOldPassword(String oldPassword) {
-    this.oldPassword = oldPassword;
-  }
-
-
-  public ChangeUserPasswordRequest newPassword(String newPassword) {
-    
-    this.newPassword = newPassword;
-    return this;
-  }
-
-   /**
-   * Get newPassword
-   * @return newPassword
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getNewPassword() {
-    return newPassword;
-  }
-
-
-  public void setNewPassword(String newPassword) {
-    this.newPassword = newPassword;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.oldPassword = oldPassword;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get oldPassword
+     *
+     * @return oldPassword
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getOldPassword() {
+        return oldPassword;
     }
-    ChangeUserPasswordRequest changeUserPasswordRequest = (ChangeUserPasswordRequest) o;
-    return Objects.equals(this.oldPassword, changeUserPasswordRequest.oldPassword) &&
-        Objects.equals(this.newPassword, changeUserPasswordRequest.newPassword);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(oldPassword, newPassword);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ChangeUserPasswordRequest {\n");
-    sb.append("    oldPassword: ").append(toIndentedString(oldPassword)).append("\n");
-    sb.append("    newPassword: ").append(toIndentedString(newPassword)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public ChangeUserPasswordRequest newPassword(String newPassword) {
+
+        this.newPassword = newPassword;
+        return this;
+    }
+
+    /**
+     * Get newPassword
+     *
+     * @return newPassword
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ChangeUserPasswordRequest changeUserPasswordRequest = (ChangeUserPasswordRequest) o;
+        return Objects.equals(this.oldPassword, changeUserPasswordRequest.oldPassword)
+                && Objects.equals(this.newPassword, changeUserPasswordRequest.newPassword);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(oldPassword, newPassword);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ChangeUserPasswordRequest {\n");
+        sb.append("    oldPassword: ").append(toIndentedString(oldPassword)).append("\n");
+        sb.append("    newPassword: ").append(toIndentedString(newPassword)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

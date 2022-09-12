@@ -10,25 +10,20 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client;
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonElement;
-import io.gsonfire.GsonFireBuilder;
-import io.gsonfire.TypeSelector;
-
 import com.hypto.iam.client.model.*;
-
+import io.gsonfire.GsonFireBuilder;
 import java.io.IOException;
-import java.io.StringReader;
-import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
@@ -38,7 +33,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
-import java.util.HashMap;
 
 public class JSON {
     private Gson gson;
@@ -48,35 +42,40 @@ public class JSON {
     private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
 
     public static GsonBuilder createGson() {
-        GsonFireBuilder fireBuilder = new GsonFireBuilder()
-        
-        ;
+        GsonFireBuilder fireBuilder = new GsonFireBuilder();
+
         return fireBuilder.createGsonBuilder();
     }
 
-    private static String getDiscriminatorValue(JsonElement readElement, String discriminatorField) {
+    private static String getDiscriminatorValue(
+            JsonElement readElement, String discriminatorField) {
         JsonElement element = readElement.getAsJsonObject().get(discriminatorField);
-        if(null == element) {
-            throw new IllegalArgumentException("missing discriminator field: <" + discriminatorField + ">");
+        if (null == element) {
+            throw new IllegalArgumentException(
+                    "missing discriminator field: <" + discriminatorField + ">");
         }
         return element.getAsString();
     }
 
-    private static Class getClassByDiscriminator(Map classByDiscriminatorValue, String discriminatorValue) {
-        Class clazz = (Class) classByDiscriminatorValue.get(discriminatorValue.toUpperCase(Locale.ROOT));
-        if(null == clazz) {
-            throw new IllegalArgumentException("cannot determine model class of name: <" + discriminatorValue + ">");
+    private static Class getClassByDiscriminator(
+            Map classByDiscriminatorValue, String discriminatorValue) {
+        Class clazz =
+                (Class) classByDiscriminatorValue.get(discriminatorValue.toUpperCase(Locale.ROOT));
+        if (null == clazz) {
+            throw new IllegalArgumentException(
+                    "cannot determine model class of name: <" + discriminatorValue + ">");
         }
         return clazz;
     }
 
     public JSON() {
-        gson = createGson()
-            .registerTypeAdapter(Date.class, dateTypeAdapter)
-            .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
-            .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
-            .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
-            .create();
+        gson =
+                createGson()
+                        .registerTypeAdapter(Date.class, dateTypeAdapter)
+                        .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
+                        .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
+                        .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
+                        .create();
     }
 
     /**
@@ -99,9 +98,7 @@ public class JSON {
         return this;
     }
 
-    /**
-     * Gson TypeAdapter for JSR310 OffsetDateTime type
-     */
+    /** Gson TypeAdapter for JSR310 OffsetDateTime type */
     public static class OffsetDateTimeTypeAdapter extends TypeAdapter<OffsetDateTime> {
 
         private DateTimeFormatter formatter;
@@ -136,16 +133,14 @@ public class JSON {
                 default:
                     String date = in.nextString();
                     if (date.endsWith("+0000")) {
-                        date = date.substring(0, date.length()-5) + "Z";
+                        date = date.substring(0, date.length() - 5) + "Z";
                     }
                     return OffsetDateTime.parse(date, formatter);
             }
         }
     }
 
-    /**
-     * Gson TypeAdapter for JSR310 LocalDate type
-     */
+    /** Gson TypeAdapter for JSR310 LocalDate type */
     public class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
 
         private DateTimeFormatter formatter;
@@ -195,16 +190,14 @@ public class JSON {
     }
 
     /**
-     * Gson TypeAdapter for java.sql.Date type
-     * If the dateFormat is null, a simple "yyyy-MM-dd" format will be used
-     * (more efficient than SimpleDateFormat).
+     * Gson TypeAdapter for java.sql.Date type If the dateFormat is null, a simple "yyyy-MM-dd"
+     * format will be used (more efficient than SimpleDateFormat).
      */
     public static class SqlDateTypeAdapter extends TypeAdapter<java.sql.Date> {
 
         private DateFormat dateFormat;
 
-        public SqlDateTypeAdapter() {
-        }
+        public SqlDateTypeAdapter() {}
 
         public SqlDateTypeAdapter(DateFormat dateFormat) {
             this.dateFormat = dateFormat;
@@ -241,7 +234,8 @@ public class JSON {
                         if (dateFormat != null) {
                             return new java.sql.Date(dateFormat.parse(date).getTime());
                         }
-                        return new java.sql.Date(ISO8601Utils.parse(date, new ParsePosition(0)).getTime());
+                        return new java.sql.Date(
+                                ISO8601Utils.parse(date, new ParsePosition(0)).getTime());
                     } catch (ParseException e) {
                         throw new JsonParseException(e);
                     }
@@ -250,15 +244,14 @@ public class JSON {
     }
 
     /**
-     * Gson TypeAdapter for java.util.Date type
-     * If the dateFormat is null, ISO8601Utils will be used.
+     * Gson TypeAdapter for java.util.Date type If the dateFormat is null, ISO8601Utils will be
+     * used.
      */
     public static class DateTypeAdapter extends TypeAdapter<Date> {
 
         private DateFormat dateFormat;
 
-        public DateTypeAdapter() {
-        }
+        public DateTypeAdapter() {}
 
         public DateTypeAdapter(DateFormat dateFormat) {
             this.dateFormat = dateFormat;
@@ -316,5 +309,4 @@ public class JSON {
         sqlDateTypeAdapter.setFormat(dateFormat);
         return this;
     }
-
 }

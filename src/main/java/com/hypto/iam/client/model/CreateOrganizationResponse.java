@@ -10,121 +10,106 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.Organization;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 
-/**
- * CreateOrganizationResponse
- */
+import com.google.gson.annotations.SerializedName;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+
+/** CreateOrganizationResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateOrganizationResponse {
-  public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
-  @SerializedName(SERIALIZED_NAME_ORGANIZATION)
-  private Organization organization;
+    public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
 
-  public static final String SERIALIZED_NAME_ROOT_USER_TOKEN = "rootUserToken";
-  @SerializedName(SERIALIZED_NAME_ROOT_USER_TOKEN)
-  private String rootUserToken;
+    @SerializedName(SERIALIZED_NAME_ORGANIZATION)
+    private Organization organization;
 
-  public CreateOrganizationResponse() { 
-  }
+    public static final String SERIALIZED_NAME_ROOT_USER_TOKEN = "rootUserToken";
 
-  public CreateOrganizationResponse organization(Organization organization) {
-    
-    this.organization = organization;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_ROOT_USER_TOKEN)
+    private String rootUserToken;
 
-   /**
-   * Get organization
-   * @return organization
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+    public CreateOrganizationResponse() {}
 
-  public Organization getOrganization() {
-    return organization;
-  }
+    public CreateOrganizationResponse organization(Organization organization) {
 
-
-  public void setOrganization(Organization organization) {
-    this.organization = organization;
-  }
-
-
-  public CreateOrganizationResponse rootUserToken(String rootUserToken) {
-    
-    this.rootUserToken = rootUserToken;
-    return this;
-  }
-
-   /**
-   * JWT token of the root user
-   * @return rootUserToken
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "JWT token of the root user")
-
-  public String getRootUserToken() {
-    return rootUserToken;
-  }
-
-
-  public void setRootUserToken(String rootUserToken) {
-    this.rootUserToken = rootUserToken;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.organization = organization;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get organization
+     *
+     * @return organization
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public Organization getOrganization() {
+        return organization;
     }
-    CreateOrganizationResponse createOrganizationResponse = (CreateOrganizationResponse) o;
-    return Objects.equals(this.organization, createOrganizationResponse.organization) &&
-        Objects.equals(this.rootUserToken, createOrganizationResponse.rootUserToken);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(organization, rootUserToken);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateOrganizationResponse {\n");
-    sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
-    sb.append("    rootUserToken: ").append(toIndentedString(rootUserToken)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public CreateOrganizationResponse rootUserToken(String rootUserToken) {
+
+        this.rootUserToken = rootUserToken;
+        return this;
+    }
+
+    /**
+     * JWT token of the root user
+     *
+     * @return rootUserToken
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "JWT token of the root user")
+    public String getRootUserToken() {
+        return rootUserToken;
+    }
+
+    public void setRootUserToken(String rootUserToken) {
+        this.rootUserToken = rootUserToken;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateOrganizationResponse createOrganizationResponse = (CreateOrganizationResponse) o;
+        return Objects.equals(this.organization, createOrganizationResponse.organization)
+                && Objects.equals(this.rootUserToken, createOrganizationResponse.rootUserToken);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(organization, rootUserToken);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateOrganizationResponse {\n");
+        sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
+        sb.append("    rootUserToken: ").append(toIndentedString(rootUserToken)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

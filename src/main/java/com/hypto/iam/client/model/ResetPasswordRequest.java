@@ -10,121 +10,108 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Payload to reset password
- */
+/** Payload to reset password */
 @ApiModel(description = "Payload to reset password")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResetPasswordRequest {
-  public static final String SERIALIZED_NAME_EMAIL = "email";
-  @SerializedName(SERIALIZED_NAME_EMAIL)
-  private String email;
+    public static final String SERIALIZED_NAME_EMAIL = "email";
 
-  public static final String SERIALIZED_NAME_PASSWORD = "password";
-  @SerializedName(SERIALIZED_NAME_PASSWORD)
-  private String password;
+    @SerializedName(SERIALIZED_NAME_EMAIL)
+    private String email;
 
-  public ResetPasswordRequest() { 
-  }
+    public static final String SERIALIZED_NAME_PASSWORD = "password";
 
-  public ResetPasswordRequest email(String email) {
-    
-    this.email = email;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_PASSWORD)
+    private String password;
 
-   /**
-   * Get email
-   * @return email
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+    public ResetPasswordRequest() {}
 
-  public String getEmail() {
-    return email;
-  }
+    public ResetPasswordRequest email(String email) {
 
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-
-  public ResetPasswordRequest password(String password) {
-    
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Get password
-   * @return password
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPassword() {
-    return password;
-  }
-
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.email = email;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get email
+     *
+     * @return email
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getEmail() {
+        return email;
     }
-    ResetPasswordRequest resetPasswordRequest = (ResetPasswordRequest) o;
-    return Objects.equals(this.email, resetPasswordRequest.email) &&
-        Objects.equals(this.password, resetPasswordRequest.password);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(email, password);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ResetPasswordRequest {\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setEmail(String email) {
+        this.email = email;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public ResetPasswordRequest password(String password) {
+
+        this.password = password;
+        return this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return password
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ResetPasswordRequest resetPasswordRequest = (ResetPasswordRequest) o;
+        return Objects.equals(this.email, resetPasswordRequest.email)
+                && Objects.equals(this.password, resetPasswordRequest.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, password);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ResetPasswordRequest {\n");
+        sb.append("    email: ").append(toIndentedString(email)).append("\n");
+        sb.append("    password: ").append(toIndentedString(password)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

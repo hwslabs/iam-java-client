@@ -10,99 +10,87 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-/**
- * Payload to attach / detach a policy to a user / resource
- */
+/** Payload to attach / detach a policy to a user / resource */
 @ApiModel(description = "Payload to attach / detach a policy to a user / resource")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PolicyAssociationRequest {
-  public static final String SERIALIZED_NAME_POLICIES = "policies";
-  @SerializedName(SERIALIZED_NAME_POLICIES)
-  private List<String> policies = new ArrayList<>();
+    public static final String SERIALIZED_NAME_POLICIES = "policies";
 
-  public PolicyAssociationRequest() { 
-  }
+    @SerializedName(SERIALIZED_NAME_POLICIES)
+    private List<String> policies = new ArrayList<>();
 
-  public PolicyAssociationRequest policies(List<String> policies) {
-    
-    this.policies = policies;
-    return this;
-  }
+    public PolicyAssociationRequest() {}
 
-  public PolicyAssociationRequest addPoliciesItem(String policiesItem) {
-    this.policies.add(policiesItem);
-    return this;
-  }
+    public PolicyAssociationRequest policies(List<String> policies) {
 
-   /**
-   * Get policies
-   * @return policies
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<String> getPolicies() {
-    return policies;
-  }
-
-
-  public void setPolicies(List<String> policies) {
-    this.policies = policies;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.policies = policies;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public PolicyAssociationRequest addPoliciesItem(String policiesItem) {
+        this.policies.add(policiesItem);
+        return this;
     }
-    PolicyAssociationRequest policyAssociationRequest = (PolicyAssociationRequest) o;
-    return Objects.equals(this.policies, policyAssociationRequest.policies);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(policies);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PolicyAssociationRequest {\n");
-    sb.append("    policies: ").append(toIndentedString(policies)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get policies
+     *
+     * @return policies
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public List<String> getPolicies() {
+        return policies;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public void setPolicies(List<String> policies) {
+        this.policies = policies;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PolicyAssociationRequest policyAssociationRequest = (PolicyAssociationRequest) o;
+        return Objects.equals(this.policies, policyAssociationRequest.policies);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(policies);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PolicyAssociationRequest {\n");
+        sb.append("    policies: ").append(toIndentedString(policies)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-
