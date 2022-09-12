@@ -1,12 +1,15 @@
 package com.hypto.iam.client;
 
 import com.hypto.iam.client.api.KeyManagementApi;
+import com.hypto.iam.client.exceptions.IamApiException;
 import com.hypto.iam.client.model.KeyResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.SigningKeyResolverAdapter;
 import io.swagger.annotations.Api;
+import retrofit2.Response;
 
+import java.io.IOException;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -21,14 +24,18 @@ public class SigningKeyResolver extends SigningKeyResolverAdapter {
     static Instant lastRefreshTime = Instant.now();
     static HashMap<String, Key> keysMap = new HashMap<>();
 
-    private final ApiClient apiClient;
+    private ApiClient apiClient;
 
     SigningKeyResolver(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        if (apiClient != null) {
+            this.apiClient = apiClient;
+        } else {
+            throw new IllegalArgumentException("apiClient cannot be null");
+        }
     }
 
     SigningKeyResolver() {
-        this.apiClient = Configuration.getDefaultApiClient();
+        this(new ApiClient());
     }
 
     @Override
@@ -43,19 +50,21 @@ public class SigningKeyResolver extends SigningKeyResolverAdapter {
         if (keysMap.containsKey(keyId))
             return keysMap.get(keyId);
 
-        KeyManagementApi apiInstance = new KeyManagementApi(this.apiClient);
+        KeyManagementApi apiInstance = this.apiClient.createService(KeyManagementApi.class);
         try {
-            KeyResponse result = apiInstance.getKey(keyId, "der", "public");
+            Response<KeyResponse> response = apiInstance.getKey(keyId, "der", "public").execute();
+            if(!response.isSuccessful() || response.body() == null) {
+                throw new IamApiException(response.message());
+            }
+            KeyResponse result = response.body();
             byte[] encodedPublicKey = Base64.getDecoder().decode(result.getKey());
             KeyFactory keyFactory = KeyFactory.getInstance("EC");
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(encodedPublicKey);
             Key publicKey = keyFactory.generatePublic(keySpec);
             keysMap.put(keyId, publicKey);
             return publicKey;
-        } catch (ApiException | NoSuchAlgorithmException | InvalidKeySpecException e) {
-            e.printStackTrace();
+        } catch (IamApiException | IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 }

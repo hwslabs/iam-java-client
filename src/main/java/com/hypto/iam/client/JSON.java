@@ -24,7 +24,7 @@ import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.TypeSelector;
 
-import okio.ByteString;
+import com.hypto.iam.client.model.*;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -40,102 +40,43 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
 
-/*
- * A JSON utility class
- *
- * NOTE: in the future, this class may be converted to static, which may break
- *       backward-compatibility
- */
 public class JSON {
-    private static Gson gson;
-    private static boolean isLenientOnJson = false;
-    private static DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
-    private static SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
-    private static OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
-    private static LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
-    private static ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
+    private Gson gson;
+    private DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
+    private SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
+    private OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
+    private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
 
-    @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
+        
         ;
-        GsonBuilder builder = fireBuilder.createGsonBuilder();
-        return builder;
+        return fireBuilder.createGsonBuilder();
     }
 
     private static String getDiscriminatorValue(JsonElement readElement, String discriminatorField) {
         JsonElement element = readElement.getAsJsonObject().get(discriminatorField);
-        if (null == element) {
+        if(null == element) {
             throw new IllegalArgumentException("missing discriminator field: <" + discriminatorField + ">");
         }
         return element.getAsString();
     }
 
-    /**
-     * Returns the Java class that implements the OpenAPI schema for the specified discriminator value.
-     *
-     * @param classByDiscriminatorValue The map of discriminator values to Java classes.
-     * @param discriminatorValue The value of the OpenAPI discriminator in the input data.
-     * @return The Java class that implements the OpenAPI schema
-     */
     private static Class getClassByDiscriminator(Map classByDiscriminatorValue, String discriminatorValue) {
-        Class clazz = (Class) classByDiscriminatorValue.get(discriminatorValue);
-        if (null == clazz) {
+        Class clazz = (Class) classByDiscriminatorValue.get(discriminatorValue.toUpperCase(Locale.ROOT));
+        if(null == clazz) {
             throw new IllegalArgumentException("cannot determine model class of name: <" + discriminatorValue + ">");
         }
         return clazz;
     }
 
-    {
-        GsonBuilder gsonBuilder = createGson();
-        gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
-        gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
-        gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
-        gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
-        gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.Action.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ActionPaginatedResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.BaseSuccessResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ChangeUserPasswordRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.CreateActionRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.CreateCredentialRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.CreateOrganizationRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.CreateOrganizationResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.CreatePolicyRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.CreateResourceRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.CreateUserRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.Credential.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.CredentialWithoutSecret.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ErrorResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.GetUserPoliciesResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.KeyResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ListCredentialResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.Organization.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.PaginationOptions.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.Policy.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.PolicyAssociationRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.PolicyPaginatedResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.PolicyStatement.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ResetPasswordRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.Resource.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ResourceAction.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ResourceActionEffect.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ResourcePaginatedResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.RootUser.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.TokenResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.UpdateActionRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.UpdateCredentialRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.UpdateOrganizationRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.UpdatePolicyRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.UpdateResourceRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.UpdateUserRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.User.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.UserPaginatedResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.UserPolicy.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ValidationRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.ValidationResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hypto.iam.client.model.VerifyEmailRequest.CustomTypeAdapterFactory());
-        gson = gsonBuilder.create();
+    public JSON() {
+        gson = createGson()
+            .registerTypeAdapter(Date.class, dateTypeAdapter)
+            .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
+            .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
+            .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
+            .create();
     }
 
     /**
@@ -143,7 +84,7 @@ public class JSON {
      *
      * @return Gson
      */
-    public static Gson getGson() {
+    public Gson getGson() {
         return gson;
     }
 
@@ -151,81 +92,11 @@ public class JSON {
      * Set Gson.
      *
      * @param gson Gson
+     * @return JSON
      */
-    public static void setGson(Gson gson) {
-        JSON.gson = gson;
-    }
-
-    public static void setLenientOnJson(boolean lenientOnJson) {
-        isLenientOnJson = lenientOnJson;
-    }
-
-    /**
-     * Serialize the given Java object into JSON string.
-     *
-     * @param obj Object
-     * @return String representation of the JSON
-     */
-    public static String serialize(Object obj) {
-        return gson.toJson(obj);
-    }
-
-    /**
-     * Deserialize the given JSON string to Java object.
-     *
-     * @param <T>        Type
-     * @param body       The JSON string
-     * @param returnType The type to deserialize into
-     * @return The deserialized Java object
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> T deserialize(String body, Type returnType) {
-        try {
-            if (isLenientOnJson) {
-                JsonReader jsonReader = new JsonReader(new StringReader(body));
-                // see https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/stream/JsonReader.html#setLenient(boolean)
-                jsonReader.setLenient(true);
-                return gson.fromJson(jsonReader, returnType);
-            } else {
-                return gson.fromJson(body, returnType);
-            }
-        } catch (JsonParseException e) {
-            // Fallback processing when failed to parse JSON form response body:
-            // return the response body string directly for the String return type;
-            if (returnType.equals(String.class)) {
-                return (T) body;
-            } else {
-                throw (e);
-            }
-        }
-    }
-
-    /**
-     * Gson TypeAdapter for Byte Array type
-     */
-    public static class ByteArrayAdapter extends TypeAdapter<byte[]> {
-
-        @Override
-        public void write(JsonWriter out, byte[] value) throws IOException {
-            if (value == null) {
-                out.nullValue();
-            } else {
-                out.value(ByteString.of(value).base64());
-            }
-        }
-
-        @Override
-        public byte[] read(JsonReader in) throws IOException {
-            switch (in.peek()) {
-                case NULL:
-                    in.nextNull();
-                    return null;
-                default:
-                    String bytesAsBase64 = in.nextString();
-                    ByteString byteString = ByteString.decodeBase64(bytesAsBase64);
-                    return byteString.toByteArray();
-            }
-        }
+    public JSON setGson(Gson gson) {
+        this.gson = gson;
+        return this;
     }
 
     /**
@@ -275,7 +146,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for JSR310 LocalDate type
      */
-    public static class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
+    public class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
 
         private DateTimeFormatter formatter;
 
@@ -313,12 +184,14 @@ public class JSON {
         }
     }
 
-    public static void setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
+    public JSON setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
         offsetDateTimeTypeAdapter.setFormat(dateFormat);
+        return this;
     }
 
-    public static void setLocalDateFormat(DateTimeFormatter dateFormat) {
+    public JSON setLocalDateFormat(DateTimeFormatter dateFormat) {
         localDateTypeAdapter.setFormat(dateFormat);
+        return this;
     }
 
     /**
@@ -330,7 +203,8 @@ public class JSON {
 
         private DateFormat dateFormat;
 
-        public SqlDateTypeAdapter() {}
+        public SqlDateTypeAdapter() {
+        }
 
         public SqlDateTypeAdapter(DateFormat dateFormat) {
             this.dateFormat = dateFormat;
@@ -383,7 +257,8 @@ public class JSON {
 
         private DateFormat dateFormat;
 
-        public DateTypeAdapter() {}
+        public DateTypeAdapter() {
+        }
 
         public DateTypeAdapter(DateFormat dateFormat) {
             this.dateFormat = dateFormat;
@@ -432,11 +307,14 @@ public class JSON {
         }
     }
 
-    public static void setDateFormat(DateFormat dateFormat) {
+    public JSON setDateFormat(DateFormat dateFormat) {
         dateTypeAdapter.setFormat(dateFormat);
+        return this;
     }
 
-    public static void setSqlDateFormat(DateFormat dateFormat) {
+    public JSON setSqlDateFormat(DateFormat dateFormat) {
         sqlDateTypeAdapter.setFormat(dateFormat);
+        return this;
     }
+
 }

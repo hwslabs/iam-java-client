@@ -1,5 +1,6 @@
 package com.hypto.iam.client.helpers;
 
+import com.hypto.iam.client.ApiClient;
 import com.hypto.iam.client.api.KeyManagementApi;
 import com.hypto.iam.client.model.KeyResponse;
 import io.jsonwebtoken.CompressionCodecs;
@@ -8,7 +9,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.powermock.api.mockito.PowerMockito;
+import org.mockito.Mockito;
+import retrofit2.mock.Calls;
 
 import java.security.KeyPair;
 import java.util.Base64;
@@ -23,34 +25,37 @@ public class TokenHelper {
     private static final String ENTITLEMENTS_CLAIM = "entitlements";
     private static final String VERSION_NUM = "1.0";
 
-    public static String generateJwtToken(String userHrn, String organizationId, String entitlements, Date issuedAt, Date expiresAt) {
-        KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.ES256);
+    private static final KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.ES256);
 
-        String testKeyId = RandomStringUtils.random(10);
-        String publicKey = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());
+    private static final String publicKey = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());
 
-        KeyResponse response = new KeyResponse().key(publicKey)
+    private static final String testKeyId = RandomStringUtils.random(10);
+
+    public static void mockApiClient(ApiClient client) {
+        final KeyResponse response = new KeyResponse().key(publicKey)
                 .format(KeyResponse.FormatEnum.DER)
                 .status("SIGNING")
                 .kid(testKeyId);
 
-        PowerMockito.stub(
-                PowerMockito.method(KeyManagementApi.class, "getKey", String.class, String.class, String.class))
-                .toReturn(response);
+        final KeyManagementApi mockKeyApi = Mockito.mock(KeyManagementApi.class);
+        Mockito.when(mockKeyApi.getKey(Mockito.any(), Mockito.any(), Mockito.any()))
+                .thenReturn(Calls.response(response));
+        Mockito.when(client.createService(Mockito.eq(KeyManagementApi.class))).thenReturn(mockKeyApi);
+    }
 
-        return
-                Jwts.builder()
-                        .setIssuer(ISSUER)
-                        .setHeaderParam(JwsHeader.KEY_ID, testKeyId)
-                        .setIssuedAt(issuedAt)
-                        .setExpiration(expiresAt)
-                        .claim(VERSION_CLAIM, VERSION_NUM)
-                        .claim(USER_CLAIM, userHrn) // UserId
-                        .claim(ORGANIZATION_CLAIM, organizationId) // OrganizationId
-                        .claim(ENTITLEMENTS_CLAIM, entitlements) // Entitlements
-                        .signWith(keyPair.getPrivate(), SignatureAlgorithm.ES256)
-                        .compressWith(CompressionCodecs.GZIP)
-                        .compact();
+    public static String generateJwtToken(String userHrn, String organizationId, String entitlements, Date issuedAt, Date expiresAt) {
+        return Jwts.builder()
+                .setIssuer(ISSUER)
+                .setHeaderParam(JwsHeader.KEY_ID, testKeyId)
+                .setIssuedAt(issuedAt)
+                .setExpiration(expiresAt)
+                .claim(VERSION_CLAIM, VERSION_NUM)
+                .claim(USER_CLAIM, userHrn) // UserId
+                .claim(ORGANIZATION_CLAIM, organizationId) // OrganizationId
+                .claim(ENTITLEMENTS_CLAIM, entitlements) // Entitlements
+                .signWith(keyPair.getPrivate(), SignatureAlgorithm.ES256)
+                .compressWith(CompressionCodecs.GZIP)
+                .compact();
     }
 
     public static String generateJwtToken(String userHrn, String organizationId, String entitlements) {

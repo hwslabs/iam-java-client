@@ -24,26 +24,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.hypto.iam.client.JSON;
-
 /**
  * Root user details for the organization
  */
@@ -215,7 +195,6 @@ public class RootUser {
   }
 
 
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -263,120 +242,5 @@ public class RootUser {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("preferredUsername");
-    openapiFields.add("name");
-    openapiFields.add("passwordHash");
-    openapiFields.add("email");
-    openapiFields.add("phone");
-    openapiFields.add("verified");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("passwordHash");
-    openapiRequiredFields.add("email");
-    openapiRequiredFields.add("verified");
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to RootUser
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (RootUser.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RootUser is not found in the empty JSON string", RootUser.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!RootUser.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RootUser` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RootUser.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("preferredUsername") != null && !jsonObj.get("preferredUsername").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `preferredUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("preferredUsername").toString()));
-      }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (jsonObj.get("passwordHash") != null && !jsonObj.get("passwordHash").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `passwordHash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("passwordHash").toString()));
-      }
-      if (jsonObj.get("email") != null && !jsonObj.get("email").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
-      }
-      if (jsonObj.get("phone") != null && !jsonObj.get("phone").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `phone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phone").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RootUser.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RootUser' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RootUser> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RootUser.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<RootUser>() {
-           @Override
-           public void write(JsonWriter out, RootUser value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public RootUser read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of RootUser given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of RootUser
-  * @throws IOException if the JSON string is invalid with respect to RootUser
-  */
-  public static RootUser fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RootUser.class);
-  }
-
- /**
-  * Convert an instance of RootUser to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 
