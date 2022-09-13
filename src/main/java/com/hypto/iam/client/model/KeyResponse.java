@@ -10,357 +10,215 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Objects;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.hypto.iam.client.JSON;
-
-/**
- * KeyResponse
- */
+/** KeyResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class KeyResponse {
-  public static final String SERIALIZED_NAME_KID = "kid";
-  @SerializedName(SERIALIZED_NAME_KID)
-  private String kid;
+    public static final String SERIALIZED_NAME_KID = "kid";
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+    @SerializedName(SERIALIZED_NAME_KID)
+    private String kid;
 
-  /**
-   * Gets or Sets format
-   */
-  @JsonAdapter(FormatEnum.Adapter.class)
-  public enum FormatEnum {
-    DER("der"),
-    
-    PEM("pem");
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    private String value;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private String status;
 
-    FormatEnum(String value) {
-      this.value = value;
+    /** Gets or Sets format */
+    @JsonAdapter(FormatEnum.Adapter.class)
+    public enum FormatEnum {
+        DER("der"),
+
+        PEM("pem");
+
+        private String value;
+
+        FormatEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static FormatEnum fromValue(String value) {
+            for (FormatEnum b : FormatEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<FormatEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final FormatEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public FormatEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return FormatEnum.fromValue(value);
+            }
+        }
     }
 
-    public String getValue() {
-      return value;
+    public static final String SERIALIZED_NAME_FORMAT = "format";
+
+    @SerializedName(SERIALIZED_NAME_FORMAT)
+    private FormatEnum format;
+
+    public static final String SERIALIZED_NAME_KEY = "key";
+
+    @SerializedName(SERIALIZED_NAME_KEY)
+    private String key;
+
+    public KeyResponse() {}
+
+    public KeyResponse kid(String kid) {
+
+        this.kid = kid;
+        return this;
+    }
+
+    /**
+     * Get kid
+     *
+     * @return kid
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getKid() {
+        return kid;
+    }
+
+    public void setKid(String kid) {
+        this.kid = kid;
+    }
+
+    public KeyResponse status(String status) {
+
+        this.status = status;
+        return this;
+    }
+
+    /**
+     * The status of the key. Valid values are SIGNING, VERIFYING and EXPIRED
+     *
+     * @return status
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(
+            required = true,
+            value = "The status of the key. Valid values are SIGNING, VERIFYING and EXPIRED")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public KeyResponse format(FormatEnum format) {
+
+        this.format = format;
+        return this;
+    }
+
+    /**
+     * Get format
+     *
+     * @return format
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public FormatEnum getFormat() {
+        return format;
+    }
+
+    public void setFormat(FormatEnum format) {
+        this.format = format;
+    }
+
+    public KeyResponse key(String key) {
+
+        this.key = key;
+        return this;
+    }
+
+    /**
+     * Get key
+     *
+     * @return key
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        KeyResponse keyResponse = (KeyResponse) o;
+        return Objects.equals(this.kid, keyResponse.kid)
+                && Objects.equals(this.status, keyResponse.status)
+                && Objects.equals(this.format, keyResponse.format)
+                && Objects.equals(this.key, keyResponse.key);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(kid, status, format, key);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class KeyResponse {\n");
+        sb.append("    kid: ").append(toIndentedString(kid)).append("\n");
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    format: ").append(toIndentedString(format)).append("\n");
+        sb.append("    key: ").append(toIndentedString(key)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    public static FormatEnum fromValue(String value) {
-      for (FormatEnum b : FormatEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return o.toString().replace("\n", "\n    ");
     }
-
-    public static class Adapter extends TypeAdapter<FormatEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FormatEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FormatEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
-  private FormatEnum format;
-
-  public static final String SERIALIZED_NAME_KEY = "key";
-  @SerializedName(SERIALIZED_NAME_KEY)
-  private String key;
-
-  public KeyResponse() { 
-  }
-
-  public KeyResponse kid(String kid) {
-    
-    this.kid = kid;
-    return this;
-  }
-
-   /**
-   * Get kid
-   * @return kid
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getKid() {
-    return kid;
-  }
-
-
-  public void setKid(String kid) {
-    this.kid = kid;
-  }
-
-
-  public KeyResponse status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * The status of the key. Valid values are SIGNING, VERIFYING and EXPIRED
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The status of the key. Valid values are SIGNING, VERIFYING and EXPIRED")
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public KeyResponse format(FormatEnum format) {
-    
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public FormatEnum getFormat() {
-    return format;
-  }
-
-
-  public void setFormat(FormatEnum format) {
-    this.format = format;
-  }
-
-
-  public KeyResponse key(String key) {
-    
-    this.key = key;
-    return this;
-  }
-
-   /**
-   * Get key
-   * @return key
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getKey() {
-    return key;
-  }
-
-
-  public void setKey(String key) {
-    this.key = key;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    KeyResponse keyResponse = (KeyResponse) o;
-    return Objects.equals(this.kid, keyResponse.kid) &&
-        Objects.equals(this.status, keyResponse.status) &&
-        Objects.equals(this.format, keyResponse.format) &&
-        Objects.equals(this.key, keyResponse.key);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(kid, status, format, key);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class KeyResponse {\n");
-    sb.append("    kid: ").append(toIndentedString(kid)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("kid");
-    openapiFields.add("status");
-    openapiFields.add("format");
-    openapiFields.add("key");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("kid");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("format");
-    openapiRequiredFields.add("key");
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to KeyResponse
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (KeyResponse.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in KeyResponse is not found in the empty JSON string", KeyResponse.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!KeyResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `KeyResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : KeyResponse.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("kid") != null && !jsonObj.get("kid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `kid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kid").toString()));
-      }
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if (jsonObj.get("format") != null && !jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
-      }
-      if (jsonObj.get("key") != null && !jsonObj.get("key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!KeyResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'KeyResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<KeyResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(KeyResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<KeyResponse>() {
-           @Override
-           public void write(JsonWriter out, KeyResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public KeyResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of KeyResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of KeyResponse
-  * @throws IOException if the JSON string is invalid with respect to KeyResponse
-  */
-  public static KeyResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, KeyResponse.class);
-  }
-
- /**
-  * Convert an instance of KeyResponse to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
-

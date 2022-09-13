@@ -4,14 +4,15 @@ All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createOrganization**](OrganizationManagementApi.md#createOrganization) | **POST** /organizations | Creates an organization. |
-| [**deleteOrganization**](OrganizationManagementApi.md#deleteOrganization) | **DELETE** /organizations/{organization_id} | Delete an organization |
-| [**getOrganization**](OrganizationManagementApi.md#getOrganization) | **GET** /organizations/{organization_id} | Get an organization |
-| [**updateOrganization**](OrganizationManagementApi.md#updateOrganization) | **PATCH** /organizations/{organization_id} | Update an organization |
+| [**createOrganization**](OrganizationManagementApi.md#createOrganization) | **POST** organizations | Creates an organization. |
+| [**deleteOrganization**](OrganizationManagementApi.md#deleteOrganization) | **DELETE** organizations/{organization_id} | Delete an organization |
+| [**getOrganization**](OrganizationManagementApi.md#getOrganization) | **GET** organizations/{organization_id} | Get an organization |
+| [**updateOrganization**](OrganizationManagementApi.md#updateOrganization) | **PATCH** organizations/{organization_id} | Update an organization |
 
 
-<a name="createOrganization"></a>
-# **createOrganization**
+
+## createOrganization
+
 > CreateOrganizationResponse createOrganization(createOrganizationRequest)
 
 Creates an organization.
@@ -19,6 +20,7 @@ Creates an organization.
 Organization is the top level entity. All resources (like user, actions, policies) are created and managed under an organization. This is a privileged api and only internal applications has access to create an Organization.
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -29,33 +31,34 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.OrganizationManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure API key authorization: apiKeyAuth
-    ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("apiKeyAuth");
-    apiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //apiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure API key authorization: apiKeyAuth
+        ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("apiKeyAuth");
+        apiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //apiKeyAuth.setApiKeyPrefix("Token");
 
-    OrganizationManagementApi apiInstance = new OrganizationManagementApi(defaultClient);
-    CreateOrganizationRequest createOrganizationRequest = new CreateOrganizationRequest(); // CreateOrganizationRequest | Payload to create organization
-    try {
-      CreateOrganizationResponse result = apiInstance.createOrganization(createOrganizationRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling OrganizationManagementApi#createOrganization");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        OrganizationManagementApi apiInstance = new OrganizationManagementApi(defaultClient);
+        CreateOrganizationRequest createOrganizationRequest = new CreateOrganizationRequest(); // CreateOrganizationRequest | Payload to create organization
+        try {
+            CreateOrganizationResponse result = apiInstance.createOrganization(createOrganizationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationManagementApi#createOrganization");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -71,8 +74,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -84,8 +88,9 @@ public class Example {
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
-<a name="deleteOrganization"></a>
-# **deleteOrganization**
+
+## deleteOrganization
+
 > BaseSuccessResponse deleteOrganization(organizationId)
 
 Delete an organization
@@ -93,6 +98,7 @@ Delete an organization
 Delete an organization. This is a privileged api and only internal application will have access to delete organization.
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -103,33 +109,34 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.OrganizationManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure API key authorization: apiKeyAuth
-    ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("apiKeyAuth");
-    apiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //apiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure API key authorization: apiKeyAuth
+        ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("apiKeyAuth");
+        apiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //apiKeyAuth.setApiKeyPrefix("Token");
 
-    OrganizationManagementApi apiInstance = new OrganizationManagementApi(defaultClient);
-    String organizationId = "organizationId_example"; // String | 
-    try {
-      BaseSuccessResponse result = apiInstance.deleteOrganization(organizationId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling OrganizationManagementApi#deleteOrganization");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        OrganizationManagementApi apiInstance = new OrganizationManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        try {
+            BaseSuccessResponse result = apiInstance.deleteOrganization(organizationId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationManagementApi#deleteOrganization");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -145,8 +152,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -159,8 +167,9 @@ public class Example {
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
-<a name="getOrganization"></a>
-# **getOrganization**
+
+## getOrganization
+
 > Organization getOrganization(organizationId)
 
 Get an organization
@@ -168,6 +177,7 @@ Get an organization
 Get an organization and the metadata for the given organization.
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -178,31 +188,32 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.OrganizationManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure HTTP bearer authorization: bearerAuth
-    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-    bearerAuth.setBearerToken("BEARER TOKEN");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-    OrganizationManagementApi apiInstance = new OrganizationManagementApi(defaultClient);
-    String organizationId = "organizationId_example"; // String | 
-    try {
-      Organization result = apiInstance.getOrganization(organizationId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling OrganizationManagementApi#getOrganization");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        OrganizationManagementApi apiInstance = new OrganizationManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        try {
+            Organization result = apiInstance.getOrganization(organizationId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationManagementApi#getOrganization");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -218,8 +229,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -232,8 +244,9 @@ public class Example {
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
-<a name="updateOrganization"></a>
-# **updateOrganization**
+
+## updateOrganization
+
 > Organization updateOrganization(organizationId, updateOrganizationRequest)
 
 Update an organization
@@ -241,6 +254,7 @@ Update an organization
 Update an organization
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -251,32 +265,33 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.OrganizationManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure HTTP bearer authorization: bearerAuth
-    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-    bearerAuth.setBearerToken("BEARER TOKEN");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-    OrganizationManagementApi apiInstance = new OrganizationManagementApi(defaultClient);
-    String organizationId = "organizationId_example"; // String | 
-    UpdateOrganizationRequest updateOrganizationRequest = new UpdateOrganizationRequest(); // UpdateOrganizationRequest | Payload to update organization
-    try {
-      Organization result = apiInstance.updateOrganization(organizationId, updateOrganizationRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling OrganizationManagementApi#updateOrganization");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        OrganizationManagementApi apiInstance = new OrganizationManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        UpdateOrganizationRequest updateOrganizationRequest = new UpdateOrganizationRequest(); // UpdateOrganizationRequest | Payload to update organization
+        try {
+            Organization result = apiInstance.updateOrganization(organizationId, updateOrganizationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationManagementApi#updateOrganization");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -293,8 +308,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

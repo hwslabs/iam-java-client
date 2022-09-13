@@ -10,277 +10,157 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Objects;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.hypto.iam.client.JSON;
-
-/**
- * PaginationOptions
- */
+/** PaginationOptions */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PaginationOptions {
-  public static final String SERIALIZED_NAME_PAGE_SIZE = "pageSize";
-  @SerializedName(SERIALIZED_NAME_PAGE_SIZE)
-  private Integer pageSize;
+    public static final String SERIALIZED_NAME_PAGE_SIZE = "pageSize";
 
-  /**
-   * Gets or Sets sortOrder
-   */
-  @JsonAdapter(SortOrderEnum.Adapter.class)
-  public enum SortOrderEnum {
-    ASC("asc"),
-    
-    DESC("desc");
+    @SerializedName(SERIALIZED_NAME_PAGE_SIZE)
+    private Integer pageSize;
 
-    private String value;
+    /** Gets or Sets sortOrder */
+    @JsonAdapter(SortOrderEnum.Adapter.class)
+    public enum SortOrderEnum {
+        ASC("asc"),
 
-    SortOrderEnum(String value) {
-      this.value = value;
+        DESC("desc");
+
+        private String value;
+
+        SortOrderEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SortOrderEnum fromValue(String value) {
+            for (SortOrderEnum b : SortOrderEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<SortOrderEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final SortOrderEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public SortOrderEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return SortOrderEnum.fromValue(value);
+            }
+        }
     }
 
-    public String getValue() {
-      return value;
+    public static final String SERIALIZED_NAME_SORT_ORDER = "sortOrder";
+
+    @SerializedName(SERIALIZED_NAME_SORT_ORDER)
+    private SortOrderEnum sortOrder;
+
+    public PaginationOptions() {}
+
+    public PaginationOptions pageSize(Integer pageSize) {
+
+        this.pageSize = pageSize;
+        return this;
+    }
+
+    /**
+     * Get pageSize
+     *
+     * @return pageSize
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public PaginationOptions sortOrder(SortOrderEnum sortOrder) {
+
+        this.sortOrder = sortOrder;
+        return this;
+    }
+
+    /**
+     * Get sortOrder
+     *
+     * @return sortOrder
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public SortOrderEnum getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(SortOrderEnum sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PaginationOptions paginationOptions = (PaginationOptions) o;
+        return Objects.equals(this.pageSize, paginationOptions.pageSize)
+                && Objects.equals(this.sortOrder, paginationOptions.sortOrder);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pageSize, sortOrder);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PaginationOptions {\n");
+        sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
+        sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    public static SortOrderEnum fromValue(String value) {
-      for (SortOrderEnum b : SortOrderEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return o.toString().replace("\n", "\n    ");
     }
-
-    public static class Adapter extends TypeAdapter<SortOrderEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SortOrderEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SortOrderEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SortOrderEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_SORT_ORDER = "sortOrder";
-  @SerializedName(SERIALIZED_NAME_SORT_ORDER)
-  private SortOrderEnum sortOrder;
-
-  public PaginationOptions() { 
-  }
-
-  public PaginationOptions pageSize(Integer pageSize) {
-    
-    this.pageSize = pageSize;
-    return this;
-  }
-
-   /**
-   * Get pageSize
-   * @return pageSize
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getPageSize() {
-    return pageSize;
-  }
-
-
-  public void setPageSize(Integer pageSize) {
-    this.pageSize = pageSize;
-  }
-
-
-  public PaginationOptions sortOrder(SortOrderEnum sortOrder) {
-    
-    this.sortOrder = sortOrder;
-    return this;
-  }
-
-   /**
-   * Get sortOrder
-   * @return sortOrder
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public SortOrderEnum getSortOrder() {
-    return sortOrder;
-  }
-
-
-  public void setSortOrder(SortOrderEnum sortOrder) {
-    this.sortOrder = sortOrder;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PaginationOptions paginationOptions = (PaginationOptions) o;
-    return Objects.equals(this.pageSize, paginationOptions.pageSize) &&
-        Objects.equals(this.sortOrder, paginationOptions.sortOrder);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(pageSize, sortOrder);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PaginationOptions {\n");
-    sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
-    sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("pageSize");
-    openapiFields.add("sortOrder");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PaginationOptions
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (PaginationOptions.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PaginationOptions is not found in the empty JSON string", PaginationOptions.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!PaginationOptions.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PaginationOptions` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("sortOrder") != null && !jsonObj.get("sortOrder").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sortOrder` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sortOrder").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PaginationOptions.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PaginationOptions' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PaginationOptions> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PaginationOptions.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<PaginationOptions>() {
-           @Override
-           public void write(JsonWriter out, PaginationOptions value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public PaginationOptions read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of PaginationOptions given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of PaginationOptions
-  * @throws IOException if the JSON string is invalid with respect to PaginationOptions
-  */
-  public static PaginationOptions fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PaginationOptions.class);
-  }
-
- /**
-  * Convert an instance of PaginationOptions to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
-

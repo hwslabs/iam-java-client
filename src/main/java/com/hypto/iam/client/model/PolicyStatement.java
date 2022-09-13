@@ -10,323 +10,185 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Objects;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.hypto.iam.client.JSON;
-
-/**
- * PolicyStatement
- */
+/** PolicyStatement */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PolicyStatement {
-  public static final String SERIALIZED_NAME_RESOURCE = "resource";
-  @SerializedName(SERIALIZED_NAME_RESOURCE)
-  private String resource;
+    public static final String SERIALIZED_NAME_RESOURCE = "resource";
 
-  public static final String SERIALIZED_NAME_ACTION = "action";
-  @SerializedName(SERIALIZED_NAME_ACTION)
-  private String action;
+    @SerializedName(SERIALIZED_NAME_RESOURCE)
+    private String resource;
 
-  /**
-   * Gets or Sets effect
-   */
-  @JsonAdapter(EffectEnum.Adapter.class)
-  public enum EffectEnum {
-    ALLOW("allow"),
-    
-    DENY("deny");
+    public static final String SERIALIZED_NAME_ACTION = "action";
 
-    private String value;
+    @SerializedName(SERIALIZED_NAME_ACTION)
+    private String action;
 
-    EffectEnum(String value) {
-      this.value = value;
+    /** Gets or Sets effect */
+    @JsonAdapter(EffectEnum.Adapter.class)
+    public enum EffectEnum {
+        ALLOW("allow"),
+
+        DENY("deny");
+
+        private String value;
+
+        EffectEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static EffectEnum fromValue(String value) {
+            for (EffectEnum b : EffectEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<EffectEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final EffectEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public EffectEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return EffectEnum.fromValue(value);
+            }
+        }
     }
 
-    public String getValue() {
-      return value;
+    public static final String SERIALIZED_NAME_EFFECT = "effect";
+
+    @SerializedName(SERIALIZED_NAME_EFFECT)
+    private EffectEnum effect;
+
+    public PolicyStatement() {}
+
+    public PolicyStatement resource(String resource) {
+
+        this.resource = resource;
+        return this;
+    }
+
+    /**
+     * Get resource
+     *
+     * @return resource
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
+    }
+
+    public PolicyStatement action(String action) {
+
+        this.action = action;
+        return this;
+    }
+
+    /**
+     * Get action
+     *
+     * @return action
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public PolicyStatement effect(EffectEnum effect) {
+
+        this.effect = effect;
+        return this;
+    }
+
+    /**
+     * Get effect
+     *
+     * @return effect
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public EffectEnum getEffect() {
+        return effect;
+    }
+
+    public void setEffect(EffectEnum effect) {
+        this.effect = effect;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PolicyStatement policyStatement = (PolicyStatement) o;
+        return Objects.equals(this.resource, policyStatement.resource)
+                && Objects.equals(this.action, policyStatement.action)
+                && Objects.equals(this.effect, policyStatement.effect);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(resource, action, effect);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PolicyStatement {\n");
+        sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
+        sb.append("    action: ").append(toIndentedString(action)).append("\n");
+        sb.append("    effect: ").append(toIndentedString(effect)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    public static EffectEnum fromValue(String value) {
-      for (EffectEnum b : EffectEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return o.toString().replace("\n", "\n    ");
     }
-
-    public static class Adapter extends TypeAdapter<EffectEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EffectEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EffectEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EffectEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_EFFECT = "effect";
-  @SerializedName(SERIALIZED_NAME_EFFECT)
-  private EffectEnum effect;
-
-  public PolicyStatement() { 
-  }
-
-  public PolicyStatement resource(String resource) {
-    
-    this.resource = resource;
-    return this;
-  }
-
-   /**
-   * Get resource
-   * @return resource
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getResource() {
-    return resource;
-  }
-
-
-  public void setResource(String resource) {
-    this.resource = resource;
-  }
-
-
-  public PolicyStatement action(String action) {
-    
-    this.action = action;
-    return this;
-  }
-
-   /**
-   * Get action
-   * @return action
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getAction() {
-    return action;
-  }
-
-
-  public void setAction(String action) {
-    this.action = action;
-  }
-
-
-  public PolicyStatement effect(EffectEnum effect) {
-    
-    this.effect = effect;
-    return this;
-  }
-
-   /**
-   * Get effect
-   * @return effect
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public EffectEnum getEffect() {
-    return effect;
-  }
-
-
-  public void setEffect(EffectEnum effect) {
-    this.effect = effect;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PolicyStatement policyStatement = (PolicyStatement) o;
-    return Objects.equals(this.resource, policyStatement.resource) &&
-        Objects.equals(this.action, policyStatement.action) &&
-        Objects.equals(this.effect, policyStatement.effect);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(resource, action, effect);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PolicyStatement {\n");
-    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
-    sb.append("    action: ").append(toIndentedString(action)).append("\n");
-    sb.append("    effect: ").append(toIndentedString(effect)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("resource");
-    openapiFields.add("action");
-    openapiFields.add("effect");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("resource");
-    openapiRequiredFields.add("action");
-    openapiRequiredFields.add("effect");
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PolicyStatement
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (PolicyStatement.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PolicyStatement is not found in the empty JSON string", PolicyStatement.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!PolicyStatement.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PolicyStatement` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PolicyStatement.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("resource") != null && !jsonObj.get("resource").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `resource` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource").toString()));
-      }
-      if (jsonObj.get("action") != null && !jsonObj.get("action").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action").toString()));
-      }
-      if (jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PolicyStatement.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PolicyStatement' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PolicyStatement> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PolicyStatement.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<PolicyStatement>() {
-           @Override
-           public void write(JsonWriter out, PolicyStatement value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public PolicyStatement read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of PolicyStatement given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of PolicyStatement
-  * @throws IOException if the JSON string is invalid with respect to PolicyStatement
-  */
-  public static PolicyStatement fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PolicyStatement.class);
-  }
-
- /**
-  * Convert an instance of PolicyStatement to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
-

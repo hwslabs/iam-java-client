@@ -10,225 +10,85 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.CredentialWithoutSecret;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.hypto.iam.client.JSON;
-
-/**
- * ListCredentialResponse
- */
+/** ListCredentialResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ListCredentialResponse {
-  public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
-  @SerializedName(SERIALIZED_NAME_CREDENTIALS)
-  private List<CredentialWithoutSecret> credentials = new ArrayList<>();
+    public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
 
-  public ListCredentialResponse() { 
-  }
+    @SerializedName(SERIALIZED_NAME_CREDENTIALS)
+    private List<CredentialWithoutSecret> credentials = new ArrayList<>();
 
-  public ListCredentialResponse credentials(List<CredentialWithoutSecret> credentials) {
-    
-    this.credentials = credentials;
-    return this;
-  }
+    public ListCredentialResponse() {}
 
-  public ListCredentialResponse addCredentialsItem(CredentialWithoutSecret credentialsItem) {
-    this.credentials.add(credentialsItem);
-    return this;
-  }
+    public ListCredentialResponse credentials(List<CredentialWithoutSecret> credentials) {
 
-   /**
-   * Get credentials
-   * @return credentials
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<CredentialWithoutSecret> getCredentials() {
-    return credentials;
-  }
-
-
-  public void setCredentials(List<CredentialWithoutSecret> credentials) {
-    this.credentials = credentials;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.credentials = credentials;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public ListCredentialResponse addCredentialsItem(CredentialWithoutSecret credentialsItem) {
+        this.credentials.add(credentialsItem);
+        return this;
     }
-    ListCredentialResponse listCredentialResponse = (ListCredentialResponse) o;
-    return Objects.equals(this.credentials, listCredentialResponse.credentials);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(credentials);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ListCredentialResponse {\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get credentials
+     *
+     * @return credentials
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public List<CredentialWithoutSecret> getCredentials() {
+        return credentials;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public void setCredentials(List<CredentialWithoutSecret> credentials) {
+        this.credentials = credentials;
+    }
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("credentials");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("credentials");
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ListCredentialResponse
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (ListCredentialResponse.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ListCredentialResponse is not found in the empty JSON string", ListCredentialResponse.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ListCredentialResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ListCredentialResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ListCredentialResponse.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      JsonArray jsonArraycredentials = jsonObj.getAsJsonArray("credentials");
-      if (jsonArraycredentials != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("credentials").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `credentials` to be an array in the JSON string but got `%s`", jsonObj.get("credentials").toString()));
-        }
-
-        // validate the optional field `credentials` (array)
-        for (int i = 0; i < jsonArraycredentials.size(); i++) {
-          CredentialWithoutSecret.validateJsonObject(jsonArraycredentials.get(i).getAsJsonObject());
-        };
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ListCredentialResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ListCredentialResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ListCredentialResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ListCredentialResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ListCredentialResponse>() {
-           @Override
-           public void write(JsonWriter out, ListCredentialResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ListCredentialResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ListCredentialResponse listCredentialResponse = (ListCredentialResponse) o;
+        return Objects.equals(this.credentials, listCredentialResponse.credentials);
     }
-  }
 
- /**
-  * Create an instance of ListCredentialResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ListCredentialResponse
-  * @throws IOException if the JSON string is invalid with respect to ListCredentialResponse
-  */
-  public static ListCredentialResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ListCredentialResponse.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(credentials);
+    }
 
- /**
-  * Convert an instance of ListCredentialResponse to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ListCredentialResponse {\n");
+        sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

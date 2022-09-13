@@ -4,15 +4,16 @@ All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createResource**](ResourceManagementApi.md#createResource) | **POST** /organizations/{organization_id}/resources | Create a resource name in an organization. |
-| [**deleteResource**](ResourceManagementApi.md#deleteResource) | **DELETE** /organizations/{organization_id}/resources/{resource_name} | Delete a resource |
-| [**getResource**](ResourceManagementApi.md#getResource) | **GET** /organizations/{organization_id}/resources/{resource_name} | Get the resource details |
-| [**listResources**](ResourceManagementApi.md#listResources) | **GET** /organizations/{organization_id}/resources | List Resources |
-| [**updateResource**](ResourceManagementApi.md#updateResource) | **PATCH** /organizations/{organization_id}/resources/{resource_name} | Update a resource |
+| [**createResource**](ResourceManagementApi.md#createResource) | **POST** organizations/{organization_id}/resources | Create a resource name in an organization. |
+| [**deleteResource**](ResourceManagementApi.md#deleteResource) | **DELETE** organizations/{organization_id}/resources/{resource_name} | Delete a resource |
+| [**getResource**](ResourceManagementApi.md#getResource) | **GET** organizations/{organization_id}/resources/{resource_name} | Get the resource details |
+| [**listResources**](ResourceManagementApi.md#listResources) | **GET** organizations/{organization_id}/resources | List Resources |
+| [**updateResource**](ResourceManagementApi.md#updateResource) | **PATCH** organizations/{organization_id}/resources/{resource_name} | Update a resource |
 
 
-<a name="createResource"></a>
-# **createResource**
+
+## createResource
+
 > Resource createResource(organizationId, createResourceRequest)
 
 Create a resource name in an organization.
@@ -20,6 +21,7 @@ Create a resource name in an organization.
 Creates a resource name. Access policies can be associated with the instances of these resources. ex - \\\&quot;Wallet\\\&quot; is a resource name in the organization org - \\\&quot;Org#1\\\&quot; and \\\&quot;wallet#1\\\&quot; is the instance of the resource \\\&quot;Wallet\\\&quot;. Policies on which user to access the wallet#1 can be created by the user having privilege to access the resource.
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -30,32 +32,33 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.ResourceManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure HTTP bearer authorization: bearerAuth
-    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-    bearerAuth.setBearerToken("BEARER TOKEN");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-    ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
-    String organizationId = "organizationId_example"; // String | 
-    CreateResourceRequest createResourceRequest = new CreateResourceRequest(); // CreateResourceRequest | Payload to create resource
-    try {
-      Resource result = apiInstance.createResource(organizationId, createResourceRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ResourceManagementApi#createResource");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        CreateResourceRequest createResourceRequest = new CreateResourceRequest(); // CreateResourceRequest | Payload to create resource
+        try {
+            Resource result = apiInstance.createResource(organizationId, createResourceRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ResourceManagementApi#createResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -72,8 +75,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -86,8 +90,9 @@ public class Example {
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
-<a name="deleteResource"></a>
-# **deleteResource**
+
+## deleteResource
+
 > BaseSuccessResponse deleteResource(organizationId, resourceName)
 
 Delete a resource
@@ -95,6 +100,7 @@ Delete a resource
 Delete a resource
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -105,32 +111,33 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.ResourceManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure HTTP bearer authorization: bearerAuth
-    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-    bearerAuth.setBearerToken("BEARER TOKEN");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-    ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
-    String organizationId = "organizationId_example"; // String | 
-    String resourceName = "resourceName_example"; // String | 
-    try {
-      BaseSuccessResponse result = apiInstance.deleteResource(organizationId, resourceName);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ResourceManagementApi#deleteResource");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        String resourceName = "resourceName_example"; // String | 
+        try {
+            BaseSuccessResponse result = apiInstance.deleteResource(organizationId, resourceName);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ResourceManagementApi#deleteResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -147,8 +154,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -161,8 +169,9 @@ public class Example {
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
-<a name="getResource"></a>
-# **getResource**
+
+## getResource
+
 > Resource getResource(organizationId, resourceName)
 
 Get the resource details
@@ -170,6 +179,7 @@ Get the resource details
 Gets the resource details associated with the organization
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -180,32 +190,33 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.ResourceManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure HTTP bearer authorization: bearerAuth
-    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-    bearerAuth.setBearerToken("BEARER TOKEN");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-    ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
-    String organizationId = "organizationId_example"; // String | 
-    String resourceName = "resourceName_example"; // String | 
-    try {
-      Resource result = apiInstance.getResource(organizationId, resourceName);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ResourceManagementApi#getResource");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        String resourceName = "resourceName_example"; // String | 
+        try {
+            Resource result = apiInstance.getResource(organizationId, resourceName);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ResourceManagementApi#getResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -222,8 +233,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -236,8 +248,9 @@ public class Example {
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
-<a name="listResources"></a>
-# **listResources**
+
+## listResources
+
 > ResourcePaginatedResponse listResources(organizationId, nextToken, pageSize, sortOrder)
 
 List Resources
@@ -245,6 +258,7 @@ List Resources
 List all the resource names in an organization.
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -255,34 +269,35 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.ResourceManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure HTTP bearer authorization: bearerAuth
-    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-    bearerAuth.setBearerToken("BEARER TOKEN");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-    ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
-    String organizationId = "organizationId_example"; // String | 
-    String nextToken = "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="; // String | 
-    String pageSize = "10"; // String | 
-    String sortOrder = "asc"; // String | 
-    try {
-      ResourcePaginatedResponse result = apiInstance.listResources(organizationId, nextToken, pageSize, sortOrder);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ResourceManagementApi#listResources");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        String nextToken = "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="; // String | 
+        String pageSize = "10"; // String | 
+        String sortOrder = "asc"; // String | 
+        try {
+            ResourcePaginatedResponse result = apiInstance.listResources(organizationId, nextToken, pageSize, sortOrder);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ResourceManagementApi#listResources");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -301,8 +316,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -314,8 +330,9 @@ public class Example {
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
-<a name="updateResource"></a>
-# **updateResource**
+
+## updateResource
+
 > Resource updateResource(organizationId, resourceName, updateResourceRequest)
 
 Update a resource
@@ -323,6 +340,7 @@ Update a resource
 Update resource name of the organization
 
 ### Example
+
 ```java
 // Import classes:
 import com.hypto.iam.client.ApiClient;
@@ -333,33 +351,34 @@ import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.ResourceManagementApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-    
-    // Configure HTTP bearer authorization: bearerAuth
-    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-    bearerAuth.setBearerToken("BEARER TOKEN");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-    ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
-    String organizationId = "organizationId_example"; // String | 
-    String resourceName = "resourceName_example"; // String | 
-    UpdateResourceRequest updateResourceRequest = new UpdateResourceRequest(); // UpdateResourceRequest | Payload to update resource
-    try {
-      Resource result = apiInstance.updateResource(organizationId, resourceName, updateResourceRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ResourceManagementApi#updateResource");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ResourceManagementApi apiInstance = new ResourceManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        String resourceName = "resourceName_example"; // String | 
+        UpdateResourceRequest updateResourceRequest = new UpdateResourceRequest(); // UpdateResourceRequest | Payload to update resource
+        try {
+            Resource result = apiInstance.updateResource(organizationId, resourceName, updateResourceRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ResourceManagementApi#updateResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
@@ -377,8 +396,9 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

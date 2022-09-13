@@ -10,358 +10,197 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.hypto.iam.client.model.PolicyStatement;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.hypto.iam.client.JSON;
-
-/**
- * Policy
- */
+/** Policy */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Policy {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
-  @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
-  private String organizationId;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-  public static final String SERIALIZED_NAME_HRN = "hrn";
-  @SerializedName(SERIALIZED_NAME_HRN)
-  private String hrn;
+    public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+    @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
+    private String organizationId;
 
-  public static final String SERIALIZED_NAME_STATEMENTS = "statements";
-  @SerializedName(SERIALIZED_NAME_STATEMENTS)
-  private List<PolicyStatement> statements = new ArrayList<>();
+    public static final String SERIALIZED_NAME_HRN = "hrn";
 
-  public Policy() { 
-  }
+    @SerializedName(SERIALIZED_NAME_HRN)
+    private String hrn;
 
-  public Policy name(String name) {
-    
-    this.name = name;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_VERSION = "version";
 
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+    @SerializedName(SERIALIZED_NAME_VERSION)
+    private Integer version;
 
-  public String getName() {
-    return name;
-  }
+    public static final String SERIALIZED_NAME_STATEMENTS = "statements";
 
+    @SerializedName(SERIALIZED_NAME_STATEMENTS)
+    private List<PolicyStatement> statements = new ArrayList<>();
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public Policy() {}
 
+    public Policy name(String name) {
 
-  public Policy organizationId(String organizationId) {
-    
-    this.organizationId = organizationId;
-    return this;
-  }
-
-   /**
-   * Get organizationId
-   * @return organizationId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getOrganizationId() {
-    return organizationId;
-  }
-
-
-  public void setOrganizationId(String organizationId) {
-    this.organizationId = organizationId;
-  }
-
-
-  public Policy hrn(String hrn) {
-    
-    this.hrn = hrn;
-    return this;
-  }
-
-   /**
-   * Get hrn
-   * @return hrn
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getHrn() {
-    return hrn;
-  }
-
-
-  public void setHrn(String hrn) {
-    this.hrn = hrn;
-  }
-
-
-  public Policy version(Integer version) {
-    
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Integer getVersion() {
-    return version;
-  }
-
-
-  public void setVersion(Integer version) {
-    this.version = version;
-  }
-
-
-  public Policy statements(List<PolicyStatement> statements) {
-    
-    this.statements = statements;
-    return this;
-  }
-
-  public Policy addStatementsItem(PolicyStatement statementsItem) {
-    this.statements.add(statementsItem);
-    return this;
-  }
-
-   /**
-   * Get statements
-   * @return statements
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public List<PolicyStatement> getStatements() {
-    return statements;
-  }
-
-
-  public void setStatements(List<PolicyStatement> statements) {
-    this.statements = statements;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.name = name;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getName() {
+        return name;
     }
-    Policy policy = (Policy) o;
-    return Objects.equals(this.name, policy.name) &&
-        Objects.equals(this.organizationId, policy.organizationId) &&
-        Objects.equals(this.hrn, policy.hrn) &&
-        Objects.equals(this.version, policy.version) &&
-        Objects.equals(this.statements, policy.statements);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, organizationId, hrn, version, statements);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Policy {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
-    sb.append("    hrn: ").append(toIndentedString(hrn)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    statements: ").append(toIndentedString(statements)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setName(String name) {
+        this.name = name;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public Policy organizationId(String organizationId) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.organizationId = organizationId;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("organizationId");
-    openapiFields.add("hrn");
-    openapiFields.add("version");
-    openapiFields.add("statements");
+    /**
+     * Get organizationId
+     *
+     * @return organizationId
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getOrganizationId() {
+        return organizationId;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("organizationId");
-    openapiRequiredFields.add("hrn");
-    openapiRequiredFields.add("version");
-    openapiRequiredFields.add("statements");
-  }
+    public void setOrganizationId(String organizationId) {
+        this.organizationId = organizationId;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Policy
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (Policy.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Policy is not found in the empty JSON string", Policy.openapiRequiredFields.toString()));
-        }
-      }
+    public Policy hrn(String hrn) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Policy.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Policy` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        this.hrn = hrn;
+        return this;
+    }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Policy.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (jsonObj.get("organizationId") != null && !jsonObj.get("organizationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `organizationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organizationId").toString()));
-      }
-      if (jsonObj.get("hrn") != null && !jsonObj.get("hrn").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hrn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hrn").toString()));
-      }
-      JsonArray jsonArraystatements = jsonObj.getAsJsonArray("statements");
-      if (jsonArraystatements != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("statements").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `statements` to be an array in the JSON string but got `%s`", jsonObj.get("statements").toString()));
-        }
+    /**
+     * Get hrn
+     *
+     * @return hrn
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getHrn() {
+        return hrn;
+    }
 
-        // validate the optional field `statements` (array)
-        for (int i = 0; i < jsonArraystatements.size(); i++) {
-          PolicyStatement.validateJsonObject(jsonArraystatements.get(i).getAsJsonObject());
-        };
-      }
-  }
+    public void setHrn(String hrn) {
+        this.hrn = hrn;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    public Policy version(Integer version) {
+
+        this.version = version;
+        return this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return version
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public Policy statements(List<PolicyStatement> statements) {
+
+        this.statements = statements;
+        return this;
+    }
+
+    public Policy addStatementsItem(PolicyStatement statementsItem) {
+        this.statements.add(statementsItem);
+        return this;
+    }
+
+    /**
+     * Get statements
+     *
+     * @return statements
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public List<PolicyStatement> getStatements() {
+        return statements;
+    }
+
+    public void setStatements(List<PolicyStatement> statements) {
+        this.statements = statements;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Policy.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Policy' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Policy> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Policy.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Policy>() {
-           @Override
-           public void write(JsonWriter out, Policy value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Policy read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Policy policy = (Policy) o;
+        return Objects.equals(this.name, policy.name)
+                && Objects.equals(this.organizationId, policy.organizationId)
+                && Objects.equals(this.hrn, policy.hrn)
+                && Objects.equals(this.version, policy.version)
+                && Objects.equals(this.statements, policy.statements);
     }
-  }
 
- /**
-  * Create an instance of Policy given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Policy
-  * @throws IOException if the JSON string is invalid with respect to Policy
-  */
-  public static Policy fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Policy.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, organizationId, hrn, version, statements);
+    }
 
- /**
-  * Convert an instance of Policy to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Policy {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+        sb.append("    hrn: ").append(toIndentedString(hrn)).append("\n");
+        sb.append("    version: ").append(toIndentedString(version)).append("\n");
+        sb.append("    statements: ").append(toIndentedString(statements)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-

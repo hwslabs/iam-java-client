@@ -10,11 +10,9 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,310 +21,176 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Objects;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.hypto.iam.client.JSON;
-
-/**
- * Payload to send verification link to email
- */
+/** Payload to send verification link to email */
 @ApiModel(description = "Payload to send verification link to email")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VerifyEmailRequest {
-  public static final String SERIALIZED_NAME_EMAIL = "email";
-  @SerializedName(SERIALIZED_NAME_EMAIL)
-  private String email;
+    public static final String SERIALIZED_NAME_EMAIL = "email";
 
-  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
-  @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
-  private String organizationId;
+    @SerializedName(SERIALIZED_NAME_EMAIL)
+    private String email;
 
-  /**
-   * Gets or Sets purpose
-   */
-  @JsonAdapter(PurposeEnum.Adapter.class)
-  public enum PurposeEnum {
-    RESET("reset"),
-    
-    SIGNUP("signup");
+    public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
 
-    private String value;
+    @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
+    private String organizationId;
 
-    PurposeEnum(String value) {
-      this.value = value;
+    /** Gets or Sets purpose */
+    @JsonAdapter(PurposeEnum.Adapter.class)
+    public enum PurposeEnum {
+        RESET("reset"),
+
+        SIGNUP("signup");
+
+        private String value;
+
+        PurposeEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static PurposeEnum fromValue(String value) {
+            for (PurposeEnum b : PurposeEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<PurposeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final PurposeEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public PurposeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return PurposeEnum.fromValue(value);
+            }
+        }
     }
 
-    public String getValue() {
-      return value;
+    public static final String SERIALIZED_NAME_PURPOSE = "purpose";
+
+    @SerializedName(SERIALIZED_NAME_PURPOSE)
+    private PurposeEnum purpose;
+
+    public VerifyEmailRequest() {}
+
+    public VerifyEmailRequest email(String email) {
+
+        this.email = email;
+        return this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return email
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public VerifyEmailRequest organizationId(String organizationId) {
+
+        this.organizationId = organizationId;
+        return this;
+    }
+
+    /**
+     * Get organizationId
+     *
+     * @return organizationId
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(String organizationId) {
+        this.organizationId = organizationId;
+    }
+
+    public VerifyEmailRequest purpose(PurposeEnum purpose) {
+
+        this.purpose = purpose;
+        return this;
+    }
+
+    /**
+     * Get purpose
+     *
+     * @return purpose
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public PurposeEnum getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(PurposeEnum purpose) {
+        this.purpose = purpose;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        VerifyEmailRequest verifyEmailRequest = (VerifyEmailRequest) o;
+        return Objects.equals(this.email, verifyEmailRequest.email)
+                && Objects.equals(this.organizationId, verifyEmailRequest.organizationId)
+                && Objects.equals(this.purpose, verifyEmailRequest.purpose);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, organizationId, purpose);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class VerifyEmailRequest {\n");
+        sb.append("    email: ").append(toIndentedString(email)).append("\n");
+        sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+        sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    public static PurposeEnum fromValue(String value) {
-      for (PurposeEnum b : PurposeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return o.toString().replace("\n", "\n    ");
     }
-
-    public static class Adapter extends TypeAdapter<PurposeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PurposeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PurposeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PurposeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_PURPOSE = "purpose";
-  @SerializedName(SERIALIZED_NAME_PURPOSE)
-  private PurposeEnum purpose;
-
-  public VerifyEmailRequest() { 
-  }
-
-  public VerifyEmailRequest email(String email) {
-    
-    this.email = email;
-    return this;
-  }
-
-   /**
-   * Get email
-   * @return email
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getEmail() {
-    return email;
-  }
-
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-
-  public VerifyEmailRequest organizationId(String organizationId) {
-    
-    this.organizationId = organizationId;
-    return this;
-  }
-
-   /**
-   * Get organizationId
-   * @return organizationId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getOrganizationId() {
-    return organizationId;
-  }
-
-
-  public void setOrganizationId(String organizationId) {
-    this.organizationId = organizationId;
-  }
-
-
-  public VerifyEmailRequest purpose(PurposeEnum purpose) {
-    
-    this.purpose = purpose;
-    return this;
-  }
-
-   /**
-   * Get purpose
-   * @return purpose
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public PurposeEnum getPurpose() {
-    return purpose;
-  }
-
-
-  public void setPurpose(PurposeEnum purpose) {
-    this.purpose = purpose;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    VerifyEmailRequest verifyEmailRequest = (VerifyEmailRequest) o;
-    return Objects.equals(this.email, verifyEmailRequest.email) &&
-        Objects.equals(this.organizationId, verifyEmailRequest.organizationId) &&
-        Objects.equals(this.purpose, verifyEmailRequest.purpose);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(email, organizationId, purpose);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VerifyEmailRequest {\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("email");
-    openapiFields.add("organizationId");
-    openapiFields.add("purpose");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("email");
-    openapiRequiredFields.add("purpose");
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VerifyEmailRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (VerifyEmailRequest.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VerifyEmailRequest is not found in the empty JSON string", VerifyEmailRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!VerifyEmailRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VerifyEmailRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VerifyEmailRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("email") != null && !jsonObj.get("email").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
-      }
-      if (jsonObj.get("organizationId") != null && !jsonObj.get("organizationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `organizationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organizationId").toString()));
-      }
-      if (jsonObj.get("purpose") != null && !jsonObj.get("purpose").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VerifyEmailRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VerifyEmailRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VerifyEmailRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VerifyEmailRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<VerifyEmailRequest>() {
-           @Override
-           public void write(JsonWriter out, VerifyEmailRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public VerifyEmailRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of VerifyEmailRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of VerifyEmailRequest
-  * @throws IOException if the JSON string is invalid with respect to VerifyEmailRequest
-  */
-  public static VerifyEmailRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VerifyEmailRequest.class);
-  }
-
- /**
-  * Convert an instance of VerifyEmailRequest to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
-

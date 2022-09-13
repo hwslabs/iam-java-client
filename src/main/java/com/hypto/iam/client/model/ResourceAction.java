@@ -10,242 +10,106 @@
  * Do not edit the class manually.
  */
 
-
 package com.hypto.iam.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import java.util.Objects;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.hypto.iam.client.JSON;
-
-/**
- * ResourceAction
- */
+/** ResourceAction */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResourceAction {
-  public static final String SERIALIZED_NAME_RESOURCE = "resource";
-  @SerializedName(SERIALIZED_NAME_RESOURCE)
-  private String resource;
+    public static final String SERIALIZED_NAME_RESOURCE = "resource";
 
-  public static final String SERIALIZED_NAME_ACTION = "action";
-  @SerializedName(SERIALIZED_NAME_ACTION)
-  private String action;
+    @SerializedName(SERIALIZED_NAME_RESOURCE)
+    private String resource;
 
-  public ResourceAction() { 
-  }
+    public static final String SERIALIZED_NAME_ACTION = "action";
 
-  public ResourceAction resource(String resource) {
-    
-    this.resource = resource;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_ACTION)
+    private String action;
 
-   /**
-   * Get resource
-   * @return resource
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+    public ResourceAction() {}
 
-  public String getResource() {
-    return resource;
-  }
+    public ResourceAction resource(String resource) {
 
-
-  public void setResource(String resource) {
-    this.resource = resource;
-  }
-
-
-  public ResourceAction action(String action) {
-    
-    this.action = action;
-    return this;
-  }
-
-   /**
-   * Get action
-   * @return action
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public String getAction() {
-    return action;
-  }
-
-
-  public void setAction(String action) {
-    this.action = action;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.resource = resource;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get resource
+     *
+     * @return resource
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getResource() {
+        return resource;
     }
-    ResourceAction resourceAction = (ResourceAction) o;
-    return Objects.equals(this.resource, resourceAction.resource) &&
-        Objects.equals(this.action, resourceAction.action);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(resource, action);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceAction {\n");
-    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
-    sb.append("    action: ").append(toIndentedString(action)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setResource(String resource) {
+        this.resource = resource;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public ResourceAction action(String action) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.action = action;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("resource");
-    openapiFields.add("action");
+    /**
+     * Get action
+     *
+     * @return action
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public String getAction() {
+        return action;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("resource");
-    openapiRequiredFields.add("action");
-  }
+    public void setAction(String action) {
+        this.action = action;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ResourceAction
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (ResourceAction.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceAction is not found in the empty JSON string", ResourceAction.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ResourceAction.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ResourceAction` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ResourceAction.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("resource") != null && !jsonObj.get("resource").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `resource` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource").toString()));
-      }
-      if (jsonObj.get("action") != null && !jsonObj.get("action").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ResourceAction.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ResourceAction' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ResourceAction> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ResourceAction.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ResourceAction>() {
-           @Override
-           public void write(JsonWriter out, ResourceAction value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ResourceAction read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ResourceAction resourceAction = (ResourceAction) o;
+        return Objects.equals(this.resource, resourceAction.resource)
+                && Objects.equals(this.action, resourceAction.action);
     }
-  }
 
- /**
-  * Create an instance of ResourceAction given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ResourceAction
-  * @throws IOException if the JSON string is invalid with respect to ResourceAction
-  */
-  public static ResourceAction fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ResourceAction.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(resource, action);
+    }
 
- /**
-  * Convert an instance of ResourceAction to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ResourceAction {\n");
+        sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
+        sb.append("    action: ").append(toIndentedString(action)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
-
