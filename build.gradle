@@ -216,4 +216,6 @@ task generateClient(dependsOn: [deleteFiles], type: GenerateTask) {
     additionalProperties = [
             library: "retrofit2"
     ]
+
+    finalizedBy(spotlessApply)
 }

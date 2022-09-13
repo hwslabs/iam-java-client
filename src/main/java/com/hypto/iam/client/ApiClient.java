@@ -29,6 +29,7 @@ public class ApiClient {
     private Retrofit.Builder adapterBuilder;
     private JSON json;
     private OkHttpClient okHttpClient;
+    private String baseUrl = "https://sandbox-iam.us.hypto.com/v1";
 
     public ApiClient() {
         apiAuthorizations = new LinkedHashMap<String, Interceptor>();
@@ -101,7 +102,7 @@ public class ApiClient {
     public void createDefaultAdapter() {
         json = new JSON();
 
-        String baseUrl = "https://sandbox-iam.us.hypto.com/v1";
+        String baseUrl = this.baseUrl;
         if (!baseUrl.endsWith("/")) baseUrl = baseUrl + "/";
 
         adapterBuilder =
@@ -169,6 +170,12 @@ public class ApiClient {
                 return this;
             }
         }
+        return this;
+    }
+
+    public ApiClient setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+        adapterBuilder.baseUrl(this.baseUrl);
         return this;
     }
 
