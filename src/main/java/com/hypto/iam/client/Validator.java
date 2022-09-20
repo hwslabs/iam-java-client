@@ -102,20 +102,18 @@ public class Validator {
         this.organizationId = this.claims.get(ORGANIZATION_CLAIM, String.class);
         final String entitlements = this.claims.get(ENTITLEMENTS_CLAIM, String.class);
 
-        if (!this.claims.getIssuer().equals(ISSUER)) {
+        if (!ISSUER.equals(this.claims.getIssuer())) {
             throw new IamAuthenticationException("Invalid issuer");
         }
 
-        if (!this.claims.get(VERSION_CLAIM, String.class).equals(VERSION_NUM)) {
+        if (!VERSION_NUM.equals(this.claims.get(VERSION_CLAIM, String.class))) {
             throw new IamAuthenticationException("Invalid version");
         }
 
-        this.enforcer =
-                new Enforcer(
-                        model,
-                        new FileAdapter(
-                                new ByteArrayInputStream(
-                                        entitlements.getBytes(StandardCharsets.UTF_8))));
+        this.enforcer = new Enforcer(
+                model,
+                new FileAdapter(new ByteArrayInputStream(entitlements.getBytes(StandardCharsets.UTF_8)))
+        );
     }
 
     public Validator(String token) throws IamAuthenticationException {
