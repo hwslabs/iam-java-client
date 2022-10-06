@@ -110,10 +110,12 @@ public class Validator {
             throw new IamAuthenticationException("Invalid version");
         }
 
-        this.enforcer = new Enforcer(
-                model,
-                new FileAdapter(new ByteArrayInputStream(entitlements.getBytes(StandardCharsets.UTF_8)))
-        );
+        this.enforcer =
+                new Enforcer(
+                        model,
+                        new FileAdapter(
+                                new ByteArrayInputStream(
+                                        entitlements.getBytes(StandardCharsets.UTF_8))));
     }
 
     public Validator(String token) throws IamAuthenticationException {
