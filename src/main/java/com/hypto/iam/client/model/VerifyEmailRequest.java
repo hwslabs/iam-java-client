@@ -21,6 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /** Payload to send verification link to email */
@@ -88,6 +90,11 @@ public class VerifyEmailRequest {
     @SerializedName(SERIALIZED_NAME_PURPOSE)
     private PurposeEnum purpose;
 
+    public static final String SERIALIZED_NAME_METADATA = "metadata";
+
+    @SerializedName(SERIALIZED_NAME_METADATA)
+    private Map<String, Object> metadata = null;
+
     public VerifyEmailRequest() {}
 
     public VerifyEmailRequest email(String email) {
@@ -153,6 +160,56 @@ public class VerifyEmailRequest {
         this.purpose = purpose;
     }
 
+    public VerifyEmailRequest metadata(Map<String, Object> metadata) {
+
+        this.metadata = metadata;
+        return this;
+    }
+
+    public VerifyEmailRequest putMetadataItem(String key, Object metadataItem) {
+        if (this.metadata == null) {
+            this.metadata = new HashMap<>();
+        }
+        this.metadata.put(key, metadataItem);
+        return this;
+    }
+
+    /**
+     * Additional metadata to be sent along with the request. Every purpose requires different
+     * metadata. - signup : if user provides admin user and org details in metadata, they don&#39;t
+     * need to be provided in the request body during CreateOrganization request. Supported metadata
+     * keys: 1. name : string (required): name of the organization 2. description : string
+     * (optional) - description of the organization 3. rootUserPasswordHash : string (required) -
+     * password of the root user 4. rootUserVerified : boolean (required) - if the root user is
+     * verified 5. rootUserName : string (optional) - name of the root user 6.
+     * rootUserPreferredUsername : string (optional) - preferred username of the root user 7.
+     * rootUserPhone : string (optional) - phone number of the root user
+     *
+     * @return metadata
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(
+            value =
+                    "Additional metadata to be sent along with the request. Every purpose requires"
+                        + " different metadata. - signup :     if user provides admin user and org"
+                        + " details in metadata, they don't need to be provided in the request"
+                        + " body during CreateOrganization request.     Supported metadata keys:  "
+                        + "   1. name : string (required): name of the organization     2."
+                        + " description : string (optional) - description of the organization    "
+                        + " 3. rootUserPasswordHash : string (required) - password of the root"
+                        + " user     4. rootUserVerified : boolean (required) - if the root user"
+                        + " is verified     5. rootUserName : string (optional) - name of the root"
+                        + " user     6. rootUserPreferredUsername : string (optional) - preferred"
+                        + " username of the root user     7. rootUserPhone : string (optional) -"
+                        + " phone number of the root user ")
+    public Map<String, Object> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, Object> metadata) {
+        this.metadata = metadata;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -164,12 +221,13 @@ public class VerifyEmailRequest {
         VerifyEmailRequest verifyEmailRequest = (VerifyEmailRequest) o;
         return Objects.equals(this.email, verifyEmailRequest.email)
                 && Objects.equals(this.organizationId, verifyEmailRequest.organizationId)
-                && Objects.equals(this.purpose, verifyEmailRequest.purpose);
+                && Objects.equals(this.purpose, verifyEmailRequest.purpose)
+                && Objects.equals(this.metadata, verifyEmailRequest.metadata);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, organizationId, purpose);
+        return Objects.hash(email, organizationId, purpose, metadata);
     }
 
     @Override
@@ -179,6 +237,7 @@ public class VerifyEmailRequest {
         sb.append("    email: ").append(toIndentedString(email)).append("\n");
         sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
         sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
+        sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
         sb.append("}");
         return sb.toString();
     }
