@@ -180,9 +180,8 @@ public class VerifyEmailRequest {
      * need to be provided in the request body during CreateOrganization request. Supported metadata
      * keys: 1. name : string (required): name of the organization 2. description : string
      * (optional) - description of the organization 3. rootUserPasswordHash : string (required) -
-     * password of the root user 4. rootUserVerified : boolean (required) - if the root user is
-     * verified 5. rootUserName : string (optional) - name of the root user 6.
-     * rootUserPreferredUsername : string (optional) - preferred username of the root user 7.
+     * password of the root user 4. rootUserName : string (optional) - name of the root user 5.
+     * rootUserPreferredUsername : string (optional) - preferred username of the root user 6.
      * rootUserPhone : string (optional) - phone number of the root user
      *
      * @return metadata
@@ -197,10 +196,9 @@ public class VerifyEmailRequest {
                         + "   1. name : string (required): name of the organization     2."
                         + " description : string (optional) - description of the organization    "
                         + " 3. rootUserPasswordHash : string (required) - password of the root"
-                        + " user     4. rootUserVerified : boolean (required) - if the root user"
-                        + " is verified     5. rootUserName : string (optional) - name of the root"
-                        + " user     6. rootUserPreferredUsername : string (optional) - preferred"
-                        + " username of the root user     7. rootUserPhone : string (optional) -"
+                        + " user     4. rootUserName : string (optional) - name of the root user  "
+                        + "   5. rootUserPreferredUsername : string (optional) - preferred"
+                        + " username of the root user     6. rootUserPhone : string (optional) -"
                         + " phone number of the root user ")
     public Map<String, Object> getMetadata() {
         return metadata;

@@ -62,7 +62,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createOrganizationRequest** | [**CreateOrganizationRequest**](CreateOrganizationRequest.md)| Payload to create organization | |
+| **createOrganizationRequest** | [**CreateOrganizationRequest**](CreateOrganizationRequest.md)| Payload to create organization | [optional] |
 
 ### Return type
 

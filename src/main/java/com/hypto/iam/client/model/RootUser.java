@@ -47,11 +47,6 @@ public class RootUser {
     @SerializedName(SERIALIZED_NAME_PHONE)
     private String phone;
 
-    public static final String SERIALIZED_NAME_VERIFIED = "verified";
-
-    @SerializedName(SERIALIZED_NAME_VERIFIED)
-    private Boolean verified;
-
     public RootUser() {}
 
     public RootUser preferredUsername(String preferredUsername) {
@@ -159,27 +154,6 @@ public class RootUser {
         this.phone = phone;
     }
 
-    public RootUser verified(Boolean verified) {
-
-        this.verified = verified;
-        return this;
-    }
-
-    /**
-     * Get verified
-     *
-     * @return verified
-     */
-    @javax.annotation.Nonnull
-    @ApiModelProperty(required = true, value = "")
-    public Boolean getVerified() {
-        return verified;
-    }
-
-    public void setVerified(Boolean verified) {
-        this.verified = verified;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -193,13 +167,12 @@ public class RootUser {
                 && Objects.equals(this.name, rootUser.name)
                 && Objects.equals(this.passwordHash, rootUser.passwordHash)
                 && Objects.equals(this.email, rootUser.email)
-                && Objects.equals(this.phone, rootUser.phone)
-                && Objects.equals(this.verified, rootUser.verified);
+                && Objects.equals(this.phone, rootUser.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(preferredUsername, name, passwordHash, email, phone, verified);
+        return Objects.hash(preferredUsername, name, passwordHash, email, phone);
     }
 
     @Override
@@ -213,7 +186,6 @@ public class RootUser {
         sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
         sb.append("    email: ").append(toIndentedString(email)).append("\n");
         sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
-        sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
         sb.append("}");
         return sb.toString();
     }

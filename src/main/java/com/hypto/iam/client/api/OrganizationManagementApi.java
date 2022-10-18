@@ -17,7 +17,7 @@ public interface OrganizationManagementApi {
      * actions, policies) are created and managed under an organization. This is a privileged api
      * and only internal applications has access to create an Organization.
      *
-     * @param createOrganizationRequest Payload to create organization (required)
+     * @param createOrganizationRequest Payload to create organization (optional)
      * @return Call&lt;CreateOrganizationResponse&gt;
      */
     @Headers({"Content-Type:application/json"})

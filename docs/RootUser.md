@@ -13,7 +13,6 @@ Root user details for the organization
 |**passwordHash** | **String** |  |  |
 |**email** | **String** |  |  |
 |**phone** | **String** |  |  [optional] |
-|**verified** | **Boolean** |  |  |
 
 
 
