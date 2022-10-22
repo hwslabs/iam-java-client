@@ -79,7 +79,7 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Response for generate token request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response with token |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
@@ -160,7 +160,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Response for generate token request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response with token |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |

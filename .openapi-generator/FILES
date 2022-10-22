@@ -44,6 +44,7 @@ docs/UpdatePolicyRequest.md
 docs/UpdateResourceRequest.md
 docs/UpdateUserRequest.md
 docs/User.md
+docs/UserAuthenticationApi.md
 docs/UserAuthorizationApi.md
 docs/UserCredentialManagementApi.md
 docs/UserManagementApi.md
@@ -73,6 +74,7 @@ src/main/java/com/hypto/iam/client/api/OrganizationManagementApi.java
 src/main/java/com/hypto/iam/client/api/PolicyManagementApi.java
 src/main/java/com/hypto/iam/client/api/ResourceActionManagementApi.java
 src/main/java/com/hypto/iam/client/api/ResourceManagementApi.java
+src/main/java/com/hypto/iam/client/api/UserAuthenticationApi.java
 src/main/java/com/hypto/iam/client/api/UserAuthorizationApi.java
 src/main/java/com/hypto/iam/client/api/UserCredentialManagementApi.java
 src/main/java/com/hypto/iam/client/api/UserManagementApi.java

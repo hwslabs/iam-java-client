@@ -74,11 +74,11 @@ tags:
     description: docs
     url: https://github.com/hwslabs/iam/blob/main/docs/api_reference/Apis/KeyManagementApi.md
   name: Key Management
-- description: APIs used by the front-end for authentication
+- description: APIs used by the for authentication
   externalDocs:
     description: docs
     url: http://hypto.com/docs/iam/SignInApi
-  name: User Sign-In
+  name: User Authentication
 - description: APIs for verifying emails
   externalDocs:
     description: docs
@@ -5688,7 +5688,7 @@ paths:
               example: XlK5h64gNDBfMXAPKKGRmWjaxmXJJzDKIJNWqSWj
               schema:
                 type: string
-          description: Response for generate token request
+          description: Response with token
           headers:
             X-Iam-User-Organization:
               description: Organization Id of the authenticated user
@@ -5817,7 +5817,7 @@ paths:
               example: XlK5h64gNDBfMXAPKKGRmWjaxmXJJzDKIJNWqSWj
               schema:
                 type: string
-          description: Response for generate token request
+          description: Response with token
           headers:
             X-Iam-User-Organization:
               description: Organization Id of the authenticated user
@@ -5927,6 +5927,135 @@ paths:
       summary: Generate a token
       tags:
       - User Authorization
+      x-accepts: application/json
+  /authenticate:
+    post:
+      description: |
+        Authenticates the request and respond with token. Upon successful authentication, - For basic auth as well as credential based bearer auth, this API generates a token and returns it. - For JWT bearer auth, returns the same JWT token in response
+      operationId: authenticate
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                TokenResponse:
+                  $ref: '#/components/examples/TokenResponse'
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+            text/plain:
+              example: XlK5h64gNDBfMXAPKKGRmWjaxmXJJzDKIJNWqSWj
+              schema:
+                type: string
+          description: Response with token
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      security:
+      - basicAuth: []
+      - bearerAuth: []
+      summary: Authenticate a request
+      tags:
+      - User Authentication
       x-accepts: application/json
   /validate:
     post:
@@ -7184,7 +7313,7 @@ components:
           example: XlK5h64gNDBfMXAPKKGRmWjaxmXJJzDKIJNWqSWj
           schema:
             type: string
-      description: Response for generate token request
+      description: Response with token
       headers:
         X-Iam-User-Organization:
           description: Organization Id of the authenticated user

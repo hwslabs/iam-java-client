@@ -1,10 +1,10 @@
 package com.hypto.iam.client.api;
 
+
 import com.hypto.iam.client.model.CreateOrganizationResponse;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.http.POST;
-
-import java.util.Map;
 
 public interface CustomOrganizationManagementApi extends OrganizationManagementApi {
     /**
@@ -18,5 +18,6 @@ public interface CustomOrganizationManagementApi extends OrganizationManagementA
     Call<CreateOrganizationResponse> createOrganization();
 
     @POST("organizations")
-    Call<CreateOrganizationResponse> createOrganization(@retrofit2.http.HeaderMap Map<String, String> headers);
+    Call<CreateOrganizationResponse> createOrganization(
+            @retrofit2.http.HeaderMap Map<String, String> headers);
 }
