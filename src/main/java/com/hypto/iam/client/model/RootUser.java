@@ -32,10 +32,10 @@ public class RootUser {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
-    public static final String SERIALIZED_NAME_PASSWORD_HASH = "passwordHash";
+    public static final String SERIALIZED_NAME_PASSWORD = "password";
 
-    @SerializedName(SERIALIZED_NAME_PASSWORD_HASH)
-    private String passwordHash;
+    @SerializedName(SERIALIZED_NAME_PASSWORD)
+    private String password;
 
     public static final String SERIALIZED_NAME_EMAIL = "email";
 
@@ -91,25 +91,25 @@ public class RootUser {
         this.name = name;
     }
 
-    public RootUser passwordHash(String passwordHash) {
+    public RootUser password(String password) {
 
-        this.passwordHash = passwordHash;
+        this.password = password;
         return this;
     }
 
     /**
-     * Get passwordHash
+     * Get password
      *
-     * @return passwordHash
+     * @return password
      */
     @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public RootUser email(String email) {
@@ -165,14 +165,14 @@ public class RootUser {
         RootUser rootUser = (RootUser) o;
         return Objects.equals(this.preferredUsername, rootUser.preferredUsername)
                 && Objects.equals(this.name, rootUser.name)
-                && Objects.equals(this.passwordHash, rootUser.passwordHash)
+                && Objects.equals(this.password, rootUser.password)
                 && Objects.equals(this.email, rootUser.email)
                 && Objects.equals(this.phone, rootUser.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(preferredUsername, name, passwordHash, email, phone);
+        return Objects.hash(preferredUsername, name, password, email, phone);
     }
 
     @Override
@@ -183,7 +183,7 @@ public class RootUser {
                 .append(toIndentedString(preferredUsername))
                 .append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
+        sb.append("    password: ").append(toIndentedString(password)).append("\n");
         sb.append("    email: ").append(toIndentedString(email)).append("\n");
         sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
         sb.append("}");

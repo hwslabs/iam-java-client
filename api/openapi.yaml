@@ -6375,7 +6375,7 @@ components:
         rootUser:
           preferredUsername: username
           name: Lorem Ipsum
-          passwordHash: <password>
+          password: <password>
           email: root@example.com
           phone: +1234567890
     UpdateOrganizationRequest:
@@ -6388,7 +6388,7 @@ components:
       summary: A sample create user request
       value:
         name: Lorem Ipsum
-        passwordHash: nii2du35bdtuethntv3q7416
+        password: nii2du35bdtuethntv3q7416
         email: bob@acme.com
         phone: +1234071628
         status: enabled
@@ -6492,7 +6492,7 @@ components:
         metadata:
           name: ACME Enterprise
           description: Brief description about ACME
-          rootUserPasswordHash: Password@123
+          rootUserPassword: Password@123
           rootUserName: Lorem Ipsum
           rootUserPreferredUsername: username
           rootUserPhone: +1234567890
@@ -7430,10 +7430,10 @@ components:
       description: Payload to create organization
       example:
         rootUser:
+          password: password
           preferredUsername: preferredUsername
           phone: phone
           name: name
-          passwordHash: passwordHash
           email: email
         name: name
         description: description
@@ -7470,10 +7470,10 @@ components:
       additionalProperties: false
       description: Root user details for the organization
       example:
+        password: password
         preferredUsername: preferredUsername
         phone: phone
         name: name
-        passwordHash: passwordHash
         email: email
       properties:
         preferredUsername:
@@ -7483,7 +7483,7 @@ components:
         name:
           maxLength: 50
           type: string
-        passwordHash:
+        password:
           maxLength: 100
           type: string
         email:
@@ -7495,18 +7495,18 @@ components:
           type: string
       required:
       - email
-      - passwordHash
+      - password
       - username
       type: object
     CreateUserRequest:
       additionalProperties: false
       description: Payload to create ledger account
       example:
+        password: password
         preferredUsername: preferredUsername
         phone: phone
         name: name
         verified: true
-        passwordHash: passwordHash
         email: email
         status: enabled
       properties:
@@ -7517,7 +7517,7 @@ components:
         name:
           maxLength: 50
           type: string
-        passwordHash:
+        password:
           maxLength: 100
           type: string
         email:
@@ -7537,7 +7537,7 @@ components:
       required:
       - email
       - name
-      - passwordHash
+      - password
       - status
       type: object
     UpdateUserRequest:
@@ -7818,7 +7818,7 @@ components:
                 Supported metadata keys:
                 1. name : string (required): name of the organization
                 2. description : string (optional) - description of the organization
-                3. rootUserPasswordHash : string (required) - password of the root user
+                3. rootUserPassword : string (required) - password of the root user
                 4. rootUserName : string (optional) - name of the root user
                 5. rootUserPreferredUsername : string (optional) - preferred username of the root user
                 6. rootUserPhone : string (optional) - phone number of the root user

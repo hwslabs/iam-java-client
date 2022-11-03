@@ -37,10 +37,10 @@ public class CreateUserRequest {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
-    public static final String SERIALIZED_NAME_PASSWORD_HASH = "passwordHash";
+    public static final String SERIALIZED_NAME_PASSWORD = "password";
 
-    @SerializedName(SERIALIZED_NAME_PASSWORD_HASH)
-    private String passwordHash;
+    @SerializedName(SERIALIZED_NAME_PASSWORD)
+    private String password;
 
     public static final String SERIALIZED_NAME_EMAIL = "email";
 
@@ -152,25 +152,25 @@ public class CreateUserRequest {
         this.name = name;
     }
 
-    public CreateUserRequest passwordHash(String passwordHash) {
+    public CreateUserRequest password(String password) {
 
-        this.passwordHash = passwordHash;
+        this.password = password;
         return this;
     }
 
     /**
-     * Get passwordHash
+     * Get password
      *
-     * @return passwordHash
+     * @return password
      */
     @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public CreateUserRequest email(String email) {
@@ -268,7 +268,7 @@ public class CreateUserRequest {
         CreateUserRequest createUserRequest = (CreateUserRequest) o;
         return Objects.equals(this.preferredUsername, createUserRequest.preferredUsername)
                 && Objects.equals(this.name, createUserRequest.name)
-                && Objects.equals(this.passwordHash, createUserRequest.passwordHash)
+                && Objects.equals(this.password, createUserRequest.password)
                 && Objects.equals(this.email, createUserRequest.email)
                 && Objects.equals(this.phone, createUserRequest.phone)
                 && Objects.equals(this.status, createUserRequest.status)
@@ -277,7 +277,7 @@ public class CreateUserRequest {
 
     @Override
     public int hashCode() {
-        return Objects.hash(preferredUsername, name, passwordHash, email, phone, status, verified);
+        return Objects.hash(preferredUsername, name, password, email, phone, status, verified);
     }
 
     @Override
@@ -288,7 +288,7 @@ public class CreateUserRequest {
                 .append(toIndentedString(preferredUsername))
                 .append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    passwordHash: ").append(toIndentedString(passwordHash)).append("\n");
+        sb.append("    password: ").append(toIndentedString(password)).append("\n");
         sb.append("    email: ").append(toIndentedString(email)).append("\n");
         sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
