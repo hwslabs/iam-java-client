@@ -108,6 +108,11 @@ public class CreateUserRequest {
     @SerializedName(SERIALIZED_NAME_VERIFIED)
     private Boolean verified;
 
+    public static final String SERIALIZED_NAME_LOGIN_ACCESS = "loginAccess";
+
+    @SerializedName(SERIALIZED_NAME_LOGIN_ACCESS)
+    private Boolean loginAccess = false;
+
     public CreateUserRequest() {}
 
     public CreateUserRequest preferredUsername(String preferredUsername) {
@@ -163,8 +168,8 @@ public class CreateUserRequest {
      *
      * @return password
      */
-    @javax.annotation.Nonnull
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
     public String getPassword() {
         return password;
     }
@@ -184,8 +189,8 @@ public class CreateUserRequest {
      *
      * @return email
      */
-    @javax.annotation.Nonnull
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
     public String getEmail() {
         return email;
     }
@@ -257,6 +262,27 @@ public class CreateUserRequest {
         this.verified = verified;
     }
 
+    public CreateUserRequest loginAccess(Boolean loginAccess) {
+
+        this.loginAccess = loginAccess;
+        return this;
+    }
+
+    /**
+     * Get loginAccess
+     *
+     * @return loginAccess
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public Boolean getLoginAccess() {
+        return loginAccess;
+    }
+
+    public void setLoginAccess(Boolean loginAccess) {
+        this.loginAccess = loginAccess;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -272,12 +298,14 @@ public class CreateUserRequest {
                 && Objects.equals(this.email, createUserRequest.email)
                 && Objects.equals(this.phone, createUserRequest.phone)
                 && Objects.equals(this.status, createUserRequest.status)
-                && Objects.equals(this.verified, createUserRequest.verified);
+                && Objects.equals(this.verified, createUserRequest.verified)
+                && Objects.equals(this.loginAccess, createUserRequest.loginAccess);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(preferredUsername, name, password, email, phone, status, verified);
+        return Objects.hash(
+                preferredUsername, name, password, email, phone, status, verified, loginAccess);
     }
 
     @Override
@@ -293,6 +321,7 @@ public class CreateUserRequest {
         sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
+        sb.append("    loginAccess: ").append(toIndentedString(loginAccess)).append("\n");
         sb.append("}");
         return sb.toString();
     }

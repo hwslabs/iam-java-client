@@ -10,11 +10,12 @@ Payload to create ledger account
 |------------ | ------------- | ------------- | -------------|
 |**preferredUsername** | **String** |  |  [optional] |
 |**name** | **String** |  |  |
-|**password** | **String** |  |  |
-|**email** | **String** |  |  |
+|**password** | **String** |  |  [optional] |
+|**email** | **String** |  |  [optional] |
 |**phone** | **String** |  |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  |
 |**verified** | **Boolean** |  |  [optional] |
+|**loginAccess** | **Boolean** |  |  [optional] |
 
 
 

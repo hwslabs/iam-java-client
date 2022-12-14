@@ -12,10 +12,10 @@
 |**preferredUsername** | **String** |  |  [optional] |
 |**name** | **String** |  |  |
 |**organizationId** | **String** |  |  |
-|**email** | **String** |  |  |
+|**email** | **String** |  |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  |
 |**phone** | **String** |  |  [optional] |
-|**loginAccess** | **Boolean** |  |  [optional] |
+|**loginAccess** | **Boolean** |  |  |
 |**createdBy** | **String** |  |  [optional] |
 |**verified** | **Boolean** |  |  |
 

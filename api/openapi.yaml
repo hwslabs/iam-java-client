@@ -6393,6 +6393,7 @@ components:
         phone: +1234071628
         status: enabled
         verified: true
+        loginAccess: true
     UpdateUserRequest:
       summary: sample update user request
       value:
@@ -7507,6 +7508,7 @@ components:
         phone: phone
         name: name
         verified: true
+        loginAccess: false
         email: email
         status: enabled
       properties:
@@ -7534,10 +7536,11 @@ components:
           type: string
         verified:
           type: boolean
+        loginAccess:
+          default: false
+          type: boolean
       required:
-      - email
       - name
-      - password
       - status
       type: object
     UpdateUserRequest:
@@ -8239,8 +8242,8 @@ components:
         verified:
           type: boolean
       required:
-      - email
       - hrn
+      - loginAccess
       - name
       - organizationId
       - status

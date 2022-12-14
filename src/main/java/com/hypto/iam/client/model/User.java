@@ -244,8 +244,8 @@ public class User {
      *
      * @return email
      */
-    @javax.annotation.Nonnull
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
     public String getEmail() {
         return email;
     }
@@ -307,8 +307,8 @@ public class User {
      *
      * @return loginAccess
      */
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
     public Boolean getLoginAccess() {
         return loginAccess;
     }
