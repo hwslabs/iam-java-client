@@ -856,9 +856,9 @@ paths:
             application/json:
               examples:
                 User:
-                  $ref: '#/components/examples/User'
+                  $ref: '#/components/examples/CreateUserResponse'
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/CreateUserResponse'
           description: Response for CreateUserRequest
           headers:
             X-Iam-User-Organization:
@@ -6365,6 +6365,114 @@ paths:
       - User Verification
       x-content-type: application/json
       x-accepts: application/json
+  /organization/{organization_id}/invites:
+    get:
+      description: Get passcodes for the organization
+      operationId: listInvites
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: "^[A-Z]{10}$"
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                PasscodePaginatedResponse:
+                  $ref: '#/components/examples/PasscodePaginatedResponse'
+              schema:
+                $ref: '#/components/schemas/PasscodePaginatedResponse'
+          description: Paginated response of passcodesm
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      security: []
+      summary: Get organization passcodes
+      tags:
+      - User Verification
+      x-accepts: application/json
 components:
   examples:
     CreateOrganizationRequest:
@@ -6482,6 +6590,15 @@ components:
         email: abcd@abcd.in
         organizationId: XlK5h64gND
         purpose: reset
+    VerifyEmailRequestInvite:
+      value:
+        email: abcd@abcd.in
+        organizationId: XlK5h64gND
+        purpose: invite
+        metadata:
+          inviterUserHrn: hrn:XlK5h64gND::iam-user/bob
+          policies:
+          - hrn:XlK5h64gND::iam-policy/ROOT_USER_POLICY
     VerifyEmailRequestSignup:
       value:
         email: abcd@abcd.in
@@ -6497,6 +6614,14 @@ components:
           rootUserName: Lorem Ipsum
           rootUserPreferredUsername: username
           rootUserPhone: +1234567890
+    PasscodePaginatedResponse:
+      value:
+        data:
+        - email: abcd@abcd.com
+          purpose: invite
+          createdAt: 2021-01-01T00:00:00
+          validUntil: 2021-01-01T00:00:00
+        nextToken: dshfoadshfjshadkfjkdsal
     CreateOrganizationResponse:
       value:
         organization:
@@ -6626,6 +6751,20 @@ components:
         rootUserHrn: hrn:XlK5h64gND::iam-user/root-user-name
         createdAt: 2020-01-01T00:00:00.000Z
         updatedAt: 2020-01-01T00:00:00.000Z
+    CreateUserResponse:
+      value:
+        user:
+          hrn: hrn:XlK5h64gND::iam-user/3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
+          username: 3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
+          name: Lorem Ipsum
+          organizationId: XlK5h64gND
+          email: bob@acme.com
+          status: enabled
+          verified: true
+          phone: +1234071628
+          loginAccess: true
+          createdBy: hrn:Xghfdksd::iam-user/johnny314
+        userToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
     User:
       summary: A sample user
       value:
@@ -7039,6 +7178,8 @@ components:
           examples:
             VerifyEmailRequestReset:
               $ref: '#/components/examples/VerifyEmailRequestReset'
+            VerifyEmailRequestInvite:
+              $ref: '#/components/examples/VerifyEmailRequestInvite'
             VerifyEmailRequestSignup:
               $ref: '#/components/examples/VerifyEmailRequestSignup'
             VerifyEmailRequestSignupWithMetadata:
@@ -7062,6 +7203,15 @@ components:
           schema:
             type: string
           style: simple
+    PasscodePaginatedResponse:
+      content:
+        application/json:
+          examples:
+            PasscodePaginatedResponse:
+              $ref: '#/components/examples/PasscodePaginatedResponse'
+          schema:
+            $ref: '#/components/schemas/PasscodePaginatedResponse'
+      description: Paginated response of passcodesm
     ErrorResponse:
       content:
         application/json:
@@ -7120,9 +7270,9 @@ components:
         application/json:
           examples:
             User:
-              $ref: '#/components/examples/User'
+              $ref: '#/components/examples/CreateUserResponse'
           schema:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/CreateUserResponse'
       description: Response for CreateUserRequest
       headers:
         X-Iam-User-Organization:
@@ -7811,6 +7961,7 @@ components:
           enum:
           - reset
           - signup
+          - invite
           type: string
         metadata:
           additionalProperties: true
@@ -7825,6 +7976,9 @@ components:
                 4. rootUserName : string (optional) - name of the root user
                 5. rootUserPreferredUsername : string (optional) - preferred username of the root user
                 6. rootUserPhone : string (optional) - phone number of the root user
+            - invite:
+                1. inviterUserHrn : string (required) - hrn of the user who is inviting the new user
+                2. policies: array<string> (required) - policies to be attached to the new user
           type: object
       required:
       - email
@@ -7907,6 +8061,7 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           rootUser:
             organizationId: organizationId
+            createdAt: 2000-01-23T04:56:07.000+00:00
             hrn: hrn
             preferredUsername: preferredUsername
             phone: phone
@@ -7975,6 +8130,7 @@ components:
       example:
         data:
         - organizationId: organizationId
+          createdAt: 2000-01-23T04:56:07.000+00:00
           hrn: hrn
           preferredUsername: preferredUsername
           phone: phone
@@ -7986,6 +8142,7 @@ components:
           username: username
           status: enabled
         - organizationId: organizationId
+          createdAt: 2000-01-23T04:56:07.000+00:00
           hrn: hrn
           preferredUsername: preferredUsername
           phone: phone
@@ -8155,6 +8312,7 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         rootUser:
           organizationId: organizationId
+          createdAt: 2000-01-23T04:56:07.000+00:00
           hrn: hrn
           preferredUsername: preferredUsername
           phone: phone
@@ -8198,6 +8356,7 @@ components:
       additionalProperties: false
       example:
         organizationId: organizationId
+        createdAt: 2000-01-23T04:56:07.000+00:00
         hrn: hrn
         preferredUsername: preferredUsername
         phone: phone
@@ -8239,9 +8398,13 @@ components:
         createdBy:
           maxLength: 50
           type: string
+        createdAt:
+          format: date-time
+          type: string
         verified:
           type: boolean
       required:
+      - createdAt
       - hrn
       - loginAccess
       - name
@@ -8249,6 +8412,33 @@ components:
       - status
       - username
       - verified
+      type: object
+    CreateUserResponse:
+      additionalProperties: false
+      example:
+        userToken: userToken
+        user:
+          organizationId: organizationId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          hrn: hrn
+          preferredUsername: preferredUsername
+          phone: phone
+          createdBy: createdBy
+          name: name
+          verified: true
+          loginAccess: true
+          email: email
+          username: username
+          status: enabled
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        userToken:
+          description: JWT token of the user
+          type: string
+      required:
+      - user
+      - userToken
       type: object
     Credential:
       additionalProperties: false
@@ -8456,6 +8646,56 @@ components:
       - action
       - effect
       - resource
+      type: object
+    Passcode:
+      additionalProperties: false
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        purpose: purpose
+        validUntil: 2000-01-23T04:56:07.000+00:00
+        email: email
+      properties:
+        email:
+          type: string
+        purpose:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        validUntil:
+          format: date-time
+          type: string
+      required:
+      - createdAt
+      - email
+      - purpose
+      - validUntil
+      type: object
+    PasscodePaginatedResponse:
+      additionalProperties: false
+      example:
+        data:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          purpose: purpose
+          validUntil: 2000-01-23T04:56:07.000+00:00
+          email: email
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          purpose: purpose
+          validUntil: 2000-01-23T04:56:07.000+00:00
+          email: email
+        nextToken: nextToken
+        context:
+          sortOrder: asc
+          pageSize: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Passcode'
+          type: array
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
       type: object
     ResourceAction:
       example:

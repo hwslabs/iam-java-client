@@ -5,6 +5,7 @@ import com.hypto.iam.client.CollectionFormats.*;
 import com.hypto.iam.client.model.BaseSuccessResponse;
 import com.hypto.iam.client.model.ChangeUserPasswordRequest;
 import com.hypto.iam.client.model.CreateUserRequest;
+import com.hypto.iam.client.model.CreateUserResponse;
 import com.hypto.iam.client.model.ResetPasswordRequest;
 import com.hypto.iam.client.model.UpdateUserRequest;
 import com.hypto.iam.client.model.User;
@@ -37,11 +38,11 @@ public interface UserManagementApi {
      *
      * @param organizationId (required)
      * @param createUserRequest Payload to create user (required)
-     * @return Call&lt;User&gt;
+     * @return Call&lt;CreateUserResponse&gt;
      */
     @Headers({"Content-Type:application/json"})
     @POST("organizations/{organization_id}/users")
-    Call<User> createUser(
+    Call<CreateUserResponse> createUser(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body CreateUserRequest createUserRequest);
 
@@ -122,7 +123,7 @@ public interface UserManagementApi {
 
     @Headers({"Content-Type:application/json"})
     @POST("organizations/{organization_id}/users")
-    Call<User> createUser(
+    Call<CreateUserResponse> createUser(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body CreateUserRequest createUserRequest,
             @retrofit2.http.HeaderMap Map<String, String> headers);

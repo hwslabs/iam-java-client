@@ -44,7 +44,9 @@ public class VerifyEmailRequest {
     public enum PurposeEnum {
         RESET("reset"),
 
-        SIGNUP("signup");
+        SIGNUP("signup"),
+
+        INVITE("invite");
 
         private String value;
 
@@ -182,7 +184,9 @@ public class VerifyEmailRequest {
      * (optional) - description of the organization 3. rootUserPassword : string (required) -
      * password of the root user 4. rootUserName : string (optional) - name of the root user 5.
      * rootUserPreferredUsername : string (optional) - preferred username of the root user 6.
-     * rootUserPhone : string (optional) - phone number of the root user
+     * rootUserPhone : string (optional) - phone number of the root user - invite: 1. inviterUserHrn
+     * : string (required) - hrn of the user who is inviting the new user 2. policies:
+     * array&lt;string&gt; (required) - policies to be attached to the new user
      *
      * @return metadata
      */
@@ -199,7 +203,9 @@ public class VerifyEmailRequest {
                         + "  4. rootUserName : string (optional) - name of the root user     5."
                         + " rootUserPreferredUsername : string (optional) - preferred username of"
                         + " the root user     6. rootUserPhone : string (optional) - phone number"
-                        + " of the root user ")
+                        + " of the root user - invite:     1. inviterUserHrn : string (required) -"
+                        + " hrn of the user who is inviting the new user     2. policies:"
+                        + " array<string> (required) - policies to be attached to the new user ")
     public Map<String, Object> getMetadata() {
         return metadata;
     }

@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** User */
@@ -120,6 +121,11 @@ public class User {
 
     @SerializedName(SERIALIZED_NAME_CREATED_BY)
     private String createdBy;
+
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
 
     public static final String SERIALIZED_NAME_VERIFIED = "verified";
 
@@ -338,6 +344,27 @@ public class User {
         this.createdBy = createdBy;
     }
 
+    public User createdAt(OffsetDateTime createdAt) {
+
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return createdAt
+     */
+    @javax.annotation.Nonnull
+    @ApiModelProperty(required = true, value = "")
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public User verified(Boolean verified) {
 
         this.verified = verified;
@@ -378,6 +405,7 @@ public class User {
                 && Objects.equals(this.phone, user.phone)
                 && Objects.equals(this.loginAccess, user.loginAccess)
                 && Objects.equals(this.createdBy, user.createdBy)
+                && Objects.equals(this.createdAt, user.createdAt)
                 && Objects.equals(this.verified, user.verified);
     }
 
@@ -394,6 +422,7 @@ public class User {
                 phone,
                 loginAccess,
                 createdBy,
+                createdAt,
                 verified);
     }
 
@@ -413,6 +442,7 @@ public class User {
         sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
         sb.append("    loginAccess: ").append(toIndentedString(loginAccess)).append("\n");
         sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
         sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
         sb.append("}");
         return sb.toString();

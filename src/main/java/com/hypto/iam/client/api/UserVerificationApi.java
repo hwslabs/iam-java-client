@@ -3,12 +3,23 @@ package com.hypto.iam.client.api;
 
 import com.hypto.iam.client.CollectionFormats.*;
 import com.hypto.iam.client.model.BaseSuccessResponse;
+import com.hypto.iam.client.model.PasscodePaginatedResponse;
 import com.hypto.iam.client.model.VerifyEmailRequest;
 import java.util.Map;
 import retrofit2.Call;
 import retrofit2.http.*;
 
 public interface UserVerificationApi {
+    /**
+     * Get organization passcodes Get passcodes for the organization
+     *
+     * @param organizationId (required)
+     * @return Call&lt;PasscodePaginatedResponse&gt;
+     */
+    @GET("organization/{organization_id}/invites")
+    Call<PasscodePaginatedResponse> listInvites(
+            @retrofit2.http.Path("organization_id") String organizationId);
+
     /**
      * Verify email Verify email during account opening and resetting password
      *
@@ -19,6 +30,11 @@ public interface UserVerificationApi {
     @POST("verifyEmail")
     Call<BaseSuccessResponse> verifyEmail(
             @retrofit2.http.Body VerifyEmailRequest verifyEmailRequest);
+
+    @GET("organization/{organization_id}/invites")
+    Call<PasscodePaginatedResponse> listInvites(
+            @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.HeaderMap Map<String, String> headers);
 
     @Headers({"Content-Type:application/json"})
     @POST("verifyEmail")

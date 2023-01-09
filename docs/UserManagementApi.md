@@ -97,7 +97,7 @@ public class Example {
 
 ## createUser
 
-> User createUser(organizationId, createUserRequest)
+> CreateUserResponse createUser(organizationId, createUserRequest)
 
 Create a user
 
@@ -127,7 +127,7 @@ public class Example {
         String organizationId = "organizationId_example"; // String | 
         CreateUserRequest createUserRequest = new CreateUserRequest(); // CreateUserRequest | Payload to create user
         try {
-            User result = apiInstance.createUser(organizationId, createUserRequest);
+            CreateUserResponse result = apiInstance.createUser(organizationId, createUserRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserManagementApi#createUser");
@@ -150,7 +150,7 @@ public class Example {
 
 ### Return type
 
-[**User**](User.md)
+[**CreateUserResponse**](CreateUserResponse.md)
 
 ### Authorization
 

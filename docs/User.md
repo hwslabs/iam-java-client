@@ -17,6 +17,7 @@
 |**phone** | **String** |  |  [optional] |
 |**loginAccess** | **Boolean** |  |  |
 |**createdBy** | **String** |  |  [optional] |
+|**createdAt** | **OffsetDateTime** |  |  |
 |**verified** | **Boolean** |  |  |
 
 

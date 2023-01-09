@@ -13,6 +13,7 @@ docs/CreateOrganizationResponse.md
 docs/CreatePolicyRequest.md
 docs/CreateResourceRequest.md
 docs/CreateUserRequest.md
+docs/CreateUserResponse.md
 docs/Credential.md
 docs/CredentialWithoutSecret.md
 docs/ErrorResponse.md
@@ -23,6 +24,8 @@ docs/ListCredentialResponse.md
 docs/Organization.md
 docs/OrganizationManagementApi.md
 docs/PaginationOptions.md
+docs/Passcode.md
+docs/PasscodePaginatedResponse.md
 docs/Policy.md
 docs/PolicyAssociationRequest.md
 docs/PolicyManagementApi.md
@@ -95,6 +98,7 @@ src/main/java/com/hypto/iam/client/model/CreateOrganizationResponse.java
 src/main/java/com/hypto/iam/client/model/CreatePolicyRequest.java
 src/main/java/com/hypto/iam/client/model/CreateResourceRequest.java
 src/main/java/com/hypto/iam/client/model/CreateUserRequest.java
+src/main/java/com/hypto/iam/client/model/CreateUserResponse.java
 src/main/java/com/hypto/iam/client/model/Credential.java
 src/main/java/com/hypto/iam/client/model/CredentialWithoutSecret.java
 src/main/java/com/hypto/iam/client/model/ErrorResponse.java
@@ -103,6 +107,8 @@ src/main/java/com/hypto/iam/client/model/KeyResponse.java
 src/main/java/com/hypto/iam/client/model/ListCredentialResponse.java
 src/main/java/com/hypto/iam/client/model/Organization.java
 src/main/java/com/hypto/iam/client/model/PaginationOptions.java
+src/main/java/com/hypto/iam/client/model/Passcode.java
+src/main/java/com/hypto/iam/client/model/PasscodePaginatedResponse.java
 src/main/java/com/hypto/iam/client/model/Policy.java
 src/main/java/com/hypto/iam/client/model/PolicyAssociationRequest.java
 src/main/java/com/hypto/iam/client/model/PolicyPaginatedResponse.java

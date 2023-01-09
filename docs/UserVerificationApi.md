@@ -4,8 +4,79 @@ All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**listInvites**](UserVerificationApi.md#listInvites) | **GET** organization/{organization_id}/invites | Get organization passcodes |
 | [**verifyEmail**](UserVerificationApi.md#verifyEmail) | **POST** verifyEmail | Verify email |
 
+
+
+## listInvites
+
+> PasscodePaginatedResponse listInvites(organizationId)
+
+Get organization passcodes
+
+Get passcodes for the organization
+
+### Example
+
+```java
+// Import classes:
+import com.hypto.iam.client.ApiClient;
+import com.hypto.iam.client.ApiException;
+import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.models.*;
+import com.hypto.iam.client.api.UserVerificationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+
+        UserVerificationApi apiInstance = new UserVerificationApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        try {
+            PasscodePaginatedResponse result = apiInstance.listInvites(organizationId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserVerificationApi#listInvites");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+
+### Return type
+
+[**PasscodePaginatedResponse**](PasscodePaginatedResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Paginated response of passcodesm |  -  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 
 ## verifyEmail
