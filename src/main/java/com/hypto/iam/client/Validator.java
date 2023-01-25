@@ -19,7 +19,6 @@ import java.util.Objects;
 import org.apache.commons.io.IOUtils;
 import org.casbin.jcasbin.main.CoreEnforcer;
 import org.casbin.jcasbin.main.Enforcer;
-import org.casbin.jcasbin.model.Model;
 import org.casbin.jcasbin.persist.file_adapter.FileAdapter;
 import retrofit2.Response;
 
@@ -63,7 +62,7 @@ public class Validator {
     private static final String ISSUER = "https://iam.hypto.com";
     private static final String VERSION_NUM = "1.0";
     private static final String VERSION_CLAIM = "ver";
-    private static final Model model;
+    private static final String casbinModel;
 
     public Claims claims;
     public Enforcer enforcer;
@@ -75,13 +74,11 @@ public class Validator {
     static {
         InputStream in =
                 Objects.requireNonNull(Validator.class.getResourceAsStream("/casbin_model.conf"));
-        String casbinModel;
         try {
             casbinModel = IOUtils.toString(in, StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        model = CoreEnforcer.newModel(casbinModel);
     }
 
     public Validator(String token, ValidatorConfig config) throws IamAuthenticationException {
@@ -112,7 +109,7 @@ public class Validator {
 
         this.enforcer =
                 new Enforcer(
-                        model,
+                        CoreEnforcer.newModel(casbinModel),
                         new FileAdapter(
                                 new ByteArrayInputStream(
                                         entitlements.getBytes(StandardCharsets.UTF_8))));
