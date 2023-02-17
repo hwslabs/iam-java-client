@@ -66,8 +66,25 @@ public class Validator {
 
     public Claims claims;
     public Enforcer enforcer;
-    public String principal;
-    public String organizationId;
+
+    public String getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
+    public String getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(String organizationId) {
+        this.organizationId = organizationId;
+    }
+
+    private String principal;
+    private String organizationId;
 
     public ValidatorConfig config;
 
