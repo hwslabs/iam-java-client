@@ -71,16 +71,8 @@ public class Validator {
         return principal;
     }
 
-    public void setPrincipal(String principal) {
-        this.principal = principal;
-    }
-
     public String getOrganizationId() {
         return organizationId;
-    }
-
-    public void setOrganizationId(String organizationId) {
-        this.organizationId = organizationId;
     }
 
     private String principal;

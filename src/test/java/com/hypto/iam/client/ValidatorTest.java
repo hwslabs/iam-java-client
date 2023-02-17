@@ -47,8 +47,8 @@ public class ValidatorTest {
                         new Date(System.currentTimeMillis() + (1000 * 60 * 60 * 24)));
 
         Validator validator = new Validator(tokenStr, config);
-        Assert.assertEquals(validator.principal, userHrn);
-        Assert.assertEquals(validator.organizationId, organizationId);
+        Assert.assertEquals(validator.getPrincipal(), userHrn);
+        Assert.assertEquals(validator.getOrganizationId(), organizationId);
     }
 
     @Test(expected = ExpiredJwtException.class)
@@ -155,7 +155,7 @@ public class ValidatorTest {
                 TokenHelper.generateJwtToken(userHrn, organizationId, sampleEntitlements);
 
         Validator validator = new Validator(tokenStr, new Validator.ValidatorConfig(client, true));
-        Assert.assertEquals(validator.organizationId, organizationId);
-        Assert.assertEquals(validator.principal, userHrn);
+        Assert.assertEquals(validator.getOrganizationId(), organizationId);
+        Assert.assertEquals(validator.getPrincipal(), userHrn);
     }
 }
