@@ -178,6 +178,8 @@ spotless {
         importOrder()
     }
 }
+tasks.named("spotlessJava").configure { dependsOn("generateClient") }
+tasks.named("spotlessMisc").configure { dependsOn("generateClient") }
 
 task deleteFiles {
     // Adding doLast to the task as it should only run until called explicitly
