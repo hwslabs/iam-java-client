@@ -2,6 +2,7 @@ package com.hypto.iam.client.api;
 
 
 import com.hypto.iam.client.CollectionFormats.*;
+import com.hypto.iam.client.model.GetDelegateTokenRequest;
 import com.hypto.iam.client.model.TokenResponse;
 import com.hypto.iam.client.model.ValidationRequest;
 import com.hypto.iam.client.model.ValidationResponse;
@@ -10,6 +11,18 @@ import retrofit2.Call;
 import retrofit2.http.*;
 
 public interface UserAuthorizationApi {
+    /**
+     * Generate a delegate token Generate a token with ad-hoc principal on behalf of an user with
+     * permissions to a policy to which the user has delegate rights.
+     *
+     * @param getDelegateTokenRequest Payload to generate a delegate-able token (required)
+     * @return Call&lt;TokenResponse&gt;
+     */
+    @Headers({"Content-Type:application/json"})
+    @POST("delegate_token")
+    Call<TokenResponse> getDelegateToken(
+            @retrofit2.http.Body GetDelegateTokenRequest getDelegateTokenRequest);
+
     /**
      * Generate a token Generate a token for the given user credential (same as
      * /organizations/{organization_id}/token at the moment. Might change in future)
@@ -40,6 +53,12 @@ public interface UserAuthorizationApi {
     @Headers({"Content-Type:application/json"})
     @POST("validate")
     Call<ValidationResponse> validate(@retrofit2.http.Body ValidationRequest validationRequest);
+
+    @Headers({"Content-Type:application/json"})
+    @POST("delegate_token")
+    Call<TokenResponse> getDelegateToken(
+            @retrofit2.http.Body GetDelegateTokenRequest getDelegateTokenRequest,
+            @retrofit2.http.HeaderMap Map<String, String> headers);
 
     @POST("token")
     Call<TokenResponse> getToken(@retrofit2.http.HeaderMap Map<String, String> headers);

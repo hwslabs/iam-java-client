@@ -17,6 +17,7 @@ docs/CreateUserResponse.md
 docs/Credential.md
 docs/CredentialWithoutSecret.md
 docs/ErrorResponse.md
+docs/GetDelegateTokenRequest.md
 docs/GetUserPoliciesResponse.md
 docs/KeyManagementApi.md
 docs/KeyResponse.md
@@ -102,6 +103,7 @@ src/main/java/com/hypto/iam/client/model/CreateUserResponse.java
 src/main/java/com/hypto/iam/client/model/Credential.java
 src/main/java/com/hypto/iam/client/model/CredentialWithoutSecret.java
 src/main/java/com/hypto/iam/client/model/ErrorResponse.java
+src/main/java/com/hypto/iam/client/model/GetDelegateTokenRequest.java
 src/main/java/com/hypto/iam/client/model/GetUserPoliciesResponse.java
 src/main/java/com/hypto/iam/client/model/KeyResponse.java
 src/main/java/com/hypto/iam/client/model/ListCredentialResponse.java

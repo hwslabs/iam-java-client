@@ -5928,6 +5928,138 @@ paths:
       tags:
       - User Authorization
       x-accepts: application/json
+  /delegate_token:
+    post:
+      description: Generate a token with ad-hoc principal on behalf of an user with
+        permissions to a policy to which the user has delegate rights.
+      operationId: getDelegateToken
+      requestBody:
+        $ref: '#/components/requestBodies/GetDelegateTokenRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                TokenResponse:
+                  $ref: '#/components/examples/TokenResponse'
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+            text/plain:
+              example: XlK5h64gNDBfMXAPKKGRmWjaxmXJJzDKIJNWqSWj
+              schema:
+                type: string
+          description: Response with token
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      security:
+      - basicAuth: []
+      - bearerAuth: []
+      summary: Generate a delegate token
+      tags:
+      - User Authorization
+      x-content-type: application/json
+      x-accepts: application/json
   /authenticate:
     post:
       description: |
@@ -6614,6 +6746,11 @@ components:
           rootUserName: Lorem Ipsum
           rootUserPreferredUsername: username
           rootUserPhone: +1234567890
+    GetDelegateTokenRequest:
+      value:
+        principal: hrn:XlK5h64gND::iam-user/Bob
+        expiry: 3600
+        policy: hrn:XlK5h64gND::iam-policy/dataReadOnly
     PasscodePaginatedResponse:
       value:
         data:
@@ -7187,6 +7324,16 @@ components:
           schema:
             $ref: '#/components/schemas/VerifyEmailRequest'
       description: Payload to send verification link to email
+      required: true
+    GetDelegateTokenRequest:
+      content:
+        application/json:
+          examples:
+            GetDelegateTokenRequest:
+              $ref: '#/components/examples/GetDelegateTokenRequest'
+          schema:
+            $ref: '#/components/schemas/GetDelegateTokenRequest'
+      description: Payload to generate a delegate-able token
       required: true
   responses:
     BaseSuccessResponse:
@@ -7983,6 +8130,33 @@ components:
       required:
       - email
       - purpose
+      type: object
+    GetDelegateTokenRequest:
+      additionalProperties: false
+      description: payload to generate a delegate_token
+      example:
+        principal: principal
+        expiry: 0
+        policy: policy
+      properties:
+        principal:
+          description: Principal to delegate the token to. Will default to the requestor
+            if not provided
+          type: string
+        expiry:
+          description: "Expiry in seconds from the time of generation. \nIf not provided,\
+            \ generated token will have the expiry of the token used for requesting.\n\
+            If a credential is used for requesting, expiry will be 24 hours from the\
+            \ time of requesting.\n"
+          format: int64
+          type: integer
+        policy:
+          description: |
+            Policy with which to generate the delegate token.
+            Can be just the name of the policy if it is in the requestors organization or a complete policy resourceHrn
+          type: string
+      required:
+      - policy
       type: object
     BaseSuccessResponse:
       additionalProperties: false
