@@ -5,6 +5,7 @@ All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**listInvites**](UserVerificationApi.md#listInvites) | **GET** organization/{organization_id}/invites | Get organization passcodes |
+| [**resendInvite**](UserVerificationApi.md#resendInvite) | **POST** organizations/{organizationId}/invites/resend | Resend organization passcodes |
 | [**verifyEmail**](UserVerificationApi.md#verifyEmail) | **POST** verifyEmail | Verify email |
 
 
@@ -73,6 +74,83 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Paginated response of passcodesm |  -  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+
+
+## resendInvite
+
+> BaseSuccessResponse resendInvite(organizationId, resendInviteRequest)
+
+Resend organization passcodes
+
+Resend passcodes for the organization
+
+### Example
+
+```java
+// Import classes:
+import com.hypto.iam.client.ApiClient;
+import com.hypto.iam.client.ApiException;
+import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
+import com.hypto.iam.client.models.*;
+import com.hypto.iam.client.api.UserVerificationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        UserVerificationApi apiInstance = new UserVerificationApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        ResendInviteRequest resendInviteRequest = new ResendInviteRequest(); // ResendInviteRequest | Payload to resend invite
+        try {
+            BaseSuccessResponse result = apiInstance.resendInvite(organizationId, resendInviteRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserVerificationApi#resendInvite");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **resendInviteRequest** | [**ResendInviteRequest**](ResendInviteRequest.md)| Payload to resend invite | |
+
+### Return type
+
+[**BaseSuccessResponse**](BaseSuccessResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |

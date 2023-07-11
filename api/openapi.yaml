@@ -6605,6 +6605,121 @@ paths:
       tags:
       - User Verification
       x-accepts: application/json
+  /organizations/{organizationId}/invites/resend:
+    post:
+      description: Resend passcodes for the organization
+      operationId: resendInvite
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: "^[A-Z]{10}$"
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/ResendInviteRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+          description: OK
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: Resend organization passcodes
+      tags:
+      - User Verification
+      x-content-type: application/json
+      x-accepts: application/json
 components:
   examples:
     CreateOrganizationRequest:
@@ -6746,6 +6861,9 @@ components:
           rootUserName: Lorem Ipsum
           rootUserPreferredUsername: username
           rootUserPhone: +1234567890
+    ResendInviteRequest:
+      value:
+        email: email@email.com
     GetDelegateTokenRequest:
       value:
         principal: hrn:XlK5h64gND::iam-user/Bob
@@ -7324,6 +7442,16 @@ components:
           schema:
             $ref: '#/components/schemas/VerifyEmailRequest'
       description: Payload to send verification link to email
+      required: true
+    ResendInviteRequest:
+      content:
+        application/json:
+          examples:
+            ResendInviteRequest:
+              $ref: '#/components/examples/ResendInviteRequest'
+          schema:
+            $ref: '#/components/schemas/ResendInviteRequest'
+      description: Payload to resend invite
       required: true
     GetDelegateTokenRequest:
       content:
@@ -8130,6 +8258,17 @@ components:
       required:
       - email
       - purpose
+      type: object
+    ResendInviteRequest:
+      additionalProperties: false
+      description: Payload to resend invite
+      example:
+        email: email
+      properties:
+        email:
+          type: string
+      required:
+      - email
       type: object
     GetDelegateTokenRequest:
       additionalProperties: false

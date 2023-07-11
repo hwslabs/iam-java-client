@@ -32,6 +32,7 @@ docs/PolicyAssociationRequest.md
 docs/PolicyManagementApi.md
 docs/PolicyPaginatedResponse.md
 docs/PolicyStatement.md
+docs/ResendInviteRequest.md
 docs/ResetPasswordRequest.md
 docs/Resource.md
 docs/ResourceAction.md
@@ -115,6 +116,7 @@ src/main/java/com/hypto/iam/client/model/Policy.java
 src/main/java/com/hypto/iam/client/model/PolicyAssociationRequest.java
 src/main/java/com/hypto/iam/client/model/PolicyPaginatedResponse.java
 src/main/java/com/hypto/iam/client/model/PolicyStatement.java
+src/main/java/com/hypto/iam/client/model/ResendInviteRequest.java
 src/main/java/com/hypto/iam/client/model/ResetPasswordRequest.java
 src/main/java/com/hypto/iam/client/model/Resource.java
 src/main/java/com/hypto/iam/client/model/ResourceAction.java
