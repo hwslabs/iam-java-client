@@ -37,6 +37,11 @@ public class Policy {
     @SerializedName(SERIALIZED_NAME_HRN)
     private String hrn;
 
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
+
     public static final String SERIALIZED_NAME_VERSION = "version";
 
     @SerializedName(SERIALIZED_NAME_VERSION)
@@ -112,6 +117,27 @@ public class Policy {
         this.hrn = hrn;
     }
 
+    public Policy description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Policy version(Integer version) {
 
         this.version = version;
@@ -171,13 +197,14 @@ public class Policy {
         return Objects.equals(this.name, policy.name)
                 && Objects.equals(this.organizationId, policy.organizationId)
                 && Objects.equals(this.hrn, policy.hrn)
+                && Objects.equals(this.description, policy.description)
                 && Objects.equals(this.version, policy.version)
                 && Objects.equals(this.statements, policy.statements);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, organizationId, hrn, version, statements);
+        return Objects.hash(name, organizationId, hrn, description, version, statements);
     }
 
     @Override
@@ -187,6 +214,7 @@ public class Policy {
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
         sb.append("    hrn: ").append(toIndentedString(hrn)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    version: ").append(toIndentedString(version)).append("\n");
         sb.append("    statements: ").append(toIndentedString(statements)).append("\n");
         sb.append("}");

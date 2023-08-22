@@ -2,13 +2,14 @@
 
 # UpdatePolicyRequest
 
-Payload to update action
+Payload to update policy
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**statements** | [**List&lt;PolicyStatement&gt;**](PolicyStatement.md) |  |  |
+|**description** | **String** |  |  [optional] |
+|**statements** | [**List&lt;PolicyStatement&gt;**](PolicyStatement.md) |  |  [optional] |
 
 
 

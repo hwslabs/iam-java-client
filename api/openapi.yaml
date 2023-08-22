@@ -6798,6 +6798,7 @@ components:
       summary: sample create policy request
       value:
         name: policy_view_invoice
+        description: Allow viewing all invoices except 1
         statements:
         - resource: hrn:XlK5h64gND::invoice/1
           action: hrn:XlK5h64gND::invoice$view
@@ -6806,6 +6807,7 @@ components:
           action: hrn:XlK5h64gND::invoice$view
           effect: allow
     UpdatePolicyRequest:
+      description: Allow viewing all invoices except 1
       summary: sample update policy request
       value:
         statements:
@@ -7107,6 +7109,7 @@ components:
       summary: A sample policy
       value:
         name: policy_viewer
+        description: Allow viewing invoices
         organizationId: XlK5h64gND
         version: 1
         statements:
@@ -8113,9 +8116,10 @@ components:
       type: object
     CreatePolicyRequest:
       additionalProperties: false
-      description: Payload to update action
+      description: Payload to create policy
       example:
         name: name
+        description: description
         statements:
         - resource: resource
           effect: allow
@@ -8136,6 +8140,9 @@ components:
         name:
           maxLength: 50
           type: string
+        description:
+          maxLength: 512
+          type: string
         statements:
           items:
             $ref: '#/components/schemas/PolicyStatement'
@@ -8147,8 +8154,9 @@ components:
       type: object
     UpdatePolicyRequest:
       additionalProperties: false
-      description: Payload to update action
+      description: Payload to update policy
       example:
+        description: description
         statements:
         - resource: resource
           effect: allow
@@ -8166,13 +8174,14 @@ components:
           effect: allow
           action: action
       properties:
+        description:
+          maxLength: 512
+          type: string
         statements:
           items:
             $ref: '#/components/schemas/PolicyStatement'
           maxItems: 20
           type: array
-      required:
-      - statements
       type: object
     PolicyAssociationRequest:
       additionalProperties: false
@@ -8487,6 +8496,7 @@ components:
         - organizationId: organizationId
           hrn: hrn
           name: name
+          description: description
           statements:
           - resource: resource
             effect: allow
@@ -8507,6 +8517,7 @@ components:
         - organizationId: organizationId
           hrn: hrn
           name: name
+          description: description
           statements:
           - resource: resource
             effect: allow
@@ -8896,6 +8907,7 @@ components:
         organizationId: organizationId
         hrn: hrn
         name: name
+        description: description
         statements:
         - resource: resource
           effect: allow
@@ -8921,6 +8933,9 @@ components:
           maxLength: 50
           type: string
         hrn:
+          type: string
+        description:
+          maxLength: 512
           type: string
         version:
           maxLength: 5

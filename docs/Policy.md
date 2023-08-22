@@ -10,6 +10,7 @@
 |**name** | **String** |  |  |
 |**organizationId** | **String** |  |  |
 |**hrn** | **String** |  |  |
+|**description** | **String** |  |  [optional] |
 |**version** | **Integer** |  |  |
 |**statements** | [**List&lt;PolicyStatement&gt;**](PolicyStatement.md) |  |  |
 

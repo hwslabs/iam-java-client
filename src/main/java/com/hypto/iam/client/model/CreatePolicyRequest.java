@@ -20,14 +20,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** Payload to update action */
-@ApiModel(description = "Payload to update action")
+/** Payload to create policy */
+@ApiModel(description = "Payload to create policy")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreatePolicyRequest {
     public static final String SERIALIZED_NAME_NAME = "name";
 
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
+
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
 
     public static final String SERIALIZED_NAME_STATEMENTS = "statements";
 
@@ -55,6 +60,27 @@ public class CreatePolicyRequest {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public CreatePolicyRequest description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public CreatePolicyRequest statements(List<PolicyStatement> statements) {
@@ -93,12 +119,13 @@ public class CreatePolicyRequest {
         }
         CreatePolicyRequest createPolicyRequest = (CreatePolicyRequest) o;
         return Objects.equals(this.name, createPolicyRequest.name)
+                && Objects.equals(this.description, createPolicyRequest.description)
                 && Objects.equals(this.statements, createPolicyRequest.statements);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, statements);
+        return Objects.hash(name, description, statements);
     }
 
     @Override
@@ -106,6 +133,7 @@ public class CreatePolicyRequest {
         StringBuilder sb = new StringBuilder();
         sb.append("class CreatePolicyRequest {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    statements: ").append(toIndentedString(statements)).append("\n");
         sb.append("}");
         return sb.toString();

@@ -20,16 +20,42 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** Payload to update action */
-@ApiModel(description = "Payload to update action")
+/** Payload to update policy */
+@ApiModel(description = "Payload to update policy")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdatePolicyRequest {
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
+
     public static final String SERIALIZED_NAME_STATEMENTS = "statements";
 
     @SerializedName(SERIALIZED_NAME_STATEMENTS)
-    private List<PolicyStatement> statements = new ArrayList<>();
+    private List<PolicyStatement> statements = null;
 
     public UpdatePolicyRequest() {}
+
+    public UpdatePolicyRequest description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public UpdatePolicyRequest statements(List<PolicyStatement> statements) {
 
@@ -38,6 +64,9 @@ public class UpdatePolicyRequest {
     }
 
     public UpdatePolicyRequest addStatementsItem(PolicyStatement statementsItem) {
+        if (this.statements == null) {
+            this.statements = new ArrayList<>();
+        }
         this.statements.add(statementsItem);
         return this;
     }
@@ -47,8 +76,8 @@ public class UpdatePolicyRequest {
      *
      * @return statements
      */
-    @javax.annotation.Nonnull
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
     public List<PolicyStatement> getStatements() {
         return statements;
     }
@@ -66,18 +95,20 @@ public class UpdatePolicyRequest {
             return false;
         }
         UpdatePolicyRequest updatePolicyRequest = (UpdatePolicyRequest) o;
-        return Objects.equals(this.statements, updatePolicyRequest.statements);
+        return Objects.equals(this.description, updatePolicyRequest.description)
+                && Objects.equals(this.statements, updatePolicyRequest.statements);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(statements);
+        return Objects.hash(description, statements);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UpdatePolicyRequest {\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    statements: ").append(toIndentedString(statements)).append("\n");
         sb.append("}");
         return sb.toString();
