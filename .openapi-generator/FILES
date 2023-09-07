@@ -4,6 +4,9 @@ api/openapi.yaml
 build.sbt
 docs/Action.md
 docs/ActionPaginatedResponse.md
+docs/AuthProvider.md
+docs/AuthProviderPaginatedResponse.md
+docs/AuthProvidersApi.md
 docs/BaseSuccessResponse.md
 docs/ChangeUserPasswordRequest.md
 docs/CreateActionRequest.md
@@ -74,6 +77,7 @@ src/main/java/com/hypto/iam/client/JSON.java
 src/main/java/com/hypto/iam/client/ServerConfiguration.java
 src/main/java/com/hypto/iam/client/ServerVariable.java
 src/main/java/com/hypto/iam/client/StringUtil.java
+src/main/java/com/hypto/iam/client/api/AuthProvidersApi.java
 src/main/java/com/hypto/iam/client/api/KeyManagementApi.java
 src/main/java/com/hypto/iam/client/api/OrganizationManagementApi.java
 src/main/java/com/hypto/iam/client/api/PolicyManagementApi.java
@@ -91,6 +95,8 @@ src/main/java/com/hypto/iam/client/auth/HttpBearerAuth.java
 src/main/java/com/hypto/iam/client/auth/OAuthOkHttpClient.java
 src/main/java/com/hypto/iam/client/model/Action.java
 src/main/java/com/hypto/iam/client/model/ActionPaginatedResponse.java
+src/main/java/com/hypto/iam/client/model/AuthProvider.java
+src/main/java/com/hypto/iam/client/model/AuthProviderPaginatedResponse.java
 src/main/java/com/hypto/iam/client/model/BaseSuccessResponse.java
 src/main/java/com/hypto/iam/client/model/ChangeUserPasswordRequest.java
 src/main/java/com/hypto/iam/client/model/CreateActionRequest.java
