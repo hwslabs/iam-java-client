@@ -1628,6 +1628,171 @@ paths:
       - User Management
       x-content-type: application/json
       x-accepts: application/json
+  /organizations/{organization_id}/users/{user_name}/create_password:
+    post:
+      description: Create password for a user
+      operationId: createPassword
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: Bob
+              maxLength: 50
+              pattern: "^[A-Za-z0-9_]{3,50}$"
+              type: string
+        explode: false
+        in: path
+        name: user_name
+        required: true
+        style: simple
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: "^[A-Z]{10}$"
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/CreateUserPasswordRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+          description: OK
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: Create password for a user
+      tags:
+      - User Management
+      x-content-type: application/json
+      x-accepts: application/json
   /organizations/{organization_id}/users/resetPassword:
     post:
       description: Reset Password
@@ -6895,6 +7060,10 @@ components:
       value:
         oldPassword: Old@Password123
         newPassword: New@Password123
+    CreateUserPasswordRequest:
+      summary: sample set user password request
+      value:
+        password: Password@123
     ResetPasswordRequest:
       summary: sample reset password request
       value:
@@ -7462,6 +7631,16 @@ components:
           schema:
             $ref: '#/components/schemas/ChangeUserPasswordRequest'
       description: Payload to change user password
+      required: true
+    CreateUserPasswordRequest:
+      content:
+        application/json:
+          examples:
+            CreateUserPasswordRequest:
+              $ref: '#/components/examples/CreateUserPasswordRequest'
+          schema:
+            $ref: '#/components/schemas/CreateUserPasswordRequest'
+      description: Payload to set user password
       required: true
     ResetPasswordRequest:
       content:
@@ -8166,6 +8345,18 @@ components:
       required:
       - newPassword
       - oldPassword
+      type: object
+    CreateUserPasswordRequest:
+      additionalProperties: false
+      description: Payload to set user password
+      example:
+        password: password
+      properties:
+        password:
+          maxLength: 100
+          type: string
+      required:
+      - password
       type: object
     ResetPasswordRequest:
       additionalProperties: false

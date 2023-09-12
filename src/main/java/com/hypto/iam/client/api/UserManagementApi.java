@@ -4,6 +4,7 @@ package com.hypto.iam.client.api;
 import com.hypto.iam.client.CollectionFormats.*;
 import com.hypto.iam.client.model.BaseSuccessResponse;
 import com.hypto.iam.client.model.ChangeUserPasswordRequest;
+import com.hypto.iam.client.model.CreateUserPasswordRequest;
 import com.hypto.iam.client.model.CreateUserRequest;
 import com.hypto.iam.client.model.CreateUserResponse;
 import com.hypto.iam.client.model.ResetPasswordRequest;
@@ -29,6 +30,21 @@ public interface UserManagementApi {
             @retrofit2.http.Path("user_name") String userName,
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body ChangeUserPasswordRequest changeUserPasswordRequest);
+
+    /**
+     * Create password for a user Create password for a user
+     *
+     * @param userName (required)
+     * @param organizationId (required)
+     * @param createUserPasswordRequest Payload to set user password (required)
+     * @return Call&lt;BaseSuccessResponse&gt;
+     */
+    @Headers({"Content-Type:application/json"})
+    @POST("organizations/{organization_id}/users/{user_name}/create_password")
+    Call<BaseSuccessResponse> createPassword(
+            @retrofit2.http.Path("user_name") String userName,
+            @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.Body CreateUserPasswordRequest createUserPasswordRequest);
 
     /**
      * Create a user User is an entity which represent a person who is part of the organization or
@@ -119,6 +135,14 @@ public interface UserManagementApi {
             @retrofit2.http.Path("user_name") String userName,
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body ChangeUserPasswordRequest changeUserPasswordRequest,
+            @retrofit2.http.HeaderMap Map<String, String> headers);
+
+    @Headers({"Content-Type:application/json"})
+    @POST("organizations/{organization_id}/users/{user_name}/create_password")
+    Call<BaseSuccessResponse> createPassword(
+            @retrofit2.http.Path("user_name") String userName,
+            @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.Body CreateUserPasswordRequest createUserPasswordRequest,
             @retrofit2.http.HeaderMap Map<String, String> headers);
 
     @Headers({"Content-Type:application/json"})
