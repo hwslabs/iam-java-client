@@ -2472,6 +2472,171 @@ paths:
       - User Policy Management
       x-content-type: application/json
       x-accepts: application/json
+  /organizations/{organization_id}/users/{user_name}/auth_methods:
+    get:
+      description: Get authorization methods of a User
+      operationId: getUserAuthMethods
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: Bob
+              maxLength: 50
+              pattern: "^[A-Za-z0-9_]{3,50}$"
+              type: string
+        explode: false
+        in: path
+        name: user_name
+        required: true
+        style: simple
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: "^[A-Z]{10}$"
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                UserPaginatedResponse:
+                  $ref: '#/components/examples/UserAuthMethodsResponse'
+              schema:
+                $ref: '#/components/schemas/UserAuthMethodsResponse'
+          description: Response for list user auth methods request
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: Gets authorization methods of a user entity associated with the organization
+      tags:
+      - User Authorization Methods Management
+      x-accepts: application/json
   /organizations/{organization_id}/users/{user_name}/credentials:
     get:
       description: List all credentials for a user
@@ -7244,6 +7409,11 @@ components:
         context:
           pageSize: 10
           sortOrder: asc
+    UserAuthMethodsResponse:
+      value:
+        data:
+        - providerName: google
+        - providerName: iam
     PolicyPaginatedResponse:
       value:
         data:
@@ -8107,6 +8277,23 @@ components:
           schema:
             type: string
           style: simple
+    UserAuthMethodsResponse:
+      content:
+        application/json:
+          examples:
+            UserPaginatedResponse:
+              $ref: '#/components/examples/UserAuthMethodsResponse'
+          schema:
+            $ref: '#/components/schemas/UserAuthMethodsResponse'
+      description: Response for list user auth methods request
+      headers:
+        X-Iam-User-Organization:
+          description: Organization Id of the authenticated user
+          example: XlK5h64gND
+          explode: false
+          schema:
+            type: string
+          style: simple
     PolicyPaginatedResponse:
       content:
         application/json:
@@ -8832,6 +9019,18 @@ components:
         context:
           $ref: '#/components/schemas/PaginationOptions'
       type: object
+    UserAuthMethodsResponse:
+      additionalProperties: false
+      example:
+        data:
+        - providerName: providerName
+        - providerName: providerName
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/UserAuthMethod'
+          type: array
+      type: object
     PolicyPaginatedResponse:
       additionalProperties: false
       example:
@@ -9105,6 +9304,20 @@ components:
       - status
       - username
       - verified
+      type: object
+    UserAuthMethod:
+      additionalProperties: false
+      description: User auth method details
+      example:
+        providerName: providerName
+      properties:
+        providerName:
+          description: Name of the authorization method
+          maxLength: 50
+          type: string
+      required:
+      - metadata
+      - providerName
       type: object
     CreateUserResponse:
       additionalProperties: false

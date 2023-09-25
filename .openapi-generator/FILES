@@ -53,8 +53,11 @@ docs/UpdatePolicyRequest.md
 docs/UpdateResourceRequest.md
 docs/UpdateUserRequest.md
 docs/User.md
+docs/UserAuthMethod.md
+docs/UserAuthMethodsResponse.md
 docs/UserAuthenticationApi.md
 docs/UserAuthorizationApi.md
+docs/UserAuthorizationMethodsManagementApi.md
 docs/UserCredentialManagementApi.md
 docs/UserManagementApi.md
 docs/UserPaginatedResponse.md
@@ -86,6 +89,7 @@ src/main/java/com/hypto/iam/client/api/ResourceActionManagementApi.java
 src/main/java/com/hypto/iam/client/api/ResourceManagementApi.java
 src/main/java/com/hypto/iam/client/api/UserAuthenticationApi.java
 src/main/java/com/hypto/iam/client/api/UserAuthorizationApi.java
+src/main/java/com/hypto/iam/client/api/UserAuthorizationMethodsManagementApi.java
 src/main/java/com/hypto/iam/client/api/UserCredentialManagementApi.java
 src/main/java/com/hypto/iam/client/api/UserManagementApi.java
 src/main/java/com/hypto/iam/client/api/UserPolicyManagementApi.java
@@ -139,6 +143,8 @@ src/main/java/com/hypto/iam/client/model/UpdatePolicyRequest.java
 src/main/java/com/hypto/iam/client/model/UpdateResourceRequest.java
 src/main/java/com/hypto/iam/client/model/UpdateUserRequest.java
 src/main/java/com/hypto/iam/client/model/User.java
+src/main/java/com/hypto/iam/client/model/UserAuthMethod.java
+src/main/java/com/hypto/iam/client/model/UserAuthMethodsResponse.java
 src/main/java/com/hypto/iam/client/model/UserPaginatedResponse.java
 src/main/java/com/hypto/iam/client/model/UserPolicy.java
 src/main/java/com/hypto/iam/client/model/ValidationRequest.java
