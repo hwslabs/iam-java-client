@@ -145,7 +145,7 @@ public class Policy {
     }
 
     /**
-     * Get version
+     * Get version maximum: 999
      *
      * @return version
      */

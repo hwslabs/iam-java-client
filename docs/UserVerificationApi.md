@@ -5,7 +5,7 @@ All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**listInvites**](UserVerificationApi.md#listInvites) | **GET** organization/{organization_id}/invites | Get organization passcodes |
-| [**resendInvite**](UserVerificationApi.md#resendInvite) | **POST** organizations/{organizationId}/invites/resend | Resend organization passcodes |
+| [**resendInvite**](UserVerificationApi.md#resendInvite) | **POST** organizations/{organization_id}/invites/resend | Resend organization passcodes |
 | [**verifyEmail**](UserVerificationApi.md#verifyEmail) | **POST** verifyEmail | Verify email |
 
 
@@ -25,6 +25,7 @@ Get passcodes for the organization
 import com.hypto.iam.client.ApiClient;
 import com.hypto.iam.client.ApiException;
 import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
 import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.UserVerificationApi;
 
@@ -32,6 +33,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         UserVerificationApi apiInstance = new UserVerificationApi(defaultClient);
         String organizationId = "organizationId_example"; // String | 
@@ -62,7 +67,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -172,6 +177,7 @@ Verify email during account opening and resetting password
 import com.hypto.iam.client.ApiClient;
 import com.hypto.iam.client.ApiException;
 import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
 import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.UserVerificationApi;
 
@@ -179,6 +185,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         UserVerificationApi apiInstance = new UserVerificationApi(defaultClient);
         VerifyEmailRequest verifyEmailRequest = new VerifyEmailRequest(); // VerifyEmailRequest | Payload to send verification link to email
@@ -209,7 +219,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

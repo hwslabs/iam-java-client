@@ -29,7 +29,7 @@ public interface UserVerificationApi {
      * @return Call&lt;BaseSuccessResponse&gt;
      */
     @Headers({"Content-Type:application/json"})
-    @POST("organizations/{organizationId}/invites/resend")
+    @POST("organizations/{organization_id}/invites/resend")
     Call<BaseSuccessResponse> resendInvite(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body ResendInviteRequest resendInviteRequest);
@@ -51,7 +51,7 @@ public interface UserVerificationApi {
             @retrofit2.http.HeaderMap Map<String, String> headers);
 
     @Headers({"Content-Type:application/json"})
-    @POST("organizations/{organizationId}/invites/resend")
+    @POST("organizations/{organization_id}/invites/resend")
     Call<BaseSuccessResponse> resendInvite(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body ResendInviteRequest resendInviteRequest,

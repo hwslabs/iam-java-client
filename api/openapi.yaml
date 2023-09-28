@@ -210,9 +210,7 @@ paths:
                 type: string
               style: simple
       security:
-      - apiKeyAuth:
-        - hypto-internal-secret-key
-        - passcode
+      - apiKeyAuth: []
       summary: Creates an organization.
       tags:
       - Organization Management
@@ -229,7 +227,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -366,8 +364,7 @@ paths:
                 type: string
               style: simple
       security:
-      - apiKeyAuth:
-        - hypto-internal-secret-key
+      - apiKeyAuth: []
       summary: Delete an organization
       tags:
       - Organization Management
@@ -381,7 +378,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -533,7 +530,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -690,7 +687,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -714,7 +711,7 @@ paths:
           type: string
         style: form
       responses:
-        "201":
+        "200":
           content:
             application/json:
               examples:
@@ -843,7 +840,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -992,7 +989,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -1153,7 +1150,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -1317,7 +1314,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -1485,7 +1482,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -1650,7 +1647,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -1803,7 +1800,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -1942,8 +1939,7 @@ paths:
                 type: string
               style: simple
       security:
-      - apiKeyAuth:
-        - passcode
+      - apiKeyAuth: []
       summary: Reset Password
       tags:
       - User Management
@@ -1971,7 +1967,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -2164,7 +2160,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -2329,7 +2325,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -2494,7 +2490,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -2506,7 +2502,7 @@ paths:
           content:
             application/json:
               examples:
-                UserPaginatedResponse:
+                UserAuthMethodsResponse:
                   $ref: '#/components/examples/UserAuthMethodsResponse'
               schema:
                 $ref: '#/components/schemas/UserAuthMethodsResponse'
@@ -2659,7 +2655,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -2667,7 +2663,7 @@ paths:
         required: true
         style: simple
       responses:
-        "201":
+        "200":
           content:
             application/json:
               examples:
@@ -2824,7 +2820,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -2980,7 +2976,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -3152,7 +3148,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -3328,7 +3324,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -3507,7 +3503,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -3542,7 +3538,7 @@ paths:
           type: string
         style: form
       responses:
-        "201":
+        "200":
           content:
             application/json:
               examples:
@@ -3671,7 +3667,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -3827,7 +3823,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -3988,7 +3984,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -4152,7 +4148,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -4320,7 +4316,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -4492,7 +4488,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -4660,7 +4656,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -4833,7 +4829,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -5009,7 +5005,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -5189,7 +5185,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -5224,7 +5220,7 @@ paths:
           type: string
         style: form
       responses:
-        "201":
+        "200":
           content:
             application/json:
               examples:
@@ -5350,7 +5346,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -5506,7 +5502,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -5667,7 +5663,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -5831,7 +5827,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -6000,7 +5996,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -6721,7 +6717,6 @@ paths:
               schema:
                 type: string
               style: simple
-      security: []
       summary: Get keys
       tags:
       - Key Management
@@ -6823,7 +6818,6 @@ paths:
               schema:
                 type: string
               style: simple
-      security: []
       summary: Verify email
       tags:
       - User Verification
@@ -6839,7 +6833,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -6932,12 +6926,11 @@ paths:
               schema:
                 type: string
               style: simple
-      security: []
       summary: Get organization passcodes
       tags:
       - User Verification
       x-accepts: application/json
-  /organizations/{organizationId}/invites/resend:
+  /organizations/{organization_id}/invites/resend:
     post:
       description: Resend passcodes for the organization
       operationId: resendInvite
@@ -6947,7 +6940,7 @@ paths:
             schema:
               example: XlK5h64gND
               maxLength: 10
-              pattern: "^[A-Z]{10}$"
+              pattern: "^[A-Za-z0-9]{10}$"
               type: string
         explode: false
         in: path
@@ -7201,7 +7194,6 @@ components:
       value:
         name: ACME Enterprise
         description: Updated Brief description about ACME
-        userConfiguration: null
     CreateUserRequest:
       summary: A sample create user request
       value:
@@ -7297,10 +7289,6 @@ components:
           action: hrn:XlK5h64gND::invoice$view
         - resource: hrn:XlK5h64gND::invoice/2
           action: hrn:XlK5h64gND::invoice$view
-    LoginRequest:
-      value:
-        username: Bob
-        salterPassword: wnr1782qbt52igbiuwbcgeuyiy==egryg123iuoh1109877t2i313489rge
     VerifyEmailRequestReset:
       value:
         email: abcd@abcd.in
@@ -7359,19 +7347,14 @@ components:
             organizationId: XlK5h64gND
             email: bob@acme.com
             status: enabled
+            verified: true
             phone: +1234071628
             loginAccess: true
+            createdAt: 2020-01-01T00:00:00.000Z
             createdBy: ""
           updatedAt: 2020-01-01T00:00:00.000Z
           createdAt: 2020-01-01T00:00:00.000Z
         rootUserToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-    GetUserPoliciesResponse:
-      value:
-        policies:
-        - name: policy_viewer
-          organizationId: XlK5h64gND
-        - name: policy_editor
-          organizationId: XlK5h64gND
     TokenResponse:
       value:
         token: XlK5h64gNDBfMXAPKKGRmWjaxmXJJzDKIJNWqSWj
@@ -7405,6 +7388,7 @@ components:
           phone: +1234071628
           loginAccess: true
           createdBy: hrn:Xghfdksd::iam-user/johnny314
+          createdAt: 2020-01-01T00:00:00.000Z
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
           pageSize: 10
@@ -7419,6 +7403,7 @@ components:
         data:
         - name: policy_viewer
           organizationId: XlK5h64gND
+          hrn: hrn:XlK5h64gND::iam-policy/policy_viewer
           version: 1
           statements:
           - resource: hrn:XlK5h64gND::invoice/1
@@ -7457,10 +7442,6 @@ components:
         status: SIGNING
         format: der
         key: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEKv36cup5G6xfHOtllBjsymgQ6CHQUxCRieycapq8UZL3oCpbatU7lg8Tv+eGAhFsF/JYoDWcHOhAHhMm8Ae+lA==
-    PaginationOptions:
-      value:
-        pageSize: 10
-        sortOrder: asc
     AuthProviderPaginatedResponse:
       value:
         data:
@@ -7486,7 +7467,9 @@ components:
           status: enabled
           phone: +1234071628
           loginAccess: true
+          verified: true
           createdBy: ""
+          createdAt: 2020-01-01T00:00:00.000Z
         rootUserHrn: hrn:XlK5h64gND::iam-user/root-user-name
         createdAt: 2020-01-01T00:00:00.000Z
         updatedAt: 2020-01-01T00:00:00.000Z
@@ -7503,6 +7486,7 @@ components:
           phone: +1234071628
           loginAccess: true
           createdBy: hrn:Xghfdksd::iam-user/johnny314
+          createdAt: 2020-01-01T00:00:00Z
         userToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
     User:
       summary: A sample user
@@ -7517,40 +7501,7 @@ components:
         phone: +1234071628
         loginAccess: true
         createdBy: hrn:Xghfdksd::iam-user/johnny314
-    UserConfiguration:
-      value:
-        passwordPolicy: null
-        federatedIdentities:
-        - identityProviderName: Google
-          clientId: <google - clientId>
-          clientSecret: <google - clientSecret>
-          scopes:
-          - <scope1>
-          - <scope2>
-          attributeMap:
-            OIDCAttributeKey: <value>
-            IdentityProviderAttributeKey: <value>
-    FederatedIdentityProvider:
-      value:
-        identityProviderName: Google
-        clientId: <google - clientId>
-        clientSecret: <google - clientSecret>
-        scopes:
-        - <scope1>
-        - <scope2>
-        attributeMap:
-          OIDCAttributeKey: <value>
-          IdentityProviderAttributeKey: <value>
-    PasswordPolicyRules:
-      value:
-        lengthMinimum: 8
-        oneSpecialChar: true
-        oneNumeric: false
-        oneUppercase: true
-        oneLowercase: true
-    PasswordPolicyRegex:
-      value:
-        regexPattern: "^\\S{8,}$"
+        createdAt: 2020-01-01T00:00:00Z
     Credential:
       summary: A sample credential
       value:
@@ -7583,16 +7534,13 @@ components:
         name: view
         hrn: hrn:XlK5h64gND::invoice$view
         description: View invoice action
-    UserPolicy:
-      value:
-        name: policy_viewer
-        organizationId: XlK5h64gND
     Policy:
       summary: A sample policy
       value:
         name: policy_viewer
         description: Allow viewing invoices
         organizationId: XlK5h64gND
+        hrn: hrn:XlK5h64gND::iam-policy/policy_viewer
         version: 1
         statements:
         - resource: hrn:XlK5h64gND::invoice/1
@@ -7601,11 +7549,6 @@ components:
         - resource: hrn:XlK5h64gND::invoice/*
           action: hrn:XlK5h64gND::invoice$view
           effect: allow
-    PolicyStatement:
-      value:
-      - resource: hrn:XlK5h64gND::invoice/1
-        action: hrn:XlK5h64gND::invoice$view
-        effect: allow
   parameters:
     user_name:
       content:
@@ -7665,7 +7608,7 @@ components:
           schema:
             example: XlK5h64gND
             maxLength: 10
-            pattern: "^[A-Z]{10}$"
+            pattern: "^[A-Za-z0-9]{10}$"
             type: string
       explode: false
       in: path
@@ -8205,23 +8148,6 @@ components:
           schema:
             type: string
           style: simple
-    GetUserPoliciesResponse:
-      content:
-        application/json:
-          examples:
-            GetUserPoliciesResponse:
-              $ref: '#/components/examples/GetUserPoliciesResponse'
-          schema:
-            $ref: '#/components/schemas/GetUserPoliciesResponse'
-      description: Response for list user policy API
-      headers:
-        X-Iam-User-Organization:
-          description: Organization Id of the authenticated user
-          example: XlK5h64gND
-          explode: false
-          schema:
-            type: string
-          style: simple
     TokenResponse:
       content:
         application/json:
@@ -8281,7 +8207,7 @@ components:
       content:
         application/json:
           examples:
-            UserPaginatedResponse:
+            UserAuthMethodsResponse:
               $ref: '#/components/examples/UserAuthMethodsResponse'
           schema:
             $ref: '#/components/schemas/UserAuthMethodsResponse'
@@ -8443,7 +8369,6 @@ components:
       required:
       - email
       - password
-      - username
       type: object
     CreateUserRequest:
       additionalProperties: false
@@ -8857,18 +8782,8 @@ components:
       required:
       - message
       type: object
-    GetUserPoliciesResponse:
-      additionalProperties: false
-      properties:
-        policies:
-          items:
-            $ref: '#/components/schemas/UserPolicy'
-          maxItems: 50
-          type: array
-      required:
-      - policies
-      type: object
     TokenResponse:
+      additionalProperties: false
       example:
         token: token
       properties:
@@ -9005,6 +8920,42 @@ components:
           email: email
           username: username
           status: enabled
+        - organizationId: organizationId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          hrn: hrn
+          preferredUsername: preferredUsername
+          phone: phone
+          createdBy: createdBy
+          name: name
+          verified: true
+          loginAccess: true
+          email: email
+          username: username
+          status: enabled
+        - organizationId: organizationId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          hrn: hrn
+          preferredUsername: preferredUsername
+          phone: phone
+          createdBy: createdBy
+          name: name
+          verified: true
+          loginAccess: true
+          email: email
+          username: username
+          status: enabled
+        - organizationId: organizationId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          hrn: hrn
+          preferredUsername: preferredUsername
+          phone: phone
+          createdBy: createdBy
+          name: name
+          verified: true
+          loginAccess: true
+          email: email
+          username: username
+          status: enabled
         nextToken: nextToken
         context:
           sortOrder: asc
@@ -9013,6 +8964,8 @@ components:
         data:
           items:
             $ref: '#/components/schemas/User'
+          maxItems: 100
+          minItems: 0
           type: array
         nextToken:
           type: string
@@ -9025,10 +8978,15 @@ components:
         data:
         - providerName: providerName
         - providerName: providerName
+        - providerName: providerName
+        - providerName: providerName
+        - providerName: providerName
       properties:
         data:
           items:
             $ref: '#/components/schemas/UserAuthMethod'
+          maxItems: 100
+          minItems: 0
           type: array
       type: object
     PolicyPaginatedResponse:
@@ -9055,7 +9013,7 @@ components:
           - resource: resource
             effect: allow
             action: action
-          version: 0
+          version: 80
         - organizationId: organizationId
           hrn: hrn
           name: name
@@ -9076,7 +9034,70 @@ components:
           - resource: resource
             effect: allow
             action: action
-          version: 0
+          version: 80
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
+          statements:
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          version: 80
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
+          statements:
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          version: 80
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
+          statements:
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          - resource: resource
+            effect: allow
+            action: action
+          version: 80
         nextToken: nextToken
         context:
           sortOrder: asc
@@ -9085,6 +9106,8 @@ components:
         data:
           items:
             $ref: '#/components/schemas/Policy'
+          maxItems: 100
+          minItems: 0
           type: array
         nextToken:
           type: string
@@ -9103,6 +9126,18 @@ components:
           hrn: hrn
           name: name
           description: description
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
         nextToken: nextToken
         context:
           sortOrder: asc
@@ -9111,6 +9146,8 @@ components:
         data:
           items:
             $ref: '#/components/schemas/Resource'
+          maxItems: 100
+          minItems: 0
           type: array
         nextToken:
           type: string
@@ -9131,6 +9168,21 @@ components:
           name: name
           description: description
           resourceName: resourceName
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
+          resourceName: resourceName
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
+          resourceName: resourceName
+        - organizationId: organizationId
+          hrn: hrn
+          name: name
+          description: description
+          resourceName: resourceName
         nextToken: nextToken
         context:
           sortOrder: asc
@@ -9139,6 +9191,8 @@ components:
         data:
           items:
             $ref: '#/components/schemas/Action'
+          maxItems: 100
+          minItems: 0
           type: array
         nextToken:
           type: string
@@ -9183,6 +9237,15 @@ components:
         - authUrl: authUrl
           clientId: clientId
           providerName: providerName
+        - authUrl: authUrl
+          clientId: clientId
+          providerName: providerName
+        - authUrl: authUrl
+          clientId: clientId
+          providerName: providerName
+        - authUrl: authUrl
+          clientId: clientId
+          providerName: providerName
         nextToken: nextToken
         context:
           sortOrder: asc
@@ -9192,6 +9255,8 @@ components:
           description: List of auth providers
           items:
             $ref: '#/components/schemas/AuthProvider'
+          maxItems: 100
+          minItems: 0
           type: array
         nextToken:
           type: string
@@ -9316,7 +9381,6 @@ components:
           maxLength: 50
           type: string
       required:
-      - metadata
       - providerName
       type: object
     CreateUserResponse:
@@ -9506,7 +9570,7 @@ components:
         - resource: resource
           effect: allow
           action: action
-        version: 0
+        version: 80
       properties:
         name:
           maxLength: 50
@@ -9520,7 +9584,7 @@ components:
           maxLength: 512
           type: string
         version:
-          maxLength: 5
+          maximum: 999
           type: integer
         statements:
           items:
@@ -9593,6 +9657,18 @@ components:
           purpose: purpose
           validUntil: 2000-01-23T04:56:07.000+00:00
           email: email
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          purpose: purpose
+          validUntil: 2000-01-23T04:56:07.000+00:00
+          email: email
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          purpose: purpose
+          validUntil: 2000-01-23T04:56:07.000+00:00
+          email: email
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          purpose: purpose
+          validUntil: 2000-01-23T04:56:07.000+00:00
+          email: email
         nextToken: nextToken
         context:
           sortOrder: asc
@@ -9601,6 +9677,8 @@ components:
         data:
           items:
             $ref: '#/components/schemas/Passcode'
+          maxItems: 100
+          minItems: 0
           type: array
         nextToken:
           type: string
@@ -9630,6 +9708,7 @@ components:
       - providerName
       type: object
     ResourceAction:
+      additionalProperties: false
       example:
         resource: resource
         action: action
@@ -9643,6 +9722,7 @@ components:
       - resource
       type: object
     ResourceActionEffect:
+      additionalProperties: false
       example:
         resource: resource
         effect: allow

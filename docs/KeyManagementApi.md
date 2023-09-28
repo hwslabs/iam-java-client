@@ -23,6 +23,7 @@ Get public/private keys from Key-id in der/pem format
 import com.hypto.iam.client.ApiClient;
 import com.hypto.iam.client.ApiException;
 import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
 import com.hypto.iam.client.models.*;
 import com.hypto.iam.client.api.KeyManagementApi;
 
@@ -30,6 +31,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         KeyManagementApi apiInstance = new KeyManagementApi(defaultClient);
         String kid = "kid_example"; // String | 
@@ -64,7 +69,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
