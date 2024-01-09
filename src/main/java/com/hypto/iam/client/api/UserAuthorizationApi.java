@@ -44,6 +44,19 @@ public interface UserAuthorizationApi {
             @retrofit2.http.Path("organization_id") String organizationId);
 
     /**
+     * Generate a organization_id scoped token Generate a token for the given user credential scoped
+     * by the provided organization_id
+     *
+     * @param organizationId (required)
+     * @param subOrganizationName (required)
+     * @return Call&lt;TokenResponse&gt;
+     */
+    @POST("organizations/{organization_id}/sub_organizations/{sub_organization_name}/token")
+    Call<TokenResponse> getTokenForSubOrg(
+            @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.Path("sub_organization_name") String subOrganizationName);
+
+    /**
      * Validate an auth request Validate if the caller has access to resource-action in the request
      *
      * @param validationRequest Payload to validate if a user has access to a resource-action
@@ -66,6 +79,12 @@ public interface UserAuthorizationApi {
     @POST("organizations/{organization_id}/token")
     Call<TokenResponse> getTokenForOrg(
             @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.HeaderMap Map<String, String> headers);
+
+    @POST("organizations/{organization_id}/sub_organizations/{sub_organization_name}/token")
+    Call<TokenResponse> getTokenForSubOrg(
+            @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.Path("sub_organization_name") String subOrganizationName,
             @retrofit2.http.HeaderMap Map<String, String> headers);
 
     @Headers({"Content-Type:application/json"})

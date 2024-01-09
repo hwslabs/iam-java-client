@@ -1,105 +1,24 @@
-# UserAuthorizationApi
+# SubOrganizationManagementApi
 
 All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getDelegateToken**](UserAuthorizationApi.md#getDelegateToken) | **POST** delegate_token | Generate a delegate token |
-| [**getToken**](UserAuthorizationApi.md#getToken) | **POST** token | Generate a token |
-| [**getTokenForOrg**](UserAuthorizationApi.md#getTokenForOrg) | **POST** organizations/{organization_id}/token | Generate a organization_id scoped token |
-| [**getTokenForSubOrg**](UserAuthorizationApi.md#getTokenForSubOrg) | **POST** organizations/{organization_id}/sub_organizations/{sub_organization_name}/token | Generate a organization_id scoped token |
-| [**validate**](UserAuthorizationApi.md#validate) | **POST** validate | Validate an auth request |
+| [**createSubOrganization**](SubOrganizationManagementApi.md#createSubOrganization) | **POST** organizations/{organization_id}/sub_organizations | Create a sub organization under an organization. Sub organization provides a way to create a hierarchy of organizations to easily manage resources at each levels. |
+| [**deleteSubOrganization**](SubOrganizationManagementApi.md#deleteSubOrganization) | **DELETE** organizations/{organization_id}/sub_organizations/{sub_organization_name} | Delete a sub organization |
+| [**getSubOrganization**](SubOrganizationManagementApi.md#getSubOrganization) | **GET** organizations/{organization_id}/sub_organizations/{sub_organization_name} | Get a sub organization |
+| [**listSubOrganizations**](SubOrganizationManagementApi.md#listSubOrganizations) | **GET** organizations/{organization_id}/sub_organizations | List sub organizations under an organization. |
+| [**updateSubOrganization**](SubOrganizationManagementApi.md#updateSubOrganization) | **PATCH** organizations/{organization_id}/sub_organizations/{sub_organization_name} | Update a sub organization |
 
 
 
-## getDelegateToken
+## createSubOrganization
 
-> TokenResponse getDelegateToken(getDelegateTokenRequest)
+> CreateSubOrganizationResponse createSubOrganization(organizationId, createSubOrganizationRequest)
 
-Generate a delegate token
+Create a sub organization under an organization. Sub organization provides a way to create a hierarchy of organizations to easily manage resources at each levels.
 
-Generate a token with ad-hoc principal on behalf of an user with permissions to a policy to which the user has delegate rights.
-
-### Example
-
-```java
-// Import classes:
-import com.hypto.iam.client.ApiClient;
-import com.hypto.iam.client.ApiException;
-import com.hypto.iam.client.Configuration;
-import com.hypto.iam.client.auth.*;
-import com.hypto.iam.client.models.*;
-import com.hypto.iam.client.api.UserAuthorizationApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-        
-        // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
-
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        UserAuthorizationApi apiInstance = new UserAuthorizationApi(defaultClient);
-        GetDelegateTokenRequest getDelegateTokenRequest = new GetDelegateTokenRequest(); // GetDelegateTokenRequest | Payload to generate a delegate-able token
-        try {
-            TokenResponse result = apiInstance.getDelegateToken(getDelegateTokenRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserAuthorizationApi#getDelegateToken");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **getDelegateTokenRequest** | [**GetDelegateTokenRequest**](GetDelegateTokenRequest.md)| Payload to generate a delegate-able token | |
-
-### Return type
-
-[**TokenResponse**](TokenResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, text/plain
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Response with token |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-
-
-## getToken
-
-> TokenResponse getToken()
-
-Generate a token
-
-Generate a token for the given user credential (same as /organizations/{organization_id}/token at the moment. Might change in future)
+Create a sub organization under an organization.
 
 ### Example
 
@@ -110,106 +29,25 @@ import com.hypto.iam.client.ApiException;
 import com.hypto.iam.client.Configuration;
 import com.hypto.iam.client.auth.*;
 import com.hypto.iam.client.models.*;
-import com.hypto.iam.client.api.UserAuthorizationApi;
+import com.hypto.iam.client.api.SubOrganizationManagementApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
         
-        // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
-
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
         bearerAuth.setBearerToken("BEARER TOKEN");
 
-        UserAuthorizationApi apiInstance = new UserAuthorizationApi(defaultClient);
-        try {
-            TokenResponse result = apiInstance.getToken();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserAuthorizationApi#getToken");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**TokenResponse**](TokenResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, text/plain
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Response with token |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-
-
-## getTokenForOrg
-
-> TokenResponse getTokenForOrg(organizationId)
-
-Generate a organization_id scoped token
-
-Generate a token for the given user credential scoped by the provided organization_id
-
-### Example
-
-```java
-// Import classes:
-import com.hypto.iam.client.ApiClient;
-import com.hypto.iam.client.ApiException;
-import com.hypto.iam.client.Configuration;
-import com.hypto.iam.client.auth.*;
-import com.hypto.iam.client.models.*;
-import com.hypto.iam.client.api.UserAuthorizationApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
-        
-        // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
-
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        UserAuthorizationApi apiInstance = new UserAuthorizationApi(defaultClient);
+        SubOrganizationManagementApi apiInstance = new SubOrganizationManagementApi(defaultClient);
         String organizationId = "organizationId_example"; // String | 
+        CreateSubOrganizationRequest createSubOrganizationRequest = new CreateSubOrganizationRequest(); // CreateSubOrganizationRequest | Payload to create sub organization
         try {
-            TokenResponse result = apiInstance.getTokenForOrg(organizationId);
+            CreateSubOrganizationResponse result = apiInstance.createSubOrganization(organizationId, createSubOrganizationRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserAuthorizationApi#getTokenForOrg");
+            System.err.println("Exception when calling SubOrganizationManagementApi#createSubOrganization");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -225,25 +63,27 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **organizationId** | **String**|  | |
+| **createSubOrganizationRequest** | [**CreateSubOrganizationRequest**](CreateSubOrganizationRequest.md)| Payload to create sub organization | |
 
 ### Return type
 
-[**TokenResponse**](TokenResponse.md)
+[**CreateSubOrganizationResponse**](CreateSubOrganizationResponse.md)
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth), [bearerAuth](../README.md#bearerAuth)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json, text/plain
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Response with token |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **201** | Response for Create Sub Organization request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
@@ -251,13 +91,13 @@ public class Example {
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 
-## getTokenForSubOrg
+## deleteSubOrganization
 
-> TokenResponse getTokenForSubOrg(organizationId, subOrganizationName)
+> BaseSuccessResponse deleteSubOrganization(organizationId, subOrganizationName)
 
-Generate a organization_id scoped token
+Delete a sub organization
 
-Generate a token for the given user credential scoped by the provided organization_id
+Delete a sub organization. This is a privileged api and only internal application will have access to delete sub organization.
 
 ### Example
 
@@ -268,30 +108,25 @@ import com.hypto.iam.client.ApiException;
 import com.hypto.iam.client.Configuration;
 import com.hypto.iam.client.auth.*;
 import com.hypto.iam.client.models.*;
-import com.hypto.iam.client.api.UserAuthorizationApi;
+import com.hypto.iam.client.api.SubOrganizationManagementApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
         
-        // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
-
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
         bearerAuth.setBearerToken("BEARER TOKEN");
 
-        UserAuthorizationApi apiInstance = new UserAuthorizationApi(defaultClient);
+        SubOrganizationManagementApi apiInstance = new SubOrganizationManagementApi(defaultClient);
         String organizationId = "organizationId_example"; // String | 
         String subOrganizationName = "subOrganizationName_example"; // String | 
         try {
-            TokenResponse result = apiInstance.getTokenForSubOrg(organizationId, subOrganizationName);
+            BaseSuccessResponse result = apiInstance.deleteSubOrganization(organizationId, subOrganizationName);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserAuthorizationApi#getTokenForSubOrg");
+            System.err.println("Exception when calling SubOrganizationManagementApi#deleteSubOrganization");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -311,22 +146,23 @@ public class Example {
 
 ### Return type
 
-[**TokenResponse**](TokenResponse.md)
+[**BaseSuccessResponse**](BaseSuccessResponse.md)
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth), [bearerAuth](../README.md#bearerAuth)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Response with token |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
@@ -334,13 +170,13 @@ public class Example {
 | **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 
 
-## validate
+## getSubOrganization
 
-> ValidationResponse validate(validationRequest)
+> SubOrganization getSubOrganization(organizationId, subOrganizationName)
 
-Validate an auth request
+Get a sub organization
 
-Validate if the caller has access to resource-action in the request
+Get a sub organization and the metadata for the given sub organization.
 
 ### Example
 
@@ -351,7 +187,7 @@ import com.hypto.iam.client.ApiException;
 import com.hypto.iam.client.Configuration;
 import com.hypto.iam.client.auth.*;
 import com.hypto.iam.client.models.*;
-import com.hypto.iam.client.api.UserAuthorizationApi;
+import com.hypto.iam.client.api.SubOrganizationManagementApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -362,13 +198,14 @@ public class Example {
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
         bearerAuth.setBearerToken("BEARER TOKEN");
 
-        UserAuthorizationApi apiInstance = new UserAuthorizationApi(defaultClient);
-        ValidationRequest validationRequest = new ValidationRequest(); // ValidationRequest | Payload to validate if a user has access to a resource-action
+        SubOrganizationManagementApi apiInstance = new SubOrganizationManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        String subOrganizationName = "subOrganizationName_example"; // String | 
         try {
-            ValidationResponse result = apiInstance.validate(validationRequest);
+            SubOrganization result = apiInstance.getSubOrganization(organizationId, subOrganizationName);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserAuthorizationApi#validate");
+            System.err.println("Exception when calling SubOrganizationManagementApi#getSubOrganization");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -383,11 +220,170 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **validationRequest** | [**ValidationRequest**](ValidationRequest.md)| Payload to validate if a user has access to a resource-action | |
+| **organizationId** | **String**|  | |
+| **subOrganizationName** | **String**|  | |
 
 ### Return type
 
-[**ValidationResponse**](ValidationResponse.md)
+[**SubOrganization**](SubOrganization.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Response for Get and Update Sub Organization requests |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+
+
+## listSubOrganizations
+
+> SubOrganizationsPaginatedResponse listSubOrganizations(organizationId)
+
+List sub organizations under an organization.
+
+List all sub organizations under an organization.
+
+### Example
+
+```java
+// Import classes:
+import com.hypto.iam.client.ApiClient;
+import com.hypto.iam.client.ApiException;
+import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
+import com.hypto.iam.client.models.*;
+import com.hypto.iam.client.api.SubOrganizationManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        SubOrganizationManagementApi apiInstance = new SubOrganizationManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        try {
+            SubOrganizationsPaginatedResponse result = apiInstance.listSubOrganizations(organizationId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubOrganizationManagementApi#listSubOrganizations");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+
+### Return type
+
+[**SubOrganizationsPaginatedResponse**](SubOrganizationsPaginatedResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Response for list sub organization under an organization request. |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+
+
+## updateSubOrganization
+
+> SubOrganization updateSubOrganization(organizationId, subOrganizationName, updateSubOrganizationRequest)
+
+Update a sub organization
+
+Update a sub organization
+
+### Example
+
+```java
+// Import classes:
+import com.hypto.iam.client.ApiClient;
+import com.hypto.iam.client.ApiException;
+import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
+import com.hypto.iam.client.models.*;
+import com.hypto.iam.client.api.SubOrganizationManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        SubOrganizationManagementApi apiInstance = new SubOrganizationManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        String subOrganizationName = "subOrganizationName_example"; // String | 
+        UpdateSubOrganizationRequest updateSubOrganizationRequest = new UpdateSubOrganizationRequest(); // UpdateSubOrganizationRequest | Payload to update sub organization
+        try {
+            SubOrganization result = apiInstance.updateSubOrganization(organizationId, subOrganizationName, updateSubOrganizationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubOrganizationManagementApi#updateSubOrganization");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **subOrganizationName** | **String**|  | |
+| **updateSubOrganizationRequest** | [**UpdateSubOrganizationRequest**](UpdateSubOrganizationRequest.md)| Payload to update sub organization | |
+
+### Return type
+
+[**SubOrganization**](SubOrganization.md)
 
 ### Authorization
 
@@ -402,9 +398,10 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Response for validation request |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response for Get and Update Sub Organization requests |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
-| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 

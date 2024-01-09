@@ -39,6 +39,11 @@ public class VerifyEmailRequest {
     @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
     private String organizationId;
 
+    public static final String SERIALIZED_NAME_SUB_ORGANIZATION_NAME = "subOrganizationName";
+
+    @SerializedName(SERIALIZED_NAME_SUB_ORGANIZATION_NAME)
+    private String subOrganizationName;
+
     /** Gets or Sets purpose */
     @JsonAdapter(PurposeEnum.Adapter.class)
     public enum PurposeEnum {
@@ -141,6 +146,27 @@ public class VerifyEmailRequest {
         this.organizationId = organizationId;
     }
 
+    public VerifyEmailRequest subOrganizationName(String subOrganizationName) {
+
+        this.subOrganizationName = subOrganizationName;
+        return this;
+    }
+
+    /**
+     * Get subOrganizationName
+     *
+     * @return subOrganizationName
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getSubOrganizationName() {
+        return subOrganizationName;
+    }
+
+    public void setSubOrganizationName(String subOrganizationName) {
+        this.subOrganizationName = subOrganizationName;
+    }
+
     public VerifyEmailRequest purpose(PurposeEnum purpose) {
 
         this.purpose = purpose;
@@ -225,13 +251,14 @@ public class VerifyEmailRequest {
         VerifyEmailRequest verifyEmailRequest = (VerifyEmailRequest) o;
         return Objects.equals(this.email, verifyEmailRequest.email)
                 && Objects.equals(this.organizationId, verifyEmailRequest.organizationId)
+                && Objects.equals(this.subOrganizationName, verifyEmailRequest.subOrganizationName)
                 && Objects.equals(this.purpose, verifyEmailRequest.purpose)
                 && Objects.equals(this.metadata, verifyEmailRequest.metadata);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, organizationId, purpose, metadata);
+        return Objects.hash(email, organizationId, subOrganizationName, purpose, metadata);
     }
 
     @Override
@@ -240,6 +267,9 @@ public class VerifyEmailRequest {
         sb.append("class VerifyEmailRequest {\n");
         sb.append("    email: ").append(toIndentedString(email)).append("\n");
         sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+        sb.append("    subOrganizationName: ")
+                .append(toIndentedString(subOrganizationName))
+                .append("\n");
         sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
         sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
         sb.append("}");
