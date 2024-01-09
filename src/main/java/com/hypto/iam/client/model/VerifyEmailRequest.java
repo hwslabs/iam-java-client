@@ -34,6 +34,11 @@ public class VerifyEmailRequest {
     @SerializedName(SERIALIZED_NAME_EMAIL)
     private String email;
 
+    public static final String SERIALIZED_NAME_USER_HRN = "userHrn";
+
+    @SerializedName(SERIALIZED_NAME_USER_HRN)
+    private String userHrn;
+
     public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
 
     @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
@@ -115,14 +120,35 @@ public class VerifyEmailRequest {
      *
      * @return email
      */
-    @javax.annotation.Nonnull
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public VerifyEmailRequest userHrn(String userHrn) {
+
+        this.userHrn = userHrn;
+        return this;
+    }
+
+    /**
+     * Get userHrn
+     *
+     * @return userHrn
+     */
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public String getUserHrn() {
+        return userHrn;
+    }
+
+    public void setUserHrn(String userHrn) {
+        this.userHrn = userHrn;
     }
 
     public VerifyEmailRequest organizationId(String organizationId) {
@@ -250,6 +276,7 @@ public class VerifyEmailRequest {
         }
         VerifyEmailRequest verifyEmailRequest = (VerifyEmailRequest) o;
         return Objects.equals(this.email, verifyEmailRequest.email)
+                && Objects.equals(this.userHrn, verifyEmailRequest.userHrn)
                 && Objects.equals(this.organizationId, verifyEmailRequest.organizationId)
                 && Objects.equals(this.subOrganizationName, verifyEmailRequest.subOrganizationName)
                 && Objects.equals(this.purpose, verifyEmailRequest.purpose)
@@ -258,7 +285,7 @@ public class VerifyEmailRequest {
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, organizationId, subOrganizationName, purpose, metadata);
+        return Objects.hash(email, userHrn, organizationId, subOrganizationName, purpose, metadata);
     }
 
     @Override
@@ -266,6 +293,7 @@ public class VerifyEmailRequest {
         StringBuilder sb = new StringBuilder();
         sb.append("class VerifyEmailRequest {\n");
         sb.append("    email: ").append(toIndentedString(email)).append("\n");
+        sb.append("    userHrn: ").append(toIndentedString(userHrn)).append("\n");
         sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
         sb.append("    subOrganizationName: ")
                 .append(toIndentedString(subOrganizationName))

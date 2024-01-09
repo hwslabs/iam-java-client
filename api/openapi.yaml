@@ -12566,11 +12566,14 @@ components:
         organizationId: organizationId
         metadata:
           key: ""
+        userHrn: userHrn
         subOrganizationName: subOrganizationName
         purpose: reset
         email: email
       properties:
         email:
+          type: string
+        userHrn:
           type: string
         organizationId:
           type: string
@@ -12600,7 +12603,6 @@ components:
                 2. policies: array<string> (required) - policies to be attached to the new user
           type: object
       required:
-      - email
       - purpose
       type: object
     ResendInviteRequest:

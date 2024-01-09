@@ -8,7 +8,8 @@ Payload to send verification link to email
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**email** | **String** |  |  |
+|**email** | **String** |  |  [optional] |
+|**userHrn** | **String** |  |  [optional] |
 |**organizationId** | **String** |  |  [optional] |
 |**subOrganizationName** | **String** |  |  [optional] |
 |**purpose** | [**PurposeEnum**](#PurposeEnum) |  |  |
