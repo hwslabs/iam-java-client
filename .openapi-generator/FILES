@@ -4,6 +4,7 @@ api/openapi.yaml
 build.sbt
 docs/Action.md
 docs/ActionPaginatedResponse.md
+docs/AddUserAuthMethodRequest.md
 docs/AuthProvider.md
 docs/AuthProviderPaginatedResponse.md
 docs/AuthProvidersApi.md
@@ -106,6 +107,7 @@ src/main/java/com/hypto/iam/client/auth/HttpBearerAuth.java
 src/main/java/com/hypto/iam/client/auth/OAuthOkHttpClient.java
 src/main/java/com/hypto/iam/client/model/Action.java
 src/main/java/com/hypto/iam/client/model/ActionPaginatedResponse.java
+src/main/java/com/hypto/iam/client/model/AddUserAuthMethodRequest.java
 src/main/java/com/hypto/iam/client/model/AuthProvider.java
 src/main/java/com/hypto/iam/client/model/AuthProviderPaginatedResponse.java
 src/main/java/com/hypto/iam/client/model/BaseSuccessResponse.java

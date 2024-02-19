@@ -5304,6 +5304,170 @@ paths:
       tags:
       - User Authorization Methods Management
       x-accepts: application/json
+    post:
+      description: Add authorization method to a user
+      operationId: addUserAuthMethod
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: Bob
+              maxLength: 50
+              pattern: "^[A-Za-z0-9_]{3,50}$"
+              type: string
+        explode: false
+        in: path
+        name: user_name
+        required: true
+        style: simple
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: "^[A-Za-z0-9]{10}$"
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/AddUserAuthMethodRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+          description: OK
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: Add authorization method to a user
+      tags:
+      - User Authorization Methods Management
+      x-content-type: application/json
+      x-accepts: application/json
   /organizations/{organization_id}/users/{user_name}/credentials:
     get:
       description: List all credentials for a user
@@ -10969,6 +11133,11 @@ components:
       value:
         email: bob@acme.com
         password: <new password>
+    AddUserAuthMethodRequest:
+      summary: sample add user auth methods request
+      value:
+        issuer: google
+        token: <JWT token or Access token provided by the auth provider>
     CreateCredentialRequest:
       summary: sample create credential request
       value:
@@ -11564,6 +11733,16 @@ components:
           schema:
             $ref: '#/components/schemas/ResetPasswordRequest'
       description: Payload to reset password
+      required: true
+    AddUserAuthMethodRequest:
+      content:
+        application/json:
+          examples:
+            AddUserAuthMethodRequest:
+              $ref: '#/components/examples/AddUserAuthMethodRequest'
+          schema:
+            $ref: '#/components/schemas/AddUserAuthMethodRequest'
+      description: Payload to add user auth method
       required: true
     CreateCredentialRequest:
       content:
@@ -12363,6 +12542,18 @@ components:
       required:
       - email
       - password
+      type: object
+    AddUserAuthMethodRequest:
+      additionalProperties: false
+      description: Payload to add user auth methods
+      example:
+        issuer: issuer
+        token: token
+      properties:
+        issuer:
+          type: string
+        token:
+          type: string
       type: object
     CreateCredentialRequest:
       additionalProperties: false
