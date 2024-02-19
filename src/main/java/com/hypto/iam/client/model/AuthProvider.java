@@ -12,7 +12,6 @@
 
 package com.hypto.iam.client.model;
 
-
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

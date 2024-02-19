@@ -1,6 +1,5 @@
 package com.hypto.iam.client.api;
 
-
 import com.hypto.iam.client.CollectionFormats.*;
 import com.hypto.iam.client.model.GetDelegateTokenRequest;
 import com.hypto.iam.client.model.TokenResponse;

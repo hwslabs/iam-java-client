@@ -1,6 +1,5 @@
 package com.hypto.iam.client;
 
-
 import java.util.Map;
 
 /** Representing a Server configuration. */

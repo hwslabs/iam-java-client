@@ -1,6 +1,5 @@
 package com.hypto.iam.client.api;
 
-
 import com.hypto.iam.client.CollectionFormats.*;
 import com.hypto.iam.client.model.BaseSuccessResponse;
 import com.hypto.iam.client.model.CreateSubOrganizationRequest;

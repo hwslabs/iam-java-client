@@ -1,6 +1,5 @@
 package com.hypto.iam.client;
 
-
 import com.hypto.iam.client.api.UserAuthorizationApi;
 import com.hypto.iam.client.exceptions.IamAuthenticationException;
 import com.hypto.iam.client.model.ResourceAction;

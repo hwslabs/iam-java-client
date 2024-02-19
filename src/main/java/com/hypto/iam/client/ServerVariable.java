@@ -1,6 +1,5 @@
 package com.hypto.iam.client;
 
-
 import java.util.HashSet;
 
 /** Representing a Server Variable for server URL template substitution. */

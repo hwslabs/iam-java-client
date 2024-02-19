@@ -1,6 +1,5 @@
 package com.hypto.iam.client;
 
-
 import com.hypto.iam.client.api.KeyManagementApi;
 import com.hypto.iam.client.exceptions.IamApiException;
 import com.hypto.iam.client.model.KeyResponse;

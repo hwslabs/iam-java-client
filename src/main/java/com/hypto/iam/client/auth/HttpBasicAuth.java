@@ -1,6 +1,5 @@
 package com.hypto.iam.client.auth;
 
-
 import java.io.IOException;
 import okhttp3.Credentials;
 import okhttp3.Interceptor;

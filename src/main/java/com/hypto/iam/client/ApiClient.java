@@ -1,6 +1,5 @@
 package com.hypto.iam.client;
 
-
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.hypto.iam.client.auth.ApiKeyAuth;
