@@ -83,6 +83,10 @@ public class Validator {
         return organizationId;
     }
 
+    public String getSubOrganizationId() {
+        return subOrganizationId;
+    }
+
     private String principal;
     private String organizationId;
 
