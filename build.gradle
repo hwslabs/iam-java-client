@@ -5,6 +5,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
 apply plugin: 'org.openapi.generator'
+apply plugin: 'java-library'
 
 group = 'com.hypto'
 
@@ -147,7 +148,7 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-gson:0.11.5' // or 'io.jsonwebtoken:jjwt-jackson:0.11.2' for gson
 
     // Casbin
-    implementation("org.casbin:jcasbin:$casbin_version") // Policy management
+    api "org.casbin:jcasbin:$casbin_version" // Policy management
 
 
     testImplementation "junit:junit:$junit_version"
