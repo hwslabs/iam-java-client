@@ -80,9 +80,9 @@ public class ValidatorTest {
         final String sampleEntitlements =
                 String.format(
                         "p, hrn:%1$s::iam-policy/policy_view_invoice2, hrn:%1$s::invoice/1,"
-                            + " hrn:%1$s::invoice$view, deny\n"
+                            + " hrn:%1$s::invoice\\$view, deny\n"
                             + "p, hrn:%1$s::iam-policy/policy_view_invoice2, hrn:%1$s::invoice/*,"
-                            + " hrn:%1$s::invoice$view, allow\n"
+                            + " hrn:%1$s::invoice\\$view, allow\n"
                             + "g, %2$s, hrn:%1$s::iam-policy/policy_view_invoice2",
                         organizationId, userHrn);
 

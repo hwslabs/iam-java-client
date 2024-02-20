@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.apache.commons.io.IOUtils;
 import org.casbin.jcasbin.main.CoreEnforcer;
 import org.casbin.jcasbin.main.Enforcer;
@@ -63,6 +65,13 @@ public class Validator {
     private static final String VERSION_CLAIM = "ver";
     private static final String casbinModel;
 
+    private static final Pattern RESOURCE_HRN_REGEX =
+            Pattern.compile(
+                    "^hrn:(?<organization>[^:\n]+):"
+                            + "(?<subOrganization>[^:\n]*):"
+                            + "(?<resource>[^:/\n]*)/?"
+                            + "(?<resourceInstance>[^/\n:]*)");
+
     public Claims claims;
     public Enforcer enforcer;
 
@@ -76,6 +85,8 @@ public class Validator {
 
     private String principal;
     private String organizationId;
+
+    private String subOrganizationId;
 
     public ValidatorConfig config;
 
@@ -105,6 +116,11 @@ public class Validator {
 
         this.principal = this.claims.get(USER_CLAIM, String.class);
         this.organizationId = this.claims.get(ORGANIZATION_CLAIM, String.class);
+        Matcher resourceHrnMatcher = RESOURCE_HRN_REGEX.matcher(this.principal);
+        if (!resourceHrnMatcher.matches()) {
+            throw new IamAuthenticationException("Not a valid hrn string format");
+        }
+        this.subOrganizationId = resourceHrnMatcher.group(2);
         final String entitlements = this.claims.get(ENTITLEMENTS_CLAIM, String.class);
 
         if (!ISSUER.equals(this.claims.getIssuer())) {
