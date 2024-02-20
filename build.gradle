@@ -8,6 +8,8 @@ apply plugin: 'org.openapi.generator'
 
 group = 'com.hypto'
 
+targetCompatibility = 17
+
 buildscript {
     repositories {
         mavenCentral()
