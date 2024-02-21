@@ -8920,6 +8920,162 @@ paths:
       - Resource Action Management
       x-content-type: application/json
       x-accepts: application/json
+  /organizations/{organization_id}/policy_from_template:
+    post:
+      description: Create a policy from template
+      operationId: createPolicyFromTemplate
+      parameters:
+      - content:
+          application/json:
+            schema:
+              example: XlK5h64gND
+              maxLength: 10
+              pattern: "^[A-Za-z0-9]{10}$"
+              type: string
+        explode: false
+        in: path
+        name: organization_id
+        required: true
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePolicyFromTemplateRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                Policy:
+                  $ref: '#/components/examples/Policy'
+              schema:
+                $ref: '#/components/schemas/Policy'
+          description: Response for policy requests returning an policy entity
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "401":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "403":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "404":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "429":
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              examples:
+                ErrorResponse:
+                  summary: Error message
+                  value:
+                    message: <Reason message>
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Error response
+          headers:
+            X-Iam-User-Organization:
+              description: Organization Id of the authenticated user
+              example: XlK5h64gND
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: Create a policy from template
+      tags:
+      - Policy Management
+      x-content-type: application/json
+      x-accepts: application/json
   /organizations/{organization_id}/policies:
     get:
       description: List policies
@@ -11177,6 +11333,14 @@ components:
         - resource: hrn:XlK5h64gND::invoice/*
           action: hrn:XlK5h64gND::invoice$view
           effect: allow
+    CreatePolicyFromTemplateRequest:
+      summary: sample create policy from template request
+      value:
+        name: Product-Manager-Policy
+        templateName: product-manager
+        templateVariables:
+          subOrganizationId: sub-org
+          accountId: acc.svbk324.sac3245
     UpdatePolicyRequest:
       description: Allow viewing all invoices except 1
       summary: sample update policy request
@@ -11813,6 +11977,16 @@ components:
           schema:
             $ref: '#/components/schemas/CreatePolicyRequest'
       description: Payload to create policy
+      required: true
+    CreatePolicyFromTemplateRequest:
+      content:
+        application/json:
+          examples:
+            CreatePolicyRequest:
+              $ref: '#/components/examples/CreatePolicyFromTemplateRequest'
+          schema:
+            $ref: '#/components/schemas/CreatePolicyFromTemplateRequest'
+      description: Payload to create policy from policy template
       required: true
     UpdatePolicyRequest:
       content:
@@ -12674,6 +12848,29 @@ components:
       required:
       - name
       - statements
+      type: object
+    CreatePolicyFromTemplateRequest:
+      additionalProperties: false
+      description: Payload to create policy from template
+      example:
+        templateName: templateName
+        name: name
+        templateVariables:
+          key: templateVariables
+      properties:
+        name:
+          maxLength: 50
+          type: string
+        templateName:
+          maxLength: 512
+          type: string
+        templateVariables:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - name
+      - templateName
       type: object
     UpdatePolicyRequest:
       additionalProperties: false

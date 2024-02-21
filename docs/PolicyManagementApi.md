@@ -5,6 +5,7 @@ All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createPolicy**](PolicyManagementApi.md#createPolicy) | **POST** organizations/{organization_id}/policies | Create a policy |
+| [**createPolicyFromTemplate**](PolicyManagementApi.md#createPolicyFromTemplate) | **POST** organizations/{organization_id}/policy_from_template | Create a policy from template |
 | [**deletePolicy**](PolicyManagementApi.md#deletePolicy) | **DELETE** organizations/{organization_id}/policies/{policy_name} | Delete a policy |
 | [**getPolicy**](PolicyManagementApi.md#getPolicy) | **GET** organizations/{organization_id}/policies/{policy_name} | Get a policy |
 | [**listPolicies**](PolicyManagementApi.md#listPolicies) | **GET** organizations/{organization_id}/policies | List policies |
@@ -64,6 +65,85 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **organizationId** | **String**|  | |
 | **createPolicyRequest** | [**CreatePolicyRequest**](CreatePolicyRequest.md)| Payload to create policy | |
+
+### Return type
+
+[**Policy**](Policy.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Response for policy requests returning an policy entity |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **404** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **429** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **0** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+
+
+## createPolicyFromTemplate
+
+> Policy createPolicyFromTemplate(organizationId, createPolicyFromTemplateRequest)
+
+Create a policy from template
+
+Create a policy from template
+
+### Example
+
+```java
+// Import classes:
+import com.hypto.iam.client.ApiClient;
+import com.hypto.iam.client.ApiException;
+import com.hypto.iam.client.Configuration;
+import com.hypto.iam.client.auth.*;
+import com.hypto.iam.client.models.*;
+import com.hypto.iam.client.api.PolicyManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-iam.us.hypto.com/v1");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        PolicyManagementApi apiInstance = new PolicyManagementApi(defaultClient);
+        String organizationId = "organizationId_example"; // String | 
+        CreatePolicyFromTemplateRequest createPolicyFromTemplateRequest = new CreatePolicyFromTemplateRequest(); // CreatePolicyFromTemplateRequest | Payload to create policy from policy template
+        try {
+            Policy result = apiInstance.createPolicyFromTemplate(organizationId, createPolicyFromTemplateRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PolicyManagementApi#createPolicyFromTemplate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organizationId** | **String**|  | |
+| **createPolicyFromTemplateRequest** | [**CreatePolicyFromTemplateRequest**](CreatePolicyFromTemplateRequest.md)| Payload to create policy from policy template | |
 
 ### Return type
 

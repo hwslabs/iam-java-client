@@ -2,6 +2,7 @@ package com.hypto.iam.client.api;
 
 import com.hypto.iam.client.CollectionFormats.*;
 import com.hypto.iam.client.model.BaseSuccessResponse;
+import com.hypto.iam.client.model.CreatePolicyFromTemplateRequest;
 import com.hypto.iam.client.model.CreatePolicyRequest;
 import com.hypto.iam.client.model.Policy;
 import com.hypto.iam.client.model.PolicyPaginatedResponse;
@@ -23,6 +24,20 @@ public interface PolicyManagementApi {
     Call<Policy> createPolicy(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body CreatePolicyRequest createPolicyRequest);
+
+    /**
+     * Create a policy from template Create a policy from template
+     *
+     * @param organizationId (required)
+     * @param createPolicyFromTemplateRequest Payload to create policy from policy template
+     *     (required)
+     * @return Call&lt;Policy&gt;
+     */
+    @Headers({"Content-Type:application/json"})
+    @POST("organizations/{organization_id}/policy_from_template")
+    Call<Policy> createPolicyFromTemplate(
+            @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.Body CreatePolicyFromTemplateRequest createPolicyFromTemplateRequest);
 
     /**
      * Delete a policy Delete a policy
@@ -84,6 +99,13 @@ public interface PolicyManagementApi {
     Call<Policy> createPolicy(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body CreatePolicyRequest createPolicyRequest,
+            @retrofit2.http.HeaderMap Map<String, String> headers);
+
+    @Headers({"Content-Type:application/json"})
+    @POST("organizations/{organization_id}/policy_from_template")
+    Call<Policy> createPolicyFromTemplate(
+            @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.Body CreatePolicyFromTemplateRequest createPolicyFromTemplateRequest,
             @retrofit2.http.HeaderMap Map<String, String> headers);
 
     @DELETE("organizations/{organization_id}/policies/{policy_name}")
