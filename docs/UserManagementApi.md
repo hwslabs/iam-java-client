@@ -8,13 +8,13 @@ All URIs are relative to *https://sandbox-iam.us.hypto.com/v1*
 | [**changeSubOrganizationPassword**](UserManagementApi.md#changeSubOrganizationPassword) | **POST** organizations/{organization_id}/sub_organizations/{sub_organization_name}/users/{user_name}/change_password | Change password for a user |
 | [**createPassword**](UserManagementApi.md#createPassword) | **POST** organizations/{organization_id}/users/{user_name}/create_password | Create password for a user |
 | [**createSubOrganizationPassword**](UserManagementApi.md#createSubOrganizationPassword) | **POST** organizations/{organization_id}/sub_organizations/{sub_organization_name}/users/{user_name}/create_password | Create password for a user |
-| [**createSubOrganizationUser**](UserManagementApi.md#createSubOrganizationUser) | **POST** organizations/{organization_id}/sub_organization/{sub_organization_name}/users | Create a user |
+| [**createSubOrganizationUser**](UserManagementApi.md#createSubOrganizationUser) | **POST** organizations/{organization_id}/sub_organizations/{sub_organization_name}/users | Create a user |
 | [**createUser**](UserManagementApi.md#createUser) | **POST** organizations/{organization_id}/users | Create a user |
 | [**deleteSubOrganizationUser**](UserManagementApi.md#deleteSubOrganizationUser) | **DELETE** organizations/{organization_id}/sub_organizations/{sub_organization_name}/users/{user_name} | Delete a User |
 | [**deleteUser**](UserManagementApi.md#deleteUser) | **DELETE** organizations/{organization_id}/users/{user_name} | Delete a User |
 | [**getSubOrganizationUser**](UserManagementApi.md#getSubOrganizationUser) | **GET** organizations/{organization_id}/sub_organizations/{sub_organization_name}/users/{user_name} | Gets a user entity associated with the organization |
 | [**getUser**](UserManagementApi.md#getUser) | **GET** organizations/{organization_id}/users/{user_name} | Gets a user entity associated with the organization |
-| [**listSubOrganizationUsers**](UserManagementApi.md#listSubOrganizationUsers) | **GET** organizations/{organization_id}/sub_organization/{sub_organization_name}/users | List users |
+| [**listSubOrganizationUsers**](UserManagementApi.md#listSubOrganizationUsers) | **GET** organizations/{organization_id}/sub_organizations/{sub_organization_name}/users | List users |
 | [**listUsers**](UserManagementApi.md#listUsers) | **GET** organizations/{organization_id}/users | List users |
 | [**resetPassword**](UserManagementApi.md#resetPassword) | **POST** organizations/{organization_id}/users/resetPassword | Reset Password |
 | [**resetSubOrganizationPassword**](UserManagementApi.md#resetSubOrganizationPassword) | **POST** organizations/{organization_id}/sub_organizations/{sub_organization_name}/users/resetPassword | Reset Password |

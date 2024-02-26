@@ -1746,7 +1746,7 @@ paths:
       - User Management
       x-content-type: application/json
       x-accepts: application/json
-  /organizations/{organization_id}/sub_organization/{sub_organization_name}/users:
+  /organizations/{organization_id}/sub_organizations/{sub_organization_name}/users:
     get:
       description: List users associated with the organization. This is a pagniated
         api which returns the list of users with a next page token.

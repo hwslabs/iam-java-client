@@ -93,7 +93,7 @@ public interface UserManagementApi {
      * @return Call&lt;CreateUserResponse&gt;
      */
     @Headers({"Content-Type:application/json"})
-    @POST("organizations/{organization_id}/sub_organization/{sub_organization_name}/users")
+    @POST("organizations/{organization_id}/sub_organizations/{sub_organization_name}/users")
     Call<CreateUserResponse> createSubOrganizationUser(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Path("sub_organization_name") String subOrganizationName,
@@ -177,7 +177,7 @@ public interface UserManagementApi {
      * @param pageSize (optional)
      * @return Call&lt;UserPaginatedResponse&gt;
      */
-    @GET("organizations/{organization_id}/sub_organization/{sub_organization_name}/users")
+    @GET("organizations/{organization_id}/sub_organizations/{sub_organization_name}/users")
     Call<UserPaginatedResponse> listSubOrganizationUsers(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Path("sub_organization_name") String subOrganizationName,
@@ -298,7 +298,7 @@ public interface UserManagementApi {
             @retrofit2.http.HeaderMap Map<String, String> headers);
 
     @Headers({"Content-Type:application/json"})
-    @POST("organizations/{organization_id}/sub_organization/{sub_organization_name}/users")
+    @POST("organizations/{organization_id}/sub_organizations/{sub_organization_name}/users")
     Call<CreateUserResponse> createSubOrganizationUser(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Path("sub_organization_name") String subOrganizationName,
@@ -339,7 +339,7 @@ public interface UserManagementApi {
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.HeaderMap Map<String, String> headers);
 
-    @GET("organizations/{organization_id}/sub_organization/{sub_organization_name}/users")
+    @GET("organizations/{organization_id}/sub_organizations/{sub_organization_name}/users")
     Call<UserPaginatedResponse> listSubOrganizationUsers(
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Path("sub_organization_name") String subOrganizationName,
