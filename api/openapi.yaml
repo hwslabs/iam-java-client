@@ -12564,7 +12564,7 @@ components:
           maxLength: 100
           type: string
         email:
-          maxLength: 100
+          maxLength: 320
           pattern: ^\S+@\S+\.\S+$
           type: string
         phone:
@@ -12624,7 +12624,7 @@ components:
           maxLength: 100
           type: string
         email:
-          maxLength: 100
+          maxLength: 320
           pattern: ^\S+@\S+\.\S+$
           type: string
         phone:
@@ -12658,7 +12658,7 @@ components:
           maxLength: 50
           type: string
         email:
-          maxLength: 50
+          maxLength: 320
           type: string
         phone:
           maxLength: 30
@@ -12708,7 +12708,7 @@ components:
         email: email
       properties:
         email:
-          maxLength: 50
+          maxLength: 320
           type: string
         password:
           maxLength: 50
@@ -12960,6 +12960,7 @@ components:
         email: email
       properties:
         email:
+          maxLength: 320
           type: string
         userHrn:
           type: string
@@ -13000,6 +13001,7 @@ components:
         email: email
       properties:
         email:
+          maxLength: 320
           type: string
       required:
       - email
@@ -13712,7 +13714,7 @@ components:
           maxLength: 50
           type: string
         email:
-          maxLength: 50
+          maxLength: 320
           type: string
         status:
           enum:
@@ -14002,6 +14004,7 @@ components:
         email: email
       properties:
         email:
+          maxLength: 320
           type: string
         purpose:
           type: string
