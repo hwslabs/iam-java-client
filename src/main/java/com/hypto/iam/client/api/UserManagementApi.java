@@ -7,6 +7,7 @@ import com.hypto.iam.client.model.CreateUserPasswordRequest;
 import com.hypto.iam.client.model.CreateUserRequest;
 import com.hypto.iam.client.model.CreateUserResponse;
 import com.hypto.iam.client.model.ResetPasswordRequest;
+import com.hypto.iam.client.model.TokenResponse;
 import com.hypto.iam.client.model.UpdateUserRequest;
 import com.hypto.iam.client.model.User;
 import com.hypto.iam.client.model.UserPaginatedResponse;
@@ -54,11 +55,11 @@ public interface UserManagementApi {
      * @param userName (required)
      * @param organizationId (required)
      * @param createUserPasswordRequest Payload to set user password (required)
-     * @return Call&lt;BaseSuccessResponse&gt;
+     * @return Call&lt;TokenResponse&gt;
      */
     @Headers({"Content-Type:application/json"})
     @POST("organizations/{organization_id}/users/{user_name}/create_password")
-    Call<BaseSuccessResponse> createPassword(
+    Call<TokenResponse> createPassword(
             @retrofit2.http.Path("user_name") String userName,
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body CreateUserPasswordRequest createUserPasswordRequest);
@@ -281,7 +282,7 @@ public interface UserManagementApi {
 
     @Headers({"Content-Type:application/json"})
     @POST("organizations/{organization_id}/users/{user_name}/create_password")
-    Call<BaseSuccessResponse> createPassword(
+    Call<TokenResponse> createPassword(
             @retrofit2.http.Path("user_name") String userName,
             @retrofit2.http.Path("organization_id") String organizationId,
             @retrofit2.http.Body CreateUserPasswordRequest createUserPasswordRequest,

@@ -3438,9 +3438,16 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                TokenResponse:
+                  $ref: '#/components/examples/TokenResponse'
               schema:
-                $ref: '#/components/schemas/BaseSuccessResponse'
-          description: OK
+                $ref: '#/components/schemas/TokenResponse'
+            text/plain:
+              example: XlK5h64gNDBfMXAPKKGRmWjaxmXJJzDKIJNWqSWj
+              schema:
+                type: string
+          description: Response with token
           headers:
             X-Iam-User-Organization:
               description: Organization Id of the authenticated user

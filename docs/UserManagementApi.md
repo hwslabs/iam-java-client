@@ -189,7 +189,7 @@ public class Example {
 
 ## createPassword
 
-> BaseSuccessResponse createPassword(userName, organizationId, createUserPasswordRequest)
+> TokenResponse createPassword(userName, organizationId, createUserPasswordRequest)
 
 Create password for a user
 
@@ -220,7 +220,7 @@ public class Example {
         String organizationId = "organizationId_example"; // String | 
         CreateUserPasswordRequest createUserPasswordRequest = new CreateUserPasswordRequest(); // CreateUserPasswordRequest | Payload to set user password
         try {
-            BaseSuccessResponse result = apiInstance.createPassword(userName, organizationId, createUserPasswordRequest);
+            TokenResponse result = apiInstance.createPassword(userName, organizationId, createUserPasswordRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserManagementApi#createPassword");
@@ -244,7 +244,7 @@ public class Example {
 
 ### Return type
 
-[**BaseSuccessResponse**](BaseSuccessResponse.md)
+[**TokenResponse**](TokenResponse.md)
 
 ### Authorization
 
@@ -253,13 +253,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
+| **200** | Response with token |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **400** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **401** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
 | **403** | Error response |  * X-Iam-User-Organization - Organization Id of the authenticated user <br>  |
