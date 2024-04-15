@@ -121,13 +121,15 @@ public interface UserManagementApi {
      *
      * @param userName (required)
      * @param organizationId (required)
+     * @param subOrganizationName (required)
      * @return Call&lt;BaseSuccessResponse&gt;
      */
     @DELETE(
             "organizations/{organization_id}/sub_organizations/{sub_organization_name}/users/{user_name}")
     Call<BaseSuccessResponse> deleteSubOrganizationUser(
             @retrofit2.http.Path("user_name") String userName,
-            @retrofit2.http.Path("organization_id") String organizationId);
+            @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.Path("sub_organization_name") String subOrganizationName);
 
     /**
      * Delete a User Delete a User
@@ -318,6 +320,7 @@ public interface UserManagementApi {
     Call<BaseSuccessResponse> deleteSubOrganizationUser(
             @retrofit2.http.Path("user_name") String userName,
             @retrofit2.http.Path("organization_id") String organizationId,
+            @retrofit2.http.Path("sub_organization_name") String subOrganizationName,
             @retrofit2.http.HeaderMap Map<String, String> headers);
 
     @DELETE("organizations/{organization_id}/users/{user_name}")

@@ -511,7 +511,7 @@ public class Example {
 
 ## deleteSubOrganizationUser
 
-> BaseSuccessResponse deleteSubOrganizationUser(userName, organizationId)
+> BaseSuccessResponse deleteSubOrganizationUser(userName, organizationId, subOrganizationName)
 
 Delete a User
 
@@ -540,8 +540,9 @@ public class Example {
         UserManagementApi apiInstance = new UserManagementApi(defaultClient);
         String userName = "userName_example"; // String | 
         String organizationId = "organizationId_example"; // String | 
+        String subOrganizationName = "subOrganizationName_example"; // String | 
         try {
-            BaseSuccessResponse result = apiInstance.deleteSubOrganizationUser(userName, organizationId);
+            BaseSuccessResponse result = apiInstance.deleteSubOrganizationUser(userName, organizationId, subOrganizationName);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserManagementApi#deleteSubOrganizationUser");
@@ -561,6 +562,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **userName** | **String**|  | |
 | **organizationId** | **String**|  | |
+| **subOrganizationName** | **String**|  | |
 
 ### Return type
 

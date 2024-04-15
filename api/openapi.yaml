@@ -2579,6 +2579,16 @@ paths:
         name: organization_id
         required: true
         style: simple
+      - content:
+          application/json:
+            schema:
+              example: customer_1
+              type: string
+        explode: false
+        in: path
+        name: sub_organization_name
+        required: true
+        style: simple
       responses:
         "200":
           content:
