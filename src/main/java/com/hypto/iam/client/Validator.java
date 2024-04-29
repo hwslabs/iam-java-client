@@ -74,6 +74,8 @@ public class Validator {
                             + "(?<resource>[^:/\n]*)/?"
                             + "(?<resourceInstance>[^/\n:]*)");
 
+    private static final ConcurrentHashMap<ValidatorConfig, JwtParser> parserMap = new ConcurrentHashMap<>();
+
     public Claims claims;
     public Enforcer enforcer;
 
@@ -105,8 +107,6 @@ public class Validator {
             throw new RuntimeException(e);
         }
     }
-
-    ConcurrentHashMap<ValidatorConfig, JwtParser> parserMap = new ConcurrentHashMap<>();
 
     JwtParser getParser(ValidatorConfig config) {
         JwtParser parser = parserMap.getOrDefault(config, null);
