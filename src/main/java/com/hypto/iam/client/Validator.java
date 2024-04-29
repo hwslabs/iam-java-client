@@ -9,12 +9,14 @@ import com.hypto.iam.client.model.ValidationRequest;
 import com.hypto.iam.client.model.ValidationResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.io.IOUtils;
@@ -72,6 +74,8 @@ public class Validator {
                             + "(?<resource>[^:/\n]*)/?"
                             + "(?<resourceInstance>[^/\n:]*)");
 
+    private static final ConcurrentHashMap<ValidatorConfig, JwtParser> parserMap = new ConcurrentHashMap<>();
+
     public Claims claims;
     public Enforcer enforcer;
 
@@ -104,17 +108,28 @@ public class Validator {
         }
     }
 
+    JwtParser getParser(ValidatorConfig config) {
+        JwtParser parser = parserMap.getOrDefault(config, null);
+        if (parser != null) {
+            return parser;
+        }
+        if (config.skipSignatureValidation) {
+            parser = Jwts.parserBuilder().build();
+        } else {
+            parser = Jwts.parserBuilder().setSigningKeyResolver(config.signingKeyResolver).build();
+        }
+        parserMap.put(config, parser);
+        return parser;
+    }
+
     public Validator(String token, ValidatorConfig config) throws IamAuthenticationException {
         this.config = config;
+        JwtParser parser = getParser(config);
         if (config.skipSignatureValidation) {
             String unsignedToken = token.substring(0, token.lastIndexOf(".") + 1);
-            this.claims = Jwts.parserBuilder().build().parseClaimsJwt(unsignedToken).getBody();
+            this.claims = parser.parseClaimsJwt(unsignedToken).getBody();
         } else {
-            Jws<Claims> jws =
-                    Jwts.parserBuilder()
-                            .setSigningKeyResolver(config.signingKeyResolver)
-                            .build()
-                            .parseClaimsJws(token);
+            Jws<Claims> jws = parser.parseClaimsJws(token);
             this.claims = jws.getBody();
         }
 
