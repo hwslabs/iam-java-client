@@ -74,7 +74,8 @@ public class Validator {
                             + "(?<resource>[^:/\n]*)/?"
                             + "(?<resourceInstance>[^/\n:]*)");
 
-    private static final ConcurrentHashMap<ValidatorConfig, JwtParser> parserMap = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<ValidatorConfig, JwtParser> parserMap =
+            new ConcurrentHashMap<>();
 
     public Claims claims;
     public Enforcer enforcer;
