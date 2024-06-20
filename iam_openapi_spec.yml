@@ -294,7 +294,7 @@ paths:
 
     delete:
       tags:
-          - Sub Organization Management
+        - Sub Organization Management
       summary: Delete a sub organization
       description: Delete a sub organization. This is a privileged api and only internal application will have access to delete sub organization.
       operationId: deleteSubOrganization
@@ -1255,6 +1255,113 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 
+  /user_links:
+    post:
+      tags:
+        - User Management
+      summary: Link one user with another user of same/different organization
+      description: Link one user with another user of same/different organization
+      operationId: linkUser
+      parameters:
+        - $ref: '#/components/parameters/organization_id'
+      requestBody:
+        $ref: '#/components/requestBodies/LinkUserRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/TokenResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+
+    get:
+      tags:
+        - User Management
+      summary: List user links based on the role.
+      description: |
+        Each user link is associated with a leader user and a subordinate user. This API allows to list all users 
+        of a certain role[LEADER/SUBORDINATE] linked with the current user.
+      operationId: listUserLinks
+      parameters:
+        - $ref: '#/components/parameters/organization_id'
+        - $ref: '#/components/parameters/role'
+        - $ref: '#/components/parameters/next_token'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/sort_order'
+      responses:
+        '200':
+          $ref: '#/components/responses/LinkUsersPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /user_links/{user_link_id}:
+    post:
+      tags:
+        - User Management
+      summary: Get authentication details for switching user
+      description: Get authentication details for switching user
+      operationId: switchUser
+      parameters:
+        - $ref: '#/components/parameters/organization_id'
+        - $ref: '#/components/parameters/user_link_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/TokenResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      tags:
+        - User Management
+      summary: Delete an user link
+      description: Delete an user link
+      operationId: deleteUserLink
+      parameters:
+        - $ref: '#/components/parameters/organization_id'
+        - $ref: '#/components/parameters/user_link_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+
 
   # resource
   /organizations/{organization_id}/resources:
@@ -1693,6 +1800,8 @@ paths:
       operationId: getTokenForOrg
       parameters:
         - $ref: '#/components/parameters/organization_id'
+      requestBody:
+        $ref: '#/components/requestBodies/GetTokenForSubOrgRequest'
       responses:
         '200':
           $ref: '#/components/responses/TokenResponse'
@@ -1736,7 +1845,6 @@ paths:
       security:
         - basicAuth: [ ]
         - bearerAuth: [ ]
-
 
   /token:
     post:
@@ -2033,6 +2141,18 @@ components:
             type: string
             example: "customer_1"
 
+    user_link_id:
+      in: path
+      name: user_link_id
+      required: true
+      content:
+        application/json:
+          schema:
+            type: string
+            maxLength: 20
+            pattern: ^[A-Za-z0-9]{10}$
+            example: "IFXNLQHFYDDBKASUEABR"
+
     credential_id:
       in: path
       name: credential_id
@@ -2054,6 +2174,19 @@ components:
             type: string
             maxLength: 50
             example: "1f44ada7-7196-4f2d-8380-4c76f8bddec2"
+    #    Required in query param
+    role:
+      in: query
+      name: role
+      required: true
+      content:
+        application/json:
+          schema:
+            type: string
+            enum:
+              - LEADER
+              - SUBORDINATE
+            example: "LEADER"
 
     format:
       in: query
@@ -2239,6 +2372,17 @@ components:
             UpdateCredentialRequest:
               $ref: '#/components/examples/UpdateCredentialRequest'
 
+    LinkUserRequest:
+      description: Payload to link a user to another user of same/different organization
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LinkUserRequest'
+          examples:
+            LinkUserRequest:
+              $ref: '#/components/examples/LinkUserRequest'
+
     CreateResourceRequest:
       description: Payload to create resource
       required: true
@@ -2376,6 +2520,17 @@ components:
           examples:
             GetDelegateTokenRequest:
               $ref: '#/components/examples/GetDelegateTokenRequest'
+
+    GetTokenForSubOrgRequest:
+      description: Payload to generate a token for sub organization user
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetTokenForSubOrgRequest'
+          examples:
+            GetTokenForSubOrgRequest:
+              $ref: '#/components/examples/GetTokenForSubOrgRequest'
 
   responses:
     BaseSuccessResponse:
@@ -2712,6 +2867,22 @@ components:
             UserPaginatedResponse:
               $ref: '#/components/examples/UserPaginatedResponse'
 
+    LinkUsersPaginatedResponse:
+      description: Response for list users linked with the current user
+      headers:
+        X-Iam-User-Organization:
+          schema:
+            type: string
+          description: Organization Id of the authenticated user
+          example: XlK5h64gND
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LinkUsersPaginatedResponse'
+          examples:
+            LinkUsersPaginatedResponse:
+              $ref: '#/components/examples/LinkUsersPaginatedResponse'
+
     UserAuthMethodsResponse:
       description: Response for list user auth methods request
       headers:
@@ -2876,6 +3047,14 @@ components:
       value:
         issuer: google
         token: <JWT token or Access token provided by the auth provider>
+
+    LinkUserRequest:
+      summary: sample set user password request
+      value:
+        type: USERNAME_PASSWORD
+        usernamePasswordConfig:
+          email: acme@acme.com
+          password: Password@123
 
     CreateCredentialRequest:
       summary: sample create credential request
@@ -3092,11 +3271,23 @@ components:
           pageSize: 10
           sortOrder: asc
 
+    LinkUsersPaginatedResponse:
+      value:
+        data:
+          - id: IFXNLQHFYD
+            name: Lorem Ipsum
+            organizationId: XlK5h64gND
+            email: bob@acme.com
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+        context:
+          pageSize: 10
+          sortOrder: asc
+
     UserAuthMethodsResponse:
       value:
-          data:
-            - providerName: google
-            - providerName: iam
+        data:
+          - providerName: google
+          - providerName: iam
 
     PolicyPaginatedResponse:
       value:
@@ -3271,6 +3462,11 @@ components:
             action: hrn:XlK5h64gND::invoice$view
             effect: allow
 
+    GetTokenForSubOrgRequest:
+      summary: A sample GetTokenForSubOrgRequest
+      value:
+        email: email@email.com
+
   schemas:
     # Requests
     CreateOrganizationRequest:
@@ -3304,7 +3500,7 @@ components:
           type: string
           maxLength: 500
 
-#Email validation: Max Length = 320 https://www.mindbaz.com/en/email-deliverability/what-is-the-maximum-size-of-an-mail-address/
+    #Email validation: Max Length = 320 https://www.mindbaz.com/en/email-deliverability/what-is-the-maximum-size-of-an-mail-address/
     RootUser:
       type: object
       description: Root user details for the organization
@@ -3359,7 +3555,6 @@ components:
       type: object
       additionalProperties: false
       required:
-        - name
         - status
       properties:
         preferredUsername:
@@ -3376,6 +3571,10 @@ components:
           type: string
           maxLength: 320
           pattern: ^\S+@\S+\.\S+$
+        issuerName:
+          type: string
+        issuerToken:
+          type: string
         phone:
           type: string
           maxLength: 30
@@ -3487,6 +3686,57 @@ components:
           enum:
             - active
             - inactive
+
+    LinkUserRequest:
+      description: Payload to link a user to another user of same/different organization
+      type: object
+      additionalProperties: false
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - PASSCODE
+            - USERNAME_PASSWORD
+            - TOKEN_CREDENTIAL
+        passcodeConfig:
+          type: object
+          title: PasscodeConfig
+          additionalProperties: false
+          required:
+            - passcode
+          properties:
+            passcode:
+              type: string
+              maxLength: 320
+        usernamePasswordConfig:
+          type: object
+          title: UsernamePasswordConfig
+          additionalProperties: false
+          required:
+            - email
+            - password
+          properties:
+            email:
+              type: string
+              maxLength: 320
+            password:
+              type: string
+              maxLength: 100
+            organizationId:
+              type: string
+            subOrganizationId:
+              type: string
+        tokenCredentialConfig:
+          type: object
+          title: TokenCredentialConfig
+          additionalProperties: false
+          required:
+            - token
+          properties:
+            token:
+              type: string
 
     CreateResourceRequest:
       description: Payload to create resource
@@ -3635,6 +3885,7 @@ components:
             - reset
             - signup
             - invite
+            - link_user
         metadata:
           type: object
           description: |
@@ -3676,9 +3927,9 @@ components:
           type: string
         expiry:
           description: |
-              Expiry in seconds from the time of generation. 
-              If not provided, generated token will have the expiry of the token used for requesting.
-              If a credential is used for requesting, expiry will be 24 hours from the time of requesting.
+            Expiry in seconds from the time of generation. 
+            If not provided, generated token will have the expiry of the token used for requesting.
+            If a credential is used for requesting, expiry will be 24 hours from the time of requesting.
           type: integer
           format: int64
         policy:
@@ -3686,6 +3937,13 @@ components:
             Policy with which to generate the delegate token.
             Can be just the name of the policy if it is in the requestors organization or a complete policy resourceHrn
           type: string
+        templateName:
+          type: string
+          maxLength: 512
+        templateVariables:
+          type: object
+          additionalProperties:
+            type: string
 
 
     # Responses:
@@ -3806,6 +4064,41 @@ components:
           maxItems: 100
           items:
             $ref: '#/components/schemas/UserAuthMethod'
+
+    LinkUserResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - name
+        - organizationId
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          maxLength: 50
+        organizationId:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          maxLength: 320
+
+    LinkUsersPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/LinkUserResponse'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
 
     PolicyPaginatedResponse:
       type: object
@@ -4004,12 +4297,12 @@ components:
       type: object
       additionalProperties: false
       required:
-          - providerName
+        - providerName
       properties:
-          providerName:
-            description: Name of the authorization method
-            type: string
-            maxLength: 50
+        providerName:
+          description: Name of the authorization method
+          type: string
+          maxLength: 50
 
     CreateUserResponse:
       type: object
@@ -4213,7 +4506,7 @@ components:
         validUntil:
           type: string
           format: date-time
-    
+
     PasscodePaginatedResponse:
       type: object
       additionalProperties: false
@@ -4290,6 +4583,21 @@ components:
           enum:
             - asc
             - desc
+
+    GetTokenForSubOrgRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - email
+      properties:
+        email:
+          description: Email of the sub organization user to get token for
+          type: string
+          maxLength: 320
+        expiry:
+          description: |
+            Expiry in seconds from the time of generation. If not provided, the token will have the expiry of 24 hours
+          type: integer
 
 externalDocs:
   description: Find out more about IAM
